@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - ProTask</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="auth-body">
+
+    <div class="glass-panel auth-container">
+        <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+            <div class="logo-icon" style="width: 48px; height: 48px; border-radius: 14px;"></div>
+        </div>
+        <h2>Create Account</h2>
+        <p class="auth-subtitle">Join us to organize your tasks efficiently</p>
+
+        <div class="task-input">
+            <input type="text" id="name" placeholder="Full Name" autocomplete="name">
+            <input type="email" id="email" placeholder="Email Address" spellcheck="false" autocomplete="email">
+            <input type="password" id="password" placeholder="Password" autocomplete="new-password">
+        </div>
+
+        <button class="btn-primary" onclick="signup()" style="width: 100%; margin-top: 10px;">Sign Up</button>
+
+        <div class="auth-links">
+            <p>Already have an account? <a href="login.html">Sign in</a></p>
+        </div>
+    </div>
+
+    <script src="js/signup.js"></script>
+</body>
+
+</html>

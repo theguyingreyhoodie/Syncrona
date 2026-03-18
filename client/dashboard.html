@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productivity Dashboard</title>
+    <meta name="description" content="Manage your tasks, notes, and events with our premium productivity dashboard.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css?v=4">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- SIDEBAR -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-header-left">
+                    <div class="logo-icon"></div>
+                    <h2>ProTask</h2>
+                </div>
+                <button class="close-sidebar-btn" onclick="toggleSidebar()">&times;</button>
+            </div>
+            <ul class="nav-links">
+                <li class="active" onclick="go('dashboard.html')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                    Dashboard
+                </li>
+                <li onclick="go('tasks.html')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 11 12 14 22 4"></polyline>
+                        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                    </svg>
+                    Tasks
+                </li>
+                <li onclick="go('notes.html')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    Notes
+                </li>
+                <li onclick="go('calendar.html')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                    Calendar
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <button class="logout-btn" onclick="logout()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                    Logout
+                </button>
+            </div>
+        </nav>
+
+        <!-- MAIN CONTENT -->
+        <main class="main">
+            <header class="top-header">
+                <div style="display: flex; align-items: center;">
+                    <button class="hamburger-btn" onclick="toggleSidebar()">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+                    <div class="welcome-text">
+                        <h1 id="greeting">Welcome back,</h1>
+                        <p id="username" class="gradient-text"></p>
+                    </div>
+                </div>
+                <div class="user-profile">
+                    <div class="avatar" title="Profile Settings"></div>
+                </div>
+            </header>
+
+            <section class="dashboard-stats">
+                <div class="stat-card" onclick="go('tasks.html')">
+                    <div class="stat-icon task-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 11 12 14 22 4"></polyline>
+                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                        </svg>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Today's Tasks</h3>
+                        <p class="stat-value" id="dashboardTasksStat">Loading...</p>
+                    </div>
+                </div>
+                <div class="stat-card" onclick="go('notes.html')">
+                    <div class="stat-icon note-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Recent Notes</h3>
+                        <p class="stat-value" id="dashboardNotesStat">Loading...</p>
+                    </div>
+                </div>
+                <div class="stat-card" onclick="go('calendar.html')">
+                    <div class="stat-icon event-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Upcoming Events</h3>
+                        <p class="stat-value">0 This Week</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="dashboard-grid">
+                <div class="glass-panel recent-activity">
+                    <h2>Recent Activity</h2>
+                    <div class="activity-list">
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">No recent activity.</p>
+                    </div>
+                </div>
+                <div class="glass-panel quick-actions">
+                    <h2>Quick Actions</h2>
+                    <div class="action-buttons">
+                        <button class="btn-primary" onclick="go('tasks.html')">New Task</button>
+                        <button class="btn-secondary" onclick="go('notes.html')">New Note</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Floating Notes FAB -->
+        <button class="fab-notes" id="fabNotes" onclick="toggleNotesPopup()">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+        </button>
+
+        <!-- Notes Pop-up Container -->
+        <div class="notes-popup-container" id="notesPopup">
+            <div class="notes-header">
+                <h3>Quick Notes</h3>
+                <button class="close-notes-btn" onclick="toggleNotesPopup()">&times;</button>
+            </div>
+            <div class="notes-body" id="popupNotesList">
+                <p style="color: var(--text-secondary); text-align: center; font-size: 0.9rem;">Loading notes...</p>
+            </div>
+            <div class="notes-footer">
+                <textarea class="notes-textarea" id="newNoteContent" placeholder="Type a new note here..."></textarea>
+                <button class="btn-primary" onclick="addPopupNote()"
+                    style="width: 100%; padding: 10px; border-radius: 8px;">Save Note</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Authentication check mechanism
+        if (!localStorage.getItem("token")) {
+            // Mock user for local visual demonstration purposes
+            localStorage.setItem("user", JSON.stringify({ name: "Creator" }));
+            localStorage.setItem("token", "demo-token");
+            // In production:
+            // window.location.href="login.html";
+        }
+
+        let user = null;
+        try {
+            user = JSON.parse(localStorage.getItem("user"));
+        } catch (e) { }
+
+        if (user && user.name) {
+            document.getElementById("username").innerText = user.name + "!";
+        } else {
+            document.getElementById("username").innerText = "Guest!";
+        }
+
+        // Dynamic greeting based on time of day
+        function updateGreeting() {
+            const hour = new Date().getHours();
+            let greeting = "Good evening,";
+            if (hour >= 5 && hour < 12) greeting = "Good morning,";
+            else if (hour >= 12 && hour < 17) greeting = "Good afternoon,";
+            document.getElementById("greeting").innerText = greeting;
+        }
+        updateGreeting();
+
+        function logout() {
+            localStorage.clear();
+            window.location.href = "login.html";
+        }
+
+        function go(page) {
+            window.location.href = page;
+        }
+
+        function toggleSidebar() {
+            if (window.innerWidth <= 768) {
+                document.body.classList.toggle('sidebar-open');
+            } else {
+                document.body.classList.toggle('sidebar-closed');
+            }
+        }
+
+        function escapeHTML(str) {
+            if (!str) return "";
+            return str.replace(/[&<>'"]/g, tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag));
+        }
+
+        function timeAgo(date) {
+            const seconds = Math.floor((new Date() - date) / 1000);
+            let interval = seconds / 31536000;
+            if (interval > 1) return Math.floor(interval) + " years ago";
+            interval = seconds / 2592000;
+            if (interval > 1) return Math.floor(interval) + " months ago";
+            interval = seconds / 86400;
+            if (interval > 1) return Math.floor(interval) + " days ago";
+            interval = seconds / 3600;
+            if (interval > 1) return Math.floor(interval) + " hours ago";
+            interval = seconds / 60;
+            if (interval > 1) return Math.floor(interval) + " minutes ago";
+            if (seconds < 30) return "Just now";
+            return Math.floor(seconds) + " seconds ago";
+        }
+
+        async function loadDashboardStats() {
+            const fetchOpts = { headers: { "Authorization": "Bearer " + tokenAuth }, cache: "no-store" };
+            let recentItems = [];
+
+            try {
+                // Fetch Tasks Count
+                const TASKS_API = "http://localhost:5000/api/tasks";
+                const tasksRes = await fetch(TASKS_API, fetchOpts);
+                if (tasksRes.ok) {
+                    const tasks = await tasksRes.json();
+                    const pendingTasks = tasks.filter(t => !t.completed).length;
+                    document.getElementById("dashboardTasksStat").innerText = pendingTasks + " Pending";
+                    tasks.forEach(t => recentItems.push({ type: 'task', title: t.title, date: new Date(t.createdAt) }));
+                } else {
+                    document.getElementById("dashboardTasksStat").innerText = "0 Pending";
+                }
+            } catch (e) {
+                document.getElementById("dashboardTasksStat").innerText = "0 Pending";
+            }
+
+            try {
+                // Fetch Notes Count
+                const notesRes = await fetch(NOTES_API, fetchOpts);
+                if (notesRes.ok) {
+                    const notes = await notesRes.json();
+                    document.getElementById("dashboardNotesStat").innerText = notes.length + " Saved";
+                    notes.forEach(n => {
+                        let shortTitle = n.content.split('\n')[0].substring(0, 25);
+                        if (n.content.length > 25) shortTitle += '...';
+                        recentItems.push({ type: 'note', title: shortTitle, date: new Date(n.createdAt) });
+                    });
+                } else {
+                    document.getElementById("dashboardNotesStat").innerText = "0 Saved";
+                }
+            } catch (e) {
+                document.getElementById("dashboardNotesStat").innerText = "0 Saved";
+            }
+
+            // Populate Recent Activity
+            recentItems.sort((a, b) => b.date - a.date);
+            const latest3 = recentItems.slice(0, 3);
+            const activityList = document.querySelector('.activity-list');
+
+            if (latest3.length > 0) {
+                activityList.innerHTML = latest3.map(item => `
+                    <div class="activity-item" style="margin-bottom: 12px; display: flex; align-items: center; gap: 12px;">
+                        <div class="activity-dot ${item.type === 'task' ? 'blue' : 'purple'}" style="width: 10px; height: 10px; border-radius: 50%; background: ${item.type === 'task' ? '#3b82f6' : '#a855f7'}; box-shadow: 0 0 8px ${item.type === 'task' ? '#3b82f6' : '#a855f7'};"></div>
+                        <div class="activity-content" style="flex: 1;">
+                            <p style="margin: 0; color: var(--text-primary); font-size: 0.95rem;">Added ${item.type} <strong>${escapeHTML(item.title)}</strong></p>
+                            <span style="font-size: 0.8rem; color: var(--text-secondary);">${timeAgo(item.date)}</span>
+                        </div>
+                    </div>
+                `).join('');
+            } else {
+                activityList.innerHTML = `<p style="color: var(--text-secondary); font-size: 0.9rem;">No recent activity.</p>`;
+            }
+        }
+
+        /* --- Quick Notes Feature --- */
+        const NOTES_API = "http://localhost:5000/api/notes";
+        const tokenAuth = localStorage.getItem("token") || "demo-token";
+        let popupNotes = [];
+
+        loadDashboardStats();
+
+        function toggleNotesPopup() {
+            const popup = document.getElementById("notesPopup");
+            const isOpen = popup.classList.contains("open");
+
+            if (!isOpen) {
+                popup.classList.add("open");
+                loadPopupNotes();
+            } else {
+                popup.classList.remove("open");
+            }
+        }
+
+        async function loadPopupNotes() {
+            const list = document.getElementById("popupNotesList");
+            try {
+                const res = await fetch(NOTES_API, {
+                    headers: { "Authorization": "Bearer " + tokenAuth }
+                });
+                if (res.ok) {
+                    popupNotes = await res.json();
+                    renderPopupNotes();
+                } else {
+                    list.innerHTML = `<p style="color: #ef4444; font-size: 0.9rem;">Failed to load.</p>`;
+                }
+            } catch (e) {
+                list.innerHTML = `<p style="color: #ef4444; font-size: 0.9rem;">Backend offline</p>`;
+            }
+        }
+
+        function renderPopupNotes() {
+            const list = document.getElementById("popupNotesList");
+            list.innerHTML = "";
+            if (popupNotes.length === 0) {
+                list.innerHTML = `<p style="color: var(--text-secondary); text-align: center; font-size: 0.9rem;">No notes yet.</p>`;
+                return;
+            }
+
+            popupNotes.forEach(note => {
+                list.innerHTML += `
+                <div class="note-item">
+                    <div class="note-content">${note.content}</div>
+                    <button class="delete-note-btn" onclick="deletePopupNote('${note._id}')">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                    </button>
+                </div>`;
+            });
+        }
+
+        async function addPopupNote() {
+            const content = document.getElementById("newNoteContent").value.trim();
+            if (!content) return;
+            try {
+                await fetch(NOTES_API, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json", "Authorization": "Bearer " + tokenAuth },
+                    body: JSON.stringify({ content })
+                });
+                document.getElementById("newNoteContent").value = "";
+                loadPopupNotes();
+                loadDashboardStats(); // Refresh dashboard numbers
+            } catch (e) { console.error("Could not save note"); }
+        }
+
+        async function deletePopupNote(id) {
+            try {
+                await fetch(NOTES_API + "/" + id, {
+                    method: "DELETE",
+                    headers: { "Authorization": "Bearer " + tokenAuth }
+                });
+                loadPopupNotes();
+                loadDashboardStats(); // Refresh dashboard numbers
+            } catch (e) { console.error("Could not delete note"); }
+        }
+    </script>
+
+</body>
+
+</html>
