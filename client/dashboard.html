@@ -131,7 +131,7 @@
                     </div>
                     <div class="stat-info">
                         <h3>Upcoming Events</h3>
-                        <p class="stat-value">0 This Week</p>
+                        <p class="stat-value" id="dashboardEventsStat">0 This Week</p>
                     </div>
                 </div>
             </section>
@@ -289,6 +289,35 @@
                 document.getElementById("dashboardNotesStat").innerText = "0 Saved";
             }
 
+            try {
+                // Fetch Events Count
+                const EVENTS_API = "http://localhost:5000/api/events";
+                const eventsRes = await fetch(EVENTS_API, fetchOpts);
+                if (eventsRes.ok) {
+                    const events = await eventsRes.json();
+
+                    const now = new Date();
+                    now.setHours(0, 0, 0, 0);
+                    const nextWeek = new Date(now);
+                    nextWeek.setDate(now.getDate() + 7);
+
+                    const upcoming = events.filter(e => {
+                        const d = new Date(e.date);
+                        return d >= now && d <= nextWeek;
+                    });
+
+                    document.getElementById("dashboardEventsStat").innerText = upcoming.length + " This Week";
+
+                    events.forEach(e => {
+                        recentItems.push({ type: 'event', title: e.title, date: new Date(e.createdAt) });
+                    });
+                } else {
+                    document.getElementById("dashboardEventsStat").innerText = "0 This Week";
+                }
+            } catch (e) {
+                document.getElementById("dashboardEventsStat").innerText = "0 This Week";
+            }
+
             // Populate Recent Activity
             recentItems.sort((a, b) => b.date - a.date);
             const latest3 = recentItems.slice(0, 3);
@@ -297,7 +326,7 @@
             if (latest3.length > 0) {
                 activityList.innerHTML = latest3.map(item => `
                     <div class="activity-item" style="margin-bottom: 12px; display: flex; align-items: center; gap: 12px;">
-                        <div class="activity-dot ${item.type === 'task' ? 'blue' : 'purple'}" style="width: 10px; height: 10px; border-radius: 50%; background: ${item.type === 'task' ? '#3b82f6' : '#a855f7'}; box-shadow: 0 0 8px ${item.type === 'task' ? '#3b82f6' : '#a855f7'};"></div>
+                        <div class="activity-dot ${item.type === 'task' ? 'blue' : (item.type === 'event' ? 'pink' : 'purple')}" style="width: 10px; height: 10px; border-radius: 50%; background: ${item.type === 'task' ? '#3b82f6' : (item.type === 'event' ? '#f472b6' : '#a855f7')}; box-shadow: 0 0 8px ${item.type === 'task' ? '#3b82f6' : (item.type === 'event' ? '#f472b6' : '#a855f7')};"></div>
                         <div class="activity-content" style="flex: 1;">
                             <p style="margin: 0; color: var(--text-primary); font-size: 0.95rem;">Added ${item.type} <strong>${escapeHTML(item.title)}</strong></p>
                             <span style="font-size: 0.8rem; color: var(--text-secondary);">${timeAgo(item.date)}</span>

@@ -13,10 +13,12 @@ app.use(express.json());
 const authRoutes = require("./routes/authRoutes");
 const taskRoutes = require("./routes/taskRoutes");
 const noteRoutes = require("./routes/noteRoutes");
+const eventRoutes = require("./routes/eventRoutes");
 
 app.use("/api/auth", authRoutes);
 app.use("/api/tasks", taskRoutes);
 app.use("/api/notes", noteRoutes);
+app.use("/api/events", eventRoutes);
 
 // test route
 app.get("/", (req, res) => {
