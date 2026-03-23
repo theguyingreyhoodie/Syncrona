@@ -14,11 +14,13 @@ const authRoutes = require("./routes/authRoutes");
 const taskRoutes = require("./routes/taskRoutes");
 const noteRoutes = require("./routes/noteRoutes");
 const eventRoutes = require("./routes/eventRoutes");
+const expenseRoutes = require("./routes/expenseRoutes");
 
 app.use("/api/auth", authRoutes);
 app.use("/api/tasks", taskRoutes);
 app.use("/api/notes", noteRoutes);
 app.use("/api/events", eventRoutes);
+app.use("/api/expenses", expenseRoutes);
 
 // test route
 app.get("/", (req, res) => {

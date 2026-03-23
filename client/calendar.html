@@ -59,6 +59,13 @@
                     </svg>
                     Calendar
                 </li>
+                <li onclick="go('expenses.html')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="1" x2="12" y2="23"></line>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                    </svg>
+                    Expenses
+                </li>
             </ul>
             <div class="sidebar-footer">
                 <button class="logout-btn" onclick="logout()">
@@ -135,16 +142,21 @@
                 <!-- Right Box: Add Item Form -->
                 <div class="add-item-box">
                     <h4>Add New Item</h4>
-                    <div class="task-input">
-                        <input type="text" id="modalTaskTitle" placeholder="I need to...">
+                    <div class="task-input" style="flex-wrap: wrap; gap: 10px;">
+                        <input type="text" id="modalTaskTitle" placeholder="I need to..." style="flex: 1 1 100%;">
+                        <input type="number" id="modalExpenseAmount" placeholder="Amount ($ if expense)"
+                            style="flex: 1 1 100%;">
                         <input type="hidden" id="modalDueDate">
                         <p id="modalDateDisplay" style="display: none;"></p>
                     </div>
-                    <div style="display: flex; gap: 10px; margin-top: 15px;">
+                    <div style="display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap;">
                         <button class="btn-primary" onclick="addCalendarTask()" style="flex: 1;">Save Task</button>
                         <button class="btn-primary" onclick="addCalendarEvent()"
                             style="flex: 1; background: linear-gradient(135deg, #ec4899, #f472b6); box-shadow: 0 0 20px rgba(236,72,153,0.3);">Save
                             Event</button>
+                        <button class="btn-primary" onclick="addCalendarExpense()"
+                            style="flex: 1; background: linear-gradient(135deg, #ef4444, #f87171); box-shadow: 0 0 20px rgba(239,68,68,0.3);">Save
+                            Expense</button>
                     </div>
                 </div>
             </div>

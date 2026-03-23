@@ -1,5 +1,6 @@
 const API = "http://localhost:5000/api/tasks";
 const EVENTS_API = "http://localhost:5000/api/events";
+const EXPENSES_API = "http://localhost:5000/api/expenses";
 let token = localStorage.getItem("token");
 
 if (!token) {
@@ -9,18 +10,21 @@ if (!token) {
 let currentDate = new Date();
 let tasks = [];
 let events = [];
+let expenses = [];
 
 // Fetch initial data
 async function loadCalendarData() {
     try {
-        const [resTasks, resEvents] = await Promise.all([
+        const [resTasks, resEvents, resExpenses] = await Promise.all([
             fetch(API, { headers: { "Authorization": "Bearer " + token } }),
-            fetch(EVENTS_API, { headers: { "Authorization": "Bearer " + token } })
+            fetch(EVENTS_API, { headers: { "Authorization": "Bearer " + token } }),
+            fetch(EXPENSES_API, { headers: { "Authorization": "Bearer " + token } })
         ]);
 
-        if (resTasks.ok && resEvents.ok) {
+        if (resTasks.ok && resEvents.ok && resExpenses.ok) {
             tasks = await resTasks.json();
             events = await resEvents.json();
+            expenses = await resExpenses.json();
             renderCalendar();
             if (document.getElementById("taskModal") && document.getElementById("taskModal").classList.contains("open")) {
                 const activeDate = document.getElementById("modalDueDate").value;
@@ -30,7 +34,7 @@ async function loadCalendarData() {
             }
         } else {
             console.error("Failed to fetch data");
-            if (resTasks.status === 401 || resEvents.status === 401) {
+            if (resTasks.status === 401 || resEvents.status === 401 || resExpenses.status === 401) {
                 logout();
             }
         }
@@ -81,7 +85,21 @@ function renderCalendar() {
             return d.getFullYear() === year && d.getMonth() === month && d.getDate() === day;
         });
 
+        const dayExpenses = expenses.filter(ex => {
+            if (!ex.date) return false;
+            const d = new Date(ex.date);
+            return d.getFullYear() === year && d.getMonth() === month && d.getDate() === day;
+        });
+
         let badgesHtml = ``;
+
+        dayExpenses.forEach(ex => {
+            badgesHtml += `
+            <div class="calendar-task-badge" style="background: rgba(239, 68, 68, 0.15); color: #fca5a5; border: 1px solid rgba(239,68,68,0.3);" title="${ex.title}" onclick="deleteCalendarExpense(event, '${ex._id}')">
+                $${ex.amount.toFixed(2)} - ${ex.title}
+            </div>
+            `;
+        });
 
         dayEvents.forEach(e => {
             badgesHtml += `
@@ -123,6 +141,7 @@ function openModal(dateString) {
     if (header) header.textContent = dateObj.toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
 
     document.getElementById("modalTaskTitle").value = "";
+    if (document.getElementById("modalExpenseAmount")) document.getElementById("modalExpenseAmount").value = "";
     updateModalExistingItems(dateString);
 
     document.getElementById("taskModal").classList.add("open");
@@ -149,7 +168,27 @@ function updateModalExistingItems(dateString) {
         return d.getFullYear() === year && d.getMonth() === (month - 1) && d.getDate() === day;
     });
 
+    const dayExpenses = expenses.filter(ex => {
+        if (!ex.date) return false;
+        const d = new Date(ex.date);
+        return d.getFullYear() === year && d.getMonth() === (month - 1) && d.getDate() === day;
+    });
+
     let html = '';
+
+    dayExpenses.forEach(ex => {
+        html += `
+        <div class="note-item" style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; flex-direction: column;">
+                <span style="font-size: 0.75rem; color: #ef4444; font-weight: 600; margin-bottom: 2px;">EXPENSE ($${ex.amount.toFixed(2)})</span>
+                <span>${ex.title}</span>
+            </div>
+            <button class="delete-note-btn" onclick="deleteCalendarExpense(event, '${ex._id}')" title="Delete Expense">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#ef4444" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+            </button>
+        </div>
+        `;
+    });
 
     dayEvents.forEach(e => {
         html += `
@@ -219,6 +258,42 @@ async function addCalendarEvent() {
         loadCalendarData();
     } catch (e) {
         console.error("Failed to add event", e);
+    }
+}
+
+async function addCalendarExpense() {
+    const title = document.getElementById("modalTaskTitle").value;
+    const amount = document.getElementById("modalExpenseAmount").value;
+    const date = document.getElementById("modalDueDate").value;
+    if (!title || !amount) {
+        alert("Please provide both title and amount for an expense.");
+        return;
+    }
+    try {
+        await fetch(EXPENSES_API, {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "Authorization": "Bearer " + token },
+            body: JSON.stringify({ title, amount: parseFloat(amount), date })
+        });
+        document.getElementById("modalTaskTitle").value = "";
+        if (document.getElementById("modalExpenseAmount")) document.getElementById("modalExpenseAmount").value = "";
+        loadCalendarData();
+    } catch (e) {
+        console.error("Failed to add expense", e);
+    }
+}
+
+async function deleteCalendarExpense(event, id) {
+    event.stopPropagation();
+    if (!confirm("Delete this expense?")) return;
+    try {
+        await fetch(EXPENSES_API + "/" + id, {
+            method: "DELETE",
+            headers: { "Authorization": "Bearer " + token }
+        });
+        loadCalendarData();
+    } catch (e) {
+        console.error("Failed to delete expense", e);
     }
 }
 
