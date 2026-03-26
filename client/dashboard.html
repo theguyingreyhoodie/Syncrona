@@ -143,21 +143,9 @@
                 </div>
             </section>
 
-            <section class="dashboard-grid">
-                <div class="glass-panel recent-activity">
-                    <h2>Recent Activity</h2>
-                    <div class="activity-list">
-                        <p style="color: var(--text-secondary); font-size: 0.9rem;">No recent activity.</p>
-                    </div>
-                </div>
-                <div class="glass-panel quick-actions">
-                    <h2>Quick Actions</h2>
-                    <div class="action-buttons">
-                        <button class="btn-primary" onclick="go('tasks.html')">New Task</button>
-                        <button class="btn-secondary" onclick="go('notes.html')">New Note</button>
-                    </div>
-                </div>
-            </section>
+            <div style="margin-top: 40px; text-align: center; padding: 20px;">
+                <p id="dailyTip" style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5; font-style: italic; margin: 0; transition: opacity 0.5s ease;">Loading tip...</p>
+            </div>
         </main>
 
         <!-- Floating Notes FAB -->
@@ -325,24 +313,6 @@
                 document.getElementById("dashboardEventsStat").innerText = "0 This Week";
             }
 
-            // Populate Recent Activity
-            recentItems.sort((a, b) => b.date - a.date);
-            const latest3 = recentItems.slice(0, 3);
-            const activityList = document.querySelector('.activity-list');
-
-            if (latest3.length > 0) {
-                activityList.innerHTML = latest3.map(item => `
-                    <div class="activity-item" style="margin-bottom: 12px; display: flex; align-items: center; gap: 12px;">
-                        <div class="activity-dot ${item.type === 'task' ? 'blue' : (item.type === 'event' ? 'pink' : 'purple')}" style="width: 10px; height: 10px; border-radius: 50%; background: ${item.type === 'task' ? '#3b82f6' : (item.type === 'event' ? '#f472b6' : '#a855f7')}; box-shadow: 0 0 8px ${item.type === 'task' ? '#3b82f6' : (item.type === 'event' ? '#f472b6' : '#a855f7')};"></div>
-                        <div class="activity-content" style="flex: 1;">
-                            <p style="margin: 0; color: var(--text-primary); font-size: 0.95rem;">Added ${item.type} <strong>${escapeHTML(item.title)}</strong></p>
-                            <span style="font-size: 0.8rem; color: var(--text-secondary);">${timeAgo(item.date)}</span>
-                        </div>
-                    </div>
-                `).join('');
-            } else {
-                activityList.innerHTML = `<p style="color: var(--text-secondary); font-size: 0.9rem;">No recent activity.</p>`;
-            }
         }
 
         /* --- Quick Notes Feature --- */
@@ -425,6 +395,33 @@
                 loadDashboardStats(); // Refresh dashboard numbers
             } catch (e) { console.error("Could not delete note"); }
         }
+
+        /* --- Productivity Tips --- */
+        const productivityTips = [
+            "Start your day by tackling the most difficult task first.",
+            "Use the Pomodoro Technique: Work for 25 minutes, then take a 5-minute break.",
+            "Take regular breaks to rest your eyes and stretch your legs.",
+            "Break large tasks into smaller, manageable chunks.",
+            "Eliminate distractions by turning off notifications during deep work.",
+            "Stay hydrated and maintain a healthy sleep schedule.",
+            "Review your goals at the end of each day to prepare for tomorrow.",
+            "Keep your workspace clean. A cluttered desk leads to a cluttered mind."
+        ];
+
+        function generateNewTip() {
+            const tipEl = document.getElementById("dailyTip");
+            if (tipEl) {
+                const randomTip = productivityTips[Math.floor(Math.random() * productivityTips.length)];
+                tipEl.style.opacity = 0;
+                setTimeout(() => {
+                    tipEl.innerText = '"' + randomTip + '"';
+                    tipEl.style.opacity = 1;
+                }, 500);
+            }
+        }
+        
+        generateNewTip();
+        setInterval(generateNewTip, 15000);
     </script>
 
 </body>

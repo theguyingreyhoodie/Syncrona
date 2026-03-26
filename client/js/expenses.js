@@ -33,7 +33,7 @@ function renderExpenses() {
 
     if (expenses.length === 0) {
         list.innerHTML = `<p style="color: var(--text-secondary); text-align: center; padding: 20px;">No expenses recorded yet.</p>`;
-        totalAmountEl.textContent = `$0.00`;
+        totalAmountEl.textContent = `₹0.00`;
         return;
     }
 
@@ -49,7 +49,7 @@ function renderExpenses() {
                     <p>${formattedDate}</p>
                 </div>
                 <div class="expense-actions">
-                    <span class="expense-amount">$${exp.amount.toFixed(2)}</span>
+                    <span class="expense-amount">₹${exp.amount.toFixed(2)}</span>
                     <button class="delete-note-btn" onclick="deleteExpense('${exp._id}')" title="Delete">
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#ef4444" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
                     </button>
@@ -58,7 +58,7 @@ function renderExpenses() {
         `;
     });
 
-    totalAmountEl.textContent = `$${total.toFixed(2)}`;
+    totalAmountEl.textContent = `₹${total.toFixed(2)}`;
 }
 
 async function addExpense() {

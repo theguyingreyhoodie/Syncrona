@@ -90,6 +90,7 @@ async function addTask() {
 
         document.getElementById("taskTitle").value = "";
         document.getElementById("dueDate").value = "";
+        closeTaskModal();
         loadTasks();
     } catch (e) {
         console.error("Failed to add task", e);
@@ -135,5 +136,25 @@ function logout() {
 function go(p) {
     window.location.href = p;
 }
+
+// MODAL LOGIC
+function openTaskModal() {
+    document.getElementById("taskModal").classList.add("open");
+    setTimeout(() => {
+        document.getElementById("taskTitle").focus();
+    }, 100);
+}
+
+function closeTaskModal() {
+    document.getElementById("taskModal").classList.remove("open");
+}
+
+document.getElementById('taskModal').addEventListener('click', function (e) {
+    if (e.target === this) closeTaskModal();
+});
+
+document.getElementById('taskTitle').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') addTask();
+});
 
 loadTasks();

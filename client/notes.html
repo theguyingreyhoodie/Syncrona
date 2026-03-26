@@ -158,18 +158,29 @@
                 </div>
             </header>
 
-            <div class="create-note-area">
-                <textarea id="newNoteContentMain" class="notes-textarea" placeholder="Start typing a new note..."
-                    style="width: 100%; border-radius: 12px; font-size: 1rem;"></textarea>
-                <div style="display: flex; justify-content: flex-end; margin-top: 10px;">
-                    <button class="btn-primary" onclick="addNoteMain()">Save Note</button>
-                </div>
+            <div style="text-align: center; margin-bottom: 30px;">
+                <button class="btn-primary" style="width: auto; padding: 12px 30px; border-radius: 12px; font-size: 1.05rem;" onclick="openNoteModal()">+ Add New Note</button>
             </div>
 
             <div id="notesGrid" class="notes-grid">
                 <!-- Notes will be loaded here via JS -->
             </div>
         </main>
+    </div>
+
+    <!-- Add Note Modal -->
+    <div class="modal-overlay" id="noteModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New Note</h3>
+                <button class="close-modal-btn" onclick="closeNoteModal()">&times;</button>
+            </div>
+            <div style="margin-top: 15px;">
+                <textarea id="newNoteContentMain" class="notes-textarea" placeholder="Start typing a new note..."
+                    style="width: 100%; border-radius: 12px; font-size: 1rem; min-height: 150px; background: rgba(0,0,0,0.2); color: #fff; padding: 15px; border: 1px solid rgba(255,255,255,0.1);"></textarea>
+                <button class="btn-primary" onclick="addNoteMain()" style="width: 100%; margin-top: 15px;">Save Note</button>
+            </div>
+        </div>
     </div>
 
     <script>

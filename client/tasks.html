@@ -98,14 +98,8 @@
                 </div>
             </header>
 
-            <div class="glass-panel" style="margin-bottom: 30px;">
-                <div class="task-input" style="display: flex; gap: 10px; margin-bottom: 0;">
-                    <input type="text" id="taskTitle" placeholder="I need to..." style="flex: 2; margin: 0;">
-                    <input type="date" id="dueDate"
-                        style="flex: 1; margin: 0; color: #fff; background: rgba(0,0,0,0.2);">
-                    <button class="btn-primary" onclick="addTask()"
-                        style="width: auto; height: 100%; border-radius: 8px;">Add Task</button>
-                </div>
+            <div style="text-align: center; margin-bottom: 30px;">
+                <button class="btn-primary" style="width: auto; padding: 12px 30px; border-radius: 12px; font-size: 1.05rem;" onclick="openTaskModal()">+ Add New Task</button>
             </div>
 
             <div id="taskList" style="display: flex; flex-direction: column; gap: 12px;">
@@ -113,6 +107,21 @@
             </div>
         </main>
 
+    </div>
+
+    <!-- Add Task Modal -->
+    <div class="modal-overlay" id="taskModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New Task</h3>
+                <button class="close-modal-btn" onclick="closeTaskModal()">&times;</button>
+            </div>
+            <div class="task-input" style="flex-wrap: wrap; gap: 10px; margin-top: 15px;">
+                <input type="text" id="taskTitle" placeholder="I need to..." style="flex: 1 1 100%;">
+                <input type="date" id="dueDate" style="flex: 1 1 100%; color: #fff; background: rgba(0,0,0,0.2); padding: 12px; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px;">
+                <button class="btn-primary" onclick="addTask()" style="flex: 1 1 100%; margin-top: 10px;">Save Task</button>
+            </div>
+        </div>
     </div>
 
     <script>

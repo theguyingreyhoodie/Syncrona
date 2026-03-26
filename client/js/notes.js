@@ -82,6 +82,7 @@ async function addNoteMain() {
         });
 
         document.getElementById("newNoteContentMain").value = "";
+        closeNoteModal();
         loadNotesMain();
     } catch (e) {
         console.error("Failed to add note", e);
@@ -110,5 +111,21 @@ function logout() {
 function go(page) {
     window.location.href = page;
 }
+
+// MODAL LOGIC
+function openNoteModal() {
+    document.getElementById("noteModal").classList.add("open");
+    setTimeout(() => {
+        document.getElementById("newNoteContentMain").focus();
+    }, 100);
+}
+
+function closeNoteModal() {
+    document.getElementById("noteModal").classList.remove("open");
+}
+
+document.getElementById('noteModal').addEventListener('click', function (e) {
+    if (e.target === this) closeNoteModal();
+});
 
 loadNotesMain();
