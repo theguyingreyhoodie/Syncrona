@@ -2,24 +2,24 @@
 
 ProTask is a sleek, full-stack productivity web application designed with a premium, modern SaaS aesthetic. It provides users with a comprehensive suite of tools to manage their daily workflows, including tasks, notes, calendar events, and expenses.
 
-## 🌟 Features
+##  Features
 
-- **📊 Dashboard:** Get a quick overview of your pending tasks, recent notes, and upcoming calendar events.
-- **✅ Task Management:** Create, track, and complete your daily to-dos.
-- **📝 Notes:** Jot down quick ideas via the floating action button or manage detailed notes on the dedicated page.
-- **📅 Calendar Integration:** Visual calendar for planning and tracking upcoming events.
-- **💰 Expense Tracking:** Monitor your spending and manage your finances.
-- **🌓 Elegant Theme Toggle:** Seamlessly switch between a crisp light mode and a deep immersive dark mode, with your preference saved automatically.
-- **🔐 Authentication:** Secure user login and signup functionality.
+- **Dashboard:** Get a quick overview of your pending tasks, recent notes, and upcoming calendar events.
+- **Task Management:** Create, track, and complete your daily to-dos.
+- **Notes:** Jot down quick ideas via the floating action button or manage detailed notes on the dedicated page.
+- **Calendar Integration:** Visual calendar for planning and tracking upcoming events.
+- **Expense Tracking:** Monitor your spending and manage your finances.
+- **Elegant Theme Toggle:** Seamlessly switch between a crisp light mode and a deep immersive dark mode, with your preference saved automatically.
+- **Authentication:** Secure user login and signup functionality.
 
-## 💻 Tech Stack
+## Tech Stack
 
 - **Frontend:** HTML5, CSS3 (Custom Modern SaaS UI with CSS Variables), Vanilla JavaScript
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB & Mongoose
 - **Architecture:** Token-based Authentication
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 Make sure you have Node.js installed on your machine and a running instance of MongoDB.
@@ -58,10 +58,10 @@ Make sure you have Node.js installed on your machine and a running instance of M
 4. **Open in Browser:**
    Navigate to the local URL provided by the `serve` command (usually `http://localhost:3000`) and enjoy!
 
-## 🤝 Contributing
+## Contributing
 
 Contributions, issues, and feature requests are welcome! Feel free to check the issues page.
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License.
