@@ -1,8 +1,18 @@
 // theme.js
 // Instantly apply dark mode on load to prevent flashing
 const themePref = localStorage.getItem('theme');
-if (themePref === 'dark') {
-    document.body.classList.add('dark-mode');
+
+function initTheme() {
+    if (themePref === 'dark') {
+        document.body.classList.add('dark-mode');
+    }
+    updateThemeIcon(document.body.classList.contains('dark-mode'));
+}
+
+if (document.body) {
+    initTheme();
+} else {
+    document.addEventListener('DOMContentLoaded', initTheme);
 }
 
 function toggleTheme() {
@@ -11,10 +21,6 @@ function toggleTheme() {
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
     updateThemeIcon(isDark);
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-    updateThemeIcon(document.body.classList.contains('dark-mode'));
-});
 
 function updateThemeIcon(isDark) {
     // Select all potential theme toggle icons across pages

@@ -1175,3 +1175,37 @@ body.dark-mode .auth-body {
     background-color: var(--bg-primary);
     background-image: radial-gradient(#334155 1px, transparent 1px);
 }
+
+/* Fix close buttons to be transparent and circular */
+button.close-sidebar-btn,
+button.close-notes-btn,
+button.close-modal-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50% !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent !important;
+    padding: 0;
+}
+
+button.close-sidebar-btn:hover,
+button.close-notes-btn:hover,
+button.close-modal-btn:hover {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+body.dark-mode button.close-sidebar-btn,
+body.dark-mode button.close-notes-btn,
+body.dark-mode button.close-modal-btn {
+    background-color: transparent !important;
+    color: var(--text-secondary);
+}
+
+body.dark-mode button.close-sidebar-btn:hover,
+body.dark-mode button.close-notes-btn:hover,
+body.dark-mode button.close-modal-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: #ef4444;
+}
