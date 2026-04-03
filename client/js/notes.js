@@ -1,4 +1,5 @@
-const NOTES_API = "http://localhost:5000/api/notes";
+const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? 'http://localhost:5000' : '';
+const NOTES_API = API_BASE + "/api/notes";
 let token = localStorage.getItem("token");
 
 if (!token) {

@@ -169,6 +169,17 @@
                 <button class="add-btn" onclick="addExpense()">Add</button>
             </div>
 
+            <div class="glass-panel" style="margin-top: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+                <div>
+                    <h3 style="margin: 0; font-size: 1rem; color: var(--text-primary);">High Expense Threshold</h3>
+                    <p style="margin: 5px 0 0 0; font-size: 0.85rem; color: var(--text-secondary);">Amounts at or above this value will be highlighted red on your calendar.</p>
+                </div>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <input type="number" id="expenseThresholdInput" placeholder="e.g. 500" style="max-width: 150px; padding: 8px 12px; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-primary); color: var(--text-primary);">
+                    <button class="btn-secondary" onclick="saveThreshold()">Save Bracket</button>
+                </div>
+            </div>
+
             <div class="glass-panel" style="margin-top: 20px;">
                 <h2 style="margin-bottom: 15px; font-size: 1.25rem;">History</h2>
                 <div id="expensesList">

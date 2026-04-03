@@ -1,6 +1,7 @@
-const API = "http://localhost:5000/api/tasks";
-const EVENTS_API = "http://localhost:5000/api/events";
-const EXPENSES_API = "http://localhost:5000/api/expenses";
+const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? 'http://localhost:5000' : '';
+const API = API_BASE + "/api/tasks";
+const EVENTS_API = API_BASE + "/api/events";
+const EXPENSES_API = API_BASE + "/api/expenses";
 let token = localStorage.getItem("token");
 
 if (!token) {
@@ -95,10 +96,19 @@ function renderCalendar() {
 
         let badgesHtml = ``;
 
+        const thresholdStr = localStorage.getItem('expenseThreshold');
+        const threshold = thresholdStr ? parseFloat(thresholdStr) : 500;
+
         dayExpenses.forEach(ex => {
             monthlyExpenseTotal += ex.amount;
+            
+            const isHigh = ex.amount >= threshold;
+            const bg = isHigh ? 'rgba(239, 68, 68, 0.15)' : 'rgba(245, 158, 11, 0.15)';
+            const textCol = isHigh ? '#ef4444' : '#f59e0b';
+            const borderCol = isHigh ? 'rgba(239,68,68,0.3)' : 'rgba(245,158,11,0.3)';
+
             badgesHtml += `
-            <div class="calendar-task-badge" style="background: rgba(239, 68, 68, 0.15); color: #fca5a5; border: 1px solid rgba(239,68,68,0.3);" title="${ex.title}">
+            <div class="calendar-task-badge" style="background: ${bg}; color: ${textCol}; border: 1px solid ${borderCol};" title="${ex.title}">
                 ₹${ex.amount.toFixed(2)} - ${ex.title}
             </div>
             `;
@@ -106,7 +116,7 @@ function renderCalendar() {
 
         dayEvents.forEach(e => {
             badgesHtml += `
-            <div class="calendar-task-badge" style="background: rgba(236, 72, 153, 0.15); color: #fbcfe8; border: 1px solid rgba(236,72,153,0.3);" title="${e.title}" onclick="deleteCalendarEvent(event, '${e._id}')">
+            <div class="calendar-task-badge" style="background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.3);" title="${e.title}" onclick="deleteCalendarEvent(event, '${e._id}')">
                 Event: ${e.title}
             </div>
             `;
@@ -202,7 +212,7 @@ function updateModalExistingItems(dateString) {
         html += `
         <div class="note-item" style="display: flex; justify-content: space-between; align-items: center;">
             <div style="display: flex; flex-direction: column;">
-                <span style="font-size: 0.75rem; color: #f472b6; font-weight: 600; margin-bottom: 2px;">EVENT</span>
+                <span style="font-size: 0.75rem; color: #10b981; font-weight: 600; margin-bottom: 2px;">EVENT</span>
                 <span>${e.title}</span>
             </div>
             <button class="delete-note-btn" onclick="deleteCalendarEvent(event, '${e._id}')" title="Delete Event">

@@ -1,4 +1,5 @@
-const API = "http://localhost:5000/api/expenses";
+const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? 'http://localhost:5000' : '';
+const API = API_BASE + "/api/expenses";
 let token = localStorage.getItem("token");
 
 if (!token) {
@@ -110,6 +111,26 @@ function logout() {
 
 function go(p) {
     window.location.href = p;
+}
+
+const currentThreshold = localStorage.getItem('expenseThreshold') || 500;
+document.addEventListener('DOMContentLoaded', () => {
+    const input = document.getElementById("expenseThresholdInput");
+    if (input) {
+        input.value = currentThreshold;
+    }
+});
+
+function saveThreshold() {
+    const threshold = document.getElementById("expenseThresholdInput").value;
+    if (threshold) {
+        localStorage.setItem('expenseThreshold', threshold);
+        // Visual feedback
+        const btn = document.querySelector('.btn-secondary');
+        const oldText = btn.textContent;
+        btn.textContent = 'Saved!';
+        setTimeout(() => btn.textContent = oldText, 2000);
+    }
 }
 
 // set default date to today for the input

@@ -1,4 +1,5 @@
-const API = "http://localhost:5000/api/tasks";
+const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? 'http://localhost:5000' : '';
+const API = API_BASE + "/api/tasks";
 let token = localStorage.getItem("token");
 
 if (!token) {
