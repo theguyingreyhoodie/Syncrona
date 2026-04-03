@@ -95,8 +95,8 @@ function renderCalendar() {
 
         dayExpenses.forEach(ex => {
             badgesHtml += `
-            <div class="calendar-task-badge" style="background: rgba(239, 68, 68, 0.15); color: #fca5a5; border: 1px solid rgba(239,68,68,0.3);" title="${ex.title}" onclick="deleteCalendarExpense(event, '${ex._id}')">
-                $${ex.amount.toFixed(2)} - ${ex.title}
+            <div class="calendar-task-badge" style="background: rgba(239, 68, 68, 0.15); color: #fca5a5; border: 1px solid rgba(239,68,68,0.3);" title="${ex.title}">
+                ₹${ex.amount.toFixed(2)} - ${ex.title}
             </div>
             `;
         });
@@ -180,7 +180,7 @@ function updateModalExistingItems(dateString) {
         html += `
         <div class="note-item" style="display: flex; justify-content: space-between; align-items: center;">
             <div style="display: flex; flex-direction: column;">
-                <span style="font-size: 0.75rem; color: #ef4444; font-weight: 600; margin-bottom: 2px;">EXPENSE ($${ex.amount.toFixed(2)})</span>
+                <span style="font-size: 0.75rem; color: #ef4444; font-weight: 600; margin-bottom: 2px;">EXPENSE (₹${ex.amount.toFixed(2)})</span>
                 <span>${ex.title}</span>
             </div>
             <button class="delete-note-btn" onclick="deleteCalendarExpense(event, '${ex._id}')" title="Delete Expense">
