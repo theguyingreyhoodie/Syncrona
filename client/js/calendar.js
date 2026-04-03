@@ -61,6 +61,8 @@ function renderCalendar() {
     const today = new Date();
     const isCurrentMonth = today.getFullYear() === year && today.getMonth() === month;
 
+    let monthlyExpenseTotal = 0;
+
     for (let i = 0; i < firstDay; i++) {
         grid.innerHTML += `<div class="calendar-day empty"></div>`;
     }
@@ -94,6 +96,7 @@ function renderCalendar() {
         let badgesHtml = ``;
 
         dayExpenses.forEach(ex => {
+            monthlyExpenseTotal += ex.amount;
             badgesHtml += `
             <div class="calendar-task-badge" style="background: rgba(239, 68, 68, 0.15); color: #fca5a5; border: 1px solid rgba(239,68,68,0.3);" title="${ex.title}">
                 ₹${ex.amount.toFixed(2)} - ${ex.title}
@@ -126,6 +129,11 @@ function renderCalendar() {
             </div>
         </div>
         `;
+    }
+
+    const totalEl = document.getElementById("monthlyTotalExpense");
+    if (totalEl) {
+        totalEl.textContent = `₹${monthlyExpenseTotal.toFixed(2)}`;
     }
 }
 
