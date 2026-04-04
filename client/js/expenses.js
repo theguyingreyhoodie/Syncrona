@@ -113,26 +113,6 @@ function go(p) {
     window.location.href = p;
 }
 
-const currentThreshold = localStorage.getItem('expenseThreshold') || 500;
-document.addEventListener('DOMContentLoaded', () => {
-    const input = document.getElementById("expenseThresholdInput");
-    if (input) {
-        input.value = currentThreshold;
-    }
-});
-
-function saveThreshold() {
-    const threshold = document.getElementById("expenseThresholdInput").value;
-    if (threshold) {
-        localStorage.setItem('expenseThreshold', threshold);
-        // Visual feedback
-        const btn = document.querySelector('.btn-secondary');
-        const oldText = btn.textContent;
-        btn.textContent = 'Saved!';
-        setTimeout(() => btn.textContent = oldText, 2000);
-    }
-}
-
 // set default date to today for the input
 document.getElementById('expenseDate').valueAsDate = new Date();
 
