@@ -1,6 +1,6 @@
-# ProTask - Productivity App
+# Syncrona - Productivity App
 
-ProTask is a sleek, full-stack productivity web application designed with a premium, modern SaaS aesthetic. It provides users with a comprehensive suite of tools to manage their daily workflows, including tasks, notes, calendar events, and expenses.
+Syncrona is a sleek, full-stack productivity web application designed with a premium, modern SaaS aesthetic. It provides users with a comprehensive suite of tools to manage their daily workflows, including tasks, notes, calendar events, and expenses.
 
 ##  Features
 
