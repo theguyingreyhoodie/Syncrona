@@ -1,47 +1,61 @@
 ---
 name: Syncrona
-description: A calm personal home for one day, with soft stone panels holding real things to tick, add and read, and deep teal as the only colour that acts.
+description: A calm personal home for one day, with cream panels under a navy sidebar holding real things to tick, add and read, and deep wine as the only colour that acts.
 colors:
-  ground: "#ffffff"
-  panel: "#f3f5f4"
-  panel-2: "#e9edeb"
-  card: "#ffffff"
-  card-line: "#e3e8e6"
-  card-line-2: "#cfd6d3"
-  ink: "#1b1f1e"
-  ink-2: "#59615e"
-  ink-3: "#636b68"
-  accent: "#1b6e66"
-  accent-hover: "#15584f"
-  accent-ink: "#ffffff"
-  accent-soft: "#dcefeb"
-  accent-line: "#a9d3cc"
-  red: "#b42318"
-  red-soft: "#fdecea"
-  toast: "#1b1f1e"
-  toast-ink: "#f3f5f4"
-  toast-action: "#8fd6cb"
-  scrim: "rgba(16, 22, 20, 0.32)"
-  dark-ground: "#0e1110"
-  dark-panel: "#161a19"
-  dark-panel-2: "#1f2422"
-  dark-card: "#1c2120"
-  dark-card-line: "#272d2b"
-  dark-card-line-2: "#39413e"
-  dark-ink: "#e9edeb"
-  dark-ink-2: "#a5ada9"
-  dark-ink-3: "#8f9894"
-  dark-accent: "#5cc2b4"
-  dark-accent-hover: "#7ad1c5"
-  dark-accent-ink: "#062320"
-  dark-accent-soft: "rgba(92, 194, 180, 0.15)"
-  dark-accent-line: "rgba(92, 194, 180, 0.42)"
-  dark-red: "#ff8a7e"
-  dark-red-soft: "rgba(255, 138, 126, 0.13)"
-  dark-toast: "#e9edeb"
-  dark-toast-ink: "#0e1110"
-  dark-toast-action: "#15584f"
+  ground: "#f7f2e6"
+  panel: "#ede3c8"
+  panel-2: "#e3d6b4"
+  card: "#fffcf4"
+  card-line: "#e2d6b7"
+  card-line-2: "#c9b98f"
+  ink: "#1b2a3d"
+  ink-2: "#4a5668"
+  ink-3: "#535d6b"
+  accent: "#5c1f2e"
+  accent-hover: "#461723"
+  accent-ink: "#fbf6ea"
+  accent-soft: "#f0dcd5"
+  accent-line: "#d6aeaa"
+  red: "#b4400f"
+  red-soft: "#f8e0cf"
+  toast: "#1b2a3d"
+  toast-ink: "#f7f2e6"
+  toast-action: "#f0b9c3"
+  scrim: "rgba(17, 26, 38, 0.4)"
+  side-bg: "#1b2a3d"
+  side-ink: "#ede3c8"
+  side-ink-2: "rgba(237, 227, 200, 0.72)"
+  side-hover: "rgba(237, 227, 200, 0.08)"
+  side-active: "rgba(237, 227, 200, 0.14)"
+  side-line: "rgba(237, 227, 200, 0.14)"
+  side-mark: "#ede3c8"
+  dark-ground: "#111b28"
+  dark-panel: "#1b2a3d"
+  dark-panel-2: "#24364d"
+  dark-card: "#203148"
+  dark-card-line: "#2d4058"
+  dark-card-line-2: "#41587a"
+  dark-ink: "#ede3c8"
+  dark-ink-2: "#c2b9a0"
+  dark-ink-3: "#a9a18b"
+  dark-accent: "#e09aaa"
+  dark-accent-hover: "#ebb3bf"
+  dark-accent-ink: "#2a0d15"
+  dark-accent-soft: "rgba(224, 154, 170, 0.16)"
+  dark-accent-line: "rgba(224, 154, 170, 0.45)"
+  dark-red: "#ff9a6b"
+  dark-red-soft: "rgba(255, 154, 107, 0.14)"
+  dark-toast: "#ede3c8"
+  dark-toast-ink: "#1b2a3d"
+  dark-toast-action: "#5c1f2e"
   dark-scrim: "rgba(0, 0, 0, 0.55)"
+  dark-side-bg: "#0c141f"
+  dark-side-ink: "#ede3c8"
+  dark-side-ink-2: "rgba(237, 227, 200, 0.7)"
+  dark-side-hover: "rgba(237, 227, 200, 0.07)"
+  dark-side-active: "rgba(237, 227, 200, 0.12)"
+  dark-side-line: "rgba(237, 227, 200, 0.1)"
+  dark-side-mark: "#e09aaa"
 typography:
   greeting:
     fontFamily: "Instrument Serif, ui-serif, Georgia, serif"
@@ -176,26 +190,36 @@ components:
     rounded: "{rounded.card}"
     padding: "0 14px"
     height: "40px"
+  sidebar:
+    backgroundColor: "{colors.side-bg}"
+    textColor: "{colors.side-ink}"
+    padding: "20px 12px 16px"
+    width: "{spacing.sidebar}"
   nav-item:
-    textColor: "{colors.ink-2}"
+    textColor: "{colors.side-ink-2}"
     rounded: "{rounded.control}"
     padding: "0 10px"
     height: "34px"
   nav-item-hover:
-    backgroundColor: "{colors.panel}"
-    textColor: "{colors.ink}"
+    backgroundColor: "{colors.side-hover}"
+    textColor: "{colors.side-ink}"
   nav-item-active:
-    backgroundColor: "{colors.panel-2}"
-    textColor: "{colors.ink}"
+    backgroundColor: "{colors.side-active}"
+    textColor: "{colors.side-ink}"
   nav-count:
-    backgroundColor: "{colors.accent-soft}"
-    textColor: "{colors.accent}"
+    backgroundColor: "{colors.side-active}"
+    textColor: "{colors.side-ink}"
     rounded: "{rounded.pill}"
     padding: "0 7px"
     height: "20px"
   nav-count-overdue:
-    backgroundColor: "{colors.red-soft}"
-    textColor: "{colors.red}"
+    backgroundColor: "#b4400f"
+    textColor: "#fff8ee"
+  avatar:
+    backgroundColor: "{colors.side-active}"
+    textColor: "{colors.side-ink}"
+    rounded: "{rounded.pill}"
+    size: "30px"
   panel:
     backgroundColor: "{colors.panel}"
     rounded: "{rounded.panel}"
@@ -297,50 +321,57 @@ components:
 
 **Creative North Star: "A Calm Home for One Day"**
 
-Syncrona is a personal planner that reads like a quiet room rather than an office. A white page holds soft stone panels one step off white; inside the panels sit white row cards, each one a real thing you can tick, add or read. The page opens with a serif greeting and one sentence of fact about the day ("1 task overdue, and Finish portfolio case study draft at 17:00"), then four count tiles, then the Today panel with the day line, its signature. Every other screen (tasks, calendar, expenses, notes, settings) is built from the same panels and rows, so the product feels like one place.
+Syncrona is a personal planner that reads like a quiet room rather than an office. A light cream page holds cream panels a step deeper, beside a solid navy sidebar; inside the panels sit near-white cream row cards, each one a real thing you can tick, add or read. The page opens with a serif greeting and one sentence of fact about the day ("1 task overdue, and Finish portfolio case study draft at 17:00"), then four count tiles, then the Today panel with the day line, its signature. Every other screen (tasks, calendar, expenses, notes, settings) is built from the same panels and rows, so the product feels like one place.
 
-Depth is tonal, not cast. Three grounds (page, panel, card) do all the layering, and nothing at rest carries a shadow. Colour is nearly absent: a cool grey-green neutral family and one deep teal that marks every action, every selection and the day's own data. Red appears only when something is late or over the limit, or when something has gone wrong. Density is comfortable desktop-app density (14px body, 56px rows, 16px gutters) in the Linear, Things and Raycast register, with Instrument Sans throughout and Instrument Serif for a single line of greeting.
+Depth is tonal, not cast. Three grounds (page, panel, card) do all the layering, and nothing at rest carries a shadow. Colour is held to three materials: navy for all text and for the sidebar, warm cream for the page, panels and cards, and one deep wine that marks every action, every selection and the day's own data. Burnt orange appears only when something is late or over the limit, or when something has gone wrong, pitched well away from the wine so "late" never reads as "act". After dark the world turns over: navy grounds, cream text and a lifted rose wine. Density is comfortable desktop-app density (14px body, 56px rows, 16px gutters) in the Linear, Things and Raycast register, with Instrument Sans throughout and Instrument Serif for a single line of greeting.
 
 The world refuses the spreadsheet. Lists are stacks of separate row cards with 6px between them, never ruled tables; the calendar is a grid of separate cards, never a ruled month; numbers are tabular figures inside rows, never columns of cells.
 
 **Key Characteristics:**
-- White page, stone panels, white row cards: three grounds, no shadows at rest.
-- Deep teal is the only hue that acts or marks today's data; red only for late, over-limit and error.
+- Light cream page, cream panels, near-white cream row cards: three grounds, no shadows at rest, framed by a solid navy sidebar.
+- Navy is the ink: every line of text, and the sidebar's ground.
+- Deep wine is the only hue that acts or marks today's data; burnt orange only for late, over-limit and error.
 - Instrument Sans for everything; Instrument Serif for the greeting and auth titles alone.
 - Three radii: 22px panels, 12px row cards, full pills on controls.
 - Centred 1100px column on a 12-column, 16px-gap grid beside a 240px labelled sidebar.
-- The day line: 06:00 to midnight, teal event pills, task rings, a live now marker and the day's spend at its end.
+- The day line: 06:00 to midnight, wine event pills, task rings, a live now marker and the day's spend at its end.
 - Motion is press-scale and a quick settle; nothing performs an entrance.
 
 ## Colors
 
-A cool, nearly colourless grey-green neutral family carries everything; one deep teal does all the acting, and one brick red flags only what is late, over the limit or broken. Every light token has a dark counterpart (the `dark-*` keys), applied by `prefers-color-scheme: dark` unless the user has chosen light, or forced by the theme toggle.
+Navy ink on warm cream, with one deep wine doing all the acting and one burnt orange flagging only what is late, over the limit or broken. Every light token has a dark counterpart (the `dark-*` keys), applied by `prefers-color-scheme: dark` unless the user has chosen light, or forced by the theme toggle; dark mode puts cream text on navy grounds and lifts the wine to a rose.
 
 ### Primary
-- **Deep Lagoon Teal** (`accent`; dark: `dark-accent`, a lifted aqua): the only hue that acts. Primary buttons, the checked task box, the today number in the calendar, the selected calendar day's ring, the now marker and now label on the day line, spend bars on ordinary days, focus outlines, the text caret, the "Saved" confirmation, the brand mark and the avatar initial.
-- **Lagoon Deep** (`accent-hover`): primary button hover. In dark mode it reappears as the toast's action text on the light toast.
-- **Lagoon Wash** (`accent-soft`) and **Lagoon Edge** (`accent-line`): the soft teal ground and inset edge for the day line's event pills, the "next up" time pill, the sidebar task count, the input focus ring, search highlights in notes and text selection.
-- **On Teal** (`accent-ink`): text and tick on solid teal.
+- **Deep Wine** (`accent`; dark: `dark-accent`, a lifted rose wine): the only accent. Primary buttons, the checked task tick, the today number in the calendar, the selected calendar day's ring, the now marker and now label on the day line, event glyphs and dots, spend bars on ordinary days, focus outlines, the text caret, the "Saved" confirmation, and the brand mark on the auth pages. The favicon is a wine tile.
+- **Cellar Wine** (`accent-hover`): primary button hover. In dark mode the deep wine itself reappears as the toast's action text on the cream toast.
+- **Wine Wash** (`accent-soft`) and **Wine Edge** (`accent-line`): the soft wine ground and inset edge for the day line's event pills, the "next up" time pill, the input focus ring, search highlights in notes and text selection.
+- **On Wine** (`accent-ink`): the cream text and tick on solid wine (deep wine-black on the dark-mode rose).
 
 ### Secondary
-- **Brick Red** (`red`; dark: `dark-red`, a soft coral) with **Red Wash** (`red-soft`): overdue tasks (check ring, sub line, time pill, group head and its chip, sidebar count when any are late), payments at or over the user's threshold (amount text, bar, cell total, tile figure), and in chrome only errors and destruction: invalid inputs, form errors, the error callout, the error toast, the danger button and the delete icon's hover.
+- **Burnt Orange** (`red`; dark: `dark-red`, a soft apricot) with **Orange Wash** (`red-soft`): the token keeps the name `red`, but the hue is a burnt orange chosen so lateness reads apart from the wine accent. Overdue tasks (check ring, sub line, time pill, group head and its chip, the sidebar count when any are late), payments at or over the user's threshold (amount text, bar, cell total, tile figure), and in chrome only errors and destruction: invalid inputs, form errors, the error callout, the error toast, the danger button and the delete icon's hover.
 
 ### Neutral
-- **White Ground** (`ground`): the page and the sidebar.
-- **Cool Stone** (`panel`): every panel and tile, the composers, the search field at rest, the past portion of the day line, plain time pills and the nav hover.
-- **Deeper Stone** (`panel-2`): the active nav pill, tile hover, segmented control track, ghost and icon button hover, zero-spend bars, skeletons, keyboard keys.
-- **Card White** (`card`): row cards, insets, inputs, calendar cells, note previews, the quick-note popover, chips inside panels.
-- **Card Line** (`card-line`) and **Card Line Strong** (`card-line-2`): the 1px card border, then the stronger border on hover, on inputs and secondary buttons, on the empty check ring and on dashed empty states.
-- **Ink** (`ink`), **Ink Soft** (`ink-2`), **Ink Faint** (`ink-3`): primary text; secondary text, sub lines and labels; placeholders, axis labels, kind icons and the past-day count.
-- **Toast Night** (`toast`, `toast-ink`, `toast-action`): the inverted toast and its mint action. In dark mode the toast inverts to light.
-- **Scrim** (`scrim`): behind the mobile navigation sheet.
+- **Light Cream Ground** (`ground`): the page and the mobile top bar. Deep navy in dark mode.
+- **Cream** (`panel`): every panel and tile, the composers, the search field at rest, the past portion of the day line and plain time pills. Navy in dark mode, the same navy as the light-mode ink.
+- **Deeper Cream** (`panel-2`): tile hover, segmented control track, ghost and icon button hover, zero-spend bars, skeletons, keyboard keys.
+- **Card Cream** (`card`): near-white warm cream for row cards, insets, inputs, calendar cells, note previews, the quick-note popover, chips inside panels. A lifted navy in dark mode.
+- **Card Line** (`card-line`) and **Card Line Strong** (`card-line-2`): warm sand lines; the 1px card border, then the stronger border on hover, on inputs and secondary buttons, on the empty check ring, on dashed empty states and the scrollbar thumb.
+- **Navy Ink** (`ink`), **Ink Soft** (`ink-2`), **Ink Faint** (`ink-3`): all primary text; secondary text, sub lines and labels; placeholders, axis labels, kind icons and the past-day count. Slate-navy greys in light mode, cream and parchment in dark.
+- **Toast Navy** (`toast`, `toast-ink`, `toast-action`): the inverted navy toast with cream text and a rose Undo. In dark mode the toast inverts to cream with a wine Undo.
+- **Scrim** (`scrim`): a navy veil behind the mobile navigation sheet.
+
+### Sidebar
+- **Navy Sidebar** (`side-bg`; dark: a deeper midnight navy): the solid ground of the sidebar and the mobile navigation sheet. It is chrome, not one of the content grounds.
+- **Sidebar Cream** (`side-ink`) and **Sidebar Cream Soft** (`side-ink-2`): the active and hovered labels, user name and sidebar focus outline; nav labels at rest, the scope line, the user email and the sidebar icon buttons.
+- **Sidebar Hover** (`side-hover`), **Sidebar Active** (`side-active`), **Sidebar Line** (`side-line`): translucent cream over navy for nav hover, the current-page pill (also the task count chip and the avatar disc), and the rule above the user row.
+- **Sidebar Mark** (`side-mark`): the brand mark in the sidebar, cream in light mode and rose wine in dark.
 
 ### Named Rules
-**The One Teal Rule.** Teal is the only chromatic hue on the page. If it is teal, it can be pressed, it is selected, or it is today's data. Never use it as decoration, never introduce a second accent.
+**The One Wine Rule.** Wine is the only accent. Navy and cream are this world's ink and paper, not accents. If it is wine, it can be pressed, it is selected, or it is today's data. Never use it as decoration, never introduce a second accent.
 
-**The Red Means Late Rule.** In data, red marks exactly two things: a task past its due day, and a payment at or over the user's threshold. Nothing else in the data is red; in chrome, red is reserved for errors and destructive actions.
+**The Orange Means Late Rule.** In data, burnt orange (the `red` token) marks exactly two things: a task past its due day, and a payment at or over the user's threshold. Nothing else in the data is burnt orange; in chrome, it is reserved for errors and destructive actions. It never stands in for the wine, and the wine never signals lateness.
 
-**The Three Grounds Rule.** Depth is the step from white page to stone panel to white card. A new surface takes one of those three grounds; it does not invent a fourth tint.
+**The Three Grounds Rule.** Depth is the step from light cream page to cream panel to near-white cream card (navy page, navy panel, lifted navy card in dark mode). A new surface takes one of those three grounds; it does not invent a fourth tint. The navy sidebar is the one frame outside them, and only navigation lives on it.
 
 ## Typography
 
@@ -369,7 +400,7 @@ A cool, nearly colourless grey-green neutral family carries everything; one deep
 
 ## Layout
 
-A 240px labelled sidebar sits on the page ground with a 1px card-line edge. The main area centres a 1100px column (max-width 1180px including 40px side padding; 44px top, 120px bottom to clear the floating button). Inside the column is a 12-column grid with a 16px gap; consecutive grids are 16px apart. Today composes as four 3-column tiles; a 9-column Today panel beside a 3-column stack (Add, then Notes); then Next 7 days and Spending at 6 + 6. Expenses mirrors this with four tiles, a chart panel and a log panel. Settings uses a 5/7 label-and-panel split with 32px rows.
+A 240px labelled sidebar stands as a solid navy column at the left edge, with no border; the cream page begins where it ends. The main area centres a 1100px column (max-width 1180px including 40px side padding; 44px top, 120px bottom to clear the floating button). Inside the column is a 12-column grid with a 16px gap; consecutive grids are 16px apart. Today composes as four 3-column tiles; a 9-column Today panel beside a 3-column stack (Add, then Notes); then Next 7 days and Spending at 6 + 6. Expenses mirrors this with four tiles, a chart panel and a log panel. Settings uses a 5/7 label-and-panel split with 32px rows.
 
 Inside panels: 20px padding, 14px under the panel head, 6px between row cards, 18px above a group head. Tiles are at least 128px tall with the figure pushed to the bottom.
 
@@ -382,8 +413,8 @@ Responsive: at 1180px padding tightens to 28px and the Today side stack drops be
 Flat by default. Surfaces at rest have no shadow; hierarchy comes from the three grounds and a 1px card border. Rings (focus, selected calendar day, selected segment, the today bar) are drawn with spread-only box-shadows and read as outlines, not lift. Only things that float above the page lift, and they share one soft two-layer shadow (`--float`): the Quick note button, the quick-note popover, toasts and the mobile navigation sheet.
 
 ### Shadow Vocabulary
-- **Float** (`box-shadow: 0 18px 40px -12px rgba(16, 28, 25, 0.22), 0 3px 8px rgba(16, 28, 25, 0.06)`; dark: `0 18px 44px -12px rgba(0, 0, 0, 0.7), 0 3px 8px rgba(0, 0, 0, 0.35)`): floating layers only.
-- **Focus ring** (`box-shadow: 0 0 0 3px var(--accent-soft)` with an accent border): inputs and the notes composer; invalid swaps both to red.
+- **Float** (`box-shadow: 0 18px 40px -12px rgba(27, 42, 61, 0.28), 0 3px 8px rgba(27, 42, 61, 0.08)`, a navy-tinted lift; dark: `0 18px 44px -12px rgba(0, 0, 0, 0.6), 0 3px 8px rgba(0, 0, 0, 0.3)`): floating layers only.
+- **Focus ring** (`box-shadow: 0 0 0 3px var(--accent-soft)` with an accent border): inputs and the notes composer; invalid swaps both to burnt orange.
 
 ### Named Rules
 **The Only Floating Things Lift Rule.** If it scrolls with the page, it has no shadow. A shadow means the thing is above the page and can be dismissed.
@@ -398,62 +429,62 @@ Soft, generous corners in three sizes: 22px on panels, tiles and the quick-note 
 
 ### Buttons
 - **Shape:** full pill (999px), 38px tall, 16px side padding; small is 32px with 13px padding and 13px text; auth and composers use 40–44px.
-- **Primary:** solid Deep Lagoon Teal with On Teal text, 14px weight 500, optional 16px leading icon ("+ Add task", "Log payment", "Sign in").
-- **Secondary:** card white with a strong card-line border; hover darkens the border to Ink Faint.
-- **Ghost:** transparent, Ink Soft; hover fills Deeper Stone.
-- **Danger:** card white, red text; hover fills Red Wash with a red border.
+- **Primary:** solid Deep Wine with cream On Wine text, 14px weight 500, optional 16px leading icon ("+ Add task", "Log payment", "Sign in").
+- **Secondary:** card cream with a strong card-line border; hover darkens the border to Ink Faint.
+- **Ghost:** transparent, Ink Soft; hover fills Deeper Cream.
+- **Danger:** card cream, burnt orange text; hover fills Orange Wash with a burnt orange border.
 - **Busy:** label goes transparent and a 16px spinning ring (600ms linear) sits in its place.
 - **Press:** `scale(0.97)` over 140ms on the ease-out curve. Disabled is 50% opacity.
-- **Icon button:** 32px square at 10px radius (40px in the mobile top bar), Ink Soft, hover fills Deeper Stone, press `scale(0.92)`; the delete variant hovers Red Wash.
+- **Icon button:** 32px square at 10px radius (40px in the mobile top bar), Ink Soft, hover fills Deeper Cream, press `scale(0.92)`; the delete variant hovers Orange Wash.
 
 ### Chips and Pills
-- **Time pill:** 24px pill on stone, 12.5px tabular 500, holding "15:00" or "All day". The next timed item today goes Lagoon Wash with teal text; an overdue task's date pill goes Red Wash with red text.
-- **Count chip:** 20px pill beside a group head; card white with Ink Soft text, red on red wash for Overdue.
+- **Time pill:** 24px pill on cream, 12.5px tabular 500, holding "15:00" or "All day". The next timed item today goes Wine Wash with wine text; an overdue task's date pill goes Orange Wash with burnt orange text.
+- **Count chip:** 20px pill beside a group head; card cream with Ink Soft text, burnt orange on orange wash for Overdue.
 
 ### Cards / Containers
-- **Panel:** Cool Stone, 22px radius, 20px padding, no border, no shadow. Head row: panel title left, then meta ("3 to go · 1 done") or a quiet link ("All notes", "Calendar") pushed right.
-- **Tile:** a panel at 128px minimum height, 13px label at top, 34px regular figure at the bottom, 13px caption that may carry a red overdue or over-limit fragment. Linked tiles hover to Deeper Stone.
-- **Inset:** card white, 1px card line, 12px radius, 16px padding; frames the bar chart.
-- **Empty state:** card white with a dashed strong border, a 15px bold first line and a sentence pointing at the next action.
-- **Error callout:** Red Wash, 12px radius, alert icon in red, bold headline, then a small "Try again" button.
+- **Panel:** Cream, 22px radius, 20px padding, no border, no shadow. Head row: panel title left, then meta ("3 to go · 1 done") or a quiet link ("All notes", "Calendar") pushed right.
+- **Tile:** a panel at 128px minimum height, 13px label at top, 34px regular figure at the bottom, 13px caption that may carry a burnt orange overdue or over-limit fragment. Linked tiles hover to Deeper Cream.
+- **Inset:** card cream, 1px card line, 12px radius, 16px padding; frames the bar chart.
+- **Empty state:** card cream with a dashed strong border, a 15px bold first line and a sentence pointing at the next action.
+- **Error callout:** Orange Wash, 12px radius, alert icon in burnt orange, bold headline, then a small "Try again" button.
 
 ### Row Cards (the list item)
-- **Structure:** a white 56px-minimum card with a 1px card-line border and 12px radius, 9px 12px 9px 14px padding, 12px gap. Left to right: a 22px lead (the check for tasks, a 17px teal calendar glyph for events, a 17px Ink Faint rupee glyph for payments); the main block with a 14.5px 500 title and a 13px Ink Soft sub line ("Due in 38 min", "Overdue · due 2 days ago", "Payment · at or over your ₹500 limit"); the end slot with a time pill or a 14.5px tabular amount (red when over the limit).
+- **Structure:** a near-white cream 56px-minimum card with a 1px card-line border and 12px radius, 9px 12px 9px 14px padding, 12px gap. Left to right: a 22px lead (the check for tasks, a 17px wine calendar glyph for events, a 17px Ink Faint rupee glyph for payments); the main block with a 14.5px 500 title and a 13px Ink Soft sub line ("Due in 38 min", "Overdue · due 2 days ago", "Payment · at or over your ₹500 limit"); the end slot with a time pill or a 14.5px tabular amount (burnt orange when over the limit).
 - **States:** hover strengthens the border; done strikes the title through in Ink Soft; timed items already past go Ink Soft; new rows arrive with the settle.
-- **Hover actions:** on pointer devices, delete and edit icon buttons sit absolutely at the right edge on a card-white backing, hidden until the row is hovered or focused within. Touch devices show them inline.
+- **Hover actions:** on pointer devices, delete and edit icon buttons sit absolutely at the right edge on a card-cream backing, hidden until the row is hovered or focused within. Touch devices show them inline.
 - **Groups:** rows stack 6px apart under 13px 600 group heads ("Overdue", "Tomorrow 4 Nov", "Today · Tue 3 Nov") with an optional right-aligned total.
 
 ### Check
-A 22px circle with a 1.5px strong card-line ring on card white. Hover turns the ring teal; pressed it scales to 0.88. Checked fills teal and the 12px tick (stroke 3) scales from 0.6 to 1 over 200ms. Overdue tasks get a red ring.
+A 22px circle with a 1.5px strong card-line ring on card cream. Hover turns the ring wine; pressed it scales to 0.88. Checked fills wine and the 12px tick (stroke 3) scales from 0.6 to 1 over 200ms. Overdue tasks get a burnt orange ring.
 
 ### Inputs / Fields
-- **Style:** 40px, card white, 1px strong card-line border, 12px radius, 14px side padding; placeholders in Ink Faint. Textareas grow from 96px. Money inputs carry a "₹" prefix.
-- **Focus:** border goes teal with a 3px Lagoon Wash ring; the caret is teal.
-- **Error:** border and ring go red; a 13px red message sits below.
-- **Composer row:** on Tasks and Expenses, fields sit borderless inside a 20px-radius stone strip with the primary button at the end; they wrap on phones.
-- **Search:** a pill field on stone with a leading 16px icon; on focus it turns card white.
+- **Style:** 40px, card cream, 1px strong card-line border, 12px radius, 14px side padding; placeholders in Ink Faint. Textareas grow from 96px. Money inputs carry a "₹" prefix.
+- **Focus:** border goes wine with a 3px Wine Wash ring; the caret is wine.
+- **Error:** border and ring go burnt orange; a 13px burnt orange message sits below.
+- **Composer row:** on Tasks and Expenses, fields sit borderless inside a 20px-radius cream strip with the primary button at the end; they wrap on phones.
+- **Search:** a pill field on cream with a leading 16px icon; on focus it turns card cream.
 
 ### Segmented Control
-A Deeper Stone pill track with 3px padding holding 30px pill segments in 13px 500 Ink Soft. The selected segment is card white with Ink text and a 1px card-line ring; an optional tabular count follows the label. Used for Task / Event / Expense in Add and for Open / Done / All on Tasks.
+A Deeper Cream pill track with 3px padding holding 30px pill segments in 13px 500 Ink Soft. The selected segment is card cream with Ink text and a 1px card-line ring; an optional tabular count follows the label. Used for Task / Event / Expense in Add and for Open / Done / All on Tasks.
 
 ### Navigation
-- **Sidebar:** the teal mark and "Syncrona" at 16px 600, then "Asha's planner" in Ink Soft, then six 34px items (17px icon, 14px label) at 10px radius. Hover fills Cool Stone; the current page is a Deeper Stone pill in Ink 500. Tasks carries a teal-wash count of open tasks due today or overdue, which turns red when any are overdue. The foot holds the theme toggle and a user row (30px teal-wash avatar, name, email, sign-out) above a 1px rule.
-- **Mobile:** under 900px a 52px sticky top bar (menu, centred page title, theme) replaces the sidebar; the sidebar becomes a sheet up to 320px wide (86vw) sliding in from the left over a scrim, with 42px items, closing on scrim tap or Escape.
+- **Sidebar:** a solid Navy Sidebar column with cream type. The brand mark (Sidebar Mark: cream, rose wine in dark mode) and "Syncrona" at 16px 600 in Sidebar Cream, then "Asha's planner" in Sidebar Cream Soft, then six 34px items (17px icon, 14px label) at 10px radius in Sidebar Cream Soft. Hover lays a faint translucent cream (Sidebar Hover) and brightens the label to Sidebar Cream; the current page is a translucent cream pill (Sidebar Active) in Sidebar Cream 500. Tasks carries a count of open tasks due today or overdue as a translucent cream chip with cream figures; when any are overdue it turns solid burnt orange (`#b4400f` in both themes) with near-white figures (`#fff8ee`). The foot holds the theme toggle and a user row (30px translucent-cream avatar with a cream initial, name in Sidebar Cream, email in Sidebar Cream Soft, sign-out) above a 1px Sidebar Line rule. Focus outlines inside the sidebar are cream, not wine.
+- **Mobile:** under 900px a 52px sticky top bar (menu, centred page title, theme) on the cream ground with a card-line bottom edge replaces the sidebar; the navy sidebar becomes a sheet up to 320px wide (86vw) sliding in from the left over a navy scrim with the Float shadow, with 42px items, closing on scrim tap or Escape.
 
 ### The Day Line (signature)
-A 54px card-white track with 12px radius spanning 06:00 (or the earliest timed item) to midnight. The past is shaded Cool Stone up to a 2px teal now marker; faint 1px card-line ticks mark every three hours. Timed events sit on the upper lane as 22px teal-wash pills with a teal inset edge and 12px 600 titles, each clipped before the next event; past events turn grey. Timed tasks sit on the lower lane as 14px rings (Ink ring; teal fill when done; red ring when overdue). Below, an 11.5px tabular axis with the current time in teal 600, then a legend ending in the day's spend total ("₹1,420 spent today", red if any payment is over the limit). Payments carry no time and never sit on the track. Under 560px events collapse to 18px swatches and the axis steps every six hours. The track is one image with a full text summary for screen readers.
+A 54px card-cream track with 12px radius spanning 06:00 (or the earliest timed item) to midnight. The past is shaded Cream up to a 2px wine now marker; faint 1px card-line ticks mark every three hours. Timed events sit on the upper lane as 22px wine-wash pills with a wine inset edge and 12px 600 titles, each clipped before the next event; past events turn grey. Timed tasks sit on the lower lane as 14px rings (Ink ring; wine fill when done; burnt orange ring when overdue). Below, an 11.5px tabular axis with the current time in wine 600, then a legend ending in the day's spend total ("₹1,420 spent today", burnt orange if any payment is over the limit). Payments carry no time and never sit on the track. Under 560px events collapse to 18px swatches and the axis steps every six hours. The track is one image with a full text summary for screen readers.
 
 ### Spend Chart
-Daily bars in a 96px (150px on Expenses) inset, 3px apart, at most 28px wide, 4px top radius, on a square-root scale. Ordinary days are teal, days with a payment at or over the threshold are red, zero days are a 3px Deeper Stone stub, future days are stone. Today carries a two-ring outline. When one day dwarfs the rest it is drawn clipped: a card-coloured diagonal cut near the top and its value written above in 11px 600. Beneath, a "Largest payments" mini list in the row-card style.
+Daily bars in a 96px (150px on Expenses) inset, 3px apart, at most 28px wide, 4px top radius, on a square-root scale. Ordinary days are wine, days with a payment at or over the threshold are burnt orange, zero days are a 3px Deeper Cream stub, future days are cream. Today carries a two-ring outline. When one day dwarfs the rest it is drawn clipped: a card-coloured diagonal cut near the top and its value written above in 11px 600. Beneath, a "Largest payments" mini list in the row-card style.
 
 ### Calendar Cells
-A 7-column grid of separate 84px card-white cells, 6px apart, 12px radius, 8px padding. The date sits in a 26px pill (solid teal for today); days outside the month lose their card. Each cell shows dot-and-count pairs (teal dot for events, Ink Faint dot for tasks, greyed when all done) and the day's spend total bottom right in tabular 12px (red when over the limit). The selected day gets a teal border with an inset teal ring. On phones cells shrink to 54px and show dots only, plus an Ink or red spend dot.
+A 7-column grid of separate 84px card-cream cells, 6px apart, 12px radius, 8px padding. The date sits in a 26px pill (solid wine for today); days outside the month lose their card. Each cell shows dot-and-count pairs (wine dot for events, Ink Faint dot for tasks, greyed when all done) and the day's spend total bottom right in tabular 12px (burnt orange when over the limit). The selected day gets a wine border with an inset wine ring. On phones cells shrink to 54px and show dots only, plus an Ink or burnt orange spend dot.
 
 ### Toasts
-A centred pill near the bottom: 44px, inverted (Toast Night with light text; light in dark mode), Float shadow, optional mint "Undo" action button. Errors are solid red. Toasts enter from 12px below at 0.98 scale over 240ms, leave in 150ms, and pause their timer on hover. Deletes are undoable for five seconds before reaching the server.
+A centred pill near the bottom: 44px, inverted (Toast Navy with cream text; cream with navy text in dark mode), Float shadow, optional "Undo" action button in rose (wine in dark mode). Errors are solid burnt orange. Toasts enter from 12px below at 0.98 scale over 240ms, leave in 150ms, and pause their timer on hover. Deletes are undoable for five seconds before reaching the server.
 
 ### Quick Note
-A dark Ink pill button fixed bottom right (46px, pen icon and "Quick note"; a 52px circle on phones) on every signed-in screen except Notes. It opens a 380px card-white popover with a 22px radius and the Float shadow, scaling from its bottom-right corner (`transform-origin: bottom right`) from 0.96 and 6px down over 200ms. It holds a textarea, a "⌘ Enter to save" hint with key caps, a small primary Save, and the three latest notes. Escape or an outside press closes it.
+A navy Ink pill button with cream text (cream with navy text in dark mode) fixed bottom right (46px, pen icon and "Quick note"; a 52px circle on phones) on every signed-in screen except Notes. It opens a 380px card-cream popover with a 22px radius and the Float shadow, scaling from its bottom-right corner (`transform-origin: bottom right`) from 0.96 and 6px down over 200ms. It holds a textarea, a "⌘ Enter to save" hint with key caps, a small primary Save, and the three latest notes. Escape or an outside press closes it.
 
 ### Motion
 - **Curve:** one ease-out, `cubic-bezier(0.23, 1, 0.32, 1)`, for presses, checks, settles, the popover and toasts; the mobile sheet uses a drawer curve, `cubic-bezier(0.32, 0.72, 0, 1)`, at 300–320ms.
@@ -468,9 +499,9 @@ A dark Ink pill button fixed bottom right (46px, pen icon and "Quick note"; a 52
 ## Do's and Don'ts
 
 ### Do:
-- **Do** build every new screen from the same three grounds: white page, stone panel (22px), white row cards (12px) inside it.
-- **Do** use teal for the one primary action per area, for selection, and for today's data; keep everything else neutral.
-- **Do** use red only for overdue tasks, payments at or over the threshold, errors and destructive actions.
+- **Do** build every new screen from the same three grounds: light cream page, cream panel (22px), near-white cream row cards (12px) inside it, with navy text throughout.
+- **Do** use wine for the one primary action per area, for selection, and for today's data; keep everything else neutral.
+- **Do** use burnt orange (the `red` token) only for overdue tasks, payments at or over the threshold, errors and destructive actions.
 - **Do** show lists as row cards with a lead, a title, a sub line and an end slot, 6px apart, with actions revealed on hover.
 - **Do** set times, amounts, counts and dates in tabular figures, with amounts in rupees (₹).
 - **Do** keep controls as full pills (buttons 38px, segments 30px, time pills 24px).
@@ -480,8 +511,10 @@ A dark Ink pill button fixed bottom right (46px, pen icon and "Quick note"; a 52
 ### Don't:
 - **Don't** put a shadow on anything that scrolls with the page; only the Quick note button, its popover, toasts and the mobile sheet lift.
 - **Don't** use gradients anywhere.
-- **Don't** lay data out as a ruled table or spreadsheet grid; separate cards replace ruled rows and cells. Hairlines are kept for the sidebar edge, the user-row and settings separators, and the day line's three-hour ticks.
-- **Don't** introduce a second accent hue or use teal as decoration.
+- **Don't** lay data out as a ruled table or spreadsheet grid; separate cards replace ruled rows and cells. Hairlines are kept for the mobile top bar's edge, the user-row and settings separators, and the day line's three-hour ticks.
+- **Don't** introduce a second accent hue or use wine as decoration.
+- **Don't** use wine for lateness or burnt orange for actions; the two must never trade places.
+- **Don't** put content panels or data on the navy sidebar, or use navy as a content ground in light mode; navy is the ink and the sidebar's frame.
 - **Don't** use Instrument Serif outside the greeting and the auth titles.
 - **Don't** set large figures bold; tile figures and totals stay at weight 400.
 - **Don't** put payments on the day line's track; they have no time and live in the legend total and the rows.
