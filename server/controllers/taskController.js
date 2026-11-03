@@ -30,7 +30,8 @@ exports.getTasks = async (req, res) => {
 // DELETE TASK
 exports.deleteTask = async (req, res) => {
     try {
-        await Task.findByIdAndDelete(req.params.id);
+        const task = await Task.findOneAndDelete({ _id: req.params.id, userId: req.user });
+        if (!task) return res.status(404).json({ msg: "Task not found" });
         res.json({ msg: "Task deleted" });
     } catch (err) {
         res.status(500).json({ msg: "Server error" });
@@ -40,8 +41,10 @@ exports.deleteTask = async (req, res) => {
 // TOGGLE COMPLETE
 exports.toggleTask = async (req, res) => {
     try {
-        const task = await Task.findById(req.params.id);
-        task.completed = !task.completed;
+        const task = await Task.findOne({ _id: req.params.id, userId: req.user });
+        if (!task) return res.status(404).json({ msg: "Task not found" });
+        // Use the state the client asked for; fall back to a plain toggle.
+        task.completed = typeof req.body?.completed === "boolean" ? req.body.completed : !task.completed;
         await task.save();
         res.json(task);
     } catch (err) {

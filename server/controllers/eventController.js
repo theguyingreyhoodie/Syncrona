@@ -11,10 +11,6 @@ exports.getEvents = async (req, res) => {
 
 exports.addEvent = async (req, res) => {
     try {
-        console.log("=== ADDEVENT REQUEST ===");
-        console.log("token head:", req.headers.authorization);
-        console.log("req.user:", req.user);
-
         const event = new Event({
             userId: req.user,
             title: req.body.title,
