@@ -1,18 +1,15 @@
 /* Sign in / create account. */
 (function () {
     "use strict";
-    const { API_BASE, store, esc, MARK, fmtDay, fmtTime, busy, everyMinute } = window.S;
+    const { API_BASE, store, esc, MARK, fmtDayLong, busy } = window.S;
     const $ = (id) => document.getElementById(id);
     const form = $("authForm");
     const mode = form.dataset.mode;
     const err = $("authError");
 
     document.querySelectorAll("[data-mark]").forEach((a) => { a.innerHTML = MARK + esc(a.textContent); });
-    everyMinute(() => {
-        const now = new Date();
-        document.querySelectorAll("[data-board-date]").forEach((el) => { el.textContent = fmtDay(now); });
-        document.querySelectorAll("[data-board-clock]").forEach((el) => { el.textContent = fmtTime(now); });
-    });
+    // The sample board keeps its fixed sample times; only the date is today's.
+    document.querySelectorAll("[data-board-date]").forEach((el) => { el.textContent = fmtDayLong(new Date()); });
 
     if (mode === "login" && /expired/.test(location.search)) {
         err.textContent = "Your session ended. Sign in again to continue.";

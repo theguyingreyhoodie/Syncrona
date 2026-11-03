@@ -1,321 +1,16 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-02T19:58:44.720Z",
+  "generatedAt": "2026-11-03T10:57:23Z",
   "title": "Design System: Syncrona",
   "extensions": {
     "colorMeta": {
-      "ink": {
-        "role": "primary",
-        "displayName": "Timetable Ink",
-        "canonical": "#141414",
-        "oklch": "oklch(19.1% 0.000 0)",
-        "night": "#eef1f4",
-        "tonalRamp": [
-          "#0b0b0b",
-          "#242424",
-          "#404040",
-          "#5d5d5d",
-          "#808080",
-          "#a4a4a4",
-          "#cacaca",
-          "#eeeeee"
-        ]
-      },
-      "board": {
-        "role": "secondary",
-        "displayName": "Board Navy",
-        "canonical": "#17222d",
-        "oklch": "oklch(24.7% 0.026 248.9)",
-        "night": "#080d12",
-        "tonalRamp": [
-          "#080c10",
-          "#1e252b",
-          "#38414a",
-          "#545f6b",
-          "#75828f",
-          "#9ba6b1",
-          "#c3ccd4",
-          "#e9eff6"
-        ]
-      },
-      "board-2": {
-        "role": "secondary",
-        "displayName": "Board Navy Raised",
-        "canonical": "#223140",
-        "oklch": "oklch(30.7% 0.034 249.0)",
-        "night": "#16212b",
-        "tonalRamp": [
-          "#070c11",
-          "#1d252d",
-          "#36414d",
-          "#515f6e",
-          "#728293",
-          "#99a6b4",
-          "#c1ccd7",
-          "#e7f0f8"
-        ]
-      },
-      "board-ink": {
-        "role": "secondary",
-        "displayName": "Board Ink",
-        "canonical": "#c8d1d9",
-        "oklch": "oklch(85.6% 0.015 244.7)",
-        "night": "#c8d1d9",
-        "tonalRamp": [
-          "#090b0e",
-          "#212528",
-          "#3b4045",
-          "#585f65",
-          "#7a8188",
-          "#9fa5ab",
-          "#c6cbd0",
-          "#ebeff3"
-        ]
-      },
-      "board-ink-2": {
-        "role": "secondary",
-        "displayName": "Board Ink Muted",
-        "canonical": "#8a97a3",
-        "oklch": "oklch(67.0% 0.023 246.0)",
-        "night": "#7f8c98",
-        "tonalRamp": [
-          "#080c0f",
-          "#1f252a",
-          "#384149",
-          "#545f69",
-          "#76828d",
-          "#9ca6af",
-          "#c3ccd3",
-          "#e9eff5"
-        ]
-      },
-      "board-rule": {
-        "role": "secondary",
-        "displayName": "Board Rule",
-        "canonical": "#2a3946",
-        "oklch": "oklch(33.7% 0.030 245.0)",
-        "night": "#1b2630",
-        "tonalRamp": [
-          "#070c10",
-          "#1d252c",
-          "#36414b",
-          "#51606c",
-          "#738290",
-          "#99a6b2",
-          "#c1ccd6",
-          "#e7f0f7"
-        ]
-      },
-      "board-bright": {
-        "role": "secondary",
-        "displayName": "Board Bright",
-        "canonical": "#ffffff",
-        "oklch": "oklch(100.0% 0.000 0)",
-        "night": "#ffffff",
-        "tonalRamp": [
-          "#0b0b0b",
-          "#242424",
-          "#404040",
-          "#5d5d5d",
-          "#808080",
-          "#a4a4a4",
-          "#cacaca",
-          "#eeeeee"
-        ]
-      },
-      "red": {
-        "role": "tertiary",
-        "displayName": "Signal Red",
-        "canonical": "#d2241a",
-        "oklch": "oklch(55.7% 0.209 29.2)",
-        "night": "#ff5a4e",
-        "tonalRamp": [
-          "#1f0000",
-          "#4b0000",
-          "#7d0000",
-          "#af120b",
-          "#dc4133",
-          "#f87968",
-          "#ffb5aa",
-          "#fee9e5"
-        ]
-      },
-      "red-wash": {
-        "role": "tertiary",
-        "displayName": "Red Wash",
-        "canonical": "#fdecea",
-        "oklch": "oklch(95.6% 0.019 25.6)",
-        "night": "#3a1513",
-        "tonalRamp": [
-          "#0e0a09",
-          "#292221",
-          "#473d3c",
-          "#675a59",
-          "#8a7c7b",
-          "#ada1a0",
-          "#d2c8c7",
-          "#f4ecec"
-        ]
-      },
-      "on-red": {
-        "role": "tertiary",
-        "displayName": "On Red",
-        "canonical": "#ffffff",
-        "oklch": "oklch(100.0% 0.000 0)",
-        "night": "#160605",
-        "tonalRamp": [
-          "#0b0b0b",
-          "#242424",
-          "#404040",
-          "#5d5d5d",
-          "#808080",
-          "#a4a4a4",
-          "#cacaca",
-          "#eeeeee"
-        ]
-      },
-      "line-task": {
-        "role": "line",
-        "displayName": "Task Line",
-        "canonical": "#141414",
-        "oklch": "oklch(19.1% 0.000 0)",
-        "night": "#eef1f4",
-        "tonalRamp": [
-          "#0b0b0b",
-          "#242424",
-          "#404040",
-          "#5d5d5d",
-          "#808080",
-          "#a4a4a4",
-          "#cacaca",
-          "#eeeeee"
-        ]
-      },
-      "line-event": {
-        "role": "line",
-        "displayName": "Event Line",
-        "canonical": "#2459c4",
-        "oklch": "oklch(49.4% 0.177 262.2)",
-        "night": "#6f9dff",
-        "tonalRamp": [
-          "#000729",
-          "#051f56",
-          "#153a84",
-          "#2857b6",
-          "#477be1",
-          "#76a3f9",
-          "#afcbff",
-          "#e7effe"
-        ]
-      },
-      "line-spend": {
-        "role": "line",
-        "displayName": "Spend Line",
-        "canonical": "#0d7a4b",
-        "oklch": "oklch(51.2% 0.117 157.4)",
-        "night": "#3cc28c",
-        "tonalRamp": [
-          "#000f06",
-          "#002d18",
-          "#004d2d",
-          "#146f45",
-          "#3e9466",
-          "#73b68f",
-          "#a5d9b9",
-          "#d3fae1"
-        ]
-      },
-      "line-note": {
-        "role": "line",
-        "displayName": "Note Line",
-        "canonical": "#9a6200",
-        "oklch": "oklch(54.4% 0.117 70.8)",
-        "night": "#e2a640",
-        "tonalRamp": [
-          "#140800",
-          "#351f00",
-          "#5a3700",
-          "#815204",
-          "#a9742c",
-          "#c89b65",
-          "#e8c399",
-          "#feebd5"
-        ]
-      },
-      "on-line": {
-        "role": "line",
-        "displayName": "On Line",
-        "canonical": "#ffffff",
-        "oklch": "oklch(100.0% 0.000 0)",
-        "night": "#0e151c",
-        "tonalRamp": [
-          "#0b0b0b",
-          "#242424",
-          "#404040",
-          "#5d5d5d",
-          "#808080",
-          "#a4a4a4",
-          "#cacaca",
-          "#eeeeee"
-        ]
-      },
-      "event-wash": {
-        "role": "line",
-        "displayName": "Event Wash",
-        "canonical": "#e9f0fc",
-        "oklch": "oklch(95.3% 0.018 261.3)",
-        "night": "#142338",
-        "tonalRamp": [
-          "#090b0f",
-          "#212429",
-          "#3c4047",
-          "#595e67",
-          "#7b808a",
-          "#a0a5ad",
-          "#c7cbd2",
-          "#ebeff4"
-        ]
-      },
-      "spend-wash": {
-        "role": "line",
-        "displayName": "Spend Wash",
-        "canonical": "#e5f3ec",
-        "oklch": "oklch(95.2% 0.017 164.7)",
-        "night": "#0f2a20",
-        "tonalRamp": [
-          "#080c0a",
-          "#202623",
-          "#3a423e",
-          "#56615b",
-          "#78837e",
-          "#9da7a2",
-          "#c5cdc9",
-          "#eaf0ed"
-        ]
-      },
-      "focus": {
-        "role": "line",
-        "displayName": "Focus Blue",
-        "canonical": "#2459c4",
-        "oklch": "oklch(49.4% 0.177 262.2)",
-        "night": "#6f9dff",
-        "tonalRamp": [
-          "#000729",
-          "#051f56",
-          "#153a84",
-          "#2857b6",
-          "#477be1",
-          "#76a3f9",
-          "#afcbff",
-          "#e7effe"
-        ]
-      },
-      "paper": {
+      "ground": {
         "role": "neutral",
-        "displayName": "Timetable Paper",
+        "displayName": "White Ground",
         "canonical": "#ffffff",
-        "oklch": "oklch(100.0% 0.000 0)",
-        "night": "#0e151c",
+        "oklch": "oklch(100.0% 0.000 90)",
+        "night": "#0e1110",
+        "purpose": "Page and sidebar ground.",
         "tonalRamp": [
           "#0b0b0b",
           "#242424",
@@ -327,441 +22,1038 @@
           "#eeeeee"
         ]
       },
-      "paper-2": {
+      "dark-ground": {
         "role": "neutral",
-        "displayName": "Paper Tint",
-        "canonical": "#f4f5f3",
-        "oklch": "oklch(96.9% 0.003 128.5)",
-        "night": "#131d26",
+        "displayName": "White Ground (dark)",
+        "canonical": "#0e1110",
+        "oklch": "oklch(17.4% 0.005 174)",
+        "day": "#ffffff",
+        "purpose": "Dark-theme value of ground.",
+        "tonalRamp": [
+          "#0a0b0b",
+          "#222524",
+          "#3e403f",
+          "#5b5e5d",
+          "#7d8180",
+          "#a2a5a4",
+          "#c8cbca",
+          "#edefee"
+        ]
+      },
+      "panel": {
+        "role": "neutral",
+        "displayName": "Cool Stone",
+        "canonical": "#f3f5f4",
+        "oklch": "oklch(96.8% 0.002 165)",
+        "night": "#161a19",
+        "purpose": "Every panel and tile, composers, search at rest, the past on the day line, plain time pills, nav hover.",
         "tonalRamp": [
           "#0b0b0b",
-          "#242423",
+          "#232424",
           "#3f403f",
-          "#5d5e5c",
-          "#80807f",
-          "#a4a5a3",
-          "#cacbc9",
+          "#5c5e5d",
+          "#7f8180",
+          "#a3a5a4",
+          "#c9cbca",
+          "#eeefee"
+        ]
+      },
+      "dark-panel": {
+        "role": "neutral",
+        "displayName": "Cool Stone (dark)",
+        "canonical": "#161a19",
+        "oklch": "oklch(21.3% 0.006 179)",
+        "day": "#f3f5f4",
+        "purpose": "Dark-theme value of panel.",
+        "tonalRamp": [
+          "#0a0c0b",
+          "#222524",
+          "#3d4140",
+          "#5a5f5e",
+          "#7d8180",
+          "#a1a6a4",
+          "#c8cbca",
+          "#ecefee"
+        ]
+      },
+      "panel-2": {
+        "role": "neutral",
+        "displayName": "Deeper Stone",
+        "canonical": "#e9edeb",
+        "oklch": "oklch(94.2% 0.005 165)",
+        "night": "#1f2422",
+        "purpose": "Active nav pill, tile hover, segmented track, ghost/icon hover, zero-spend bars, skeletons.",
+        "tonalRamp": [
+          "#0a0b0b",
+          "#232424",
+          "#3e403f",
+          "#5b5e5d",
+          "#7e817f",
+          "#a2a5a4",
+          "#c9cbca",
+          "#edefee"
+        ]
+      },
+      "dark-panel-2": {
+        "role": "neutral",
+        "displayName": "Deeper Stone (dark)",
+        "canonical": "#1f2422",
+        "oklch": "oklch(25.4% 0.008 170)",
+        "day": "#e9edeb",
+        "purpose": "Dark-theme value of panel-2.",
+        "tonalRamp": [
+          "#0a0c0b",
+          "#222524",
+          "#3d413f",
+          "#5a5f5d",
+          "#7c827f",
+          "#a1a6a4",
+          "#c7ccca",
+          "#ecefee"
+        ]
+      },
+      "card": {
+        "role": "neutral",
+        "displayName": "Card White",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100.0% 0.000 90)",
+        "night": "#1c2120",
+        "purpose": "Row cards, insets, inputs, calendar cells, note previews, quick-note popover.",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#808080",
+          "#a4a4a4",
+          "#cacaca",
           "#eeeeee"
         ]
       },
-      "paper-3": {
+      "dark-card": {
         "role": "neutral",
-        "displayName": "Paper Shade",
-        "canonical": "#eceeeb",
-        "oklch": "oklch(94.7% 0.005 134.9)",
-        "night": "#1a2631",
+        "displayName": "Card White (dark)",
+        "canonical": "#1c2120",
+        "oklch": "oklch(24.2% 0.008 182)",
+        "day": "#ffffff",
+        "purpose": "Dark-theme value of card.",
         "tonalRamp": [
-          "#0b0b0a",
-          "#232423",
-          "#3f403e",
-          "#5d5e5c",
-          "#7f817e",
-          "#a4a5a3",
-          "#cacbc9",
-          "#eeefed"
+          "#090c0b",
+          "#222524",
+          "#3d4140",
+          "#5a5f5e",
+          "#7c8280",
+          "#a1a6a5",
+          "#c7cbcb",
+          "#ecefee"
+        ]
+      },
+      "card-line": {
+        "role": "neutral",
+        "displayName": "Card Line",
+        "canonical": "#e3e8e6",
+        "oklch": "oklch(92.7% 0.006 170)",
+        "night": "#272d2b",
+        "purpose": "1px card border and the few hairline separators.",
+        "tonalRamp": [
+          "#0a0c0b",
+          "#222524",
+          "#3d403f",
+          "#5b5f5d",
+          "#7d8180",
+          "#a2a5a4",
+          "#c8cbca",
+          "#edefee"
+        ]
+      },
+      "dark-card-line": {
+        "role": "neutral",
+        "displayName": "Card Line (dark)",
+        "canonical": "#272d2b",
+        "oklch": "oklch(29.1% 0.009 174)",
+        "day": "#e3e8e6",
+        "purpose": "Dark-theme value of card-line.",
+        "tonalRamp": [
+          "#090c0b",
+          "#212524",
+          "#3c413f",
+          "#595f5d",
+          "#7b8280",
+          "#a0a6a4",
+          "#c7ccca",
+          "#ecefee"
+        ]
+      },
+      "card-line-2": {
+        "role": "neutral",
+        "displayName": "Card Line Strong",
+        "canonical": "#cfd6d3",
+        "oklch": "oklch(87.0% 0.009 169)",
+        "night": "#39413e",
+        "purpose": "Card hover border, input and secondary button borders, empty check ring, dashed empty states.",
+        "tonalRamp": [
+          "#090c0b",
+          "#222523",
+          "#3c413f",
+          "#5a5f5d",
+          "#7c827f",
+          "#a1a6a4",
+          "#c7ccca",
+          "#ecefee"
+        ]
+      },
+      "dark-card-line-2": {
+        "role": "neutral",
+        "displayName": "Card Line Strong (dark)",
+        "canonical": "#39413e",
+        "oklch": "oklch(36.7% 0.012 171)",
+        "day": "#cfd6d3",
+        "purpose": "Dark-theme value of card-line-2.",
+        "tonalRamp": [
+          "#090c0b",
+          "#212523",
+          "#3b413f",
+          "#58605d",
+          "#7a827f",
+          "#9fa6a4",
+          "#c6ccca",
+          "#ebf0ee"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#1b1f1e",
+        "oklch": "oklch(23.5% 0.006 179)",
+        "night": "#e9edeb",
+        "purpose": "Primary text; the Quick note button ground.",
+        "tonalRamp": [
+          "#0a0c0b",
+          "#222524",
+          "#3d4140",
+          "#5a5f5e",
+          "#7d8180",
+          "#a1a6a4",
+          "#c8cbca",
+          "#ecefee"
+        ]
+      },
+      "dark-ink": {
+        "role": "neutral",
+        "displayName": "Ink (dark)",
+        "canonical": "#e9edeb",
+        "oklch": "oklch(94.2% 0.005 165)",
+        "day": "#1b1f1e",
+        "purpose": "Dark-theme value of ink.",
+        "tonalRamp": [
+          "#0a0b0b",
+          "#232424",
+          "#3e403f",
+          "#5b5e5d",
+          "#7e817f",
+          "#a2a5a4",
+          "#c9cbca",
+          "#edefee"
         ]
       },
       "ink-2": {
         "role": "neutral",
-        "displayName": "Ink Secondary",
-        "canonical": "#53575c",
-        "oklch": "oklch(45.5% 0.010 253.9)",
-        "night": "#a3aeb8",
+        "displayName": "Ink Soft",
+        "canonical": "#59615e",
+        "oklch": "oklch(48.5% 0.011 171)",
+        "night": "#a5ada9",
+        "purpose": "Secondary text, sub lines, labels, nav at rest.",
         "tonalRamp": [
-          "#0a0b0d",
-          "#222427",
-          "#3d4044",
-          "#5a5e63",
-          "#7d8186",
-          "#a1a5a9",
-          "#c8cbce",
-          "#eceff1"
+          "#090c0b",
+          "#212524",
+          "#3b413f",
+          "#58605d",
+          "#7a827f",
+          "#9fa6a4",
+          "#c6ccca",
+          "#ebf0ee"
+        ]
+      },
+      "dark-ink-2": {
+        "role": "neutral",
+        "displayName": "Ink Soft (dark)",
+        "canonical": "#a5ada9",
+        "oklch": "oklch(74.0% 0.011 165)",
+        "day": "#59615e",
+        "purpose": "Dark-theme value of ink-2.",
+        "tonalRamp": [
+          "#090c0b",
+          "#212523",
+          "#3c413f",
+          "#595f5c",
+          "#7b827f",
+          "#a0a6a3",
+          "#c7ccc9",
+          "#ebf0ed"
         ]
       },
       "ink-3": {
         "role": "neutral",
-        "displayName": "Ink Tertiary",
-        "canonical": "#6b7075",
-        "oklch": "oklch(54.3% 0.010 248.0)",
-        "night": "#8794a0",
+        "displayName": "Ink Faint",
+        "canonical": "#636b68",
+        "oklch": "oklch(54.8% 0.011 172)",
+        "night": "#8f9894",
+        "purpose": "Placeholders, axis labels, kind icons.",
         "tonalRamp": [
-          "#0a0b0d",
-          "#222427",
-          "#3d4044",
-          "#5a5e62",
-          "#7c8186",
-          "#a1a5a9",
-          "#c8cbce",
-          "#eceff1"
+          "#090c0b",
+          "#212524",
+          "#3c413f",
+          "#585f5d",
+          "#7b827f",
+          "#a0a6a4",
+          "#c6ccca",
+          "#ebf0ee"
         ]
       },
-      "rule": {
+      "dark-ink-3": {
         "role": "neutral",
-        "displayName": "Hairline",
-        "canonical": "#e1e3df",
-        "oklch": "oklch(91.3% 0.006 128.5)",
-        "night": "#22303c",
+        "displayName": "Ink Faint (dark)",
+        "canonical": "#8f9894",
+        "oklch": "oklch(67.1% 0.012 168)",
+        "day": "#636b68",
+        "purpose": "Dark-theme value of ink-3.",
         "tonalRamp": [
-          "#0b0b0a",
-          "#232423",
-          "#3f403e",
-          "#5d5e5b",
-          "#7f817d",
-          "#a4a5a2",
-          "#cacbc9",
-          "#eeefed"
+          "#090c0b",
+          "#212523",
+          "#3b413f",
+          "#58605c",
+          "#7a827f",
+          "#9fa6a3",
+          "#c6ccc9",
+          "#ebf0ee"
         ]
       },
-      "rule-2": {
-        "role": "neutral",
-        "displayName": "Hairline Strong",
-        "canonical": "#c9ccc7",
-        "oklch": "oklch(84.1% 0.008 132.4)",
-        "night": "#34444f",
+      "accent": {
+        "role": "primary",
+        "displayName": "Deep Lagoon Teal",
+        "canonical": "#1b6e66",
+        "oklch": "oklch(48.8% 0.077 185)",
+        "night": "#5cc2b4",
+        "purpose": "The only acting hue: primary buttons, checked tasks, today, selection, the now marker, ordinary spend bars, focus.",
         "tonalRamp": [
-          "#0b0b0a",
-          "#232422",
-          "#3f403d",
-          "#5c5e5a",
-          "#7f817d",
-          "#a3a5a2",
-          "#c9cbc8",
-          "#edefed"
+          "#00100d",
+          "#002b27",
+          "#0d4a44",
+          "#246a63",
+          "#488e86",
+          "#78b1aa",
+          "#a8d5cf",
+          "#d3f7f2"
         ]
-      }
-    },
-    "themes": {
-      "dark": {
-        "selector": ":root[data-theme=\"dark\"], and prefers-color-scheme: dark unless data-theme=\"light\"",
-        "note": "Night theme swaps token values on the same roles. Toasts take #26333f at night.",
-        "colors": {
-          "ink": "#eef1f4",
-          "board": "#080d12",
-          "board-2": "#16212b",
-          "board-ink": "#c8d1d9",
-          "board-ink-2": "#7f8c98",
-          "board-rule": "#1b2630",
-          "board-bright": "#ffffff",
-          "red": "#ff5a4e",
-          "red-wash": "#3a1513",
-          "on-red": "#160605",
-          "line-task": "#eef1f4",
-          "line-event": "#6f9dff",
-          "line-spend": "#3cc28c",
-          "line-note": "#e2a640",
-          "on-line": "#0e151c",
-          "event-wash": "#142338",
-          "spend-wash": "#0f2a20",
-          "focus": "#6f9dff",
-          "paper": "#0e151c",
-          "paper-2": "#131d26",
-          "paper-3": "#1a2631",
-          "ink-2": "#a3aeb8",
-          "ink-3": "#8794a0",
-          "rule": "#22303c",
-          "rule-2": "#34444f"
-        }
+      },
+      "dark-accent": {
+        "role": "primary",
+        "displayName": "Deep Lagoon Teal (dark)",
+        "canonical": "#5cc2b4",
+        "oklch": "oklch(74.9% 0.098 183)",
+        "day": "#1b6e66",
+        "purpose": "Dark-theme value of accent.",
+        "tonalRamp": [
+          "#00110d",
+          "#002d27",
+          "#004c44",
+          "#006d63",
+          "#309286",
+          "#6ab5a9",
+          "#9dd8cf",
+          "#ccfaf2"
+        ]
+      },
+      "accent-hover": {
+        "role": "primary",
+        "displayName": "Lagoon Deep",
+        "canonical": "#15584f",
+        "oklch": "oklch(41.7% 0.067 182)",
+        "night": "#7ad1c5",
+        "purpose": "Primary button hover.",
+        "tonalRamp": [
+          "#000f0c",
+          "#052b26",
+          "#1b4942",
+          "#316960",
+          "#548d83",
+          "#80b0a7",
+          "#add4cc",
+          "#d8f6f0"
+        ]
+      },
+      "dark-accent-hover": {
+        "role": "primary",
+        "displayName": "Lagoon Deep (dark)",
+        "canonical": "#7ad1c5",
+        "oklch": "oklch(80.2% 0.086 184)",
+        "day": "#15584f",
+        "purpose": "Dark-theme value of accent-hover.",
+        "tonalRamp": [
+          "#00100d",
+          "#002c27",
+          "#004b44",
+          "#156c63",
+          "#3e9086",
+          "#72b3aa",
+          "#a3d7cf",
+          "#d0f8f2"
+        ]
+      },
+      "accent-ink": {
+        "role": "primary",
+        "displayName": "On Teal",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100.0% 0.000 90)",
+        "night": "#062320",
+        "purpose": "Text and tick on solid teal.",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#808080",
+          "#a4a4a4",
+          "#cacaca",
+          "#eeeeee"
+        ]
+      },
+      "dark-accent-ink": {
+        "role": "primary",
+        "displayName": "On Teal (dark)",
+        "canonical": "#062320",
+        "oklch": "oklch(23.4% 0.035 186)",
+        "day": "#ffffff",
+        "purpose": "Dark-theme value of accent-ink.",
+        "tonalRamp": [
+          "#040e0c",
+          "#182825",
+          "#2f4542",
+          "#496460",
+          "#6b8783",
+          "#92aaa7",
+          "#bbcfcc",
+          "#e3f2f0"
+        ]
+      },
+      "accent-soft": {
+        "role": "primary",
+        "displayName": "Lagoon Wash",
+        "canonical": "#dcefeb",
+        "oklch": "oklch(93.7% 0.021 182)",
+        "night": "rgba(92, 194, 180, 0.15)",
+        "purpose": "Day-line event pills, next-up time pill, sidebar count, focus ring, selection, search highlight.",
+        "tonalRamp": [
+          "#070d0b",
+          "#1d2624",
+          "#374340",
+          "#52615e",
+          "#748481",
+          "#9aa8a5",
+          "#c2cdcb",
+          "#e8f1ef"
+        ]
+      },
+      "dark-accent-soft": {
+        "role": "primary",
+        "displayName": "Lagoon Wash (dark)",
+        "canonical": "rgba(92, 194, 180, 0.15)",
+        "oklch": "oklch(74.9% 0.098 183)",
+        "day": "#dcefeb",
+        "purpose": "Dark-theme value of accent-soft.",
+        "tonalRamp": [
+          "#00110d",
+          "#002d27",
+          "#004c44",
+          "#006d63",
+          "#309286",
+          "#6ab5a9",
+          "#9dd8cf",
+          "#ccfaf2"
+        ]
+      },
+      "accent-line": {
+        "role": "primary",
+        "displayName": "Lagoon Edge",
+        "canonical": "#a9d3cc",
+        "oklch": "oklch(83.5% 0.045 184)",
+        "night": "rgba(92, 194, 180, 0.42)",
+        "purpose": "Inset edge of day-line event pills.",
+        "tonalRamp": [
+          "#020e0c",
+          "#132925",
+          "#2a4642",
+          "#436560",
+          "#648983",
+          "#8daca7",
+          "#b7d1cc",
+          "#dff4f0"
+        ]
+      },
+      "dark-accent-line": {
+        "role": "primary",
+        "displayName": "Lagoon Edge (dark)",
+        "canonical": "rgba(92, 194, 180, 0.42)",
+        "oklch": "oklch(74.9% 0.098 183)",
+        "day": "#a9d3cc",
+        "purpose": "Dark-theme value of accent-line.",
+        "tonalRamp": [
+          "#00110d",
+          "#002d27",
+          "#004c44",
+          "#006d63",
+          "#309286",
+          "#6ab5a9",
+          "#9dd8cf",
+          "#ccfaf2"
+        ]
+      },
+      "red": {
+        "role": "secondary",
+        "displayName": "Brick Red",
+        "canonical": "#b42318",
+        "oklch": "oklch(50.0% 0.182 30)",
+        "night": "#ff8a7e",
+        "purpose": "Overdue and at-or-over-threshold data; errors and destructive actions in chrome.",
+        "tonalRamp": [
+          "#260000",
+          "#4e0000",
+          "#790f08",
+          "#a7271c",
+          "#d24e3f",
+          "#f17f6f",
+          "#ffae9f",
+          "#ffd9cc"
+        ]
+      },
+      "dark-red": {
+        "role": "secondary",
+        "displayName": "Brick Red (dark)",
+        "canonical": "#ff8a7e",
+        "oklch": "oklch(75.9% 0.144 27)",
+        "day": "#b42318",
+        "purpose": "Dark-theme value of red.",
+        "tonalRamp": [
+          "#210000",
+          "#460a09",
+          "#6f211d",
+          "#9a3932",
+          "#c45c53",
+          "#e3887e",
+          "#ffb4ab",
+          "#ffddd5"
+        ]
+      },
+      "red-soft": {
+        "role": "secondary",
+        "displayName": "Red Wash",
+        "canonical": "#fdecea",
+        "oklch": "oklch(95.6% 0.019 26)",
+        "night": "rgba(255, 138, 126, 0.13)",
+        "purpose": "Ground for overdue pills and chips, error callout, invalid ring, danger hover.",
+        "tonalRamp": [
+          "#0f0a09",
+          "#2a2221",
+          "#473d3c",
+          "#675a59",
+          "#8b7c7b",
+          "#aea1a0",
+          "#d2c8c6",
+          "#f5eceb"
+        ]
+      },
+      "dark-red-soft": {
+        "role": "secondary",
+        "displayName": "Red Wash (dark)",
+        "canonical": "rgba(255, 138, 126, 0.13)",
+        "oklch": "oklch(75.9% 0.144 27)",
+        "day": "#fdecea",
+        "purpose": "Dark-theme value of red-soft.",
+        "tonalRamp": [
+          "#210000",
+          "#460a09",
+          "#6f211d",
+          "#9a3932",
+          "#c45c53",
+          "#e3887e",
+          "#ffb4ab",
+          "#ffddd5"
+        ]
+      },
+      "toast": {
+        "role": "neutral",
+        "displayName": "Toast Night",
+        "canonical": "#1b1f1e",
+        "oklch": "oklch(23.5% 0.006 179)",
+        "night": "#e9edeb",
+        "purpose": "Inverted toast ground (light in dark mode).",
+        "tonalRamp": [
+          "#0a0c0b",
+          "#222524",
+          "#3d4140",
+          "#5a5f5e",
+          "#7d8180",
+          "#a1a6a4",
+          "#c8cbca",
+          "#ecefee"
+        ]
+      },
+      "dark-toast": {
+        "role": "neutral",
+        "displayName": "Toast Night (dark)",
+        "canonical": "#e9edeb",
+        "oklch": "oklch(94.2% 0.005 165)",
+        "day": "#1b1f1e",
+        "purpose": "Dark-theme value of toast.",
+        "tonalRamp": [
+          "#0a0b0b",
+          "#232424",
+          "#3e403f",
+          "#5b5e5d",
+          "#7e817f",
+          "#a2a5a4",
+          "#c9cbca",
+          "#edefee"
+        ]
+      },
+      "toast-ink": {
+        "role": "neutral",
+        "displayName": "Toast Ink",
+        "canonical": "#f3f5f4",
+        "oklch": "oklch(96.8% 0.002 165)",
+        "night": "#0e1110",
+        "purpose": "Toast text.",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#232424",
+          "#3f403f",
+          "#5c5e5d",
+          "#7f8180",
+          "#a3a5a4",
+          "#c9cbca",
+          "#eeefee"
+        ]
+      },
+      "dark-toast-ink": {
+        "role": "neutral",
+        "displayName": "Toast Ink (dark)",
+        "canonical": "#0e1110",
+        "oklch": "oklch(17.4% 0.005 174)",
+        "day": "#f3f5f4",
+        "purpose": "Dark-theme value of toast-ink.",
+        "tonalRamp": [
+          "#0a0b0b",
+          "#222524",
+          "#3e403f",
+          "#5b5e5d",
+          "#7d8180",
+          "#a2a5a4",
+          "#c8cbca",
+          "#edefee"
+        ]
+      },
+      "toast-action": {
+        "role": "primary",
+        "displayName": "Toast Mint",
+        "canonical": "#8fd6cb",
+        "oklch": "oklch(82.6% 0.073 184)",
+        "night": "#15584f",
+        "purpose": "Undo action on the toast.",
+        "tonalRamp": [
+          "#00100d",
+          "#002b26",
+          "#144943",
+          "#2a6a62",
+          "#4d8e85",
+          "#7cb1a8",
+          "#aad5ce",
+          "#d5f7f1"
+        ]
+      },
+      "dark-toast-action": {
+        "role": "primary",
+        "displayName": "Toast Mint (dark)",
+        "canonical": "#15584f",
+        "oklch": "oklch(41.7% 0.067 182)",
+        "day": "#8fd6cb",
+        "purpose": "Dark-theme value of toast-action.",
+        "tonalRamp": [
+          "#000f0c",
+          "#052b26",
+          "#1b4942",
+          "#316960",
+          "#548d83",
+          "#80b0a7",
+          "#add4cc",
+          "#d8f6f0"
+        ]
+      },
+      "scrim": {
+        "role": "neutral",
+        "displayName": "Scrim",
+        "canonical": "rgba(16, 22, 20, 0.32)",
+        "oklch": "oklch(19.3% 0.010 173)",
+        "night": "rgba(0, 0, 0, 0.55)",
+        "purpose": "Behind the mobile navigation sheet.",
+        "tonalRamp": [
+          "#090c0b",
+          "#212524",
+          "#3c413f",
+          "#595f5d",
+          "#7b8280",
+          "#a0a6a4",
+          "#c7ccca",
+          "#ebefee"
+        ]
+      },
+      "dark-scrim": {
+        "role": "neutral",
+        "displayName": "Scrim (dark)",
+        "canonical": "rgba(0, 0, 0, 0.55)",
+        "oklch": "oklch(0.0% 0.000 0)",
+        "day": "rgba(16, 22, 20, 0.32)",
+        "purpose": "Dark-theme value of scrim.",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#808080",
+          "#a4a4a4",
+          "#cacaca",
+          "#eeeeee"
+        ]
       }
     },
     "typographyMeta": {
-      "display": {
-        "displayName": "Display",
-        "purpose": "Page titles and the live clock; 40px at 720px and below. Condensed via font-stretch: 68%."
+      "greeting": {
+        "displayName": "Greeting",
+        "purpose": "Today greeting only; 38px under 900px."
+      },
+      "auth-title": {
+        "displayName": "Auth title",
+        "purpose": "Login and sign-up titles; auth preview greeting at 38px."
       },
       "figure": {
         "displayName": "Figure",
-        "purpose": "Month spend total; 56px on Expenses, 34px in the calendar footer."
+        "purpose": "Tile values and spend totals; 28px on phones, 26px calendar month total. Always weight 400."
       },
       "headline": {
         "displayName": "Headline",
-        "purpose": "Calendar day panel title."
-      },
-      "time": {
-        "displayName": "Time",
-        "purpose": "Timetable time column; day numbers reuse it at 20px."
-      },
-      "amount": {
-        "displayName": "Amount",
-        "purpose": "Money inside rows and lists; semi-condensed via font-stretch: 84%."
+        "purpose": "Page titles; 26px under 900px."
       },
       "title": {
         "displayName": "Title",
-        "purpose": "Setting names, empty-state leads."
+        "purpose": "Calendar selected-day heading."
+      },
+      "panel-title": {
+        "displayName": "Panel title",
+        "purpose": "Panel heads and the quick-note head."
+      },
+      "row-title": {
+        "displayName": "Row title",
+        "purpose": "Row card titles and amounts."
       },
       "body": {
         "displayName": "Body",
-        "purpose": "Rows, prose and inputs."
-      },
-      "control": {
-        "displayName": "Control",
-        "purpose": "Buttons, segmented options, FAB."
+        "purpose": "Default text, buttons, inputs, nav. Notes at 15px/1.55."
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Uppercase section titles and (12px) timetable group rows."
+        "purpose": "Tile labels, group heads (600), field labels, sub lines (400), panel meta and links."
       },
-      "meta": {
-        "displayName": "Meta",
-        "purpose": "Sub-lines, hints and timestamps in Ink Secondary."
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Time pills, legends, hints, note footers."
       },
-      "badge": {
-        "displayName": "Badge",
-        "purpose": "Line badge letters."
+      "axis": {
+        "displayName": "Axis",
+        "purpose": "Day-line hours, bar axis, calendar overflow (11.5-12px)."
       }
     },
-    "widths": [
-      {
-        "name": "narrow",
-        "value": "68%",
-        "purpose": "font-stretch for condensed figures and titles (--narrow)."
-      },
-      {
-        "name": "semi",
-        "value": "84%",
-        "purpose": "font-stretch for inline amounts (--semi)."
-      }
-    ],
     "shadows": [
       {
-        "name": "pop",
-        "value": "0 12px 32px -8px rgba(15, 22, 30, 0.22), 0 2px 6px rgba(15, 22, 30, 0.08)",
-        "night": "0 14px 36px -8px rgba(0, 0, 0, 0.6), 0 2px 6px rgba(0, 0, 0, 0.4)",
-        "purpose": "FAB, quick-note popover, toasts."
+        "name": "float",
+        "value": "0 18px 40px -12px rgba(16, 28, 25, 0.22), 0 3px 8px rgba(16, 28, 25, 0.06)",
+        "night": "0 18px 44px -12px rgba(0, 0, 0, 0.7), 0 3px 8px rgba(0, 0, 0, 0.35)",
+        "purpose": "Floating layers only: Quick note button, quick-note popover, toasts, mobile sheet."
       },
       {
-        "name": "drawer",
-        "value": "12px 0 40px rgba(0, 0, 0, 0.3)",
-        "purpose": "Mobile rail while open."
+        "name": "focus-ring",
+        "value": "0 0 0 3px var(--accent-soft)",
+        "purpose": "Input and composer focus, with an accent border. Invalid swaps to var(--red-soft) and a red border."
       },
       {
-        "name": "segment-lift",
-        "value": "0 1px 2px rgba(0, 0, 0, 0.12), 0 0 0 1px var(--rule)",
-        "purpose": "Selected segmented-control option; the only resting shadow."
+        "name": "focus-outline",
+        "value": "outline: 2px solid var(--accent); outline-offset: 2px",
+        "purpose": "Global :focus-visible."
       },
       {
-        "name": "focus-halo",
-        "value": "0 0 0 3px color-mix(in srgb, var(--focus) 22%, transparent)",
-        "purpose": "Focused inputs and composer, with an ink border."
+        "name": "event-edge",
+        "value": "inset 0 0 0 1px var(--accent-line)",
+        "purpose": "Edge of day-line event pills and the legend swatch."
       },
       {
-        "name": "selected-day",
-        "value": "inset 0 0 0 2px var(--ink)",
-        "purpose": "Selected calendar day."
+        "name": "selected-ring",
+        "value": "inset 0 0 0 1px var(--accent)",
+        "purpose": "Selected calendar day, with an accent border."
+      },
+      {
+        "name": "segment-ring",
+        "value": "0 0 0 1px var(--card-line)",
+        "purpose": "Selected segment in a segmented control."
+      },
+      {
+        "name": "today-bar",
+        "value": "0 0 0 1.5px var(--card), 0 0 0 2.5px var(--ink-3)",
+        "purpose": "Today's bar in the spend chart."
       }
     ],
     "motion": [
       {
         "name": "ease-out",
         "value": "cubic-bezier(0.23, 1, 0.32, 1)",
-        "purpose": "Row settle, press scale, popover and toast entry, status-mark check."
+        "purpose": "Presses, check fill, settle, popover, toasts."
       },
       {
         "name": "ease-drawer",
         "value": "cubic-bezier(0.32, 0.72, 0, 1)",
-        "purpose": "Mobile rail drawer, 260ms."
+        "purpose": "Mobile navigation sheet: 300ms out, 320ms in."
       },
       {
-        "name": "state",
-        "value": "140ms ease",
-        "purpose": "Hover and colour changes on buttons, nav, inputs."
+        "name": "hover",
+        "value": "150ms ease",
+        "purpose": "Colour, background and border hovers; always inside @media (hover: hover)."
       },
       {
-        "name": "press",
-        "value": "120ms ease-out, scale(0.97)",
-        "purpose": "Button and rail-button press; 0.94 icon buttons, 0.9 status marks, 0.96 FAB."
+        "name": "press-button",
+        "value": "transform: scale(0.97), 140ms ease-out",
+        "purpose": "Buttons on :active."
+      },
+      {
+        "name": "press-fab",
+        "value": "transform: scale(0.96), 160ms ease-out",
+        "purpose": "Quick note button."
+      },
+      {
+        "name": "press-icon",
+        "value": "transform: scale(0.92), 140ms ease-out",
+        "purpose": "Icon buttons."
+      },
+      {
+        "name": "press-check",
+        "value": "transform: scale(0.88), 160ms ease-out",
+        "purpose": "Task check; tick scales 0.6 to 1 over 200ms when checked."
       },
       {
         "name": "settle",
-        "value": "900ms ease-out",
-        "purpose": "New row background fades from its line wash to transparent."
+        "value": "opacity 0 + translateY(6px) to rest, 280ms ease-out",
+        "purpose": "Newly created rows only."
       },
       {
         "name": "popover",
-        "value": "opacity 180ms, transform 220ms ease-out in; 120ms/140ms ease out",
-        "purpose": "Quick-note popover, scale 0.96 + 6px rise."
+        "value": "scale(0.96) translateY(6px) to rest; opacity 180ms, transform 200ms ease-out; close 140/160ms ease",
+        "purpose": "Quick-note popover, transform-origin: bottom right (from its button)."
       },
       {
         "name": "toast",
-        "value": "opacity 220ms, transform 260ms ease-out in; 140ms out",
-        "purpose": "Toast rises 12px into place."
+        "value": "enter from translateY(12px) scale(0.98): opacity 200ms, transform 240ms ease-out; leave 150ms",
+        "purpose": "Toasts; timer pauses on hover."
       },
       {
-        "name": "shimmer",
-        "value": "1.4s ease-in-out infinite",
-        "purpose": "Skeleton rows; disabled under reduced motion."
+        "name": "spinner",
+        "value": "600ms linear infinite",
+        "purpose": "Busy button ring."
+      },
+      {
+        "name": "skeleton",
+        "value": "opacity pulse 1.4s ease-in-out infinite",
+        "purpose": "Loading rows."
       },
       {
         "name": "reduced-motion",
-        "value": "prefers-reduced-motion: reduce",
-        "purpose": "Animations collapse to 1ms; transforms removed from drawer, popover, toast and press."
+        "value": "prefers-reduced-motion: reduce -> all animation and transition durations 0.01ms",
+        "purpose": "Global."
       }
     ],
     "breakpoints": [
       {
-        "name": "tight",
+        "name": "md",
         "value": "1180px",
-        "purpose": "Aside and day panel narrow to 300px (max-width)."
+        "purpose": "Padding to 28px; Today side stack drops below as a two-up split."
       },
       {
-        "name": "rail-collapse",
-        "value": "980px",
-        "purpose": "Rail becomes an off-canvas drawer under a 56px topbar (max-width)."
+        "name": "sm",
+        "value": "900px",
+        "purpose": "Sidebar becomes a slide-in sheet behind a 52px top bar; grid to one column, tiles two-up; auth preview hidden."
       },
       {
-        "name": "phone",
-        "value": "720px",
-        "purpose": "16px gutters, 40px display, folded add bar, dot-only calendar, circular FAB (max-width)."
+        "name": "xs",
+        "value": "640px",
+        "purpose": "Panels 16px padding/20px radius; controls full width; calendar cells 54px with dots; Quick note becomes a 52px circle."
+      },
+      {
+        "name": "day-line-compact",
+        "value": "560px (element width)",
+        "purpose": "Day-line events become 18px swatches; axis every 6 hours."
       }
-    ]
+    ],
+    "themes": {
+      "light": ":root (default)",
+      "dark": "@media (prefers-color-scheme: dark) :root:not([data-theme=\"light\"]) and :root[data-theme=\"dark\"]; values in dark-* tokens / colorMeta.night"
+    }
   },
   "components": [
     {
       "name": "Primary Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "Ink-filled action: Add task, Save note, Sign in.",
-      "html": "<button class=\"ds-btn ds-btn-primary\" type=\"button\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14M12 5v14\"/></svg>Add task</button>",
-      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 38px; padding: 0 14px; border-radius: 6px; border: 1.5px solid var(--ink, #141414); background: var(--paper, #ffffff); color: var(--ink, #141414); font-family: var(--font, \"Archivo\", ui-sans-serif, system-ui, sans-serif); font-weight: 600; font-size: 14px; white-space: nowrap; cursor: pointer; transition: background-color 140ms ease, color 140ms ease, border-color 140ms ease, transform 120ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-btn:active { transform: scale(0.97); } .ds-btn:focus-visible { outline: 2px solid var(--focus, #2459c4); outline-offset: 2px; } .ds-btn-primary { background: var(--ink, #141414); color: var(--paper, #ffffff); } .ds-btn-primary:hover { background: color-mix(in srgb, var(--ink, #141414) 86%, var(--paper, #ffffff)); }"
+      "description": "The one teal action in an area: Add task, Log payment, Sign in.",
+      "html": "<button class=\"ds-btn-primary\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\"><path d=\"M5 12h14M12 5v14\"/></svg>Add task</button>",
+      "css": ".ds-btn-primary { font-family: \"Instrument Sans\", ui-sans-serif, system-ui, sans-serif; display: inline-flex; align-items: center; gap: 8px; height: 38px; padding: 0 16px; border-radius: 999px; font-size: 14px; font-weight: 500; cursor: pointer; transition: background-color 150ms ease, border-color 150ms ease, transform 140ms cubic-bezier(0.23, 1, 0.32, 1); background: var(--accent, #1b6e66); color: var(--accent-ink, #fff); border: 1px solid var(--accent, #1b6e66); } .ds-btn-primary:hover { background: var(--accent-hover, #15584f); border-color: var(--accent-hover, #15584f); } .ds-btn-primary:active { transform: scale(0.97); } .ds-btn-primary:focus-visible { outline: 2px solid var(--accent, #1b6e66); outline-offset: 2px; }"
     },
     {
       "name": "Secondary Button",
       "kind": "button",
       "refersTo": "button-secondary",
-      "description": "Default outline button: Today, Try again, Cancel.",
-      "html": "<button class=\"ds-btn-secondary\" type=\"button\">Today</button>",
-      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; height: 38px; padding: 0 14px; border-radius: 6px; border: 1.5px solid var(--ink, #141414); background: var(--paper, #ffffff); color: var(--ink, #141414); font-family: var(--font, \"Archivo\", ui-sans-serif, system-ui, sans-serif); font-weight: 600; font-size: 14px; cursor: pointer; transition: background-color 140ms ease, transform 120ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-btn-secondary:hover { background: var(--paper-2, #f4f5f3); } .ds-btn-secondary:active { transform: scale(0.97); } .ds-btn-secondary:focus-visible { outline: 2px solid var(--focus, #2459c4); outline-offset: 2px; }"
+      "description": "Neutral pill with a strong card-line border; Try again, Cancel.",
+      "html": "<button class=\"ds-btn\">Try again</button>",
+      "css": ".ds-btn { font-family: \"Instrument Sans\", ui-sans-serif, system-ui, sans-serif; display: inline-flex; align-items: center; gap: 8px; height: 38px; padding: 0 16px; border-radius: 999px; font-size: 14px; font-weight: 500; cursor: pointer; transition: background-color 150ms ease, border-color 150ms ease, transform 140ms cubic-bezier(0.23, 1, 0.32, 1); background: var(--card, #fff); color: var(--ink, #1b1f1e); border: 1px solid var(--card-line-2, #cfd6d3); } .ds-btn:hover { border-color: var(--ink-3, #636b68); } .ds-btn:active { transform: scale(0.97); } .ds-btn:focus-visible { outline: 2px solid var(--accent, #1b6e66); outline-offset: 2px; }"
     },
     {
-      "name": "Danger Button",
-      "kind": "button",
-      "refersTo": "button-danger",
-      "description": "Destructive action in red outline, washed on hover.",
-      "html": "<button class=\"ds-btn-danger\" type=\"button\">Delete account data</button>",
-      "css": ".ds-btn-danger { display: inline-flex; align-items: center; height: 38px; padding: 0 14px; border-radius: 6px; border: 1.5px solid var(--red, #d2241a); background: var(--paper, #ffffff); color: var(--red, #d2241a); font-family: var(--font, \"Archivo\", ui-sans-serif, system-ui, sans-serif); font-weight: 600; font-size: 14px; cursor: pointer; transition: background-color 140ms ease, transform 120ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-btn-danger:hover { background: var(--red-wash, #fdecea); } .ds-btn-danger:active { transform: scale(0.97); } .ds-btn-danger:focus-visible { outline: 2px solid var(--focus, #2459c4); outline-offset: 2px; }"
-    },
-    {
-      "name": "Text Input",
+      "name": "Input",
       "kind": "input",
       "refersTo": "input",
-      "description": "38px field with hairline border; ink border and blue halo on focus.",
-      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Email</span><input class=\"ds-input\" type=\"email\" placeholder=\"you@example.com\"></label>",
-      "css": ".ds-field { display: flex; flex-direction: column; gap: 6px; font-family: var(--font, \"Archivo\", ui-sans-serif, system-ui, sans-serif); } .ds-field-label { font-size: 13px; font-weight: 600; color: var(--ink, #141414); } .ds-input { height: 38px; width: 100%; padding: 0 12px; border: 1px solid var(--rule-2, #c9ccc7); border-radius: 6px; background: var(--paper, #ffffff); color: var(--ink, #141414); font: inherit; font-size: 15px; transition: border-color 140ms ease, box-shadow 140ms ease; } .ds-input::placeholder { color: var(--ink-3, #6b7075); } .ds-input:hover { border-color: var(--ink-3, #6b7075); } .ds-input:focus { outline: none; border-color: var(--ink, #141414); box-shadow: 0 0 0 3px color-mix(in srgb, var(--focus, #2459c4) 22%, transparent); } .ds-input[aria-invalid=\"true\"] { border-color: var(--red, #d2241a); }"
+      "description": "40px card-white field, 12px radius; teal border and wash ring on focus.",
+      "html": "<input class=\"ds-input\" placeholder=\"Add a task\">",
+      "css": ".ds-input { font-family: \"Instrument Sans\", ui-sans-serif, system-ui, sans-serif; width: 260px; height: 40px; padding: 0 14px; background: var(--card, #fff); color: var(--ink, #1b1f1e); border: 1px solid var(--card-line-2, #cfd6d3); border-radius: 12px; font-size: 14px; caret-color: var(--accent, #1b6e66); transition: border-color 150ms ease, box-shadow 150ms ease; } .ds-input::placeholder { color: var(--ink-3, #636b68); } .ds-input:focus { outline: none; border-color: var(--accent, #1b6e66); box-shadow: 0 0 0 3px var(--accent-soft, #dcefeb); }"
     },
     {
       "name": "Segmented Control",
       "kind": "chip",
       "refersTo": "segmented",
-      "description": "Type switch in the add bar and filters on Tasks.",
-      "html": "<div class=\"ds-seg\" role=\"radiogroup\"><label><input type=\"radio\" name=\"ds-kind\" checked><span>Task</span></label><label><input type=\"radio\" name=\"ds-kind\"><span>Event</span></label><label><input type=\"radio\" name=\"ds-kind\"><span>Expense</span></label></div>",
-      "css": ".ds-seg { display: inline-flex; padding: 3px; gap: 2px; border-radius: 8px; background: var(--paper-3, #eceeeb); font-family: var(--font, \"Archivo\", ui-sans-serif, system-ui, sans-serif); } .ds-seg label { position: relative; } .ds-seg input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; } .ds-seg span { display: inline-flex; align-items: center; height: 32px; padding: 0 12px; border-radius: 5px; font-size: 14px; font-weight: 600; color: var(--ink-2, #53575c); transition: background-color 140ms ease, color 140ms ease, box-shadow 140ms ease; } .ds-seg input:checked + span { background: var(--paper, #ffffff); color: var(--ink, #141414); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 0 0 1px var(--rule, #e1e3df); } .ds-seg input:focus-visible + span { outline: 2px solid var(--focus, #2459c4); outline-offset: 1px; }"
+      "description": "Pill track on deeper stone; the selected segment is card white with a 1px ring.",
+      "html": "<div class=\"ds-seg\"><span class=\"on\">Task</span><span>Event</span><span>Expense</span></div>",
+      "css": ".ds-seg { font-family: \"Instrument Sans\", ui-sans-serif, system-ui, sans-serif; display: inline-flex; gap: 2px; padding: 3px; background: var(--panel-2, #e9edeb); border-radius: 999px; } .ds-seg span { display: flex; align-items: center; height: 30px; padding: 0 13px; border-radius: 999px; font-size: 13px; font-weight: 500; color: var(--ink-2, #59615e); cursor: pointer; transition: background-color 160ms ease, color 160ms ease; } .ds-seg span:hover { color: var(--ink, #1b1f1e); } .ds-seg span.on { background: var(--card, #fff); color: var(--ink, #1b1f1e); box-shadow: 0 0 0 1px var(--card-line, #e3e8e6); }"
     },
     {
-      "name": "Line Badges",
-      "kind": "chip",
-      "refersTo": "line-badge-task",
-      "description": "Item-type marks: T task, E event, ₹ expense, N note.",
-      "html": "<span class=\"ds-lines\"><span class=\"ds-line\" title=\"Task\">T</span><span class=\"ds-line ds-line-event\" title=\"Event\">E</span><span class=\"ds-line ds-line-spend\" title=\"Expense\">₹</span><span class=\"ds-line ds-line-note\" title=\"Note\">N</span></span>",
-      "css": ".ds-lines { display: inline-flex; gap: 8px; } .ds-line { display: inline-grid; place-items: center; min-width: 26px; height: 20px; padding: 0 5px; border-radius: 4px; font-family: var(--font, \"Archivo\", ui-sans-serif, system-ui, sans-serif); font-weight: 700; font-size: 11.5px; line-height: 1; letter-spacing: 0.02em; color: var(--on-line, #ffffff); background: var(--line-task, #141414); } .ds-line-event { background: var(--line-event, #2459c4); } .ds-line-spend { background: var(--line-spend, #0d7a4b); } .ds-line-note { background: var(--line-note, #9a6200); }"
-    },
-    {
-      "name": "Timetable with NOW Rule",
-      "kind": "custom",
-      "refersTo": "timetable-row",
-      "description": "Signature departures table: condensed time, line badge, item, status, cut by the red NOW rule.",
-      "html": "<table class=\"ds-tt\"><thead><tr><th>Time</th><th></th><th>Item</th><th class=\"r\">Status</th></tr></thead><tbody><tr class=\"ds-past\"><td class=\"ds-time\">09:00</td><td><span class=\"ds-line\">T</span></td><td class=\"ds-done\">Send invoice</td><td class=\"r\">done</td></tr><tr><td class=\"ds-time\">11:30</td><td><span class=\"ds-line ds-line-spend\">₹</span></td><td>Groceries</td><td class=\"r ds-over\">₹1,240</td></tr><tr class=\"ds-now\"><td colspan=\"4\"><div class=\"ds-now-tag\"><span>NOW 14:32</span></div></td></tr><tr><td class=\"ds-time\">15:00</td><td><span class=\"ds-line ds-line-event\">E</span></td><td>Design review</td><td class=\"r\">in 28 min</td></tr></tbody></table>",
-      "css": ".ds-tt { width: 100%; border-collapse: collapse; font-family: var(--font, \"Archivo\", ui-sans-serif, system-ui, sans-serif); color: var(--ink, #141414); } .ds-tt th { font-size: 12px; font-weight: 600; color: var(--ink-2, #53575c); text-align: left; padding: 0 10px 6px 2px; border-bottom: 1.5px solid var(--ink, #141414); } .ds-tt td { padding: 0 10px 0 2px; height: 50px; border-bottom: 1px solid var(--rule, #e1e3df); vertical-align: middle; font-size: 15.5px; } .ds-tt tr:hover td { background: var(--paper-2, #f4f5f3); } .ds-tt .r { text-align: right; font-size: 14px; color: var(--ink-2, #53575c); } .ds-time { width: 72px; font-stretch: 68%; font-variation-settings: \"wdth\" 68; font-weight: 700; font-size: 21px !important; font-variant-numeric: tabular-nums; } .ds-past .ds-time { color: var(--ink-3, #6b7075); } .ds-done { text-decoration: line-through; color: var(--ink-3, #6b7075); } .ds-over { color: var(--red, #d2241a) !important; font-weight: 700; font-variant-numeric: tabular-nums; } .ds-tt tr.ds-now td { height: 0; padding: 0; border-bottom: 2px solid var(--red, #d2241a); background: none; } .ds-now-tag { position: relative; height: 0; } .ds-now-tag span { position: absolute; left: 0; top: -10px; display: inline-flex; align-items: center; height: 19px; padding: 0 7px; border-radius: 3px; background: var(--red, #d2241a); color: var(--on-red, #ffffff); font-size: 11px; font-weight: 700; letter-spacing: 0.06em; font-variant-numeric: tabular-nums; } .ds-line { display: inline-grid; place-items: center; min-width: 26px; height: 20px; padding: 0 5px; border-radius: 4px; font-weight: 700; font-size: 11.5px; line-height: 1; color: var(--on-line, #ffffff); background: var(--line-task, #141414); } .ds-line-event { background: var(--line-event, #2459c4); } .ds-line-spend { background: var(--line-spend, #0d7a4b); }"
-    },
-    {
-      "name": "Board Rail",
+      "name": "Sidebar Navigation",
       "kind": "nav",
       "refersTo": "nav-item",
-      "description": "Board-navy navigation rail with the current page raised.",
-      "html": "<nav class=\"ds-rail\"><a class=\"ds-brand\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9.5\" stroke=\"currentColor\" stroke-width=\"2.5\"/><path d=\"M12 12V6\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><path d=\"M12 12l4.5 3\" stroke=\"#ff4a3d\" stroke-width=\"2.5\" stroke-linecap=\"round\"/></svg>Syncrona</a><a class=\"ds-nav\" href=\"#\" aria-current=\"page\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 7v5l3 2\"/></svg>Today</a><a class=\"ds-nav\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/><path d=\"m8.5 12 2.5 2.5 4.5-5\"/></svg>Tasks</a><a class=\"ds-nav\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\"/><path d=\"M16 2v4M8 2v4M3 10h18\"/></svg>Calendar</a></nav>",
-      "css": ".ds-rail { display: flex; flex-direction: column; gap: 2px; width: 232px; padding: 24px 14px 16px; background: var(--board, #17222d); color: var(--board-ink, #c8d1d9); font-family: var(--font, \"Archivo\", ui-sans-serif, system-ui, sans-serif); } .ds-brand { display: flex; align-items: center; gap: 10px; padding: 0 10px; margin-bottom: 32px; font-weight: 700; font-size: 19px; letter-spacing: -0.01em; color: #fff; text-decoration: none; } .ds-nav { display: flex; align-items: center; gap: 12px; height: 40px; padding: 0 10px; border-radius: 6px; color: var(--board-ink, #c8d1d9); text-decoration: none; font-size: 15px; font-weight: 500; transition: background-color 140ms ease, color 140ms ease; } .ds-nav svg { color: var(--board-ink-2, #8a97a3); transition: color 140ms ease; } .ds-nav:hover:not([aria-current=\"page\"]) { background: rgba(255, 255, 255, 0.05); color: #fff; } .ds-nav:hover svg, .ds-nav[aria-current=\"page\"] svg { color: #fff; } .ds-nav[aria-current=\"page\"] { background: var(--board-2, #223140); color: #fff; font-weight: 600; } .ds-nav:focus-visible { outline: 2px solid var(--focus, #2459c4); outline-offset: 2px; }"
+      "description": "Labelled items; grey active pill; teal task count that turns red when anything is overdue.",
+      "html": "<ul class=\"ds-nav\"><li><a class=\"on\"><svg viewBox=\"0 0 24 24\" width=\"17\" height=\"17\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 7v5l3 2\"/></svg><span>Today</span></a></li><li><a><svg viewBox=\"0 0 24 24\" width=\"17\" height=\"17\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/><path d=\"m8.5 12 2.5 2.5 4.5-5\"/></svg><span>Tasks</span><b class=\"late\">4</b></a></li><li><a><svg viewBox=\"0 0 24 24\" width=\"17\" height=\"17\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\"/><path d=\"M16 2v4M8 2v4M3 10h18\"/></svg><span>Calendar</span></a></li></ul>",
+      "css": ".ds-nav { font-family: \"Instrument Sans\", ui-sans-serif, system-ui, sans-serif; list-style: none; margin: 0; padding: 0; width: 216px; display: grid; gap: 2px; } .ds-nav a { display: flex; align-items: center; gap: 10px; height: 34px; padding: 0 10px; border-radius: 10px; color: var(--ink-2, #59615e); font-size: 14px; cursor: pointer; transition: background-color 150ms ease, color 150ms ease; } .ds-nav a:hover { background: var(--panel, #f3f5f4); color: var(--ink, #1b1f1e); } .ds-nav a.on { background: var(--panel-2, #e9edeb); color: var(--ink, #1b1f1e); font-weight: 500; } .ds-nav b { margin-left: auto; min-width: 22px; height: 20px; padding: 0 7px; display: inline-grid; place-items: center; border-radius: 999px; font-size: 12px; font-weight: 600; background: var(--accent-soft, #dcefeb); color: var(--accent, #1b6e66); } .ds-nav b.late { background: var(--red-soft, #fdecea); color: var(--red, #b42318); }"
     },
     {
-      "name": "Status Mark",
-      "kind": "button",
-      "refersTo": "status-mark",
-      "description": "Task completion toggle: ink ring, fills ink with a check when done, red ring when overdue.",
-      "html": "<span class=\"ds-marks\"><button class=\"ds-mark\" type=\"button\" aria-pressed=\"false\" aria-label=\"Mark done\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\"/></svg></button><button class=\"ds-mark\" type=\"button\" aria-pressed=\"true\" aria-label=\"Done\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\"/></svg></button><button class=\"ds-mark ds-overdue\" type=\"button\" aria-pressed=\"false\" aria-label=\"Overdue, mark done\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\"/></svg></button></span>",
-      "css": ".ds-marks { display: inline-flex; gap: 12px; } .ds-mark { display: inline-grid; place-items: center; width: 22px; height: 22px; padding: 0; border-radius: 50%; border: 2px solid var(--ink, #141414); background: none; color: var(--paper, #ffffff); cursor: pointer; transition: background-color 150ms ease, border-color 150ms ease, transform 120ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-mark svg { width: 12px; height: 12px; opacity: 0; transform: scale(0.6); transition: opacity 150ms ease, transform 200ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-mark[aria-pressed=\"true\"] { background: var(--ink, #141414); } .ds-mark[aria-pressed=\"true\"] svg { opacity: 1; transform: scale(1); } .ds-mark[aria-pressed=\"false\"]:hover svg { opacity: 0.35; transform: scale(1); color: var(--ink, #141414); } .ds-mark.ds-overdue { border-color: var(--red, #d2241a); } .ds-mark:active { transform: scale(0.9); } .ds-mark:focus-visible { outline: 2px solid var(--focus, #2459c4); outline-offset: 2px; }"
+      "name": "Tile",
+      "kind": "card",
+      "refersTo": "tile",
+      "description": "Stone count tile: label top, regular-weight figure at the bottom, caption that may carry red.",
+      "html": "<a class=\"ds-tile\"><span class=\"l\">Due today</span><span class=\"v\">3</span><span class=\"c\"><span class=\"r\">1 overdue task</span></span></a>",
+      "css": ".ds-tile { font-family: \"Instrument Sans\", ui-sans-serif, system-ui, sans-serif; display: flex; flex-direction: column; width: 240px; min-height: 128px; padding: 16px 18px; background: var(--panel, #f3f5f4); border-radius: 22px; color: var(--ink, #1b1f1e); text-decoration: none; cursor: pointer; transition: background-color 150ms ease; } .ds-tile:hover { background: var(--panel-2, #e9edeb); } .ds-tile .l { font-size: 13px; font-weight: 500; color: var(--ink-2, #59615e); } .ds-tile .v { margin-top: auto; font-size: 34px; font-weight: 400; letter-spacing: -0.02em; line-height: 1.1; font-variant-numeric: tabular-nums; } .ds-tile .c { margin-top: 4px; font-size: 13px; color: var(--ink-2, #59615e); } .ds-tile .r { color: var(--red, #b42318); }"
     },
     {
-      "name": "Toast with Undo",
+      "name": "Row Card",
+      "kind": "card",
+      "refersTo": "row-card",
+      "description": "A task, event or payment as a white card inside a stone panel: lead, title, sub line, end slot.",
+      "html": "<div class=\"ds-panel\"><ul class=\"ds-list\"><li class=\"ds-item\"><button class=\"ds-check\" aria-pressed=\"true\"><svg viewBox=\"0 0 24 24\" width=\"12\" height=\"12\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M20 6 9 17l-5-5\"/></svg></button><span class=\"m\"><b>Send invoice</b><small>Done</small></span><span class=\"ds-pill\">09:00</span></li><li class=\"ds-item\"><span class=\"lead\"><svg viewBox=\"0 0 24 24\" width=\"17\" height=\"17\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"17\" rx=\"3\"/><path d=\"M8 2.5v3M16 2.5v3M3 9.5h18\"/><circle cx=\"12\" cy=\"15\" r=\"1.6\" fill=\"currentColor\" stroke=\"none\"/></svg></span><span class=\"m\"><b>Design review with Priya</b><small>in 28 min</small></span><span class=\"ds-pill next\">15:00</span></li><li class=\"ds-item\"><button class=\"ds-check late\" aria-pressed=\"false\"><svg viewBox=\"0 0 24 24\" width=\"12\" height=\"12\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M20 6 9 17l-5-5\"/></svg></button><span class=\"m\"><b>Pay electricity bill</b><small class=\"r\">Overdue · due 2 days ago</small></span><span class=\"ds-pill late\">1 Nov</span></li></ul></div>",
+      "css": ".ds-panel { font-family: \"Instrument Sans\", ui-sans-serif, system-ui, sans-serif; width: 460px; padding: 20px; background: var(--panel, #f3f5f4); border-radius: 22px; color: var(--ink, #1b1f1e); } .ds-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; } .ds-item { display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 9px 12px 9px 14px; background: var(--card, #fff); border: 1px solid var(--card-line, #e3e8e6); border-radius: 12px; transition: border-color 150ms ease; } .ds-item:hover { border-color: var(--card-line-2, #cfd6d3); } .ds-item .lead { width: 22px; display: grid; place-items: center; color: var(--accent, #1b6e66); } .ds-item .m { flex: 1; min-width: 0; } .ds-item b { display: block; font-size: 14.5px; font-weight: 500; } .ds-item small { display: block; font-size: 13px; color: var(--ink-2, #59615e); } .ds-item small.r { color: var(--red, #b42318); } .ds-check { width: 22px; height: 22px; flex: none; border-radius: 50%; display: grid; place-items: center; border: 1.5px solid var(--card-line-2, #cfd6d3); background: var(--card, #fff); color: transparent; cursor: pointer; transition: background-color 160ms ease, border-color 160ms ease, transform 160ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-check:hover { border-color: var(--accent, #1b6e66); } .ds-check:active { transform: scale(0.88); } .ds-check[aria-pressed=\"true\"] { background: var(--accent, #1b6e66); border-color: var(--accent, #1b6e66); color: var(--accent-ink, #fff); } .ds-check.late { border-color: var(--red, #b42318); } .ds-pill { display: inline-flex; align-items: center; height: 24px; padding: 0 9px; border-radius: 999px; background: var(--panel, #f3f5f4); font-size: 12.5px; font-weight: 500; font-variant-numeric: tabular-nums; } .ds-pill.next { background: var(--accent-soft, #dcefeb); color: var(--accent, #1b6e66); } .ds-pill.late { background: var(--red-soft, #fdecea); color: var(--red, #b42318); }"
+    },
+    {
+      "name": "Day Line",
+      "kind": "custom",
+      "refersTo": "day-line-track",
+      "description": "Signature: 06:00 to midnight; shaded past, teal now marker, event pills on top, task rings below, spend total in the legend.",
+      "html": "<div class=\"ds-dl\"><div class=\"t\"><i class=\"past\" style=\"width:57%\"></i><i class=\"h\" style=\"left:16.7%\"></i><i class=\"h\" style=\"left:33.3%\"></i><i class=\"h\" style=\"left:50%\"></i><i class=\"h\" style=\"left:66.7%\"></i><i class=\"h\" style=\"left:83.3%\"></i><span class=\"ev old\" style=\"left:50%\">Design review</span><span class=\"ev\" style=\"left:69%\">Badminton</span><span class=\"tk done\" style=\"left:16.7%\"></span><span class=\"tk\" style=\"left:61%\"></span><span class=\"now\" style=\"left:57%\"></span></div><div class=\"ax\"><span style=\"left:0\">06:00</span><span style=\"left:33.3%\">12:00</span><span class=\"n\" style=\"left:57%\">16:21</span><span style=\"left:83.3%\">21:00</span></div><div class=\"lg\"><span><i></i>Event</span><span><i class=\"ring\"></i>Task with a time</span><b>₹1,420 spent today</b></div></div>",
+      "css": ".ds-dl { font-family: \"Instrument Sans\", ui-sans-serif, system-ui, sans-serif; width: 520px; padding: 16px; background: var(--panel, #f3f5f4); border-radius: 22px; color: var(--ink, #1b1f1e); } .ds-dl .t { position: relative; height: 54px; background: var(--card, #fff); border: 1px solid var(--card-line, #e3e8e6); border-radius: 12px; overflow: hidden; } .ds-dl .past { position: absolute; inset: 0 auto 0 0; background: var(--panel, #f3f5f4); } .ds-dl .h { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--card-line, #e3e8e6); } .ds-dl .ev { position: absolute; top: 6px; height: 22px; padding: 0 8px; border-radius: 7px; display: flex; align-items: center; background: var(--accent-soft, #dcefeb); color: var(--accent, #1b6e66); font-size: 12px; font-weight: 600; white-space: nowrap; box-shadow: inset 0 0 0 1px var(--accent-line, #a9d3cc); z-index: 3; } .ds-dl .ev.old { background: var(--panel-2, #e9edeb); color: var(--ink-2, #59615e); box-shadow: inset 0 0 0 1px var(--card-line-2, #cfd6d3); } .ds-dl .tk { position: absolute; top: 33px; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; border: 2px solid var(--ink, #1b1f1e); background: var(--card, #fff); box-sizing: border-box; } .ds-dl .tk.done { background: var(--accent, #1b6e66); border-color: var(--accent, #1b6e66); } .ds-dl .now { position: absolute; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: var(--accent, #1b6e66); z-index: 2; } .ds-dl .ax { position: relative; height: 18px; margin-top: 6px; font-size: 11.5px; color: var(--ink-3, #636b68); font-variant-numeric: tabular-nums; } .ds-dl .ax span { position: absolute; } .ds-dl .ax .n { color: var(--accent, #1b6e66); font-weight: 600; transform: translateX(-50%); } .ds-dl .lg { display: flex; align-items: center; gap: 14px; margin-top: 4px; font-size: 12.5px; color: var(--ink-2, #59615e); } .ds-dl .lg span { display: inline-flex; align-items: center; gap: 6px; } .ds-dl .lg i { width: 14px; height: 10px; border-radius: 3px; background: var(--accent-soft, #dcefeb); box-shadow: inset 0 0 0 1px var(--accent-line, #a9d3cc); } .ds-dl .lg i.ring { width: 10px; border-radius: 50%; border: 2px solid var(--ink, #1b1f1e); background: none; box-shadow: none; box-sizing: border-box; } .ds-dl .lg b { margin-left: auto; font-weight: 500; color: var(--red, #b42318); font-variant-numeric: tabular-nums; }"
+    },
+    {
+      "name": "Toast",
       "kind": "custom",
       "refersTo": "toast",
-      "description": "Board-navy confirmation with an Undo action; error variant in signal red.",
-      "html": "<div class=\"ds-toasts\"><div class=\"ds-toast\"><span>Task deleted</span><button type=\"button\">Undo</button></div><div class=\"ds-toast ds-toast-error\"><span>Can't reach the Syncrona server.</span></div></div>",
-      "css": ".ds-toasts { display: flex; flex-direction: column; gap: 8px; align-items: center; font-family: var(--font, \"Archivo\", ui-sans-serif, system-ui, sans-serif); } .ds-toast { display: flex; align-items: center; gap: 14px; min-height: 44px; padding: 6px 6px 6px 16px; border-radius: 8px; background: var(--board, #17222d); color: #fff; font-size: 14px; box-shadow: 0 12px 32px -8px rgba(15, 22, 30, 0.22), 0 2px 6px rgba(15, 22, 30, 0.08); } .ds-toast button { height: 32px; padding: 0 12px; border: 0; border-radius: 5px; font: inherit; font-weight: 700; color: #fff; background: rgba(255, 255, 255, 0.12); cursor: pointer; } .ds-toast button:hover { background: rgba(255, 255, 255, 0.2); } .ds-toast button:focus-visible { outline: 2px solid var(--focus, #2459c4); outline-offset: 2px; } .ds-toast-error { background: var(--red, #d2241a); color: var(--on-red, #ffffff); padding-right: 16px; }"
+      "description": "Inverted pill with a mint Undo; the one place besides the popover, FAB and sheet that lifts.",
+      "html": "<div class=\"ds-toast\"><span>Task deleted</span><button>Undo</button></div>",
+      "css": ".ds-toast { font-family: \"Instrument Sans\", ui-sans-serif, system-ui, sans-serif; display: inline-flex; align-items: center; gap: 14px; min-height: 44px; padding: 7px 7px 7px 18px; border-radius: 999px; background: var(--toast, #1b1f1e); color: var(--toast-ink, #f3f5f4); font-size: 14px; box-sizing: border-box; box-shadow: 0 18px 40px -12px rgba(16, 28, 25, 0.22), 0 3px 8px rgba(16, 28, 25, 0.06); } .ds-toast button { font: inherit; height: 30px; padding: 0 12px; border: 0; border-radius: 999px; background: none; color: var(--toast-action, #8fd6cb); font-weight: 600; font-size: 13px; cursor: pointer; } .ds-toast button:hover { background: rgba(127, 127, 127, 0.2); } .ds-toast button:focus-visible { outline: 2px solid var(--accent, #1b6e66); outline-offset: 2px; }"
     }
   ],
   "narrative": {
-    "northStar": "The Personal Departures Board",
-    "overview": "Syncrona sets a person's day the way a station sets its departures: every task, event and payment has a time, a line and a status, read top to bottom against a red NOW rule. The surface is white timetable paper printed in near-black ink, framed by a board-navy rail. Nothing floats in tiles; rows sit between hairline rules, section heads are ruled in ink, and the eye runs down a time column set in condensed figures.\n\nDensity is operational, not airy. Rows are 50px, the page runs to 1240px, and the first viewport carries the clock, a one-line add bar, the next-up timetable and the month's spend at once. Expression comes from one variable family, Archivo, pulled between two widths: condensed for anything you would read off a board (times, dates, money, page titles, day numbers) and normal width for prose and controls. Colour is reserved for meaning. Four line colours say what kind of item a row is; signal red says now, late, over or failed.\n\nThe world explicitly refuses the SaaS greeting-plus-stat-cards dashboard. The night theme is the same board on a navy ground: every role keeps its job, only the token values change.",
+    "northStar": "A Calm Home for One Day",
+    "overview": "Syncrona is a personal planner that reads like a quiet room rather than an office. A white page holds soft stone panels one step off white; inside the panels sit white row cards, each one a real thing you can tick, add or read. The page opens with a serif greeting and one sentence of fact about the day (\"1 task overdue, and Finish portfolio case study draft at 17:00\"), then four count tiles, then the Today panel with the day line, its signature. Every other screen (tasks, calendar, expenses, notes, settings) is built from the same panels and rows, so the product feels like one place.\n\nDepth is tonal, not cast. Three grounds (page, panel, card) do all the layering, and nothing at rest carries a shadow. Colour is nearly absent: a cool grey-green neutral family and one deep teal that marks every action, every selection and the day's own data. Red appears only when something is late or over the limit, or when something has gone wrong. Density is comfortable desktop-app density (14px body, 56px rows, 16px gutters) in the Linear, Things and Raycast register, with Instrument Sans throughout and Instrument Serif for a single line of greeting.\n\nThe world refuses the spreadsheet. Lists are stacks of separate row cards with 6px between them, never ruled tables; the calendar is a grid of separate cards, never a ruled month; numbers are tabular figures inside rows, never columns of cells.",
     "keyCharacteristics": [
-      "Timetable rows (time, line badge, item, status) between 1px hairlines, under a 1.5px ink column head.",
-      "A red NOW rule with a NOW HH:MM tag cuts any time-ordered list that spans the present.",
-      "One family, two widths: Archivo condensed (wdth 68) for figures, normal width for prose.",
-      "Line badges mark item type everywhere: T ink, E blue, ₹ green, N amber.",
-      "Board-navy frame (rail, mobile topbar, toasts, auth board) around white paper content.",
-      "Motion is functional only: a 900ms row settle, 120–140ms state changes, short popover and drawer transitions."
+      "White page, stone panels, white row cards: three grounds, no shadows at rest.",
+      "Deep teal is the only hue that acts or marks today's data; red only for late, over-limit and error.",
+      "Instrument Sans for everything; Instrument Serif for the greeting and auth titles alone.",
+      "Three radii: 22px panels, 12px row cards, full pills on controls.",
+      "Centred 1100px column on a 12-column, 16px-gap grid beside a 240px labelled sidebar.",
+      "The day line: 06:00 to midnight, teal event pills, task rings, a live now marker and the day's spend at its end.",
+      "Motion is press-scale and a quick settle; nothing performs an entrance."
     ],
     "rules": [
       {
-        "name": "The Signal Red Rule",
-        "body": "Red means now, late, over or failed, and nothing else: the NOW rule, the clock colon, overdue, at-or-over-threshold spend, errors and destructive actions. It is never a brand accent, a category or decoration.",
+        "name": "The One Teal Rule",
+        "body": "Teal is the only chromatic hue on the page. If it is teal, it can be pressed, it is selected, or it is today's data. Never use it as decoration, never introduce a second accent.",
         "section": "colors"
       },
       {
-        "name": "The Line Colour Rule",
-        "body": "Each item type owns one line colour and keeps it on every screen: badge, calendar dot, settle wash, strip bar. Line colours say what kind of thing a row is, never how it is doing.",
+        "name": "The Red Means Late Rule",
+        "body": "In data, red marks exactly two things: a task past its due day, and a payment at or over the user's threshold. Nothing else in the data is red; in chrome, red is reserved for errors and destructive actions.",
         "section": "colors"
       },
       {
-        "name": "The Frame Rule",
-        "body": "Board navy is the frame around the content (rail, topbar, toasts, auth board), never a fill inside it.",
+        "name": "The Three Grounds Rule",
+        "body": "Depth is the step from white page to stone panel to white card. A new surface takes one of those three grounds; it does not invent a fourth tint.",
         "section": "colors"
       },
       {
-        "name": "The Two Widths Rule",
-        "body": "If you would read it off a station board (a time, a date, a day number, a sum of money, a page title), set it condensed. Everything else stays normal width. No second typeface.",
+        "name": "The One Line of Serif Rule",
+        "body": "Instrument Serif sets the greeting on Today and the titles on login and sign-up, nothing else. No serif panel titles, no serif numbers.",
         "section": "typography"
       },
       {
-        "name": "The Tabular Rule",
-        "body": "Every number that changes or aligns in a column uses tabular figures: times, amounts, counts, dates, the clock.",
+        "name": "The Tabular Figures Rule",
+        "body": "Every time, amount, count and date is set with tabular numerals so columns of rows align without becoming a table.",
         "section": "typography"
       },
       {
-        "name": "The Rules-Not-Cards Rule",
-        "body": "Content sits between hairline rules, never inside cards. Only input surfaces get a container: the add bar well, the notes composer, the quick-note popover, and the error callout.",
+        "name": "The Centred Column Rule",
+        "body": "Content never runs edge to edge on desktop; it sits in the 1100px column, and every panel snaps to the 12-column grid.",
+        "section": "layout"
+      },
+      {
+        "name": "The Only Floating Things Lift Rule",
+        "body": "If it scrolls with the page, it has no shadow. A shadow means the thing is above the page and can be dismissed.",
         "section": "elevation"
       },
       {
-        "name": "The Float-Only Shadow Rule",
-        "body": "Pop shadow belongs to layers floating above the page (FAB, popover, toast, open drawer). Resting surfaces are flat; the segmented control's selected option is the single exception.",
-        "section": "elevation"
+        "name": "The Three Radii Rule",
+        "body": "Panel 22, card 12, control pill. A new component picks one by what it is, not by how big it is.",
+        "section": "shapes"
+      },
+      {
+        "name": "The Press and Settle Rule",
+        "body": "Motion answers the user's own action: a press scales, a check fills, a new row settles. Nothing performs an entrance on page load.",
+        "section": "components"
       }
     ],
     "dos": [
-      "**Do** set every dated list as a timetable: condensed tabular time, line badge, item, status at the right, 50px rows between 1px hairlines under a 1.5px ink head.",
-      "**Do** cut a time-ordered list that spans the present with the 2px red NOW rule and its NOW HH:MM tag.",
-      "**Do** rule every page head in 2px ink with the condensed title on the left and the live figure (clock, month, tools) on the right.",
-      "**Do** show money in rupees with tabular figures, condensed or semi-condensed, and turn it red only at or over the user's threshold.",
-      "**Do** keep capture one line away: the add bar on Today, Tasks and Expenses, the day-panel form on Calendar, and the quick-note FAB on every signed-in screen except Notes.",
-      "**Do** design empty (ruled prose with a next action), loading (50px skeleton rows) and error (red callout with retry) states for every list.",
-      "**Do** keep motion functional: 120–140ms state changes, 0.97 press scale, the 900ms row settle, and nothing else; collapse transforms under prefers-reduced-motion.",
-      "**Do** build the night theme by swapping tokens on the same roles; components never restyle per theme."
+      "**Do** build every new screen from the same three grounds: white page, stone panel (22px), white row cards (12px) inside it.",
+      "**Do** use teal for the one primary action per area, for selection, and for today's data; keep everything else neutral.",
+      "**Do** use red only for overdue tasks, payments at or over the threshold, errors and destructive actions.",
+      "**Do** show lists as row cards with a lead, a title, a sub line and an end slot, 6px apart, with actions revealed on hover.",
+      "**Do** set times, amounts, counts and dates in tabular figures, with amounts in rupees (₹).",
+      "**Do** keep controls as full pills (buttons 38px, segments 30px, time pills 24px).",
+      "**Do** gate hover styles behind `(hover: hover)`, give presses a 0.97 scale on the ease-out curve, and respect reduced motion.",
+      "**Do** design empty, loading (skeleton rows) and error (callout with Try again) states for every list."
     ],
     "donts": [
-      "**Don't** build a greeting-plus-stat-cards dashboard or KPI tiles; figures sit on paper under a section label.",
-      "**Don't** wrap content items in cards, shadows or tinted tiles; separate them with rules.",
-      "**Don't** use signal red for a category, a brand accent, a chart series or decoration.",
-      "**Don't** use a line colour for status, or a line badge for anything other than item type.",
-      "**Don't** add a second typeface or a monospace for numbers; Archivo's widths and tabular figures carry them.",
-      "**Don't** put board navy inside the content column.",
-      "**Don't** add decorative motion such as looping effects, parallax or staged entrances."
+      "**Don't** put a shadow on anything that scrolls with the page; only the Quick note button, its popover, toasts and the mobile sheet lift.",
+      "**Don't** use gradients anywhere.",
+      "**Don't** lay data out as a ruled table or spreadsheet grid; separate cards replace ruled rows and cells. Hairlines are kept for the sidebar edge, the user-row and settings separators, and the day line's three-hour ticks.",
+      "**Don't** introduce a second accent hue or use teal as decoration.",
+      "**Don't** use Instrument Serif outside the greeting and the auth titles.",
+      "**Don't** set large figures bold; tile figures and totals stay at weight 400.",
+      "**Don't** put payments on the day line's track; they have no time and live in the legend total and the rows."
     ]
   }
 }

@@ -9,35 +9,37 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400..700&family=Instrument+Serif&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/app.js" defer></script>
     <script src="js/calendar.js" defer></script>
 </head>
 <body data-page="calendar" data-auth="required">
     <div class="app">
-        <nav class="rail" id="rail" aria-label="Main"></nav>
+        <nav class="sidebar" id="rail" aria-label="Main"></nav>
         <main class="main" id="main">
             <div class="page">
                 <header class="page-head">
                     <div>
                         <h1 class="page-title" id="monthTitle" aria-live="polite">Calendar</h1>
-                        <div class="legend" style="margin-top:10px">
-                            <span><span class="cal-entry"><span class="dot"></span></span>Task</span>
-                            <span><span class="cal-entry k-event"><span class="dot"></span></span>Event</span>
-                            <span><b class="cal-spend" style="margin:0">₹</b>Spent that day</span>
-                            <span><b class="cal-spend over" style="margin:0">₹</b>Includes a payment at or over your threshold</span>
+                        <div class="cal-legend">
+                            <span><i></i>Task</span>
+                            <span><i class="ev"></i>Event</span>
+                            <span><b>₹</b>Spent that day</span>
+                            <span><b class="is-over">₹</b>Includes a payment at or over your limit</span>
                         </div>
                     </div>
-                    <div class="cal-nav">
-                        <button class="icon-btn" type="button" id="prevMonth" aria-label="Previous month"></button>
-                        <button class="btn btn-sm" type="button" id="thisMonth">Today</button>
-                        <button class="icon-btn" type="button" id="nextMonth" aria-label="Next month"></button>
+                    <div class="page-actions">
+                        <div class="cal-nav">
+                            <button class="icon-btn" type="button" id="prevMonth" aria-label="Previous month"></button>
+                            <button class="btn btn-sm btn-ghost" type="button" id="thisMonth">Today</button>
+                            <button class="icon-btn" type="button" id="nextMonth" aria-label="Next month"></button>
+                        </div>
                     </div>
                 </header>
 
-                <div class="cal-layout">
-                    <section aria-label="Month">
+                <div class="grid">
+                    <section class="panel span-8 md-12" aria-label="Month">
                         <div class="cal-head" aria-hidden="true">
                             <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
                         </div>
@@ -45,19 +47,19 @@
                         <div id="loadError"></div>
                         <div class="cal-foot">
                             <div>
-                                <div class="section-title" id="footLabel">Spent this month</div>
+                                <div class="lbl" id="footLabel">Spent this month</div>
                                 <div class="spend-total" id="monthTotal">₹0</div>
                             </div>
-                            <p class="section-meta" id="monthFacts"></p>
+                            <p id="monthFacts"></p>
                         </div>
                     </section>
 
-                    <aside class="day-panel" id="dayPanel" aria-labelledby="dayTitle">
-                        <h2 class="day-panel-title" id="dayTitle"></h2>
-                        <p class="day-panel-sub" id="daySub"></p>
-                        <ul class="day-list" id="dayList"></ul>
+                    <aside class="panel span-4 md-12" id="dayPanel" aria-labelledby="dayTitle">
+                        <h2 class="day-title" id="dayTitle"></h2>
+                        <p class="day-sub" id="daySub"></p>
+                        <ul class="day-list list" id="dayList"></ul>
 
-                        <form class="day-form" id="dayForm" novalidate>
+                        <form class="day-form add-form" id="dayForm" novalidate>
                             <fieldset class="seg">
                                 <legend class="sr-only">Add to this day</legend>
                                 <label><input type="radio" name="kind" value="task" checked><span>Task</span></label>
@@ -77,7 +79,7 @@
                                     <label class="sr-only" for="dfAmount">Amount in rupees</label>
                                     <input class="input" type="number" id="dfAmount" min="0" step="0.01" inputmode="decimal" placeholder="Amount">
                                 </div>
-                                <button class="btn btn-primary" type="submit" id="dfSubmit"></button>
+                                <button class="btn btn-primary" type="submit" id="dfSubmit" style="height:40px"></button>
                             </div>
                             <p class="form-error" id="dfError" role="alert"></p>
                         </form>

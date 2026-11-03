@@ -9,14 +9,14 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400..700&family=Instrument+Serif&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/app.js" defer></script>
     <script src="js/tasks.js" defer></script>
 </head>
 <body data-page="tasks" data-auth="required">
     <div class="app">
-        <nav class="rail" id="rail" aria-label="Main"></nav>
+        <nav class="sidebar" id="rail" aria-label="Main"></nav>
         <main class="main" id="main">
             <div class="page">
                 <header class="page-head">
@@ -24,18 +24,26 @@
                         <h1 class="page-title">Tasks</h1>
                         <p class="page-sub" id="taskSummary">&nbsp;</p>
                     </div>
+                    <div class="page-actions">
+                        <fieldset class="seg" id="filter">
+                            <legend class="sr-only">Show</legend>
+                            <label><input type="radio" name="filter" value="open" checked><span>Open <span class="count" data-count="open"></span></span></label>
+                            <label><input type="radio" name="filter" value="done"><span>Done <span class="count" data-count="done"></span></span></label>
+                            <label><input type="radio" name="filter" value="all"><span>All <span class="count" data-count="all"></span></span></label>
+                        </fieldset>
+                    </div>
                 </header>
 
-                <form class="addbar no-type" id="addTask" novalidate>
-                    <div class="field title-field">
+                <form class="composer-row" id="addTask" novalidate>
+                    <div class="grow">
                         <label class="sr-only" for="taskTitle">Task</label>
                         <input class="input" id="taskTitle" placeholder="What needs doing?" autocomplete="off" maxlength="200">
                     </div>
-                    <div class="field">
+                    <div class="w-date">
                         <label class="sr-only" for="taskDate">Due date (optional)</label>
                         <input class="input" type="date" id="taskDate" title="Due date (optional)">
                     </div>
-                    <div class="field">
+                    <div class="w-time">
                         <label class="sr-only" for="taskTime">Due time (optional)</label>
                         <input class="input" type="time" id="taskTime" title="Due time (optional)">
                     </div>
@@ -43,22 +51,15 @@
                     <p class="form-error" id="taskError" role="alert"></p>
                 </form>
 
-                <div class="toolbar">
-                    <fieldset class="seg" id="filter">
-                        <legend class="sr-only">Show</legend>
-                        <label><input type="radio" name="filter" value="open" checked><span>Open <span class="count" data-count="open"></span></span></label>
-                        <label><input type="radio" name="filter" value="done"><span>Done <span class="count" data-count="done"></span></span></label>
-                        <label><input type="radio" name="filter" value="all"><span>All <span class="count" data-count="all"></span></span></label>
-                    </fieldset>
-                </div>
-
-                <div id="list">
-                    <div class="skeleton-rows" aria-hidden="true">
-                        <div><i class="skeleton" style="width:64px"></i><i class="skeleton" style="width:48%"></i></div>
-                        <div><i class="skeleton" style="width:64px"></i><i class="skeleton" style="width:36%"></i></div>
-                        <div><i class="skeleton" style="width:64px"></i><i class="skeleton" style="width:55%"></i></div>
+                <section class="panel" style="margin-top:16px" aria-label="Task list">
+                    <div id="list">
+                        <div class="list" aria-hidden="true">
+                            <div class="skeleton-item"><i class="skeleton" style="width:48%"></i></div>
+                            <div class="skeleton-item"><i class="skeleton" style="width:36%"></i></div>
+                            <div class="skeleton-item"><i class="skeleton" style="width:55%"></i></div>
+                        </div>
                     </div>
-                </div>
+                </section>
             </div>
         </main>
     </div>

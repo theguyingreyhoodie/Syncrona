@@ -2,7 +2,7 @@
 (function () {
     "use strict";
     const { api, esc, when, sameDay, startOfDay, addDays, fmtTime, fmtDayLong, MO, MO_LONG, WD_LONG, money, threshold,
-        icon, LINES, toPayload, ymd, toastError, busy, undoable } = window.S;
+        icon, LEAD, checkBtn, navTasks, toPayload, ymd, toastError, busy, undoable } = window.S;
 
     const $ = (id) => document.getElementById(id);
     const today = startOfDay(new Date());
@@ -13,7 +13,6 @@
         fresh: null
     };
 
-    const MAX_ENTRIES = 3;
 
     function itemsOn(day) {
         const on = (v) => { const w = when(v); return w && sameDay(w.day, day) ? w : null; };
@@ -31,7 +30,7 @@
     function renderGrid() {
         const m = state.month;
         const y = m.getFullYear(), mo = m.getMonth();
-        $("monthTitle").innerHTML = esc(MO_LONG[mo]) + ' <span class="soft">' + y + "</span>";
+        $("monthTitle").textContent = MO_LONG[mo] + " " + y;
         document.title = MO_LONG[mo] + " " + y + " · Syncrona";
 
         const thr = threshold();
@@ -59,10 +58,6 @@
             payments += it.spend.length;
             overCount += it.spend.filter((x) => x.amount >= thr).length;
 
-            const entries = it.events.map((e) => ({ k: "event", title: e.title, done: false }))
-                .concat(it.tasks.map((t) => ({ k: "task", title: t.title, done: t.completed })));
-            const shown = entries.slice(0, MAX_ENTRIES);
-            const extra = entries.length - shown.length;
             const isToday = sameDay(d, today);
             const sel = sameDay(d, state.selected);
 
@@ -73,18 +68,19 @@
 
             html += '<button type="button" class="cal-day' + (isToday ? " today" : "") + (wk ? " weekend" : "") + '" data-day="' + ymd(d) + '" aria-pressed="' + sel + '" tabindex="' + (sameDay(d, tabDay) ? 0 : -1) + '" aria-label="' + esc(label || fmtDayLong(d)) + '">' +
                 '<span class="cal-num">' + d.getDate() + "</span>" +
-                '<span class="cal-entries">' + shown.map((e) =>
-                    '<span class="cal-entry k-' + e.k + (e.done ? " done" : "") + '"><span class="dot"></span><span class="t">' + esc(e.title) + "</span></span>").join("") +
-                (extra > 0 ? '<span class="cal-more">+' + extra + " more</span>" : "") + "</span>" +
+                '<span class="cal-dots" aria-hidden="true">' +
+                (it.events.length ? '<span class="cd"><i class="ev"></i><b>' + it.events.length + "</b></span>" : "") +
+                (it.tasks.length ? '<span class="cd' + (it.tasks.every((t) => t.completed) ? " done" : "") + '"><i></i><b>' + it.tasks.length + "</b></span>" : "") +
+                (spent ? '<span class="sp' + (over ? " over" : "") + '"></span>' : "") + "</span>" +
                 (spent ? '<span class="cal-spend' + (over ? " over" : "") + '">' + esc(money(spent)) + "</span>" : "") +
-                "</button>";
+"</button>";
         }
         $("grid").innerHTML = html;
         $("footLabel").textContent = "Spent in " + MO_LONG[mo];
         $("monthTotal").textContent = money(monthTotal);
         $("monthFacts").innerHTML = payments
             ? payments + " payment" + (payments > 1 ? "s" : "") + (overCount ? ' · <span class="is-over">' + overCount + " at or over " + esc(money(thr)) + "</span>" : "") +
-            ' · <a href="settings.html">Threshold ' + esc(money(thr)) + "</a>"
+            ' · <a href="settings.html">Limit ' + esc(money(thr)) + "</a>"
             : "No spending logged this month.";
     }
 
@@ -103,30 +99,43 @@
 
         const thr = threshold();
         const when2 = (r) => (r.w.at ? fmtTime(r.w.at) : "Any time");
-        const li = (cls, line, title, sub, right) =>
-            '<li class="day-item' + cls + '">' + line + '<span><span class="title">' + esc(title) + '</span><span class="sub">' + sub + '</span></span><span class="right">' + right + "</span></li>";
+        const li = (cls, lead, title, sub, end, actions, subCls) =>
+            '<li class="item' + cls + '">' + lead + '<span class="item-main"><span class="item-title">' + esc(title) + '</span><span class="item-sub' + (subCls || "") + '">' + sub + "</span></span>" +
+            (end ? '<span class="item-end">' + end + "</span>" : "") + '<span class="item-actions">' + actions + "</span></li>";
         const del = (kind, id, title) => '<button class="icon-btn danger" type="button" data-delete="' + kind + ":" + esc(id) + '" aria-label="' + esc("Delete " + title) + '">' + icon("trash") + "</button>";
 
-        let html = "";
-        it.events.forEach((e) => {
-            html += li(state.fresh === e._id ? " fresh" : "", LINES.event, e.title, esc(when2(e)), del("events", e._id, e.title));
+        // One timeline, in the same order as Today: timed items by time, then all-day events,
+        // then tasks with no time, then payments.
+        const rows = [
+            ...it.events.map((e) => ({ k: "event", r: e })),
+            ...it.tasks.map((t) => ({ k: "task", r: t }))
+        ].sort((a, b) => {
+            const ta = a.r.w.at ? a.r.w.at.getTime() : null, tb = b.r.w.at ? b.r.w.at.getTime() : null;
+            if (ta !== null && tb !== null) return ta - tb;
+            if (ta !== null) return -1;
+            if (tb !== null) return 1;
+            return a.k === b.k ? 0 : a.k === "event" ? -1 : 1;
         });
-        it.tasks.forEach((t) => {
-            html += li((t.completed ? " done" : "") + (state.fresh === t._id ? " fresh" : ""), LINES.task, t.title, esc(t.completed ? "Done" : when2(t)),
-                '<button class="mark" type="button" data-toggle="' + esc(t._id) + '" aria-pressed="' + !!t.completed + '" aria-label="' + esc((t.completed ? "Mark not done: " : "Mark done: ") + t.title) + '">' + icon("check") + "</button>" +
-                del("tasks", t._id, t.title));
+        let html = "";
+        rows.forEach(({ k, r }) => {
+            if (k === "event") {
+                html += li(state.fresh === r._id ? " fresh" : "", LEAD.event, r.title, "Event", '<span class="time-pill">' + esc(r.w.at ? fmtTime(r.w.at) : "All day") + "</span>", del("events", r._id, r.title));
+            } else {
+                html += li((r.completed ? " done" : "") + (state.fresh === r._id ? " fresh" : ""), checkBtn(r), r.title, r.completed ? "Done" : "Task",
+                    '<span class="time-pill">' + esc(when2(r)) + "</span>", del("tasks", r._id, r.title));
+            }
         });
         it.spend.forEach((x) => {
             const over = x.amount >= thr;
-            html += li(state.fresh === x._id ? " fresh" : "", LINES.spend, x.title,
-                '<span class="' + (over ? "is-over" : "") + '">' + esc(money(x.amount)) + (over ? " · at or over threshold" : "") + "</span>", del("expenses", x._id, x.title));
+            html += li(state.fresh === x._id ? " fresh" : "", LEAD.spend, x.title, over ? "At or over your " + esc(money(thr)) + " limit" : "Payment",
+                '<span class="amt' + (over ? " is-over" : "") + '">' + esc(money(x.amount)) + "</span>", del("expenses", x._id, x.title), over ? " is-over" : "");
         });
         $("dayList").innerHTML = html;
         $("dayList").hidden = !html;
         state.fresh = null;
     }
 
-    function renderAll() { renderGrid(); renderPanel(); }
+    function renderAll() { renderGrid(); renderPanel(); navTasks(state.tasks); }
 
     function select(d, focus) {
         if (d.getMonth() !== state.month.getMonth() || d.getFullYear() !== state.month.getFullYear()) {
@@ -227,7 +236,7 @@
                 else if (k === "event") { created = await api("/events", { method: "POST", body: { title, date: toPayload(date, $("dfTime").value) } }); state.events.push(created); }
                 else { created = await api("/expenses", { method: "POST", body: { title, amount, date } }); state.expenses.unshift(created); }
                 state.fresh = created._id;
-                $("dfTitle").value = ""; $("dfTime").value = ""; $("dfAmount").value = "";
+                $("dfTitle").value = ""; $("dfTime").value = ""; $("dfAmount").value = ""; S.syncEmpty();
                 renderAll();
                 $("dfTitle").focus();
             } catch (err) { $("dfError").textContent = err.message; }

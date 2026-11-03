@@ -4,88 +4,104 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Today · Syncrona</title>
-    <meta name="description" content="Your day as a timetable: tasks, events and spending in one place.">
+    <meta name="description" content="Your day in one place: tasks, events, notes and spending.">
     <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;if(!localStorage.getItem("token"))location.replace("login.html")}catch(e){}</script>
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400..700&family=Instrument+Serif&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/app.js" defer></script>
     <script src="js/dashboard.js" defer></script>
 </head>
 <body data-page="today" data-auth="required">
     <div class="app">
-        <nav class="rail" id="rail" aria-label="Main"></nav>
+        <nav class="sidebar" id="rail" aria-label="Main"></nav>
         <main class="main" id="main">
             <div class="page">
-                <header class="page-head">
-                    <div>
-                        <h1 class="page-title" id="todayTitle">Today</h1>
-                        <p class="page-sub" id="greeting">&nbsp;</p>
-                    </div>
-                    <p class="clock" id="clock" aria-label="Current time"></p>
+                <header class="greet">
+                    <h1 id="greeting">Hello.</h1>
+                    <p id="dateLine">&nbsp;</p>
                 </header>
 
-                <form class="addbar" id="addbar" novalidate>
-                    <fieldset class="seg">
-                        <legend class="sr-only">What are you adding?</legend>
-                        <label><input type="radio" name="kind" value="task" checked><span>Task</span></label>
-                        <label><input type="radio" name="kind" value="event"><span>Event</span></label>
-                        <label><input type="radio" name="kind" value="spend"><span>Expense</span></label>
-                    </fieldset>
-                    <div class="field title-field">
-                        <label class="sr-only" for="qaTitle">Title</label>
-                        <input class="input" id="qaTitle" placeholder="Add a task…" autocomplete="off" maxlength="200">
-                    </div>
-                    <div class="field">
-                        <label class="sr-only" for="qaDate">Date</label>
-                        <input class="input" type="date" id="qaDate">
-                    </div>
-                    <div class="field" id="qaTimeField">
-                        <label class="sr-only" for="qaTime">Time (optional)</label>
-                        <input class="input" type="time" id="qaTime" title="Time (optional)">
-                    </div>
-                    <div class="field money-input" id="qaAmountField" hidden>
-                        <label class="sr-only" for="qaAmount">Amount in rupees</label>
-                        <input class="input" type="number" id="qaAmount" min="0" step="0.01" inputmode="decimal" placeholder="Amount">
-                    </div>
-                    <button class="btn btn-primary" type="submit" id="qaSubmit"></button>
-                    <p class="form-error" id="qaError" role="alert"></p>
-                </form>
+                <div class="grid" id="tiles" aria-label="Today at a glance">
+                    <a class="tile span-3" href="tasks.html"><span class="tile-label">Due today</span><span class="tile-value" data-tile="due">–</span><span class="tile-cap" data-cap="due">&nbsp;</span></a>
+                    <a class="tile span-3" href="calendar.html"><span class="tile-label">Events today</span><span class="tile-value" data-tile="events">–</span><span class="tile-cap" data-cap="events">&nbsp;</span></a>
+                    <a class="tile span-3" href="expenses.html"><span class="tile-label" data-label="spent">Spent this month</span><span class="tile-value" data-tile="spent">–</span><span class="tile-cap" data-cap="spent">&nbsp;</span></a>
+                    <a class="tile span-3" href="notes.html"><span class="tile-label">Notes</span><span class="tile-value" data-tile="notes">–</span><span class="tile-cap" data-cap="notes">&nbsp;</span></a>
+                </div>
 
-                <div class="today-grid">
-                    <section aria-labelledby="nextHead">
-                        <div class="section-head">
-                            <h2 class="section-title" id="nextHead">Next up</h2>
-                            <span class="section-meta" id="nextMeta"></span>
+                <div class="grid">
+                    <section class="panel span-9 md-12" aria-labelledby="todayHead">
+                        <div class="panel-head">
+                            <h2 class="panel-title" id="todayHead">Today</h2>
+                            <span class="panel-meta" id="todayMeta"></span>
                         </div>
+                        <div id="dayline" class="dayline"></div>
                         <div id="board">
-                            <div class="skeleton-rows" aria-hidden="true">
-                                <div><i class="skeleton" style="width:56px"></i><i class="skeleton" style="width:26px"></i><i class="skeleton" style="width:46%"></i></div>
-                                <div><i class="skeleton" style="width:56px"></i><i class="skeleton" style="width:26px"></i><i class="skeleton" style="width:58%"></i></div>
-                                <div><i class="skeleton" style="width:56px"></i><i class="skeleton" style="width:26px"></i><i class="skeleton" style="width:38%"></i></div>
-                                <div><i class="skeleton" style="width:56px"></i><i class="skeleton" style="width:26px"></i><i class="skeleton" style="width:52%"></i></div>
+                            <div class="list" aria-hidden="true">
+                                <div class="skeleton-item"><i class="skeleton" style="width:42%"></i></div>
+                                <div class="skeleton-item"><i class="skeleton" style="width:58%"></i></div>
+                                <div class="skeleton-item"><i class="skeleton" style="width:36%"></i></div>
                             </div>
                         </div>
                     </section>
 
-                    <aside class="aside">
-                        <section aria-labelledby="spendHead">
-                            <div class="section-head">
-                                <h2 class="section-title" id="spendHead">This month</h2>
-                                <span class="section-meta"><a href="expenses.html">Expenses</a></span>
-                            </div>
-                            <div id="spend"><i class="skeleton" style="width:60%;height:40px"></i></div>
+                    <div class="stack span-3 md-12 md-split">
+                        <section class="panel" aria-labelledby="addHead">
+                            <div class="panel-head"><h2 class="panel-title" id="addHead">Add</h2></div>
+                            <form class="add-form" id="addbar" novalidate>
+                                <fieldset class="seg">
+                                    <legend class="sr-only">What are you adding?</legend>
+                                    <label><input type="radio" name="kind" value="task" checked><span>Task</span></label>
+                                    <label><input type="radio" name="kind" value="event"><span>Event</span></label>
+                                    <label><input type="radio" name="kind" value="spend"><span>Expense</span></label>
+                                </fieldset>
+                                <div class="field">
+                                    <label class="sr-only" for="qaTitle">Title</label>
+                                    <input class="input" id="qaTitle" placeholder="Add a task" autocomplete="off" maxlength="200">
+                                </div>
+                                <div class="field">
+                                    <label class="sr-only" for="qaDate">Date</label>
+                                    <input class="input" type="date" id="qaDate">
+                                </div>
+                                <div class="field" id="qaTimeField">
+                                    <label class="sr-only" for="qaTime">Time (optional)</label>
+                                    <input class="input" type="time" id="qaTime" title="Time (optional)">
+                                </div>
+                                <div class="field money-input" id="qaAmountField" hidden>
+                                    <label class="sr-only" for="qaAmount">Amount in rupees</label>
+                                    <input class="input" type="number" id="qaAmount" min="0" step="0.01" inputmode="decimal" placeholder="Amount">
+                                </div>
+                                <p class="form-error" id="qaError" role="alert"></p>
+                                <button class="btn btn-primary btn-block" type="submit" id="qaSubmit"></button>
+                            </form>
                         </section>
-                        <section aria-labelledby="notesHead">
-                            <div class="section-head">
-                                <h2 class="section-title" id="notesHead">Notes</h2>
-                                <span class="section-meta"><a href="notes.html">All notes</a></span>
+                        <section class="panel grow" aria-labelledby="notesHead">
+                            <div class="panel-head">
+                                <h2 class="panel-title" id="notesHead">Notes</h2>
+                                <a class="panel-link" href="notes.html">All notes</a>
                             </div>
-                            <div id="notes"></div>
+                            <div id="notes" class="list"></div>
                         </section>
-                    </aside>
+                    </div>
+                </div>
+
+                <div class="grid">
+                    <section class="panel span-6" aria-labelledby="weekHead">
+                        <div class="panel-head">
+                            <h2 class="panel-title" id="weekHead">Next 7 days</h2>
+                            <a class="panel-link" href="calendar.html">Calendar</a>
+                        </div>
+                        <div id="week"></div>
+                    </section>
+                    <section class="panel span-6" aria-labelledby="spendHead">
+                        <div class="panel-head">
+                            <h2 class="panel-title" id="spendHead">Spending</h2>
+                            <a class="panel-link" href="expenses.html">Expenses</a>
+                        </div>
+                        <div id="spend"></div>
+                    </section>
                 </div>
             </div>
         </main>

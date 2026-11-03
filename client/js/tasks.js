@@ -1,8 +1,8 @@
-/* Tasks: grouped timetable of everything due. */
+/* Tasks: everything to do, grouped by when it is due. */
 (function () {
     "use strict";
-    const { api, esc, when, sameDay, startOfDay, addDays, daysBetween, fmtTime, MO, WD, relDay, relTime, timeAgo,
-        icon, toPayload, toastError, busy, undoable, everyMinute } = window.S;
+    const { api, esc, when, sameDay, startOfDay, daysBetween, fmtTime, MO, WD, relDay, relTime, timeAgo,
+        icon, checkBtn, navTasks, toPayload, toastError, busy, undoable, everyMinute } = window.S;
 
     const state = { tasks: [], loaded: false, error: null, fresh: null };
     const $ = (id) => document.getElementById(id);
@@ -25,35 +25,35 @@
         ["later", "Later"], ["nodate", "No date"], ["done", "Done"]
     ];
 
-    function dueCell(t, group) {
+    function duePill(t, group, late) {
         const w = when(t.dueDate);
-        if (!w) return '<span style="color:var(--ink-3)">—</span>';
-        const time = w.at ? "<small>" + fmtTime(w.at) + "</small>" : "";
-        if (group === "today") return w.at ? fmtTime(w.at) : '<small style="margin:0">Today</small>';
-        if (group === "tomorrow" || group === "week") return esc(WD[w.day.getDay()]) + time;
-        return esc(w.day.getDate() + " " + MO[w.day.getMonth()]) + time;
+        if (!w) return "";
+        let label;
+        if (group === "today" || (group === "done" && sameDay(w.day, new Date()))) label = w.at ? fmtTime(w.at) : "Today";
+        else if (group === "tomorrow") label = "Tomorrow" + (w.at ? " " + fmtTime(w.at) : "");
+        else if (group === "week") label = WD[w.day.getDay()] + (w.at ? " " + fmtTime(w.at) : "");
+        else label = w.day.getDate() + " " + MO[w.day.getMonth()] + (w.at ? " " + fmtTime(w.at) : "");
+        return '<span class="time-pill' + (late ? " is-overdue" : "") + '">' + esc(label) + "</span>";
     }
 
     function statusLabel(t, group, now) {
-        if (group === "done") return "done " + timeAgo(t.updatedAt || t.createdAt);
-        if (group === "nodate") return "open";
+        if (group === "done") return "Done " + timeAgo(t.updatedAt || t.createdAt);
+        if (group === "nodate") return "No date";
         const w = when(t.dueDate);
-        if (group === "overdue") return "overdue · " + relDay(w.day, now);
-        if (w.at && group === "today") return w.at < now ? "due " + relTime(w.at, now) : S.relSoon(w.at, now);
-        return group === "today" ? "due today" : relDay(w.day, now);
+        if (group === "overdue") return "Overdue · due " + relDay(w.day, now);
+        if (w.at && group === "today") return w.at < now ? "Was due " + relTime(w.at, now) : "Due " + S.relSoon(w.at, now);
+        return group === "today" ? "Due today" : "Due " + relDay(w.day, now);
     }
 
     function row(t, group, now) {
-        const late = group === "overdue" || (group === "today" && when(t.dueDate).at && when(t.dueDate).at < now);
-        const label = statusLabel(t, group, now);
-        return '<tr class="k-task' + (t.completed ? " done" : "") + (state.fresh === t._id ? " fresh" : "") + '">' +
-            '<td class="tt-time">' + dueCell(t, group) + "</td>" +
-            '<td class="tt-item"><span class="title">' + esc(t.title) + '</span><span class="sub show-sm' + (late ? " is-overdue" : "") + '">' + esc(label) + "</span></td>" +
-            '<td class="tt-status"><span class="tt-status-inner"><span class="hide-sm ' + (late ? "is-overdue" : "") + '">' + esc(label) + "</span>" +
-            '<button class="mark' + (late ? " overdue" : "") + '" type="button" data-toggle="' + esc(t._id) + '" aria-pressed="' + !!t.completed + '" aria-label="' +
-            esc((t.completed ? "Mark not done: " : "Mark done: ") + t.title) + '">' + icon("check") + "</button></span></td>" +
-            '<td class="tt-act"><span class="row-actions"><button class="icon-btn danger" type="button" data-delete="' + esc(t._id) + '" aria-label="' +
-            esc("Delete task: " + t.title) + '">' + icon("trash") + "</button></span></td></tr>";
+        const w = when(t.dueDate);
+        const late = !t.completed && (group === "overdue" || (group === "today" && w && w.at && w.at < now));
+        return '<li class="item' + (t.completed ? " done" : "") + (state.fresh === t._id ? " fresh" : "") + '">' +
+            checkBtn(t, late) +
+            '<span class="item-main"><span class="item-title">' + esc(t.title) + '</span><span class="item-sub' + (late ? " is-overdue" : "") + '">' + esc(statusLabel(t, group, now)) + "</span></span>" +
+            '<span class="item-end">' + duePill(t, group, late) + "</span>" +
+            '<span class="item-actions"><button class="icon-btn danger" type="button" data-delete="' + esc(t._id) + '" aria-label="' +
+            esc("Delete task: " + t.title) + '">' + icon("trash") + "</button></span></li>";
     }
 
     function render() {
@@ -63,6 +63,7 @@
             list.innerHTML = '<div class="callout">' + icon("alert") + "<div><strong>Tasks couldn't load.</strong>" + esc(state.error) + "</div></div>";
             return;
         }
+        navTasks(state.tasks);
         const now = new Date();
         const today = startOfDay(now);
         const open = state.tasks.filter((t) => !t.completed);
@@ -95,14 +96,14 @@
             else buckets[g].sort((a, b) => sortKey(a) - sortKey(b));
         });
 
-        let html = '<table class="timetable"><thead><tr><th scope="col">Due</th><th scope="col">Task</th><th scope="col" style="text-align:right">Status</th><th scope="col"><span class="sr-only">Actions</span></th></tr></thead><tbody>';
+        let html = "";
         GROUPS.forEach(([g, label]) => {
             const items = buckets[g];
             if (!items) return;
-            html += '<tr class="group' + (g === "overdue" ? " overdue" : "") + '"><td colspan="4">' + label + '<span class="count">' + items.length + "</span></td></tr>";
-            html += items.map((t) => row(t, g, now)).join("");
+            html += '<h2 class="group-head' + (g === "overdue" ? " is-overdue" : "") + '">' + label + ' <span class="chip' + (g === "overdue" ? " is-overdue" : "") + '">' + items.length + "</span></h2>";
+            html += '<ul class="list">' + items.map((t) => row(t, g, now)).join("") + "</ul>";
         });
-        list.innerHTML = html + "</tbody></table>";
+        list.innerHTML = html;
         state.fresh = null;
     }
 
@@ -163,6 +164,7 @@
                 state.fresh = created._id;
                 $("taskTitle").value = "";
                 $("taskTime").value = "";
+                S.syncEmpty();
                 if (filter() === "done") document.querySelector("input[name=filter][value=open]").checked = true;
                 render();
                 $("taskTitle").focus();

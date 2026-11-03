@@ -18,7 +18,7 @@
         const el = $("notes");
         if (!state.loaded) return;
         if (state.error) {
-            el.innerHTML = '<div class="callout" style="column-span:all">' + icon("alert") + "<div><strong>Notes couldn't load.</strong>" + esc(state.error) + "</div></div>";
+            el.innerHTML = '<div class="callout">' + icon("alert") + "<div><strong>Notes couldn't load.</strong>" + esc(state.error) + "</div></div>";
             return;
         }
         const n = state.notes.length;
@@ -27,7 +27,7 @@
         const q = $("search").value.trim();
         const shown = q ? state.notes.filter((x) => x.content.toLowerCase().includes(q.toLowerCase())) : state.notes;
         if (!shown.length) {
-            el.innerHTML = '<div class="empty" style="column-span:all">' + (q
+            el.innerHTML = '<div class="empty">' + (q
                 ? "<strong>No notes mention “" + esc(q) + "”.</strong>Try a shorter word, or clear the search."
                 : "<strong>No notes yet.</strong>Write one above. You can also use Quick note from any other screen.") + "</div>";
             return;
@@ -44,7 +44,7 @@
             return '<article class="note' + (state.fresh === x._id ? " fresh" : "") + '" data-id="' + esc(x._id) + '">' +
                 '<div class="note-body">' + highlight(x.content, q) + "</div>" +
                 '<div class="note-foot"><span title="' + esc(fmtDate(new Date(x.createdAt))) + '">' + esc(timeAgo(x.createdAt)) + (edited ? " · edited" : "") + "</span>" +
-                '<span class="row-actions">' +
+                '<span class="item-actions">' +
                 '<button class="icon-btn" type="button" data-edit aria-label="Edit note">' + icon("pencil") + "</button>" +
                 '<button class="icon-btn danger" type="button" data-delete aria-label="Delete note">' + icon("trash") + "</button></span></div></article>";
         }).join("");

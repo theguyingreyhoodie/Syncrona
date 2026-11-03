@@ -125,7 +125,7 @@
         return mins > 0 ? "in " + span : span + " ago";
     }
 
-    /* Relative time for a timetable: minutes and hours only when soon. */
+    /* Relative time for nearby items: minutes and hours only when soon. */
     function relSoon(at, now = new Date()) {
         const mins = (at - now) / 60000;
         if (Math.abs(mins) < 360) return relTime(at, now);
@@ -175,22 +175,29 @@
         pencil: '<path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5Z"/>',
         check: '<path d="M20 6 9 17l-5-5"/>',
         alert: '<circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/>',
-        pen: '<path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.38 2.62a1 1 0 0 1 3 3l-9.01 9.02a2 2 0 0 1-.86.5l-2.87.84a.5.5 0 0 1-.62-.62l.84-2.87a2 2 0 0 1 .5-.86Z"/>'
+        pen: '<path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.38 2.62a1 1 0 0 1 3 3l-9.01 9.02a2 2 0 0 1-.86.5l-2.87.84a.5.5 0 0 1-.62-.62l.84-2.87a2 2 0 0 1 .5-.86Z"/>',
+        event: '<rect x="3" y="4" width="18" height="17" rx="3"/><path d="M8 2.5v3M16 2.5v3M3 9.5h18"/><circle cx="12" cy="15" r="1.6" fill="currentColor" stroke="none"/>',
+        rupee: '<path d="M6 3h12M6 8h12M6 13l8.5 8M6 13h3M9 13c6.667 0 6.667-10 0-10"/>'
     };
     function icon(name, extra) {
         return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="' + (name === "check" ? 3 : 1.75) +
             '" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"' + (extra ? " " + extra : "") + ">" + P[name] + "</svg>";
     }
-    const MARK = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="2.5"/>' +
-        '<path d="M12 12V6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M12 12l4.5 3" stroke="#ff4a3d" stroke-width="2.5" stroke-linecap="round"/></svg>';
+    // The mark: two arcs chasing round one day, drawn in the accent.
+    const MARK = '<svg viewBox="0 0 26 26" fill="none" aria-hidden="true">' +
+        '<path d="M4.6 15.2A8.6 8.6 0 0 1 19.4 7.4" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>' +
+        '<path d="M21.4 10.8A8.6 8.6 0 0 1 6.6 18.6" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" opacity=".55"/>' +
+        '<circle cx="19.4" cy="7.4" r="2.3" fill="currentColor"/></svg>';
 
-    /* ---------- Line badges ---------- */
-    const LINES = {
-        task: '<span class="line" title="Task"><span aria-hidden="true">T</span><span class="sr-only">Task</span></span>',
-        event: '<span class="line line-event" title="Event"><span aria-hidden="true">E</span><span class="sr-only">Event</span></span>',
-        spend: '<span class="line line-spend" title="Expense"><span aria-hidden="true">₹</span><span class="sr-only">Expense</span></span>',
-        note: '<span class="line line-note" title="Note"><span aria-hidden="true">N</span><span class="sr-only">Note</span></span>'
+    /* ---------- Kind marks (the leading glyph on a row) ---------- */
+    const LEAD = {
+        event: '<span class="item-lead k-event" title="Event">' + icon("event") + '<span class="sr-only">Event: </span></span>',
+        spend: '<span class="item-lead k-spend" title="Payment">' + icon("rupee") + '<span class="sr-only">Payment: </span></span>'
     };
+    function checkBtn(t, overdue) {
+        return '<button class="check' + (overdue ? " is-overdue" : "") + '" type="button" data-toggle="' + esc(t._id || t.id) + '" aria-pressed="' + !!(t.completed || t.done) +
+            '" aria-label="' + esc(((t.completed || t.done) ? "Mark not done: " : "Mark done: ") + t.title) + '">' + icon("check") + "</button>";
+    }
 
     /* ---------- Theme ---------- */
     function effectiveTheme() {
@@ -235,44 +242,71 @@
         const rail = document.getElementById("rail");
         if (!rail) return;
         const u = user();
+        const first = u && u.name ? u.name.trim().split(/\s+/)[0] : "";
         rail.innerHTML =
             '<a class="brand" href="dashboard.html">' + MARK + "Syncrona</a>" +
+            '<p class="scope">' + (first ? esc(first) + "’s planner" : "Personal planner") + "</p>" +
             '<ul class="nav">' + NAV.map(([id, label, href]) =>
-                '<li><a href="' + href + '"' + (id === page ? ' aria-current="page"' : "") + ">" + icon(id) + label + "</a></li>").join("") +
+                '<li><a href="' + href + '"' + (id === page ? ' aria-current="page"' : "") + ">" + icon(id) + "<span>" + label + "</span>" +
+                (id === "tasks" ? '<span class="count" data-nav-count hidden></span>' : "") + "</a></li>").join("") +
             "</ul>" +
-            '<div class="rail-foot">' +
-            (u && u.name ? '<div class="rail-user"><strong>' + esc(u.name) + "</strong>" + esc(u.email || "") + "</div>" : "") +
-            '<button class="rail-btn" type="button" data-theme-toggle><span class="ti"></span><span class="tl">Dark theme</span></button>' +
-            '<button class="rail-btn" type="button" data-signout>' + icon("logout") + "Sign out</button>" +
-            "</div>";
+            '<div class="side-foot">' +
+            '<button class="side-btn" type="button" data-theme-toggle><span class="ti"></span><span class="tl">Dark theme</span></button>' +
+            '<div class="user-row">' +
+            '<span class="avatar" aria-hidden="true">' + esc((first || "S").charAt(0).toUpperCase()) + "</span>" +
+            '<span class="who"><strong>' + esc(u && u.name ? u.name : "Signed in") + "</strong><span>" + esc((u && u.email) || "") + "</span></span>" +
+            '<button class="icon-btn" type="button" data-signout aria-label="Sign out" title="Sign out">' + icon("logout") + "</button>" +
+            "</div></div>";
 
+        const current = NAV.find(([id]) => id === page);
         const top = document.createElement("header");
         top.className = "topbar";
         top.innerHTML =
-            '<button class="icon-btn" type="button" data-rail-open aria-label="Open navigation" aria-expanded="false" aria-controls="rail">' + icon("menu") + "</button>" +
-            '<a class="brand" href="dashboard.html">' + MARK + "Syncrona</a>" +
+            '<button class="icon-btn" type="button" data-nav-open aria-label="Open navigation" aria-expanded="false" aria-controls="rail">' + icon("menu") + "</button>" +
+            '<span class="topbar-title">' + esc(current ? current[1] : "Syncrona") + "</span>" +
             '<button class="icon-btn" type="button" data-theme-toggle><span class="ti"></span></button>';
         document.body.prepend(top);
 
         const scrim = document.createElement("div");
-        scrim.className = "rail-scrim";
+        scrim.className = "nav-scrim";
         document.body.appendChild(scrim);
 
-        const openBtn = top.querySelector("[data-rail-open]");
+        const openBtn = top.querySelector("[data-nav-open]");
         const setOpen = (open) => {
-            document.body.classList.toggle("rail-open", open);
+            document.body.classList.toggle("nav-open", open);
             openBtn.setAttribute("aria-expanded", String(open));
-            if (open) rail.querySelector("a")?.focus();
+            if (open) setTimeout(() => rail.querySelector('[aria-current="page"]')?.focus(), 60);
         };
         openBtn.addEventListener("click", () => setOpen(true));
         scrim.addEventListener("click", () => setOpen(false));
         document.addEventListener("keydown", (e) => {
-            if (e.key === "Escape" && document.body.classList.contains("rail-open")) { setOpen(false); openBtn.focus(); }
+            if (e.key === "Escape" && document.body.classList.contains("nav-open")) { setOpen(false); openBtn.focus(); }
         });
 
         document.querySelectorAll("[data-theme-toggle]").forEach((b) => b.addEventListener("click", toggleTheme));
         rail.querySelector("[data-signout]").addEventListener("click", () => signOut());
         updateThemeButtons();
+    }
+
+    /* Sidebar count: open tasks due today or overdue — a queue that needs action. */
+    function navTasks(tasks) {
+        const el = document.querySelector("[data-nav-count]");
+        if (!el || !Array.isArray(tasks)) return;
+        const today = startOfDay(new Date());
+        let due = 0, late = 0;
+        tasks.forEach((t) => {
+            if (t.completed) return;
+            const w = when(t.dueDate);
+            if (!w || w.day > today) return;
+            due++;
+            if (w.day < today) late++;
+        });
+        el.hidden = !due;
+        el.textContent = due;
+        el.classList.toggle("is-overdue", late > 0);
+        el.title = late ? late + " overdue, " + (due - late) + " due today" : due + " due today";
+        const label = el.parentElement.querySelector(".sr-only") || el.parentElement.appendChild(Object.assign(document.createElement("span"), { className: "sr-only" }));
+        label.textContent = due ? " (" + el.title + ")" : "";
     }
 
     /* ---------- Toasts ---------- */
@@ -286,7 +320,7 @@
             document.body.appendChild(toastHost);
         }
         const el = document.createElement("div");
-        el.className = "toast entering" + (opts.error ? " error" : "");
+        el.className = "toast entering" + (opts.error ? " error" : "") + (opts.action ? "" : " plain");
         el.innerHTML = "<span>" + esc(message) + "</span>" + (opts.action ? '<button type="button">' + esc(opts.action) + "</button>" : "");
         toastHost.appendChild(el);
         requestAnimationFrame(() => requestAnimationFrame(() => el.classList.remove("entering")));
@@ -425,6 +459,16 @@
         });
     }
 
+    /* ---------- Empty date/time fields read as hints, not values ---------- */
+    function syncEmpty(root) {
+        (root || document).querySelectorAll('input[type="date"], input[type="time"]').forEach((i) => i.classList.toggle("is-empty", !i.value));
+    }
+    ["input", "change"].forEach((t) => document.addEventListener(t, (e) => {
+        if (e.target.matches && e.target.matches('input[type="date"], input[type="time"]')) syncEmpty(e.target.parentElement);
+    }, true));
+    document.addEventListener("submit", () => setTimeout(syncEmpty, 1500), true);
+    addEventListener("DOMContentLoaded", () => syncEmpty());
+
     /* ---------- Boot ---------- */
     const page = document.body.dataset.page;
     const signedIn = document.body.dataset.auth === "required";
@@ -432,14 +476,16 @@
     if (signedIn) {
         renderShell(page);
         if (page !== "notes") renderQuickNote();
+        // Pages that load tasks themselves keep the count fresh via S.navTasks.
+        if (!["today", "tasks", "calendar"].includes(page)) api("/tasks").then(navTasks).catch(() => {});
     }
 
     window.S = {
         API_BASE, store, esc, api, token, user, signOut,
         pad, ymd, parseYmd, startOfDay, addDays, sameDay, daysBetween, when, toPayload,
         fmtTime, fmtDay, fmtDayLong, fmtDate, relDay, relTime, relSoon, timeAgo, WD, WD_LONG, MO, MO_LONG,
-        money, threshold, icon, LINES, MARK,
-        effectiveTheme, setTheme, toggleTheme,
+        money, threshold, icon, LEAD, checkBtn, MARK, navTasks,
+        effectiveTheme, setTheme, toggleTheme, syncEmpty,
         toast, toastError, undoable, busy, everyMinute
     };
 })();
