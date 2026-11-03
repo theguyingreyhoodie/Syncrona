@@ -1,6 +1,6 @@
 /* Syncrona — a calm personal home for one day.
    Cream panels on a warm page under a navy sidebar, near-white row cards
-   inside them, deep wine as the only hue on actions, selection and the
+   inside them, forest green as the only hue on actions, selection and the
    day's data. Burnt orange is reserved for overdue and over-limit. Instrument Sans throughout; Instrument
    Serif for the greeting alone. No shadows at rest: only floating things
    (popover, toast, sheet, button) lift. */
@@ -17,16 +17,16 @@
     --ink: #1b2a3d;
     --ink-2: #4a5668;
     --ink-3: #535d6b;
-    --accent: #5c1f2e;
-    --accent-hover: #461723;
+    --accent: #2f5a46;
+    --accent-hover: #234536;
     --accent-ink: #fbf6ea;
-    --accent-soft: #f0dcd5;
-    --accent-line: #d6aeaa;
+    --accent-soft: #dbe4d3;
+    --accent-line: #a9bfa8;
     --red: #b4400f;
     --red-soft: #f8e0cf;
     --toast: #1b2a3d;
     --toast-ink: #f7f2e6;
-    --toast-action: #f0b9c3;
+    --toast-action: #a8d4b9;
     --scrim: rgba(17, 26, 38, 0.4);
     --float: 0 18px 40px -12px rgba(27, 42, 61, 0.28), 0 3px 8px rgba(27, 42, 61, 0.08);
     --side-bg: #1b2a3d;
@@ -63,16 +63,16 @@
     --ink: #ede3c8;
     --ink-2: #c2b9a0;
     --ink-3: #a9a18b;
-    --accent: #e09aaa;
-    --accent-hover: #ebb3bf;
-    --accent-ink: #2a0d15;
-    --accent-soft: rgba(224, 154, 170, 0.16);
-    --accent-line: rgba(224, 154, 170, 0.45);
+    --accent: #8cc5a4;
+    --accent-hover: #a6d4b9;
+    --accent-ink: #0f2219;
+    --accent-soft: rgba(140, 197, 164, 0.16);
+    --accent-line: rgba(140, 197, 164, 0.45);
     --red: #ff9a6b;
     --red-soft: rgba(255, 154, 107, 0.14);
     --toast: #ede3c8;
     --toast-ink: #1b2a3d;
-    --toast-action: #5c1f2e;
+    --toast-action: #2f5a46;
     --scrim: rgba(0, 0, 0, 0.55);
     --float: 0 18px 44px -12px rgba(0, 0, 0, 0.6), 0 3px 8px rgba(0, 0, 0, 0.3);
     --side-bg: #0c141f;
@@ -81,7 +81,7 @@
     --side-hover: rgba(237, 227, 200, 0.07);
     --side-active: rgba(237, 227, 200, 0.12);
     --side-line: rgba(237, 227, 200, 0.1);
-    --side-mark: #e09aaa;
+    --side-mark: #8cc5a4;
     }
 }
 :root[data-theme="dark"] {
@@ -95,16 +95,16 @@
     --ink: #ede3c8;
     --ink-2: #c2b9a0;
     --ink-3: #a9a18b;
-    --accent: #e09aaa;
-    --accent-hover: #ebb3bf;
-    --accent-ink: #2a0d15;
-    --accent-soft: rgba(224, 154, 170, 0.16);
-    --accent-line: rgba(224, 154, 170, 0.45);
+    --accent: #8cc5a4;
+    --accent-hover: #a6d4b9;
+    --accent-ink: #0f2219;
+    --accent-soft: rgba(140, 197, 164, 0.16);
+    --accent-line: rgba(140, 197, 164, 0.45);
     --red: #ff9a6b;
     --red-soft: rgba(255, 154, 107, 0.14);
     --toast: #ede3c8;
     --toast-ink: #1b2a3d;
-    --toast-action: #5c1f2e;
+    --toast-action: #2f5a46;
     --scrim: rgba(0, 0, 0, 0.55);
     --float: 0 18px 44px -12px rgba(0, 0, 0, 0.6), 0 3px 8px rgba(0, 0, 0, 0.3);
     --side-bg: #0c141f;
@@ -113,7 +113,7 @@
     --side-hover: rgba(237, 227, 200, 0.07);
     --side-active: rgba(237, 227, 200, 0.12);
     --side-line: rgba(237, 227, 200, 0.1);
-    --side-mark: #e09aaa;
+    --side-mark: #8cc5a4;
 }
 
 /* ---------- Base ---------- */
