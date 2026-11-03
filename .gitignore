@@ -5,3 +5,5 @@ server/.env
 *.log
 # design review screenshots (local only)
 .impeccable/review/
+.impeccable/mocks/
+.impeccable/questions/
