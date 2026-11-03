@@ -1,0 +1,445 @@
+/* Syncrona — shared runtime: API, auth, dates, money, theme, shell,
+   quick note, toasts. Loaded (deferred) before each page script. */
+(function () {
+    "use strict";
+
+    const isLocal = ["localhost", "127.0.0.1"].includes(location.hostname);
+    // Local dev: API on :5000 unless overridden (macOS AirPlay also listens on 5000).
+    // localStorage.apiBase = "http://localhost:5001" points elsewhere; "" means same origin.
+    let apiOverride = null;
+    try { apiOverride = localStorage.getItem("apiBase"); } catch (e) { /* ignore */ }
+    const API_BASE = apiOverride !== null ? apiOverride : isLocal && location.port !== "5000" ? "http://localhost:5000" : "";
+
+    /* ---------- Storage (never throws) ---------- */
+    const store = {
+        get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+        set(k, v) { try { localStorage.setItem(k, v); } catch (e) { /* private mode */ } },
+        remove(k) { try { localStorage.removeItem(k); } catch (e) { /* ignore */ } },
+        clear() { try { localStorage.clear(); } catch (e) { /* ignore */ } }
+    };
+
+    /* ---------- Escaping ---------- */
+    const ESC = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
+    const esc = (v) => String(v == null ? "" : v).replace(/[&<>"']/g, (c) => ESC[c]);
+
+    /* ---------- Auth ---------- */
+    const token = () => store.get("token");
+    function user() {
+        try { return JSON.parse(store.get("user")) || null; } catch (e) { return null; }
+    }
+    function signOut(reason) {
+        store.remove("token");
+        store.remove("user");
+        location.replace("login.html" + (reason ? "?" + reason : ""));
+    }
+
+    /* ---------- API ---------- */
+    async function api(path, opts = {}) {
+        const headers = { Authorization: "Bearer " + token() };
+        if (opts.body !== undefined) headers["Content-Type"] = "application/json";
+        let res;
+        try {
+            res = await fetch(API_BASE + "/api" + path, {
+                method: opts.method || "GET",
+                headers,
+                body: opts.body !== undefined ? JSON.stringify(opts.body) : undefined,
+                cache: "no-store",
+                keepalive: !!opts.keepalive
+            });
+        } catch (e) {
+            const err = new Error("Can't reach the Syncrona server. Check your connection and try again.");
+            err.offline = true;
+            throw err;
+        }
+        if (res.status === 401) {
+            signOut("expired");
+            throw new Error("Your session has ended. Sign in again.");
+        }
+        let data = null;
+        try { data = await res.json(); } catch (e) { /* empty body */ }
+        if (!res.ok) {
+            throw new Error((data && (data.msg || data.message || data.error)) || "Something went wrong (" + res.status + ").");
+        }
+        return data;
+    }
+
+    /* ---------- Dates ----------
+       The API stores dates as JS Dates. Date-only values arrive as UTC
+       midnight ("2026-11-03" -> 2026-11-03T00:00:00.000Z). Items with a time
+       are sent as full local timestamps with 1ms set, so they can never be
+       mistaken for a date-only value. */
+    const pad = (n) => String(n).padStart(2, "0");
+    const ymd = (d) => d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
+    function parseYmd(s) {
+        const [y, m, d] = s.split("-").map(Number);
+        return new Date(y, m - 1, d);
+    }
+    function startOfDay(d) { return new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
+    function addDays(d, n) { const x = new Date(d); x.setDate(x.getDate() + n); return x; }
+    function sameDay(a, b) { return a && b && a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate(); }
+    function daysBetween(a, b) { return Math.round((startOfDay(b) - startOfDay(a)) / 86400000); }
+
+    /* Returns { day: local midnight Date, at: Date | null } */
+    function when(value) {
+        if (!value) return null;
+        const d = new Date(value);
+        if (isNaN(d)) return null;
+        const dateOnly = d.getUTCHours() === 0 && d.getUTCMinutes() === 0 && d.getUTCSeconds() === 0 && d.getUTCMilliseconds() === 0;
+        if (dateOnly) return { day: new Date(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()), at: null };
+        return { day: startOfDay(d), at: d };
+    }
+
+    function toPayload(dateStr, timeStr) {
+        if (!dateStr) return null;
+        if (!timeStr) return dateStr;
+        const [y, m, d] = dateStr.split("-").map(Number);
+        const [h, mi] = timeStr.split(":").map(Number);
+        return new Date(y, m - 1, d, h, mi, 0, 1).toISOString();
+    }
+
+    const fmtTime = (d) => pad(d.getHours()) + ":" + pad(d.getMinutes());
+    const WD = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const WD_LONG = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const MO = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const MO_LONG = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const fmtDay = (d) => WD[d.getDay()] + " " + d.getDate() + " " + MO[d.getMonth()];
+    const fmtDayLong = (d) => WD_LONG[d.getDay()] + " " + d.getDate() + " " + MO_LONG[d.getMonth()];
+    const fmtDate = (d) => d.getDate() + " " + MO[d.getMonth()] + " " + d.getFullYear();
+
+    function relDay(day, now = new Date()) {
+        const n = daysBetween(now, day);
+        if (n === 0) return "today";
+        if (n === 1) return "tomorrow";
+        if (n === -1) return "yesterday";
+        if (n > 1 && n < 7) return WD_LONG[day.getDay()];
+        if (n < 0) return Math.abs(n) + " days ago";
+        return "in " + n + " days";
+    }
+
+    function relTime(at, now = new Date()) {
+        const mins = Math.round((at - now) / 60000);
+        if (Math.abs(mins) < 1) return "now";
+        const abs = Math.abs(mins);
+        const h = Math.floor(abs / 60), m = abs % 60;
+        const span = h ? h + " h" + (m ? " " + m + " min" : "") : m + " min";
+        return mins > 0 ? "in " + span : span + " ago";
+    }
+
+    /* Relative time for a timetable: minutes and hours only when soon. */
+    function relSoon(at, now = new Date()) {
+        const mins = (at - now) / 60000;
+        if (Math.abs(mins) < 360) return relTime(at, now);
+        if (sameDay(at, now)) return mins > 0 ? "later today" : "earlier today";
+        return relDay(startOfDay(at), now);
+    }
+
+    function timeAgo(value) {
+        const d = new Date(value);
+        const s = Math.floor((Date.now() - d) / 1000);
+        if (s < 60) return "just now";
+        if (s < 3600) return Math.floor(s / 60) + " min ago";
+        if (s < 86400) return Math.floor(s / 3600) + " h ago";
+        const days = Math.floor(s / 86400);
+        if (days === 1) return "yesterday";
+        if (days < 7) return days + " days ago";
+        return fmtDate(d);
+    }
+
+    /* ---------- Money ---------- */
+    const inr0 = new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 });
+    const inr2 = new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const money = (n) => (Math.round(n * 100) % 100 === 0 ? inr0 : inr2).format(n || 0);
+    function threshold() {
+        const v = parseFloat(store.get("expenseThreshold"));
+        return isFinite(v) && v > 0 ? v : 500;
+    }
+
+    /* ---------- Icons (24px grid, 1.75 stroke) ---------- */
+    const P = {
+        today: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+        tasks: '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="m8.5 12 2.5 2.5 4.5-5"/>',
+        calendar: '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
+        expenses: '<path d="M6 3h12M6 8h12M6 13l8.5 8M6 13h3M9 13c6.667 0 6.667-10 0-10"/>',
+        notes: '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M16 13H8M16 17H8M10 9H8"/>',
+        settings: '<path d="M21 4h-7M10 4H3M21 12h-9M8 12H3M21 20h-5M12 20H3M14 2v4M8 10v4M16 18v4"/>',
+        logout: '<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/>',
+        plus: '<path d="M5 12h14M12 5v14"/>',
+        left: '<path d="m15 18-6-6 6-6"/>',
+        right: '<path d="m9 18 6-6-6-6"/>',
+        trash: '<path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>',
+        x: '<path d="M18 6 6 18M6 6l12 12"/>',
+        menu: '<path d="M4 6h16M4 12h16M4 18h16"/>',
+        moon: '<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>',
+        sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>',
+        search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
+        pencil: '<path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5Z"/>',
+        check: '<path d="M20 6 9 17l-5-5"/>',
+        alert: '<circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/>',
+        pen: '<path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.38 2.62a1 1 0 0 1 3 3l-9.01 9.02a2 2 0 0 1-.86.5l-2.87.84a.5.5 0 0 1-.62-.62l.84-2.87a2 2 0 0 1 .5-.86Z"/>'
+    };
+    function icon(name, extra) {
+        return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="' + (name === "check" ? 3 : 1.75) +
+            '" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"' + (extra ? " " + extra : "") + ">" + P[name] + "</svg>";
+    }
+    const MARK = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="2.5"/>' +
+        '<path d="M12 12V6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M12 12l4.5 3" stroke="#ff4a3d" stroke-width="2.5" stroke-linecap="round"/></svg>';
+
+    /* ---------- Line badges ---------- */
+    const LINES = {
+        task: '<span class="line" title="Task"><span aria-hidden="true">T</span><span class="sr-only">Task</span></span>',
+        event: '<span class="line line-event" title="Event"><span aria-hidden="true">E</span><span class="sr-only">Event</span></span>',
+        spend: '<span class="line line-spend" title="Expense"><span aria-hidden="true">₹</span><span class="sr-only">Expense</span></span>',
+        note: '<span class="line line-note" title="Note"><span aria-hidden="true">N</span><span class="sr-only">Note</span></span>'
+    };
+
+    /* ---------- Theme ---------- */
+    function effectiveTheme() {
+        const t = document.documentElement.dataset.theme;
+        if (t === "light" || t === "dark") return t;
+        return matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    function setTheme(mode) {
+        if (mode === "light" || mode === "dark") {
+            document.documentElement.dataset.theme = mode;
+            store.set("theme", mode);
+        } else {
+            delete document.documentElement.dataset.theme;
+            store.remove("theme");
+        }
+        updateThemeButtons();
+        document.dispatchEvent(new CustomEvent("themechange"));
+    }
+    const toggleTheme = () => setTheme(effectiveTheme() === "dark" ? "light" : "dark");
+    function updateThemeButtons() {
+        const dark = effectiveTheme() === "dark";
+        document.querySelectorAll("[data-theme-toggle]").forEach((b) => {
+            b.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
+            b.querySelector(".ti").innerHTML = icon(dark ? "sun" : "moon");
+            const label = b.querySelector(".tl");
+            if (label) label.textContent = dark ? "Light theme" : "Dark theme";
+        });
+    }
+    matchMedia("(prefers-color-scheme: dark)").addEventListener("change", updateThemeButtons);
+
+    /* ---------- Shell ---------- */
+    const NAV = [
+        ["today", "Today", "dashboard.html"],
+        ["tasks", "Tasks", "tasks.html"],
+        ["calendar", "Calendar", "calendar.html"],
+        ["expenses", "Expenses", "expenses.html"],
+        ["notes", "Notes", "notes.html"],
+        ["settings", "Settings", "settings.html"]
+    ];
+
+    function renderShell(page) {
+        const rail = document.getElementById("rail");
+        if (!rail) return;
+        const u = user();
+        rail.innerHTML =
+            '<a class="brand" href="dashboard.html">' + MARK + "Syncrona</a>" +
+            '<ul class="nav">' + NAV.map(([id, label, href]) =>
+                '<li><a href="' + href + '"' + (id === page ? ' aria-current="page"' : "") + ">" + icon(id) + label + "</a></li>").join("") +
+            "</ul>" +
+            '<div class="rail-foot">' +
+            (u && u.name ? '<div class="rail-user"><strong>' + esc(u.name) + "</strong>" + esc(u.email || "") + "</div>" : "") +
+            '<button class="rail-btn" type="button" data-theme-toggle><span class="ti"></span><span class="tl">Dark theme</span></button>' +
+            '<button class="rail-btn" type="button" data-signout>' + icon("logout") + "Sign out</button>" +
+            "</div>";
+
+        const top = document.createElement("header");
+        top.className = "topbar";
+        top.innerHTML =
+            '<button class="icon-btn" type="button" data-rail-open aria-label="Open navigation" aria-expanded="false" aria-controls="rail">' + icon("menu") + "</button>" +
+            '<a class="brand" href="dashboard.html">' + MARK + "Syncrona</a>" +
+            '<button class="icon-btn" type="button" data-theme-toggle><span class="ti"></span></button>';
+        document.body.prepend(top);
+
+        const scrim = document.createElement("div");
+        scrim.className = "rail-scrim";
+        document.body.appendChild(scrim);
+
+        const openBtn = top.querySelector("[data-rail-open]");
+        const setOpen = (open) => {
+            document.body.classList.toggle("rail-open", open);
+            openBtn.setAttribute("aria-expanded", String(open));
+            if (open) rail.querySelector("a")?.focus();
+        };
+        openBtn.addEventListener("click", () => setOpen(true));
+        scrim.addEventListener("click", () => setOpen(false));
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && document.body.classList.contains("rail-open")) { setOpen(false); openBtn.focus(); }
+        });
+
+        document.querySelectorAll("[data-theme-toggle]").forEach((b) => b.addEventListener("click", toggleTheme));
+        rail.querySelector("[data-signout]").addEventListener("click", () => signOut());
+        updateThemeButtons();
+    }
+
+    /* ---------- Toasts ---------- */
+    let toastHost;
+    function toast(message, opts = {}) {
+        if (!toastHost) {
+            toastHost = document.createElement("div");
+            toastHost.className = "toasts";
+            toastHost.setAttribute("role", "status");
+            toastHost.setAttribute("aria-live", "polite");
+            document.body.appendChild(toastHost);
+        }
+        const el = document.createElement("div");
+        el.className = "toast entering" + (opts.error ? " error" : "");
+        el.innerHTML = "<span>" + esc(message) + "</span>" + (opts.action ? '<button type="button">' + esc(opts.action) + "</button>" : "");
+        toastHost.appendChild(el);
+        requestAnimationFrame(() => requestAnimationFrame(() => el.classList.remove("entering")));
+
+        let timer;
+        let closed = false;
+        const close = (byAction) => {
+            if (closed) return;
+            closed = true;
+            clearTimeout(timer);
+            el.classList.add("leaving");
+            setTimeout(() => el.remove(), 160);
+            if (!byAction && opts.onTimeout) opts.onTimeout();
+        };
+        const start = () => { timer = setTimeout(() => close(false), opts.duration || 4000); };
+        el.addEventListener("mouseenter", () => clearTimeout(timer));
+        el.addEventListener("mouseleave", () => { if (!closed) start(); });
+        if (opts.action) {
+            el.querySelector("button").addEventListener("click", () => { close(true); opts.onAction && opts.onAction(); });
+        }
+        start();
+        return { close: () => close(false) };
+    }
+    const toastError = (err) => toast(err && err.message ? err.message : String(err), { error: true, duration: 6000 });
+
+    /* ---------- Undoable delete ----------
+       Hide locally now, delete on the server when the toast expires (or the
+       page is left). Undo restores without a round trip. */
+    const pending = new Set();
+    function undoable({ message, apply, revert, path }) {
+        apply();
+        const job = { path, done: false };
+        pending.add(job);
+        const commit = async () => {
+            if (job.done) return;
+            job.done = true;
+            pending.delete(job);
+            try { await api(path, { method: "DELETE" }); }
+            catch (e) { revert(); toastError(e); }
+        };
+        toast(message, {
+            action: "Undo",
+            duration: 5000,
+            onAction: () => { job.done = true; pending.delete(job); revert(); },
+            onTimeout: commit
+        });
+    }
+    addEventListener("pagehide", () => {
+        pending.forEach((job) => {
+            job.done = true;
+            api(job.path, { method: "DELETE", keepalive: true }).catch(() => {});
+        });
+        pending.clear();
+    });
+
+    /* ---------- Busy buttons ---------- */
+    async function busy(btn, fn) {
+        if (!btn || btn.getAttribute("aria-busy") === "true") return;
+        btn.setAttribute("aria-busy", "true");
+        try { return await fn(); }
+        finally { btn.removeAttribute("aria-busy"); }
+    }
+
+    /* ---------- Minute ticker ---------- */
+    function everyMinute(cb) {
+        cb();
+        const schedule = () => setTimeout(() => { cb(); schedule(); }, 60000 - (Date.now() % 60000) + 50);
+        schedule();
+        document.addEventListener("visibilitychange", () => { if (!document.hidden) cb(); });
+    }
+
+    /* ---------- Quick note ---------- */
+    function renderQuickNote() {
+        const fab = document.createElement("button");
+        fab.type = "button";
+        fab.className = "fab";
+        fab.setAttribute("aria-expanded", "false");
+        fab.setAttribute("aria-controls", "quicknote");
+        fab.innerHTML = icon("pen") + '<span class="fab-label">Quick note</span>';
+
+        const pop = document.createElement("section");
+        pop.className = "quicknote";
+        pop.id = "quicknote";
+        pop.dataset.state = "closed";
+        pop.setAttribute("role", "dialog");
+        pop.setAttribute("aria-label", "Quick note");
+        pop.innerHTML =
+            '<div class="qn-head"><h2>Quick note</h2><button class="icon-btn" type="button" data-close aria-label="Close quick note">' + icon("x") + "</button></div>" +
+            '<form><label class="sr-only" for="qn-text">Note</label>' +
+            '<textarea id="qn-text" class="input" placeholder="Write it down before it slips…" required></textarea>' +
+            '<div class="qn-foot"><span><kbd>' + (/Mac|iPhone|iPad/.test(navigator.platform) ? "⌘" : "Ctrl") + '</kbd> <kbd>Enter</kbd> to save</span><button class="btn btn-primary btn-sm" type="submit">Save note</button></div></form>' +
+            '<div class="qn-recent" aria-live="polite"></div>';
+
+        document.body.append(pop, fab);
+        const ta = pop.querySelector("textarea");
+        const recent = pop.querySelector(".qn-recent");
+        const form = pop.querySelector("form");
+
+        const loadRecent = async () => {
+            try {
+                const notes = await api("/notes");
+                recent.innerHTML = notes.length
+                    ? notes.slice(0, 3).map((n) => "<p><span>" + esc(n.content) + "</span></p>").join("") + '<a href="notes.html">All notes (' + notes.length + ")</a>"
+                    : "";
+            } catch (e) { recent.innerHTML = ""; }
+        };
+        const open = (state) => {
+            pop.dataset.state = state ? "open" : "closed";
+            fab.setAttribute("aria-expanded", String(state));
+            if (state) { setTimeout(() => ta.focus(), 30); loadRecent(); }
+        };
+        fab.addEventListener("click", () => open(pop.dataset.state !== "open"));
+        pop.querySelector("[data-close]").addEventListener("click", () => { open(false); fab.focus(); });
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && pop.dataset.state === "open") { open(false); fab.focus(); }
+        });
+        document.addEventListener("pointerdown", (e) => {
+            if (pop.dataset.state === "open" && !pop.contains(e.target) && !fab.contains(e.target)) open(false);
+        });
+        ta.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) { e.preventDefault(); form.requestSubmit(); }
+        });
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const content = ta.value.trim();
+            if (!content) { ta.focus(); return; }
+            busy(form.querySelector("[type=submit]"), async () => {
+                try {
+                    const note = await api("/notes", { method: "POST", body: { content } });
+                    ta.value = "";
+                    toast("Note saved");
+                    loadRecent();
+                    document.dispatchEvent(new CustomEvent("note:created", { detail: note }));
+                } catch (err) { toastError(err); }
+            });
+        });
+    }
+
+    /* ---------- Boot ---------- */
+    const page = document.body.dataset.page;
+    const signedIn = document.body.dataset.auth === "required";
+    if (signedIn && !token()) signOut();
+    if (signedIn) {
+        renderShell(page);
+        if (page !== "notes") renderQuickNote();
+    }
+
+    window.S = {
+        API_BASE, store, esc, api, token, user, signOut,
+        pad, ymd, parseYmd, startOfDay, addDays, sameDay, daysBetween, when, toPayload,
+        fmtTime, fmtDay, fmtDayLong, fmtDate, relDay, relTime, relSoon, timeAgo, WD, WD_LONG, MO, MO_LONG,
+        money, threshold, icon, LINES, MARK,
+        effectiveTheme, setTheme, toggleTheme,
+        toast, toastError, undoable, busy, everyMinute
+    };
+})();

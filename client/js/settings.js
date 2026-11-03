@@ -1,54 +1,59 @@
-const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? 'http://localhost:5000' : '';
+/* Settings: theme, threshold, account. */
+(function () {
+    "use strict";
+    const { store, user, signOut, setTheme, threshold, money } = window.S;
+    const $ = (id) => document.getElementById(id);
 
-let token = localStorage.getItem("token");
-if (!token) {
-    window.location.href = "login.html";
-}
+    /* Theme */
+    const current = store.get("theme") || "system";
+    const radio = document.querySelector('input[name=theme][value="' + current + '"]');
+    if (radio) radio.checked = true;
+    document.querySelectorAll("input[name=theme]").forEach((r) => r.addEventListener("change", () => setTheme(r.value)));
+    document.addEventListener("themechange", () => {
+        const v = store.get("theme") || "system";
+        document.querySelector('input[name=theme][value="' + v + '"]').checked = true;
+    });
 
-document.addEventListener('DOMContentLoaded', () => {
-    const threshInput = document.getElementById("settingsThresholdInput");
-    if(threshInput) {
-        threshInput.value = localStorage.getItem('expenseThreshold') || 500;
+    /* Threshold */
+    $("threshold").value = threshold();
+    let savedTimer;
+    $("thresholdForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const v = parseFloat($("threshold").value);
+        if (!(v > 0)) {
+            $("thresholdError").textContent = "Enter an amount above ₹0.";
+            $("threshold").setAttribute("aria-invalid", "true");
+            $("threshold").focus();
+            return;
+        }
+        $("thresholdError").textContent = "";
+        $("threshold").removeAttribute("aria-invalid");
+        store.set("expenseThreshold", String(v));
+        $("savedNote").textContent = "Saved · " + money(v);
+        clearTimeout(savedTimer);
+        savedTimer = setTimeout(() => { $("savedNote").textContent = ""; }, 2500);
+    });
+
+    /* Account */
+    const u = user();
+    if (u && u.name) {
+        $("accountName").textContent = "Signed in as " + u.name;
+        $("accountEmail").textContent = u.email || "";
+    } else {
+        $("accountEmail").textContent = "This browser holds an active session.";
     }
-    
-    // Partially censor token for diagnostic rendering
-    const tokenDisplay = document.getElementById("tokenDisplay");
-    if(tokenDisplay && token) {
-        const censored = token.substring(0, 15) + "••••••••" + token.substring(token.length - 10);
-        tokenDisplay.textContent = `Token Identifier ID: ${censored}`;
-    }
-});
+    $("signOut").addEventListener("click", () => signOut());
 
-function saveSettingsThreshold() {
-    const threshold = document.getElementById("settingsThresholdInput").value;
-    if (threshold) {
-        localStorage.setItem('expenseThreshold', threshold);
-        // UI feedback logic
-        const btn = document.querySelector('button[onclick="saveSettingsThreshold()"]');
-        const oldText = btn.textContent;
-        btn.textContent = 'Success!';
-        btn.style.backgroundColor = '#10b981';
-        btn.style.color = '#fff';
-        setTimeout(() => {
-            btn.textContent = oldText;
-            btn.style.backgroundColor = '';
-            btn.style.color = '';
-        }, 1500);
-    }
-}
-
-function clearDiagnosticStorage() {
-    if(confirm("Are you securely flushing cache tokens? You will be signed out and your preferences cleared!")) {
-        localStorage.clear();
-        window.location.href = "login.html";
-    }
-}
-
-function logout() {
-    localStorage.clear();
-    window.location.href = "login.html";
-}
-
-function go(p) {
-    window.location.href = p;
-}
+    /* Reset: two-step confirm in place */
+    const reset = $("reset");
+    let armed = null;
+    reset.addEventListener("click", () => {
+        if (armed) {
+            store.clear();
+            location.replace("login.html");
+            return;
+        }
+        reset.textContent = "Click again to reset";
+        armed = setTimeout(() => { reset.textContent = "Reset"; armed = null; }, 4000);
+    });
+})();

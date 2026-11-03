@@ -1,40 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Syncrona</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sign in · Syncrona</title>
+    <meta name="description" content="Sign in to Syncrona: tasks, events, notes and spending on one timetable.">
+    <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;if(localStorage.getItem("token"))location.replace("dashboard.html")}catch(e){}</script>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/theme.js"></script>
+    <script src="js/app.js" defer></script>
+    <script src="js/auth.js" defer></script>
 </head>
-
-<body class="auth-body">
-
-    <div class="glass-panel auth-container">
-        <div style="display: flex; justify-content: center; margin-bottom: 20px;">
-            <div class="logo-icon" style="width: 48px; height: 48px; border-radius: 14px;"></div>
+<body data-page="login">
+    <div class="auth">
+        <div class="auth-form-wrap">
+            <a class="brand" href="login.html" data-mark>Syncrona</a>
+            <form class="auth-form" id="authForm" data-mode="login" novalidate>
+                <h1 class="auth-title">Sign in</h1>
+                <p class="auth-sub">Your tasks, events, notes and spending, set out like a timetable.</p>
+                <div class="field">
+                    <label class="field-label" for="email">Email</label>
+                    <input class="input" type="email" id="email" autocomplete="email" spellcheck="false" required>
+                </div>
+                <div class="field">
+                    <label class="field-label" for="password">Password</label>
+                    <div class="pw-wrap">
+                        <input class="input" type="password" id="password" autocomplete="current-password" required>
+                        <button class="pw-toggle" type="button" data-pw-toggle aria-controls="password">Show</button>
+                    </div>
+                </div>
+                <p class="form-error" id="authError" role="alert"></p>
+                <button class="btn btn-primary btn-block" type="submit" id="authSubmit" style="height:44px">Sign in</button>
+                <p class="auth-switch">New here? <a href="signup.html">Create an account</a></p>
+            </form>
         </div>
-        <h2>Welcome Back</h2>
-        <p class="auth-subtitle">Enter your credentials to access your account</p>
 
-        <div class="task-input">
-            <input type="email" id="email" placeholder="Email Address" spellcheck="false" autocomplete="email">
-            <input type="password" id="password" placeholder="Password" autocomplete="current-password">
-        </div>
-
-        <button class="btn-primary" onclick="login()" style="width: 100%; margin-top: 10px;">Sign In</button>
-
-        <div class="auth-links">
-            <p>Don't have an account? <a href="signup.html">Sign up</a></p>
-        </div>
+        <aside class="auth-board" aria-label="Sample of the Today screen">
+            <div class="board-head">
+                <div class="d" data-board-date></div>
+                <div class="c">14:32</div>
+            </div>
+            <table class="board-table" aria-hidden="true">
+                <tr><td class="tt-time">09:00</td><td><span class="line">T</span></td><td>Send invoice to the studio</td><td>done</td></tr>
+                <tr><td class="tt-time">11:30</td><td><span class="line line-spend">₹</span></td><td>Groceries</td><td>₹1,240</td></tr>
+                <tr class="now"><td colspan="4"><div class="now-tag"><span>NOW</span></div></td></tr>
+                <tr><td class="tt-time">15:00</td><td><span class="line line-event">E</span></td><td>Design review</td><td>in 28 min</td></tr>
+                <tr><td class="tt-time">17:00</td><td><span class="line">T</span></td><td>Finish case study draft</td><td>due today</td></tr>
+                <tr><td class="tt-time">Fri</td><td><span class="line line-spend">₹</span></td><td>Rent</td><td class="over">₹22,000</td></tr>
+            </table>
+            <p class="board-caption">Sample day. Tasks, events and payments share one board, read top to bottom against the red line for now.</p>
+        </aside>
     </div>
-
-    <script src="js/login.js"></script>
 </body>
-
 </html>

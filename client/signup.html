@@ -1,41 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up - Syncrona</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Create account · Syncrona</title>
+    <meta name="description" content="Create a Syncrona account: tasks, events, notes and spending on one timetable.">
+    <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;if(localStorage.getItem("token"))location.replace("dashboard.html")}catch(e){}</script>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/theme.js"></script>
+    <script src="js/app.js" defer></script>
+    <script src="js/auth.js" defer></script>
 </head>
-
-<body class="auth-body">
-
-    <div class="glass-panel auth-container">
-        <div style="display: flex; justify-content: center; margin-bottom: 20px;">
-            <div class="logo-icon" style="width: 48px; height: 48px; border-radius: 14px;"></div>
+<body data-page="signup">
+    <div class="auth">
+        <div class="auth-form-wrap">
+            <a class="brand" href="login.html" data-mark>Syncrona</a>
+            <form class="auth-form" id="authForm" data-mode="signup" novalidate>
+                <h1 class="auth-title">Create account</h1>
+                <p class="auth-sub">One board for the day: what's due, what's on, and what you've spent.</p>
+                <div class="field">
+                    <label class="field-label" for="name">Name</label>
+                    <input class="input" type="text" id="name" autocomplete="name" required maxlength="80">
+                </div>
+                <div class="field">
+                    <label class="field-label" for="email">Email</label>
+                    <input class="input" type="email" id="email" autocomplete="email" spellcheck="false" required>
+                </div>
+                <div class="field">
+                    <label class="field-label" for="password">Password</label>
+                    <div class="pw-wrap">
+                        <input class="input" type="password" id="password" autocomplete="new-password" required minlength="8" aria-describedby="pwHint">
+                        <button class="pw-toggle" type="button" data-pw-toggle aria-controls="password">Show</button>
+                    </div>
+                    <span class="field-hint" id="pwHint">At least 8 characters.</span>
+                </div>
+                <p class="form-error" id="authError" role="alert"></p>
+                <button class="btn btn-primary btn-block" type="submit" id="authSubmit" style="height:44px">Create account</button>
+                <p class="auth-switch">Already have an account? <a href="login.html">Sign in</a></p>
+            </form>
         </div>
-        <h2>Create Account</h2>
-        <p class="auth-subtitle">Join us to organize your tasks efficiently</p>
 
-        <div class="task-input">
-            <input type="text" id="name" placeholder="Full Name" autocomplete="name">
-            <input type="email" id="email" placeholder="Email Address" spellcheck="false" autocomplete="email">
-            <input type="password" id="password" placeholder="Password" autocomplete="new-password">
-        </div>
-
-        <button class="btn-primary" onclick="signup()" style="width: 100%; margin-top: 10px;">Sign Up</button>
-
-        <div class="auth-links">
-            <p>Already have an account? <a href="login.html">Sign in</a></p>
-        </div>
+        <aside class="auth-board" aria-label="Sample of the Today screen">
+            <div class="board-head">
+                <div class="d" data-board-date></div>
+                <div class="c">14:45</div>
+            </div>
+            <table class="board-table" aria-hidden="true">
+                <tr><td class="tt-time">08:30</td><td><span class="line">T</span></td><td>Book flights for the wedding</td><td>done</td></tr>
+                <tr><td class="tt-time">13:10</td><td><span class="line line-spend">₹</span></td><td>Lunch with the team</td><td>₹860</td></tr>
+                <tr class="now"><td colspan="4"><div class="now-tag"><span>NOW</span></div></td></tr>
+                <tr><td class="tt-time">16:00</td><td><span class="line line-event">E</span></td><td>Dentist</td><td>in 1 h 15 min</td></tr>
+                <tr><td class="tt-time">19:30</td><td><span class="line line-event">E</span></td><td>Football, 5-a-side</td><td>today</td></tr>
+                <tr><td class="tt-time">Sat</td><td><span class="line">T</span></td><td>Call the landlord about the leak</td><td>Saturday</td></tr>
+            </table>
+            <p class="board-caption">Sample day. Add a task, event or payment once and it shows up on Today, in the calendar, and in your totals.</p>
+        </aside>
     </div>
-
-    <script src="js/signup.js"></script>
 </body>
-
 </html>

@@ -1,172 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Settings - Syncrona</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Settings · Syncrona</title>
+    <meta name="description" content="Theme, spending threshold and account.">
+    <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;if(!localStorage.getItem("token"))location.replace("login.html")}catch(e){}</script>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=3">
-    <script src="js/theme.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/app.js" defer></script>
+    <script src="js/settings.js" defer></script>
 </head>
-
-<body>
+<body data-page="settings" data-auth="required">
     <div class="app">
-        <!-- SIDEBAR -->
-        <nav class="sidebar">
-            <div class="sidebar-header">
-                <div class="sidebar-header-left">
-                    <div class="logo-icon"></div>
-                    <h2>Syncrona</h2>
-                </div>
-                <button class="close-sidebar-btn" onclick="toggleSidebar()">&times;</button>
-            </div>
-            <ul class="nav-links">
-                <li onclick="go('dashboard.html')">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                    </svg>
-                    Dashboard
-                </li>
-                <li onclick="go('tasks.html')">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="9 11 12 14 22 4"></polyline>
-                        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
-                    </svg>
-                    Tasks
-                </li>
-                <li onclick="go('notes.html')">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                        <polyline points="14 2 14 8 20 8"></polyline>
-                        <line x1="16" y1="13" x2="8" y2="13"></line>
-                        <line x1="16" y1="17" x2="8" y2="17"></line>
-                        <polyline points="10 9 9 9 8 9"></polyline>
-                    </svg>
-                    Notes
-                </li>
-                <li onclick="go('calendar.html')">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                        <line x1="16" y1="2" x2="16" y2="6"></line>
-                        <line x1="8" y1="2" x2="8" y2="6"></line>
-                        <line x1="3" y1="10" x2="21" y2="10"></line>
-                    </svg>
-                    Calendar
-                </li>
-                <li onclick="go('expenses.html')">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="12" y1="1" x2="12" y2="23"></line>
-                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                    </svg>
-                    Expenses
-                </li>
-                <li class="active" onclick="go('settings.html')">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="3"></circle>
-                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-                    </svg>
-                    Settings
-                </li>
-            </ul>
-            <div class="sidebar-footer">
-                <button class="logout-btn" onclick="logout()">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-                        <polyline points="16 17 21 12 16 7"></polyline>
-                        <line x1="21" y1="12" x2="9" y2="12"></line>
-                    </svg>
-                    Logout
-                </button>
-            </div>
-        </nav>
-
-        <!-- MAIN -->
-        <main class="main">
-            <header class="top-header">
-                <div style="display: flex; align-items: center;">
-                    <button class="hamburger-btn" onclick="toggleSidebar()">
-                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <line x1="3" y1="12" x2="21" y2="12"></line>
-                            <line x1="3" y1="6" x2="21" y2="6"></line>
-                            <line x1="3" y1="18" x2="21" y2="18"></line>
-                        </svg>
-                    </button>
-                    <div class="welcome-text">
-                        <h1 class="gradient-text" style="font-size: 2rem;">Settings</h1>
-                        <p style="color: var(--text-secondary); margin-top: 5px;">Manage configurations and thresholds</p>
-                    </div>
-                </div>
-                <div class="user-profile" style="display: flex; align-items: center; gap: 16px;">
-                    <button id="themeToggleBtn" onclick="toggleTheme()" class="theme-toggle" aria-label="Toggle Theme" style="background: transparent; border: none; cursor: pointer; color: var(--text-primary); display: flex; box-shadow: none;">
-                        <svg class="theme-toggle-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                        </svg>
-                    </button>
-                    <div class="avatar" title="Profile Settings"></div>
-                </div>
-            </header>
-
-            <div class="glass-panel" style="margin-top: 30px;">
-                <h2 style="margin-bottom: 20px; font-size: 1.25rem;">General Preferences</h2>
-                
-                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding: 20px 0; border-bottom: 1px solid var(--border-color);">
+        <nav class="rail" id="rail" aria-label="Main"></nav>
+        <main class="main" id="main">
+            <div class="page settings">
+                <header class="page-head">
                     <div>
-                        <h3 style="margin: 0; font-size: 1rem; color: var(--text-primary);">Visual Theme Override</h3>
-                        <p style="margin: 5px 0 0 0; font-size: 0.85rem; color: var(--text-secondary);">Toggle the application aesthetic directly.</p>
+                        <h1 class="page-title">Settings</h1>
+                        <p class="page-sub">Saved in this browser.</p>
                     </div>
-                    <button class="btn-secondary" onclick="toggleTheme()" style="min-width: 120px;">Toggle Theme</button>
-                </div>
+                </header>
 
-                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding: 20px 0;">
-                    <div>
-                        <h3 style="margin: 0; font-size: 1rem; color: var(--text-primary);">High Expense Threshold</h3>
-                        <p style="margin: 5px 0 0 0; font-size: 0.85rem; color: var(--text-secondary);">Limits parsed above this boundary highlight as red alarms natively in the calendar.</p>
+                <section class="setting-group" aria-labelledby="appearanceHead">
+                    <div class="section-head"><h2 class="section-title" id="appearanceHead">Appearance</h2></div>
+                    <div class="setting">
+                        <div>
+                            <h3 id="themeLabel">Theme</h3>
+                            <p>System follows your device's light or dark setting.</p>
+                        </div>
+                        <fieldset class="seg setting-control" aria-labelledby="themeLabel">
+                            <label><input type="radio" name="theme" value="system"><span>System</span></label>
+                            <label><input type="radio" name="theme" value="light"><span>Light</span></label>
+                            <label><input type="radio" name="theme" value="dark"><span>Dark</span></label>
+                        </fieldset>
                     </div>
-                    <div style="display: flex; gap: 10px; align-items: center;">
-                        <input type="number" id="settingsThresholdInput" placeholder="e.g. 500" style="max-width: 120px; padding: 10px 14px; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-primary); color: var(--text-primary);">
-                        <button class="btn-secondary" onclick="saveSettingsThreshold()">Set Bracket</button>
+                </section>
+
+                <section class="setting-group" aria-labelledby="spendingHead">
+                    <div class="section-head"><h2 class="section-title" id="spendingHead">Spending</h2></div>
+                    <form class="setting" id="thresholdForm" novalidate>
+                        <div>
+                            <h3><label for="threshold">High-expense threshold</label></h3>
+                            <p>Any single payment at or above this amount is marked red on Today, the calendar and Expenses.</p>
+                            <p class="form-error" id="thresholdError" role="alert"></p>
+                        </div>
+                        <div class="setting-control">
+                            <div class="money-input"><input class="input" type="number" id="threshold" min="1" step="1" inputmode="numeric"></div>
+                            <button class="btn" type="submit">Save</button>
+                            <span class="saved-note" id="savedNote" aria-live="polite"></span>
+                        </div>
+                    </form>
+                </section>
+
+                <section class="setting-group" aria-labelledby="accountHead">
+                    <div class="section-head"><h2 class="section-title" id="accountHead">Account</h2></div>
+                    <div class="setting">
+                        <div>
+                            <h3 id="accountName">Signed in</h3>
+                            <p id="accountEmail"></p>
+                        </div>
+                        <div class="setting-control"><button class="btn" type="button" id="signOut">Sign out</button></div>
                     </div>
-                </div>
+                    <div class="setting">
+                        <div>
+                            <h3>Reset this browser</h3>
+                            <p>Signs you out and clears the theme and threshold stored here. Your tasks, notes, events and expenses stay in your account.</p>
+                        </div>
+                        <div class="setting-control"><button class="btn btn-danger" type="button" id="reset">Reset</button></div>
+                    </div>
+                </section>
             </div>
-
-            <div class="glass-panel" style="margin-top: 30px;">
-                <h2 style="margin-bottom: 20px; font-size: 1.25rem;">Account Management</h2>
-                
-                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding: 20px 0; border-bottom: 1px solid var(--border-color);">
-                    <div>
-                        <h3 style="margin: 0; font-size: 1rem; color: var(--text-primary);">Session ID</h3>
-                        <p style="margin: 5px 0 0 0; font-size: 0.85rem; color: var(--text-secondary);" id="tokenDisplay">Secure token loaded successfully.</p>
-                    </div>
-                </div>
-
-                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding: 20px 0;">
-                    <div>
-                        <h3 style="margin: 0; font-size: 1rem; color: #ef4444;">Clear Local Diagnostics</h3>
-                        <p style="margin: 5px 0 0 0; font-size: 0.85rem; color: var(--text-secondary);">Instantly securely flushes the app cache mapping routing configuration overrides.</p>
-                    </div>
-                    <button class="btn-primary" onclick="clearDiagnosticStorage()" style="background-color: #ef4444; min-width: 120px;">Flush Token Cache</button>
-                </div>
-            </div>
-            
         </main>
     </div>
-
-    <script>
-        function toggleSidebar() {
-            if (window.innerWidth <= 768) {
-                document.body.classList.toggle('sidebar-open');
-            } else {
-                document.body.classList.toggle('sidebar-closed');
-            }
-        }
-    </script>
-    <script src="js/settings.js"></script>
 </body>
-
 </html>
