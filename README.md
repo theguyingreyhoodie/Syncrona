@@ -63,12 +63,12 @@ Make sure you have Node.js installed on your machine and a running instance of M
 
 ### Vercel Deployment
 
-This application comes pre-configured with `vercel.json` routing logic out of the box.
+`vercel.json` serves `client/` as static files and runs the Express app in `server/` as a serverless function under `/api`. The client calls the API on the same origin, so no URLs need changing.
 
-1. Create a project on your [Vercel Dashboard](https://vercel.com/dashboard) linked directly to your GitHub repository.
-2. The internal logic has already been tailored to natively export the Express app as a Serverless function.
-3. Import your environment variables (`MONGO_URI`, `JWT_SECRET`) directly into the Vercel project configuration natively.
-4. Deploy! Your API urls will dynamically execute gracefully under relative environments natively.
+1. **Database:** create a free MongoDB Atlas cluster, add a database user, and under *Network Access* allow `0.0.0.0/0` (Vercel functions don't have fixed IPs). Copy the connection string and add a database name, e.g. `.../syncrona?retryWrites=true&w=majority`.
+2. **Project:** on the [Vercel dashboard](https://vercel.com/new), import this GitHub repository. Leave *Framework Preset* as **Other** and the root directory as the repository root.
+3. **Environment variables:** add `MONGO_URI` (the Atlas string) and `JWT_SECRET` (a long random string, e.g. from `openssl rand -hex 32`).
+4. **Deploy.** Every push to `main` redeploys automatically. If the API answers `503`, check that `MONGO_URI` is set and that Atlas allows the connection.
 
 ## Contributing
 
