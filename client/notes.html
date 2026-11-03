@@ -9,14 +9,14 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400..700&family=Instrument+Serif&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/app.js" defer></script>
     <script src="js/notes.js" defer></script>
 </head>
 <body data-page="notes" data-auth="required">
     <div class="app">
-        <nav class="rail" id="rail" aria-label="Main"></nav>
+        <nav class="sidebar" id="rail" aria-label="Main"></nav>
         <main class="main" id="main">
             <div class="page">
                 <header class="page-head">
@@ -24,16 +24,18 @@
                         <h1 class="page-title">Notes</h1>
                         <p class="page-sub" id="noteCount">&nbsp;</p>
                     </div>
-                    <div class="search">
-                        <span id="searchIcon"></span>
-                        <label class="sr-only" for="search">Search notes</label>
-                        <input class="input" type="search" id="search" placeholder="Search notes" autocomplete="off">
+                    <div class="page-actions">
+                        <div class="search">
+                            <span id="searchIcon"></span>
+                            <label class="sr-only" for="search">Search notes</label>
+                            <input class="input" type="search" id="search" placeholder="Search notes" autocomplete="off">
+                        </div>
                     </div>
                 </header>
 
                 <form class="composer" id="composer">
                     <label class="sr-only" for="newNote">New note</label>
-                    <textarea id="newNote" placeholder="Write a note…" rows="3"></textarea>
+                    <textarea id="newNote" placeholder="Write something down…" rows="3"></textarea>
                     <div class="composer-foot">
                         <span id="composerHint"></span>
                         <button class="btn btn-primary btn-sm" type="submit" id="noteSubmit">Save note</button>
@@ -41,9 +43,9 @@
                 </form>
 
                 <div id="notes" class="notes-grid" aria-live="polite">
-                    <div class="note"><i class="skeleton" style="width:90%"></i><i class="skeleton" style="width:70%;margin-top:8px"></i></div>
-                    <div class="note"><i class="skeleton" style="width:80%"></i></div>
-                    <div class="note"><i class="skeleton" style="width:60%"></i><i class="skeleton" style="width:85%;margin-top:8px"></i></div>
+                    <div class="note"><i class="skeleton" style="width:90%"></i><i class="skeleton" style="width:70%;margin:10px 0 14px"></i></div>
+                    <div class="note"><i class="skeleton" style="width:80%;margin-bottom:14px"></i></div>
+                    <div class="note"><i class="skeleton" style="width:60%"></i><i class="skeleton" style="width:85%;margin:10px 0 14px"></i></div>
                 </div>
             </div>
         </main>

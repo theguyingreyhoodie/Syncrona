@@ -9,69 +9,72 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400..700&family=Instrument+Serif&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/app.js" defer></script>
     <script src="js/settings.js" defer></script>
 </head>
 <body data-page="settings" data-auth="required">
     <div class="app">
-        <nav class="rail" id="rail" aria-label="Main"></nav>
+        <nav class="sidebar" id="rail" aria-label="Main"></nav>
         <main class="main" id="main">
-            <div class="page settings">
+            <div class="page" style="max-width:1040px">
                 <header class="page-head">
                     <div>
                         <h1 class="page-title">Settings</h1>
-                        <p class="page-sub">Saved in this browser.</p>
+                        <p class="page-sub">Saved in this browser. Your tasks, notes, events and payments live in your account.</p>
                     </div>
                 </header>
 
-                <section class="setting-group" aria-labelledby="appearanceHead">
-                    <div class="section-head"><h2 class="section-title" id="appearanceHead">Appearance</h2></div>
-                    <div class="setting">
-                        <div>
-                            <h3 id="themeLabel">Theme</h3>
-                            <p>System follows your device's light or dark setting.</p>
+                <section class="set-row" aria-labelledby="appearanceHead">
+                    <div>
+                        <h2 id="appearanceHead">Appearance</h2>
+                        <p>System follows your device's light or dark setting.</p>
+                    </div>
+                    <div class="set-panel">
+                        <div class="set-line">
+                            <div><h3 id="themeLabel">Theme</h3><p>Also switchable from the sidebar.</p></div>
+                            <fieldset class="seg" aria-labelledby="themeLabel">
+                                <label><input type="radio" name="theme" value="system"><span>System</span></label>
+                                <label><input type="radio" name="theme" value="light"><span>Light</span></label>
+                                <label><input type="radio" name="theme" value="dark"><span>Dark</span></label>
+                            </fieldset>
                         </div>
-                        <fieldset class="seg setting-control" aria-labelledby="themeLabel">
-                            <label><input type="radio" name="theme" value="system"><span>System</span></label>
-                            <label><input type="radio" name="theme" value="light"><span>Light</span></label>
-                            <label><input type="radio" name="theme" value="dark"><span>Dark</span></label>
-                        </fieldset>
                     </div>
                 </section>
 
-                <section class="setting-group" aria-labelledby="spendingHead">
-                    <div class="section-head"><h2 class="section-title" id="spendingHead">Spending</h2></div>
-                    <form class="setting" id="thresholdForm" novalidate>
-                        <div>
-                            <h3><label for="threshold">High-expense threshold</label></h3>
-                            <p>Any single payment at or above this amount is marked red on Today, the calendar and Expenses.</p>
+                <section class="set-row" aria-labelledby="spendingHead">
+                    <div>
+                        <h2 id="spendingHead">Spending limit</h2>
+                        <p>Any single payment at or above this amount is flagged in red on Today, the calendar and Expenses.</p>
+                    </div>
+                    <form class="set-panel" id="thresholdForm" novalidate>
+                        <div class="field">
+                            <label class="field-label" for="threshold">Flag payments from</label>
+                            <div class="set-inline">
+                                <div class="money-input"><input class="input" type="number" id="threshold" min="1" step="1" inputmode="numeric"></div>
+                                <button class="btn" type="submit">Save</button>
+                                <span class="saved-note" id="savedNote" aria-live="polite"></span>
+                            </div>
                             <p class="form-error" id="thresholdError" role="alert"></p>
-                        </div>
-                        <div class="setting-control">
-                            <div class="money-input"><input class="input" type="number" id="threshold" min="1" step="1" inputmode="numeric"></div>
-                            <button class="btn" type="submit">Save</button>
-                            <span class="saved-note" id="savedNote" aria-live="polite"></span>
                         </div>
                     </form>
                 </section>
 
-                <section class="setting-group" aria-labelledby="accountHead">
-                    <div class="section-head"><h2 class="section-title" id="accountHead">Account</h2></div>
-                    <div class="setting">
-                        <div>
-                            <h3 id="accountName">Signed in</h3>
-                            <p id="accountEmail"></p>
-                        </div>
-                        <div class="setting-control"><button class="btn" type="button" id="signOut">Sign out</button></div>
+                <section class="set-row" aria-labelledby="accountHead">
+                    <div>
+                        <h2 id="accountHead">Account</h2>
+                        <p>Signing out or resetting only affects this browser.</p>
                     </div>
-                    <div class="setting">
-                        <div>
-                            <h3>Reset this browser</h3>
-                            <p>Signs you out and clears the theme and threshold stored here. Your tasks, notes, events and expenses stay in your account.</p>
+                    <div class="set-panel">
+                        <div class="set-line">
+                            <div><h3 id="accountName">Signed in</h3><p id="accountEmail"></p></div>
+                            <button class="btn btn-sm" type="button" id="signOut">Sign out</button>
                         </div>
-                        <div class="setting-control"><button class="btn btn-danger" type="button" id="reset">Reset</button></div>
+                        <div class="set-line">
+                            <div><h3>Reset this browser</h3><p>Signs you out and clears the theme and spending limit stored here.</p></div>
+                            <button class="btn btn-sm btn-danger" type="button" id="reset">Reset</button>
+                        </div>
                     </div>
                 </section>
             </div>

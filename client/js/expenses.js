@@ -1,7 +1,7 @@
-/* Expenses: one month at a time, grouped by day. */
+/* Expenses: one month at a time, day by day. */
 (function () {
     "use strict";
-    const { api, esc, when, sameDay, startOfDay, fmtDay, MO_LONG, money, threshold, icon, ymd, toastError, busy, undoable } = window.S;
+    const { api, esc, when, sameDay, startOfDay, fmtDay, MO_LONG, money, threshold, icon, LEAD, ymd, toastError, busy, undoable } = window.S;
 
     const $ = (id) => document.getElementById(id);
     const now = new Date();
@@ -18,7 +18,6 @@
         if (!state.loaded) return;
 
         if (state.error) {
-            $("summary").innerHTML = "";
             $("list").innerHTML = '<div class="callout">' + icon("alert") + "<div><strong>Expenses couldn't load.</strong>" + esc(state.error) + "</div></div>";
             return;
         }
@@ -35,27 +34,31 @@
             ? "All time: " + money(Math.round(all)) + " across " + state.expenses.length + " payment" + (state.expenses.length > 1 ? "s" : "")
             : "Log what you spend and see it by month and on the calendar.";
 
-        let delta = "";
+        const tile = (i, value, cap, cls) => {
+            const t = $("summary").children[i];
+            t.querySelector(".tile-value").textContent = value;
+            t.querySelector(".tile-value").className = "tile-value" + (cls ? " " + cls : "");
+            t.querySelector(".tile-cap").innerHTML = cap;
+        };
+        $("summary").children[0].querySelector(".tile-label").textContent = "Spent in " + MO_LONG[m.getMonth()];
+        tile(0, money(total), items.length ? "Across " + new Set(items.map((x) => ymd(when(x.date).day))).size + " days" : "Nothing logged");
+        tile(1, items.length, items.length ? "Largest " + esc(money(Math.max(...items.map((x) => x.amount)))) : "&nbsp;");
+        tile(2, over, 'Your limit is <a href="settings.html">' + esc(money(thr)) + "</a>", over ? "is-over" : "");
         if (prev) {
             const diff = total - prev;
             const pct = Math.round((Math.abs(diff) / prev) * 100);
-            delta = '<div>vs ' + esc(MO_LONG[prevM.getMonth()]) + '<b class="' + (diff > 0 ? "delta-up" : diff < 0 ? "delta-down" : "") + '">' +
-                (diff === 0 ? "Same" : (diff > 0 ? "+" : "−") + esc(money(Math.abs(diff))) + " (" + pct + "%)") + "</b></div>";
+            tile(3, diff === 0 ? "Same" : (diff > 0 ? "+" : "−") + money(Math.abs(diff)), (diff === 0 ? "Level with " : pct + "% " + (diff > 0 ? "more than " : "less than ")) + esc(MO_LONG[prevM.getMonth()]), diff > 0 ? "delta-up" : diff < 0 ? "delta-down" : "");
+        } else {
+            tile(3, "–", "Nothing logged in " + esc(MO_LONG[prevM.getMonth()]));
         }
-        $("summary").innerHTML =
-            '<div><div class="section-title">Spent in ' + esc(MO_LONG[m.getMonth()]) + '</div><div class="spend-total">' + esc(money(total)) + "</div></div>" +
-            '<div class="money-facts">' +
-            "<div>Payments<b>" + items.length + "</b></div>" +
-            "<div>At or over " + esc(money(thr)) + '<b class="' + (over ? "delta-up" : "") + '">' + over + "</b></div>" +
-            (items.length ? "<div>Largest<b>" + esc(money(Math.max(...items.map((x) => x.amount)))) + "</b></div>" : "") +
-            delta + "</div>";
 
+        renderChart(m, items, thr, isCurrent);
         $("listHead").textContent = "Payments in " + MO_LONG[m.getMonth()];
-        $("listMeta").innerHTML = '<a href="settings.html">Change threshold</a>';
+        $("listMeta").textContent = items.length ? items.length + " payment" + (items.length > 1 ? "s" : "") : "";
 
         if (!items.length) {
             $("list").innerHTML = '<div class="empty"><strong>No payments in ' + esc(MO_LONG[m.getMonth()]) + ".</strong>" +
-                (isCurrent ? "Log one above. Anything at or over " + esc(money(thr)) + " is marked red here, on Today and in the calendar." : "Pick another month, or add a past payment with its date above.") + "</div>";
+                (isCurrent ? "Log one with the form above. Anything at or over " + esc(money(thr)) + " is flagged in red here, on Today and in the calendar." : "Pick another month, or log a past payment with its date.") + "</div>";
             return;
         }
 
@@ -68,22 +71,55 @@
                 byDay.get(k).push(x);
             });
 
-        let html = '<table class="timetable"><thead><tr><th scope="col">Item</th><th scope="col" style="text-align:right">Amount</th><th scope="col"><span class="sr-only">Actions</span></th></tr></thead><tbody>';
+        let html = "";
         byDay.forEach((list, k) => {
             const d = S.parseYmd(k);
             const label = sameDay(d, startOfDay(now)) ? "Today · " + fmtDay(d) : fmtDay(d);
-            html += '<tr class="day-row"><td class="d">' + esc(label) + '</td><td class="s">' + esc(money(sum(list))) + "</td><td></td></tr>";
+            html += '<h3 class="group-head">' + esc(label) + '<span class="sum">' + esc(money(sum(list))) + "</span></h3><ul class=\"list\">";
             list.forEach((x) => {
                 const isOver = x.amount >= thr;
-                html += '<tr class="k-spend' + (state.fresh === x._id ? " fresh" : "") + '">' +
-                    '<td class="tt-item"><span class="title">' + esc(x.title) + "</span></td>" +
-                    '<td class="tt-status"><span class="tt-status-inner">' + (isOver ? '<span class="over-mark" title="At or over your ' + esc(money(thr)) + ' threshold"></span>' : "") +
-                    '<span class="tt-amount' + (isOver ? " is-over" : "") + '">' + esc(money(x.amount)) + (isOver ? '<span class="sr-only"> (at or over threshold)</span>' : "") + "</span></span></td>" +
-                    '<td class="tt-act"><span class="row-actions"><button class="icon-btn danger" type="button" data-delete="' + esc(x._id) + '" aria-label="' + esc("Delete " + x.title) + '">' + icon("trash") + "</button></span></td></tr>";
+                html += '<li class="item' + (state.fresh === x._id ? " fresh" : "") + '">' + LEAD.spend +
+                    '<span class="item-main"><span class="item-title">' + esc(x.title) + "</span>" + (isOver ? '<span class="item-sub is-over">At or over your ' + esc(money(thr)) + " limit</span>" : "") + "</span>" +
+                    '<span class="item-end"><span class="amt' + (isOver ? " is-over" : "") + '">' + esc(money(x.amount)) + "</span></span>" +
+                    '<span class="item-actions"><button class="icon-btn danger" type="button" data-delete="' + esc(x._id) + '" aria-label="' + esc("Delete " + x.title) + '">' + icon("trash") + "</button></span></li>";
             });
+            html += "</ul>";
         });
-        $("list").innerHTML = html + "</tbody></table>";
+        $("list").innerHTML = html;
         state.fresh = null;
+    }
+
+    function renderChart(m, items, thr, isCurrent) {
+        const y = m.getFullYear(), mo = m.getMonth();
+        const days = new Date(y, mo + 1, 0).getDate();
+        const perDay = new Array(days).fill(0);
+        const overDay = new Array(days).fill(false);
+        items.forEach((x) => { const i = when(x.date).day.getDate() - 1; perDay[i] += x.amount; if (x.amount >= thr) overDay[i] = true; });
+        const max = Math.max(...perDay);
+        const active = perDay.filter((v) => v > 0).length;
+        $("chartMeta").textContent = max ? "Busiest day " + (perDay.indexOf(max) + 1) + " " + S.MO[mo] + ", " + money(max) : "";
+        if (!items.length) {
+            $("chart").innerHTML = '<div class="inset"><div class="bars" style="margin-top:0;height:120px" aria-hidden="true">' + perDay.map(() => '<i class="zero"></i>').join("") +
+                '</div><div class="bars-axis"><span>1 ' + S.MO[mo] + "</span><span>" + days + " " + S.MO[mo] + "</span></div></div>";
+            return;
+        }
+        const today = now.getDate();
+        const shownDays = isCurrent ? Math.max(7, today) : days;
+        // Square-root scale against the second-largest day when one day dwarfs the rest;
+        // that day is drawn clipped with its value written above.
+        const sorted = perDay.filter((v) => v > 0).sort((a, b) => b - a);
+        const top = sorted.length > 1 && sorted[0] > 3 * sorted[1] ? sorted[1] * 1.6 : (sorted[0] || 1);
+        const barH = (v) => (v ? Math.min(100, Math.max(8, Math.sqrt(v / top) * 100)) : 3);
+        const bars = perDay.slice(0, shownDays).map((v, i) => {
+            const future = isCurrent && i + 1 > today;
+            const cls = future ? "future" : v === 0 ? "zero" : overDay[i] ? "over" : "";
+            const clipped = v > top;
+            return '<i class="' + cls + (clipped ? " clipped" : "") + (isCurrent && i + 1 === today ? " today" : "") + '"' + (clipped ? ' data-v="' + esc(money(v)) + '"' : "") + ' style="height:' + barH(v).toFixed(1) + '%" title="' + esc((i + 1) + " " + S.MO[mo] + ": " + money(v)) + '"></i>';
+        }).join("");
+        $("chart").innerHTML = '<div class="inset" style="padding-top:28px"><div class="bars" style="margin-top:0;height:150px" role="img" aria-label="' +
+            esc("Spending per day in " + MO_LONG[mo] + ": " + active + " days with payments, highest " + money(max) + ".") + '">' + bars + "</div>" +
+            '<div class="bars-axis" aria-hidden="true"><span>1 ' + S.MO[mo] + "</span><span>" + (isCurrent && shownDays === today ? "Today" : shownDays + " " + S.MO[mo]) + "</span></div></div>" +
+            '<div class="dl-legend" style="margin-top:12px" aria-hidden="true"><span><i style="background:var(--accent);box-shadow:none"></i>Spent that day</span><span><i style="background:var(--red);box-shadow:none"></i>Includes a payment at or over ' + esc(money(thr)) + "</span></div>";
     }
 
     async function load() {
@@ -113,7 +149,7 @@
     });
 
     $("exDate").value = ymd(now);
-    $("exSubmit").innerHTML = icon("plus") + "Log expense";
+    $("exSubmit").innerHTML = icon("plus") + "Log payment";
     $("addExpense").addEventListener("submit", (e) => {
         e.preventDefault();
         const title = $("exTitle").value.trim();

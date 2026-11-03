@@ -7,3 +7,6 @@ server/.env
 .impeccable/review/
 .impeccable/mocks/
 .impeccable/questions/
+
+# taste skill working files
+.taste-skill/

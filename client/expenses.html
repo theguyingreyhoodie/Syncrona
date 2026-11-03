@@ -9,14 +9,14 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400..700&family=Instrument+Serif&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/app.js" defer></script>
     <script src="js/expenses.js" defer></script>
 </head>
 <body data-page="expenses" data-auth="required">
     <div class="app">
-        <nav class="rail" id="rail" aria-label="Main"></nav>
+        <nav class="sidebar" id="rail" aria-label="Main"></nav>
         <main class="main" id="main">
             <div class="page">
                 <header class="page-head">
@@ -24,43 +24,65 @@
                         <h1 class="page-title">Expenses</h1>
                         <p class="page-sub" id="allTime">&nbsp;</p>
                     </div>
-                    <div class="cal-nav">
-                        <button class="icon-btn" type="button" id="prevMonth" aria-label="Previous month"></button>
-                        <span class="section-title" id="monthLabel" style="min-width:132px;text-align:center" aria-live="polite"></span>
-                        <button class="icon-btn" type="button" id="nextMonth" aria-label="Next month"></button>
+                    <div class="page-actions">
+                        <div class="month-switch">
+                            <button class="icon-btn" type="button" id="prevMonth" aria-label="Previous month"></button>
+                            <span class="lbl" id="monthLabel" aria-live="polite"></span>
+                            <button class="icon-btn" type="button" id="nextMonth" aria-label="Next month"></button>
+                        </div>
                     </div>
                 </header>
 
-                <div class="money-summary" id="summary"></div>
-
-                <form class="addbar no-type" id="addExpense" novalidate>
-                    <div class="field title-field">
-                        <label class="sr-only" for="exTitle">What was it for?</label>
-                        <input class="input" id="exTitle" placeholder="What did you pay for?" autocomplete="off" maxlength="200">
-                    </div>
-                    <div class="field money-input">
-                        <label class="sr-only" for="exAmount">Amount in rupees</label>
-                        <input class="input" type="number" id="exAmount" min="0" step="0.01" inputmode="decimal" placeholder="Amount">
-                    </div>
-                    <div class="field">
-                        <label class="sr-only" for="exDate">Date</label>
-                        <input class="input" type="date" id="exDate">
-                    </div>
-                    <button class="btn btn-primary" type="submit" id="exSubmit"></button>
-                    <p class="form-error" id="exError" role="alert"></p>
-                </form>
-
-                <div class="section-head">
-                    <h2 class="section-title" id="listHead">Payments</h2>
-                    <span class="section-meta" id="listMeta"></span>
+                <div class="grid" id="summary" aria-label="Month summary">
+                    <div class="tile span-3"><span class="tile-label">Spent</span><span class="tile-value">–</span><span class="tile-cap">&nbsp;</span></div>
+                    <div class="tile span-3"><span class="tile-label">Payments</span><span class="tile-value">–</span><span class="tile-cap">&nbsp;</span></div>
+                    <div class="tile span-3"><span class="tile-label">At or over your limit</span><span class="tile-value">–</span><span class="tile-cap">&nbsp;</span></div>
+                    <div class="tile span-3"><span class="tile-label">Against last month</span><span class="tile-value">–</span><span class="tile-cap">&nbsp;</span></div>
                 </div>
-                <div id="list">
-                    <div class="skeleton-rows" aria-hidden="true">
-                        <div><i class="skeleton" style="width:40%"></i></div>
-                        <div><i class="skeleton" style="width:55%"></i></div>
-                        <div><i class="skeleton" style="width:30%"></i></div>
-                    </div>
+
+                <div class="grid">
+                    <section class="panel span-8 md-12" aria-labelledby="chartHead">
+                        <div class="panel-head">
+                            <h2 class="panel-title" id="chartHead">Day by day</h2>
+                            <span class="panel-meta" id="chartMeta"></span>
+                        </div>
+                        <div id="chart"></div>
+                    </section>
+                    <section class="panel span-4 md-12" aria-labelledby="logHead">
+                        <div class="panel-head"><h2 class="panel-title" id="logHead">Log a payment</h2></div>
+                        <form class="add-form" id="addExpense" novalidate>
+                            <div class="field">
+                                <label class="field-label" for="exTitle">What was it for?</label>
+                                <input class="input" id="exTitle" placeholder="Groceries, rent, a train ticket" autocomplete="off" maxlength="200">
+                            </div>
+                            <div class="row2">
+                                <div class="field">
+                                    <label class="field-label" for="exAmount">Amount</label>
+                                    <div class="money-input"><input class="input" type="number" id="exAmount" min="0" step="0.01" inputmode="decimal" placeholder="0"></div>
+                                </div>
+                                <div class="field">
+                                    <label class="field-label" for="exDate">Date</label>
+                                    <input class="input" type="date" id="exDate">
+                                </div>
+                            </div>
+                            <p class="form-error" id="exError" role="alert"></p>
+                            <button class="btn btn-primary btn-block" type="submit" id="exSubmit"></button>
+                        </form>
+                    </section>
                 </div>
+
+                <section class="panel" style="margin-top:16px" aria-labelledby="listHead">
+                    <div class="panel-head">
+                        <h2 class="panel-title" id="listHead">Payments</h2>
+                        <span class="panel-meta" id="listMeta"></span>
+                    </div>
+                    <div id="list">
+                        <div class="list" aria-hidden="true">
+                            <div class="skeleton-item"><i class="skeleton" style="width:40%"></i></div>
+                            <div class="skeleton-item"><i class="skeleton" style="width:55%"></i></div>
+                        </div>
+                    </div>
+                </section>
             </div>
         </main>
     </div>
