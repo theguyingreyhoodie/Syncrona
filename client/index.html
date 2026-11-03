@@ -2,19 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Syncrona</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <script>
-        // Redirect based on whether the user is logged in
-        document.addEventListener('DOMContentLoaded', () => {
-            if (localStorage.getItem('token')) {
-                window.location.href = 'dashboard.html';
-            } else {
-                window.location.href = 'login.html';
-            }
-        });
+        var signedIn = false;
+        try { signedIn = !!localStorage.getItem("token"); } catch (e) {}
+        location.replace(signedIn ? "dashboard.html" : "login.html");
     </script>
+    <noscript><meta http-equiv="refresh" content="0; url=login.html"></noscript>
 </head>
-<body style="background: #f8fafc; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; color: #475569;">
-    <h2>Redirecting...</h2>
-</body>
+<body></body>
 </html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1440px;height:900px;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f4f4f5;color:#18181b;display:grid;grid-template-columns:240px 1fr}
+.side{background:#fff;border-right:1px solid #e4e4e7;padding:20px 14px}
+.side .m{font-weight:700;font-size:17px;padding:6px 10px 24px}
+.side a{display:block;padding:8px 10px;border-radius:6px;font-size:14px;color:#52525b}
+.side a.on{background:#f4f4f5;color:#18181b;font-weight:600}
+.main{padding:32px 40px}
+h1{font-size:26px;font-weight:600}.sub{color:#71717a;margin-top:4px;font-size:14px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0}
+.c{background:#fff;border:1px solid #e4e4e7;border-radius:12px;padding:18px 20px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.c small{color:#71717a;font-size:13px}.c b{display:block;font-size:28px;margin-top:6px}
+.c .bar{height:6px;background:#e4e4e7;border-radius:3px;margin-top:10px}.c .bar i{display:block;height:6px;width:73%;background:#2563eb;border-radius:3px}
+.grid{display:grid;grid-template-columns:2fr 1fr;gap:16px}
+.c h3{font-size:15px;margin-bottom:12px}
+.li{display:flex;gap:12px;align-items:center;padding:11px 0;border-top:1px solid #f4f4f5;font-size:14px}
+.li .b{width:16px;height:16px;border:1.5px solid #a1a1aa;border-radius:4px}
+.li .tag{margin-left:auto;font-size:12px;color:#71717a;background:#f4f4f5;padding:2px 8px;border-radius:999px}
+.li.d span{text-decoration:line-through;color:#a1a1aa}
+.ev{padding:10px 0;border-top:1px solid #f4f4f5;font-size:14px}.ev small{display:block;color:#71717a;font-size:12px}
+.btn{position:absolute;top:32px;right:40px;background:#2563eb;color:#fff;padding:9px 14px;border-radius:8px;font-size:14px;font-weight:600}
+</style></head><body>
+<nav class="side"><div class="m">Syncrona</div><a class="on">Dashboard</a><a>Tasks</a><a>Notes</a><a>Calendar</a><a>Expenses</a><a>Settings</a></nav>
+<main class="main">
+ <span class="btn">+ New</span>
+ <h1>Good afternoon, Anuj</h1><p class="sub">Tuesday, November 3</p>
+ <div class="stats">
+  <div class="c"><small>Tasks due today</small><b>4</b></div>
+  <div class="c"><small>Events this week</small><b>6</b></div>
+  <div class="c"><small>November spend</small><b>₹18,240</b><div class="bar"><i></i></div></div>
+ </div>
+ <div class="grid">
+  <div class="c"><h3>Today</h3>
+   <div class="li d"><i class="b"></i><span>Send invoice to Mehta & Co.</span><em class="tag">Done</em></div>
+   <div class="li"><i class="b"></i><span>Finish portfolio case study draft</span><em class="tag">5:00 PM</em></div>
+   <div class="li"><i class="b"></i><span>Renew passport appointment</span><em class="tag">Tomorrow</em></div>
+   <div class="li"><i class="b"></i><span>Client call prep</span><em class="tag">Nov 9</em></div>
+  </div>
+  <div class="c"><h3>Upcoming</h3>
+   <div class="ev">Design review with Priya<small>Today · 3:00 PM</small></div>
+   <div class="ev">Badminton<small>Today · 6:30 PM</small></div>
+   <div class="ev">Arjun's birthday dinner<small>Sat, Nov 7</small></div>
+  </div>
+ </div>
+</main>
+</body></html>

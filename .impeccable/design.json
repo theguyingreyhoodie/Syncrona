@@ -1,0 +1,767 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-02T19:58:44.720Z",
+  "title": "Design System: Syncrona",
+  "extensions": {
+    "colorMeta": {
+      "ink": {
+        "role": "primary",
+        "displayName": "Timetable Ink",
+        "canonical": "#141414",
+        "oklch": "oklch(19.1% 0.000 0)",
+        "night": "#eef1f4",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#808080",
+          "#a4a4a4",
+          "#cacaca",
+          "#eeeeee"
+        ]
+      },
+      "board": {
+        "role": "secondary",
+        "displayName": "Board Navy",
+        "canonical": "#17222d",
+        "oklch": "oklch(24.7% 0.026 248.9)",
+        "night": "#080d12",
+        "tonalRamp": [
+          "#080c10",
+          "#1e252b",
+          "#38414a",
+          "#545f6b",
+          "#75828f",
+          "#9ba6b1",
+          "#c3ccd4",
+          "#e9eff6"
+        ]
+      },
+      "board-2": {
+        "role": "secondary",
+        "displayName": "Board Navy Raised",
+        "canonical": "#223140",
+        "oklch": "oklch(30.7% 0.034 249.0)",
+        "night": "#16212b",
+        "tonalRamp": [
+          "#070c11",
+          "#1d252d",
+          "#36414d",
+          "#515f6e",
+          "#728293",
+          "#99a6b4",
+          "#c1ccd7",
+          "#e7f0f8"
+        ]
+      },
+      "board-ink": {
+        "role": "secondary",
+        "displayName": "Board Ink",
+        "canonical": "#c8d1d9",
+        "oklch": "oklch(85.6% 0.015 244.7)",
+        "night": "#c8d1d9",
+        "tonalRamp": [
+          "#090b0e",
+          "#212528",
+          "#3b4045",
+          "#585f65",
+          "#7a8188",
+          "#9fa5ab",
+          "#c6cbd0",
+          "#ebeff3"
+        ]
+      },
+      "board-ink-2": {
+        "role": "secondary",
+        "displayName": "Board Ink Muted",
+        "canonical": "#8a97a3",
+        "oklch": "oklch(67.0% 0.023 246.0)",
+        "night": "#7f8c98",
+        "tonalRamp": [
+          "#080c0f",
+          "#1f252a",
+          "#384149",
+          "#545f69",
+          "#76828d",
+          "#9ca6af",
+          "#c3ccd3",
+          "#e9eff5"
+        ]
+      },
+      "board-rule": {
+        "role": "secondary",
+        "displayName": "Board Rule",
+        "canonical": "#2a3946",
+        "oklch": "oklch(33.7% 0.030 245.0)",
+        "night": "#1b2630",
+        "tonalRamp": [
+          "#070c10",
+          "#1d252c",
+          "#36414b",
+          "#51606c",
+          "#738290",
+          "#99a6b2",
+          "#c1ccd6",
+          "#e7f0f7"
+        ]
+      },
+      "board-bright": {
+        "role": "secondary",
+        "displayName": "Board Bright",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100.0% 0.000 0)",
+        "night": "#ffffff",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#808080",
+          "#a4a4a4",
+          "#cacaca",
+          "#eeeeee"
+        ]
+      },
+      "red": {
+        "role": "tertiary",
+        "displayName": "Signal Red",
+        "canonical": "#d2241a",
+        "oklch": "oklch(55.7% 0.209 29.2)",
+        "night": "#ff5a4e",
+        "tonalRamp": [
+          "#1f0000",
+          "#4b0000",
+          "#7d0000",
+          "#af120b",
+          "#dc4133",
+          "#f87968",
+          "#ffb5aa",
+          "#fee9e5"
+        ]
+      },
+      "red-wash": {
+        "role": "tertiary",
+        "displayName": "Red Wash",
+        "canonical": "#fdecea",
+        "oklch": "oklch(95.6% 0.019 25.6)",
+        "night": "#3a1513",
+        "tonalRamp": [
+          "#0e0a09",
+          "#292221",
+          "#473d3c",
+          "#675a59",
+          "#8a7c7b",
+          "#ada1a0",
+          "#d2c8c7",
+          "#f4ecec"
+        ]
+      },
+      "on-red": {
+        "role": "tertiary",
+        "displayName": "On Red",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100.0% 0.000 0)",
+        "night": "#160605",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#808080",
+          "#a4a4a4",
+          "#cacaca",
+          "#eeeeee"
+        ]
+      },
+      "line-task": {
+        "role": "line",
+        "displayName": "Task Line",
+        "canonical": "#141414",
+        "oklch": "oklch(19.1% 0.000 0)",
+        "night": "#eef1f4",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#808080",
+          "#a4a4a4",
+          "#cacaca",
+          "#eeeeee"
+        ]
+      },
+      "line-event": {
+        "role": "line",
+        "displayName": "Event Line",
+        "canonical": "#2459c4",
+        "oklch": "oklch(49.4% 0.177 262.2)",
+        "night": "#6f9dff",
+        "tonalRamp": [
+          "#000729",
+          "#051f56",
+          "#153a84",
+          "#2857b6",
+          "#477be1",
+          "#76a3f9",
+          "#afcbff",
+          "#e7effe"
+        ]
+      },
+      "line-spend": {
+        "role": "line",
+        "displayName": "Spend Line",
+        "canonical": "#0d7a4b",
+        "oklch": "oklch(51.2% 0.117 157.4)",
+        "night": "#3cc28c",
+        "tonalRamp": [
+          "#000f06",
+          "#002d18",
+          "#004d2d",
+          "#146f45",
+          "#3e9466",
+          "#73b68f",
+          "#a5d9b9",
+          "#d3fae1"
+        ]
+      },
+      "line-note": {
+        "role": "line",
+        "displayName": "Note Line",
+        "canonical": "#9a6200",
+        "oklch": "oklch(54.4% 0.117 70.8)",
+        "night": "#e2a640",
+        "tonalRamp": [
+          "#140800",
+          "#351f00",
+          "#5a3700",
+          "#815204",
+          "#a9742c",
+          "#c89b65",
+          "#e8c399",
+          "#feebd5"
+        ]
+      },
+      "on-line": {
+        "role": "line",
+        "displayName": "On Line",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100.0% 0.000 0)",
+        "night": "#0e151c",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#808080",
+          "#a4a4a4",
+          "#cacaca",
+          "#eeeeee"
+        ]
+      },
+      "event-wash": {
+        "role": "line",
+        "displayName": "Event Wash",
+        "canonical": "#e9f0fc",
+        "oklch": "oklch(95.3% 0.018 261.3)",
+        "night": "#142338",
+        "tonalRamp": [
+          "#090b0f",
+          "#212429",
+          "#3c4047",
+          "#595e67",
+          "#7b808a",
+          "#a0a5ad",
+          "#c7cbd2",
+          "#ebeff4"
+        ]
+      },
+      "spend-wash": {
+        "role": "line",
+        "displayName": "Spend Wash",
+        "canonical": "#e5f3ec",
+        "oklch": "oklch(95.2% 0.017 164.7)",
+        "night": "#0f2a20",
+        "tonalRamp": [
+          "#080c0a",
+          "#202623",
+          "#3a423e",
+          "#56615b",
+          "#78837e",
+          "#9da7a2",
+          "#c5cdc9",
+          "#eaf0ed"
+        ]
+      },
+      "focus": {
+        "role": "line",
+        "displayName": "Focus Blue",
+        "canonical": "#2459c4",
+        "oklch": "oklch(49.4% 0.177 262.2)",
+        "night": "#6f9dff",
+        "tonalRamp": [
+          "#000729",
+          "#051f56",
+          "#153a84",
+          "#2857b6",
+          "#477be1",
+          "#76a3f9",
+          "#afcbff",
+          "#e7effe"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Timetable Paper",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100.0% 0.000 0)",
+        "night": "#0e151c",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#808080",
+          "#a4a4a4",
+          "#cacaca",
+          "#eeeeee"
+        ]
+      },
+      "paper-2": {
+        "role": "neutral",
+        "displayName": "Paper Tint",
+        "canonical": "#f4f5f3",
+        "oklch": "oklch(96.9% 0.003 128.5)",
+        "night": "#131d26",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242423",
+          "#3f403f",
+          "#5d5e5c",
+          "#80807f",
+          "#a4a5a3",
+          "#cacbc9",
+          "#eeeeee"
+        ]
+      },
+      "paper-3": {
+        "role": "neutral",
+        "displayName": "Paper Shade",
+        "canonical": "#eceeeb",
+        "oklch": "oklch(94.7% 0.005 134.9)",
+        "night": "#1a2631",
+        "tonalRamp": [
+          "#0b0b0a",
+          "#232423",
+          "#3f403e",
+          "#5d5e5c",
+          "#7f817e",
+          "#a4a5a3",
+          "#cacbc9",
+          "#eeefed"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Ink Secondary",
+        "canonical": "#53575c",
+        "oklch": "oklch(45.5% 0.010 253.9)",
+        "night": "#a3aeb8",
+        "tonalRamp": [
+          "#0a0b0d",
+          "#222427",
+          "#3d4044",
+          "#5a5e63",
+          "#7d8186",
+          "#a1a5a9",
+          "#c8cbce",
+          "#eceff1"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Ink Tertiary",
+        "canonical": "#6b7075",
+        "oklch": "oklch(54.3% 0.010 248.0)",
+        "night": "#8794a0",
+        "tonalRamp": [
+          "#0a0b0d",
+          "#222427",
+          "#3d4044",
+          "#5a5e62",
+          "#7c8186",
+          "#a1a5a9",
+          "#c8cbce",
+          "#eceff1"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#e1e3df",
+        "oklch": "oklch(91.3% 0.006 128.5)",
+        "night": "#22303c",
+        "tonalRamp": [
+          "#0b0b0a",
+          "#232423",
+          "#3f403e",
+          "#5d5e5b",
+          "#7f817d",
+          "#a4a5a2",
+          "#cacbc9",
+          "#eeefed"
+        ]
+      },
+      "rule-2": {
+        "role": "neutral",
+        "displayName": "Hairline Strong",
+        "canonical": "#c9ccc7",
+        "oklch": "oklch(84.1% 0.008 132.4)",
+        "night": "#34444f",
+        "tonalRamp": [
+          "#0b0b0a",
+          "#232422",
+          "#3f403d",
+          "#5c5e5a",
+          "#7f817d",
+          "#a3a5a2",
+          "#c9cbc8",
+          "#edefed"
+        ]
+      }
+    },
+    "themes": {
+      "dark": {
+        "selector": ":root[data-theme=\"dark\"], and prefers-color-scheme: dark unless data-theme=\"light\"",
+        "note": "Night theme swaps token values on the same roles. Toasts take #26333f at night.",
+        "colors": {
+          "ink": "#eef1f4",
+          "board": "#080d12",
+          "board-2": "#16212b",
+          "board-ink": "#c8d1d9",
+          "board-ink-2": "#7f8c98",
+          "board-rule": "#1b2630",
+          "board-bright": "#ffffff",
+          "red": "#ff5a4e",
+          "red-wash": "#3a1513",
+          "on-red": "#160605",
+          "line-task": "#eef1f4",
+          "line-event": "#6f9dff",
+          "line-spend": "#3cc28c",
+          "line-note": "#e2a640",
+          "on-line": "#0e151c",
+          "event-wash": "#142338",
+          "spend-wash": "#0f2a20",
+          "focus": "#6f9dff",
+          "paper": "#0e151c",
+          "paper-2": "#131d26",
+          "paper-3": "#1a2631",
+          "ink-2": "#a3aeb8",
+          "ink-3": "#8794a0",
+          "rule": "#22303c",
+          "rule-2": "#34444f"
+        }
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Page titles and the live clock; 40px at 720px and below. Condensed via font-stretch: 68%."
+      },
+      "figure": {
+        "displayName": "Figure",
+        "purpose": "Month spend total; 56px on Expenses, 34px in the calendar footer."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Calendar day panel title."
+      },
+      "time": {
+        "displayName": "Time",
+        "purpose": "Timetable time column; day numbers reuse it at 20px."
+      },
+      "amount": {
+        "displayName": "Amount",
+        "purpose": "Money inside rows and lists; semi-condensed via font-stretch: 84%."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Setting names, empty-state leads."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Rows, prose and inputs."
+      },
+      "control": {
+        "displayName": "Control",
+        "purpose": "Buttons, segmented options, FAB."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase section titles and (12px) timetable group rows."
+      },
+      "meta": {
+        "displayName": "Meta",
+        "purpose": "Sub-lines, hints and timestamps in Ink Secondary."
+      },
+      "badge": {
+        "displayName": "Badge",
+        "purpose": "Line badge letters."
+      }
+    },
+    "widths": [
+      {
+        "name": "narrow",
+        "value": "68%",
+        "purpose": "font-stretch for condensed figures and titles (--narrow)."
+      },
+      {
+        "name": "semi",
+        "value": "84%",
+        "purpose": "font-stretch for inline amounts (--semi)."
+      }
+    ],
+    "shadows": [
+      {
+        "name": "pop",
+        "value": "0 12px 32px -8px rgba(15, 22, 30, 0.22), 0 2px 6px rgba(15, 22, 30, 0.08)",
+        "night": "0 14px 36px -8px rgba(0, 0, 0, 0.6), 0 2px 6px rgba(0, 0, 0, 0.4)",
+        "purpose": "FAB, quick-note popover, toasts."
+      },
+      {
+        "name": "drawer",
+        "value": "12px 0 40px rgba(0, 0, 0, 0.3)",
+        "purpose": "Mobile rail while open."
+      },
+      {
+        "name": "segment-lift",
+        "value": "0 1px 2px rgba(0, 0, 0, 0.12), 0 0 0 1px var(--rule)",
+        "purpose": "Selected segmented-control option; the only resting shadow."
+      },
+      {
+        "name": "focus-halo",
+        "value": "0 0 0 3px color-mix(in srgb, var(--focus) 22%, transparent)",
+        "purpose": "Focused inputs and composer, with an ink border."
+      },
+      {
+        "name": "selected-day",
+        "value": "inset 0 0 0 2px var(--ink)",
+        "purpose": "Selected calendar day."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "Row settle, press scale, popover and toast entry, status-mark check."
+      },
+      {
+        "name": "ease-drawer",
+        "value": "cubic-bezier(0.32, 0.72, 0, 1)",
+        "purpose": "Mobile rail drawer, 260ms."
+      },
+      {
+        "name": "state",
+        "value": "140ms ease",
+        "purpose": "Hover and colour changes on buttons, nav, inputs."
+      },
+      {
+        "name": "press",
+        "value": "120ms ease-out, scale(0.97)",
+        "purpose": "Button and rail-button press; 0.94 icon buttons, 0.9 status marks, 0.96 FAB."
+      },
+      {
+        "name": "settle",
+        "value": "900ms ease-out",
+        "purpose": "New row background fades from its line wash to transparent."
+      },
+      {
+        "name": "popover",
+        "value": "opacity 180ms, transform 220ms ease-out in; 120ms/140ms ease out",
+        "purpose": "Quick-note popover, scale 0.96 + 6px rise."
+      },
+      {
+        "name": "toast",
+        "value": "opacity 220ms, transform 260ms ease-out in; 140ms out",
+        "purpose": "Toast rises 12px into place."
+      },
+      {
+        "name": "shimmer",
+        "value": "1.4s ease-in-out infinite",
+        "purpose": "Skeleton rows; disabled under reduced motion."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "prefers-reduced-motion: reduce",
+        "purpose": "Animations collapse to 1ms; transforms removed from drawer, popover, toast and press."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "tight",
+        "value": "1180px",
+        "purpose": "Aside and day panel narrow to 300px (max-width)."
+      },
+      {
+        "name": "rail-collapse",
+        "value": "980px",
+        "purpose": "Rail becomes an off-canvas drawer under a 56px topbar (max-width)."
+      },
+      {
+        "name": "phone",
+        "value": "720px",
+        "purpose": "16px gutters, 40px display, folded add bar, dot-only calendar, circular FAB (max-width)."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Ink-filled action: Add task, Save note, Sign in.",
+      "html": "<button class=\"ds-btn ds-btn-primary\" type=\"button\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14M12 5v14\"/></svg>Add task</button>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 38px; padding: 0 14px; border-radius: 6px; border: 1.5px solid var(--ink, #141414); background: var(--paper, #ffffff); color: var(--ink, #141414); font-family: var(--font, \"Archivo\", ui-sans-serif, system-ui, sans-serif); font-weight: 600; font-size: 14px; white-space: nowrap; cursor: pointer; transition: background-color 140ms ease, color 140ms ease, border-color 140ms ease, transform 120ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-btn:active { transform: scale(0.97); } .ds-btn:focus-visible { outline: 2px solid var(--focus, #2459c4); outline-offset: 2px; } .ds-btn-primary { background: var(--ink, #141414); color: var(--paper, #ffffff); } .ds-btn-primary:hover { background: color-mix(in srgb, var(--ink, #141414) 86%, var(--paper, #ffffff)); }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Default outline button: Today, Try again, Cancel.",
+      "html": "<button class=\"ds-btn-secondary\" type=\"button\">Today</button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; height: 38px; padding: 0 14px; border-radius: 6px; border: 1.5px solid var(--ink, #141414); background: var(--paper, #ffffff); color: var(--ink, #141414); font-family: var(--font, \"Archivo\", ui-sans-serif, system-ui, sans-serif); font-weight: 600; font-size: 14px; cursor: pointer; transition: background-color 140ms ease, transform 120ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-btn-secondary:hover { background: var(--paper-2, #f4f5f3); } .ds-btn-secondary:active { transform: scale(0.97); } .ds-btn-secondary:focus-visible { outline: 2px solid var(--focus, #2459c4); outline-offset: 2px; }"
+    },
+    {
+      "name": "Danger Button",
+      "kind": "button",
+      "refersTo": "button-danger",
+      "description": "Destructive action in red outline, washed on hover.",
+      "html": "<button class=\"ds-btn-danger\" type=\"button\">Delete account data</button>",
+      "css": ".ds-btn-danger { display: inline-flex; align-items: center; height: 38px; padding: 0 14px; border-radius: 6px; border: 1.5px solid var(--red, #d2241a); background: var(--paper, #ffffff); color: var(--red, #d2241a); font-family: var(--font, \"Archivo\", ui-sans-serif, system-ui, sans-serif); font-weight: 600; font-size: 14px; cursor: pointer; transition: background-color 140ms ease, transform 120ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-btn-danger:hover { background: var(--red-wash, #fdecea); } .ds-btn-danger:active { transform: scale(0.97); } .ds-btn-danger:focus-visible { outline: 2px solid var(--focus, #2459c4); outline-offset: 2px; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "38px field with hairline border; ink border and blue halo on focus.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Email</span><input class=\"ds-input\" type=\"email\" placeholder=\"you@example.com\"></label>",
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 6px; font-family: var(--font, \"Archivo\", ui-sans-serif, system-ui, sans-serif); } .ds-field-label { font-size: 13px; font-weight: 600; color: var(--ink, #141414); } .ds-input { height: 38px; width: 100%; padding: 0 12px; border: 1px solid var(--rule-2, #c9ccc7); border-radius: 6px; background: var(--paper, #ffffff); color: var(--ink, #141414); font: inherit; font-size: 15px; transition: border-color 140ms ease, box-shadow 140ms ease; } .ds-input::placeholder { color: var(--ink-3, #6b7075); } .ds-input:hover { border-color: var(--ink-3, #6b7075); } .ds-input:focus { outline: none; border-color: var(--ink, #141414); box-shadow: 0 0 0 3px color-mix(in srgb, var(--focus, #2459c4) 22%, transparent); } .ds-input[aria-invalid=\"true\"] { border-color: var(--red, #d2241a); }"
+    },
+    {
+      "name": "Segmented Control",
+      "kind": "chip",
+      "refersTo": "segmented",
+      "description": "Type switch in the add bar and filters on Tasks.",
+      "html": "<div class=\"ds-seg\" role=\"radiogroup\"><label><input type=\"radio\" name=\"ds-kind\" checked><span>Task</span></label><label><input type=\"radio\" name=\"ds-kind\"><span>Event</span></label><label><input type=\"radio\" name=\"ds-kind\"><span>Expense</span></label></div>",
+      "css": ".ds-seg { display: inline-flex; padding: 3px; gap: 2px; border-radius: 8px; background: var(--paper-3, #eceeeb); font-family: var(--font, \"Archivo\", ui-sans-serif, system-ui, sans-serif); } .ds-seg label { position: relative; } .ds-seg input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; } .ds-seg span { display: inline-flex; align-items: center; height: 32px; padding: 0 12px; border-radius: 5px; font-size: 14px; font-weight: 600; color: var(--ink-2, #53575c); transition: background-color 140ms ease, color 140ms ease, box-shadow 140ms ease; } .ds-seg input:checked + span { background: var(--paper, #ffffff); color: var(--ink, #141414); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 0 0 1px var(--rule, #e1e3df); } .ds-seg input:focus-visible + span { outline: 2px solid var(--focus, #2459c4); outline-offset: 1px; }"
+    },
+    {
+      "name": "Line Badges",
+      "kind": "chip",
+      "refersTo": "line-badge-task",
+      "description": "Item-type marks: T task, E event, ₹ expense, N note.",
+      "html": "<span class=\"ds-lines\"><span class=\"ds-line\" title=\"Task\">T</span><span class=\"ds-line ds-line-event\" title=\"Event\">E</span><span class=\"ds-line ds-line-spend\" title=\"Expense\">₹</span><span class=\"ds-line ds-line-note\" title=\"Note\">N</span></span>",
+      "css": ".ds-lines { display: inline-flex; gap: 8px; } .ds-line { display: inline-grid; place-items: center; min-width: 26px; height: 20px; padding: 0 5px; border-radius: 4px; font-family: var(--font, \"Archivo\", ui-sans-serif, system-ui, sans-serif); font-weight: 700; font-size: 11.5px; line-height: 1; letter-spacing: 0.02em; color: var(--on-line, #ffffff); background: var(--line-task, #141414); } .ds-line-event { background: var(--line-event, #2459c4); } .ds-line-spend { background: var(--line-spend, #0d7a4b); } .ds-line-note { background: var(--line-note, #9a6200); }"
+    },
+    {
+      "name": "Timetable with NOW Rule",
+      "kind": "custom",
+      "refersTo": "timetable-row",
+      "description": "Signature departures table: condensed time, line badge, item, status, cut by the red NOW rule.",
+      "html": "<table class=\"ds-tt\"><thead><tr><th>Time</th><th></th><th>Item</th><th class=\"r\">Status</th></tr></thead><tbody><tr class=\"ds-past\"><td class=\"ds-time\">09:00</td><td><span class=\"ds-line\">T</span></td><td class=\"ds-done\">Send invoice</td><td class=\"r\">done</td></tr><tr><td class=\"ds-time\">11:30</td><td><span class=\"ds-line ds-line-spend\">₹</span></td><td>Groceries</td><td class=\"r ds-over\">₹1,240</td></tr><tr class=\"ds-now\"><td colspan=\"4\"><div class=\"ds-now-tag\"><span>NOW 14:32</span></div></td></tr><tr><td class=\"ds-time\">15:00</td><td><span class=\"ds-line ds-line-event\">E</span></td><td>Design review</td><td class=\"r\">in 28 min</td></tr></tbody></table>",
+      "css": ".ds-tt { width: 100%; border-collapse: collapse; font-family: var(--font, \"Archivo\", ui-sans-serif, system-ui, sans-serif); color: var(--ink, #141414); } .ds-tt th { font-size: 12px; font-weight: 600; color: var(--ink-2, #53575c); text-align: left; padding: 0 10px 6px 2px; border-bottom: 1.5px solid var(--ink, #141414); } .ds-tt td { padding: 0 10px 0 2px; height: 50px; border-bottom: 1px solid var(--rule, #e1e3df); vertical-align: middle; font-size: 15.5px; } .ds-tt tr:hover td { background: var(--paper-2, #f4f5f3); } .ds-tt .r { text-align: right; font-size: 14px; color: var(--ink-2, #53575c); } .ds-time { width: 72px; font-stretch: 68%; font-variation-settings: \"wdth\" 68; font-weight: 700; font-size: 21px !important; font-variant-numeric: tabular-nums; } .ds-past .ds-time { color: var(--ink-3, #6b7075); } .ds-done { text-decoration: line-through; color: var(--ink-3, #6b7075); } .ds-over { color: var(--red, #d2241a) !important; font-weight: 700; font-variant-numeric: tabular-nums; } .ds-tt tr.ds-now td { height: 0; padding: 0; border-bottom: 2px solid var(--red, #d2241a); background: none; } .ds-now-tag { position: relative; height: 0; } .ds-now-tag span { position: absolute; left: 0; top: -10px; display: inline-flex; align-items: center; height: 19px; padding: 0 7px; border-radius: 3px; background: var(--red, #d2241a); color: var(--on-red, #ffffff); font-size: 11px; font-weight: 700; letter-spacing: 0.06em; font-variant-numeric: tabular-nums; } .ds-line { display: inline-grid; place-items: center; min-width: 26px; height: 20px; padding: 0 5px; border-radius: 4px; font-weight: 700; font-size: 11.5px; line-height: 1; color: var(--on-line, #ffffff); background: var(--line-task, #141414); } .ds-line-event { background: var(--line-event, #2459c4); } .ds-line-spend { background: var(--line-spend, #0d7a4b); }"
+    },
+    {
+      "name": "Board Rail",
+      "kind": "nav",
+      "refersTo": "nav-item",
+      "description": "Board-navy navigation rail with the current page raised.",
+      "html": "<nav class=\"ds-rail\"><a class=\"ds-brand\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9.5\" stroke=\"currentColor\" stroke-width=\"2.5\"/><path d=\"M12 12V6\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><path d=\"M12 12l4.5 3\" stroke=\"#ff4a3d\" stroke-width=\"2.5\" stroke-linecap=\"round\"/></svg>Syncrona</a><a class=\"ds-nav\" href=\"#\" aria-current=\"page\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 7v5l3 2\"/></svg>Today</a><a class=\"ds-nav\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/><path d=\"m8.5 12 2.5 2.5 4.5-5\"/></svg>Tasks</a><a class=\"ds-nav\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\"/><path d=\"M16 2v4M8 2v4M3 10h18\"/></svg>Calendar</a></nav>",
+      "css": ".ds-rail { display: flex; flex-direction: column; gap: 2px; width: 232px; padding: 24px 14px 16px; background: var(--board, #17222d); color: var(--board-ink, #c8d1d9); font-family: var(--font, \"Archivo\", ui-sans-serif, system-ui, sans-serif); } .ds-brand { display: flex; align-items: center; gap: 10px; padding: 0 10px; margin-bottom: 32px; font-weight: 700; font-size: 19px; letter-spacing: -0.01em; color: #fff; text-decoration: none; } .ds-nav { display: flex; align-items: center; gap: 12px; height: 40px; padding: 0 10px; border-radius: 6px; color: var(--board-ink, #c8d1d9); text-decoration: none; font-size: 15px; font-weight: 500; transition: background-color 140ms ease, color 140ms ease; } .ds-nav svg { color: var(--board-ink-2, #8a97a3); transition: color 140ms ease; } .ds-nav:hover:not([aria-current=\"page\"]) { background: rgba(255, 255, 255, 0.05); color: #fff; } .ds-nav:hover svg, .ds-nav[aria-current=\"page\"] svg { color: #fff; } .ds-nav[aria-current=\"page\"] { background: var(--board-2, #223140); color: #fff; font-weight: 600; } .ds-nav:focus-visible { outline: 2px solid var(--focus, #2459c4); outline-offset: 2px; }"
+    },
+    {
+      "name": "Status Mark",
+      "kind": "button",
+      "refersTo": "status-mark",
+      "description": "Task completion toggle: ink ring, fills ink with a check when done, red ring when overdue.",
+      "html": "<span class=\"ds-marks\"><button class=\"ds-mark\" type=\"button\" aria-pressed=\"false\" aria-label=\"Mark done\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\"/></svg></button><button class=\"ds-mark\" type=\"button\" aria-pressed=\"true\" aria-label=\"Done\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\"/></svg></button><button class=\"ds-mark ds-overdue\" type=\"button\" aria-pressed=\"false\" aria-label=\"Overdue, mark done\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\"/></svg></button></span>",
+      "css": ".ds-marks { display: inline-flex; gap: 12px; } .ds-mark { display: inline-grid; place-items: center; width: 22px; height: 22px; padding: 0; border-radius: 50%; border: 2px solid var(--ink, #141414); background: none; color: var(--paper, #ffffff); cursor: pointer; transition: background-color 150ms ease, border-color 150ms ease, transform 120ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-mark svg { width: 12px; height: 12px; opacity: 0; transform: scale(0.6); transition: opacity 150ms ease, transform 200ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-mark[aria-pressed=\"true\"] { background: var(--ink, #141414); } .ds-mark[aria-pressed=\"true\"] svg { opacity: 1; transform: scale(1); } .ds-mark[aria-pressed=\"false\"]:hover svg { opacity: 0.35; transform: scale(1); color: var(--ink, #141414); } .ds-mark.ds-overdue { border-color: var(--red, #d2241a); } .ds-mark:active { transform: scale(0.9); } .ds-mark:focus-visible { outline: 2px solid var(--focus, #2459c4); outline-offset: 2px; }"
+    },
+    {
+      "name": "Toast with Undo",
+      "kind": "custom",
+      "refersTo": "toast",
+      "description": "Board-navy confirmation with an Undo action; error variant in signal red.",
+      "html": "<div class=\"ds-toasts\"><div class=\"ds-toast\"><span>Task deleted</span><button type=\"button\">Undo</button></div><div class=\"ds-toast ds-toast-error\"><span>Can't reach the Syncrona server.</span></div></div>",
+      "css": ".ds-toasts { display: flex; flex-direction: column; gap: 8px; align-items: center; font-family: var(--font, \"Archivo\", ui-sans-serif, system-ui, sans-serif); } .ds-toast { display: flex; align-items: center; gap: 14px; min-height: 44px; padding: 6px 6px 6px 16px; border-radius: 8px; background: var(--board, #17222d); color: #fff; font-size: 14px; box-shadow: 0 12px 32px -8px rgba(15, 22, 30, 0.22), 0 2px 6px rgba(15, 22, 30, 0.08); } .ds-toast button { height: 32px; padding: 0 12px; border: 0; border-radius: 5px; font: inherit; font-weight: 700; color: #fff; background: rgba(255, 255, 255, 0.12); cursor: pointer; } .ds-toast button:hover { background: rgba(255, 255, 255, 0.2); } .ds-toast button:focus-visible { outline: 2px solid var(--focus, #2459c4); outline-offset: 2px; } .ds-toast-error { background: var(--red, #d2241a); color: var(--on-red, #ffffff); padding-right: 16px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Personal Departures Board",
+    "overview": "Syncrona sets a person's day the way a station sets its departures: every task, event and payment has a time, a line and a status, read top to bottom against a red NOW rule. The surface is white timetable paper printed in near-black ink, framed by a board-navy rail. Nothing floats in tiles; rows sit between hairline rules, section heads are ruled in ink, and the eye runs down a time column set in condensed figures.\n\nDensity is operational, not airy. Rows are 50px, the page runs to 1240px, and the first viewport carries the clock, a one-line add bar, the next-up timetable and the month's spend at once. Expression comes from one variable family, Archivo, pulled between two widths: condensed for anything you would read off a board (times, dates, money, page titles, day numbers) and normal width for prose and controls. Colour is reserved for meaning. Four line colours say what kind of item a row is; signal red says now, late, over or failed.\n\nThe world explicitly refuses the SaaS greeting-plus-stat-cards dashboard. The night theme is the same board on a navy ground: every role keeps its job, only the token values change.",
+    "keyCharacteristics": [
+      "Timetable rows (time, line badge, item, status) between 1px hairlines, under a 1.5px ink column head.",
+      "A red NOW rule with a NOW HH:MM tag cuts any time-ordered list that spans the present.",
+      "One family, two widths: Archivo condensed (wdth 68) for figures, normal width for prose.",
+      "Line badges mark item type everywhere: T ink, E blue, ₹ green, N amber.",
+      "Board-navy frame (rail, mobile topbar, toasts, auth board) around white paper content.",
+      "Motion is functional only: a 900ms row settle, 120–140ms state changes, short popover and drawer transitions."
+    ],
+    "rules": [
+      {
+        "name": "The Signal Red Rule",
+        "body": "Red means now, late, over or failed, and nothing else: the NOW rule, the clock colon, overdue, at-or-over-threshold spend, errors and destructive actions. It is never a brand accent, a category or decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The Line Colour Rule",
+        "body": "Each item type owns one line colour and keeps it on every screen: badge, calendar dot, settle wash, strip bar. Line colours say what kind of thing a row is, never how it is doing.",
+        "section": "colors"
+      },
+      {
+        "name": "The Frame Rule",
+        "body": "Board navy is the frame around the content (rail, topbar, toasts, auth board), never a fill inside it.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Widths Rule",
+        "body": "If you would read it off a station board (a time, a date, a day number, a sum of money, a page title), set it condensed. Everything else stays normal width. No second typeface.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Rule",
+        "body": "Every number that changes or aligns in a column uses tabular figures: times, amounts, counts, dates, the clock.",
+        "section": "typography"
+      },
+      {
+        "name": "The Rules-Not-Cards Rule",
+        "body": "Content sits between hairline rules, never inside cards. Only input surfaces get a container: the add bar well, the notes composer, the quick-note popover, and the error callout.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Float-Only Shadow Rule",
+        "body": "Pop shadow belongs to layers floating above the page (FAB, popover, toast, open drawer). Resting surfaces are flat; the segmented control's selected option is the single exception.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** set every dated list as a timetable: condensed tabular time, line badge, item, status at the right, 50px rows between 1px hairlines under a 1.5px ink head.",
+      "**Do** cut a time-ordered list that spans the present with the 2px red NOW rule and its NOW HH:MM tag.",
+      "**Do** rule every page head in 2px ink with the condensed title on the left and the live figure (clock, month, tools) on the right.",
+      "**Do** show money in rupees with tabular figures, condensed or semi-condensed, and turn it red only at or over the user's threshold.",
+      "**Do** keep capture one line away: the add bar on Today, Tasks and Expenses, the day-panel form on Calendar, and the quick-note FAB on every signed-in screen except Notes.",
+      "**Do** design empty (ruled prose with a next action), loading (50px skeleton rows) and error (red callout with retry) states for every list.",
+      "**Do** keep motion functional: 120–140ms state changes, 0.97 press scale, the 900ms row settle, and nothing else; collapse transforms under prefers-reduced-motion.",
+      "**Do** build the night theme by swapping tokens on the same roles; components never restyle per theme."
+    ],
+    "donts": [
+      "**Don't** build a greeting-plus-stat-cards dashboard or KPI tiles; figures sit on paper under a section label.",
+      "**Don't** wrap content items in cards, shadows or tinted tiles; separate them with rules.",
+      "**Don't** use signal red for a category, a brand accent, a chart series or decoration.",
+      "**Don't** use a line colour for status, or a line badge for anything other than item type.",
+      "**Don't** add a second typeface or a monospace for numbers; Archivo's widths and tabular figures carry them.",
+      "**Don't** put board navy inside the content column.",
+      "**Don't** add decorative motion such as looping effects, parallax or staged entrances."
+    ]
+  }
+}

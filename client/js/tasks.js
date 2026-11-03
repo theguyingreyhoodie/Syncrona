@@ -1,161 +1,175 @@
-const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? 'http://localhost:5000' : '';
-const API = API_BASE + "/api/tasks";
-let token = localStorage.getItem("token");
+/* Tasks: grouped timetable of everything due. */
+(function () {
+    "use strict";
+    const { api, esc, when, sameDay, startOfDay, addDays, daysBetween, fmtTime, MO, WD, relDay, relTime, timeAgo,
+        icon, toPayload, toastError, busy, undoable, everyMinute } = window.S;
 
-if (!token) {
-    window.location.href = "login.html";
-}
+    const state = { tasks: [], loaded: false, error: null, fresh: null };
+    const $ = (id) => document.getElementById(id);
+    const filter = () => document.querySelector("input[name=filter]:checked").value;
 
-// LOAD TASKS
-async function loadTasks() {
-    try {
-        const res = await fetch(API, {
-            headers: { "Authorization": "Bearer " + token }
-        });
+    function groupOf(t, today) {
+        if (t.completed) return "done";
+        const w = when(t.dueDate);
+        if (!w) return "nodate";
+        const n = daysBetween(today, w.day);
+        if (n < 0) return "overdue";
+        if (n === 0) return "today";
+        if (n === 1) return "tomorrow";
+        if (n < 7) return "week";
+        return "later";
+    }
 
-        if (res.ok) {
-            const tasks = await res.json();
-            renderTasks(tasks);
-        } else {
-            console.error("Failed to fetch tasks");
-            if (res.status === 401) {
-                logout();
-            }
+    const GROUPS = [
+        ["overdue", "Overdue"], ["today", "Today"], ["tomorrow", "Tomorrow"], ["week", "This week"],
+        ["later", "Later"], ["nodate", "No date"], ["done", "Done"]
+    ];
+
+    function dueCell(t, group) {
+        const w = when(t.dueDate);
+        if (!w) return '<span style="color:var(--ink-3)">—</span>';
+        const time = w.at ? "<small>" + fmtTime(w.at) + "</small>" : "";
+        if (group === "today") return w.at ? fmtTime(w.at) : '<small style="margin:0">Today</small>';
+        if (group === "tomorrow" || group === "week") return esc(WD[w.day.getDay()]) + time;
+        return esc(w.day.getDate() + " " + MO[w.day.getMonth()]) + time;
+    }
+
+    function statusLabel(t, group, now) {
+        if (group === "done") return "done " + timeAgo(t.updatedAt || t.createdAt);
+        if (group === "nodate") return "open";
+        const w = when(t.dueDate);
+        if (group === "overdue") return "overdue · " + relDay(w.day, now);
+        if (w.at && group === "today") return w.at < now ? "due " + relTime(w.at, now) : S.relSoon(w.at, now);
+        return group === "today" ? "due today" : relDay(w.day, now);
+    }
+
+    function row(t, group, now) {
+        const late = group === "overdue" || (group === "today" && when(t.dueDate).at && when(t.dueDate).at < now);
+        const label = statusLabel(t, group, now);
+        return '<tr class="k-task' + (t.completed ? " done" : "") + (state.fresh === t._id ? " fresh" : "") + '">' +
+            '<td class="tt-time">' + dueCell(t, group) + "</td>" +
+            '<td class="tt-item"><span class="title">' + esc(t.title) + '</span><span class="sub show-sm' + (late ? " is-overdue" : "") + '">' + esc(label) + "</span></td>" +
+            '<td class="tt-status"><span class="tt-status-inner"><span class="hide-sm ' + (late ? "is-overdue" : "") + '">' + esc(label) + "</span>" +
+            '<button class="mark' + (late ? " overdue" : "") + '" type="button" data-toggle="' + esc(t._id) + '" aria-pressed="' + !!t.completed + '" aria-label="' +
+            esc((t.completed ? "Mark not done: " : "Mark done: ") + t.title) + '">' + icon("check") + "</button></span></td>" +
+            '<td class="tt-act"><span class="row-actions"><button class="icon-btn danger" type="button" data-delete="' + esc(t._id) + '" aria-label="' +
+            esc("Delete task: " + t.title) + '">' + icon("trash") + "</button></span></td></tr>";
+    }
+
+    function render() {
+        const list = $("list");
+        if (!state.loaded) return;
+        if (state.error) {
+            list.innerHTML = '<div class="callout">' + icon("alert") + "<div><strong>Tasks couldn't load.</strong>" + esc(state.error) + "</div></div>";
+            return;
         }
-    } catch (e) {
-        console.error("Backend offline", e);
-        const list = document.getElementById("taskList");
-        list.innerHTML = `<p style="color: #ef4444; text-align: center; margin-top: 40px;">Failed to connect to backend server.</p>`;
+        const now = new Date();
+        const today = startOfDay(now);
+        const open = state.tasks.filter((t) => !t.completed);
+        const done = state.tasks.length - open.length;
+        const overdue = open.filter((t) => groupOf(t, today) === "overdue").length;
+        document.querySelector('[data-count="open"]').textContent = open.length;
+        document.querySelector('[data-count="done"]').textContent = done;
+        document.querySelector('[data-count="all"]').textContent = state.tasks.length;
+        $("taskSummary").innerHTML = state.tasks.length
+            ? open.length + " open" + (overdue ? ' · <span class="is-overdue">' + overdue + " overdue</span>" : "") + " · " + done + " done"
+            : "Nothing here yet.";
+
+        const f = filter();
+        const shown = state.tasks.filter((t) => f === "all" || (f === "done" ? t.completed : !t.completed));
+        if (!shown.length) {
+            const msg = !state.tasks.length
+                ? "<strong>No tasks yet.</strong>Type one above and press Enter. Give it a date and it shows up on Today and in the calendar."
+                : f === "done" ? "<strong>Nothing finished yet.</strong>Tick a task's circle to mark it done; it stays here with the time you did it."
+                    : "<strong>All clear.</strong>Every task is done. Add the next one above.";
+            list.innerHTML = '<div class="empty">' + msg + "</div>";
+            return;
+        }
+
+        const buckets = {};
+        shown.forEach((t) => { (buckets[groupOf(t, today)] = buckets[groupOf(t, today)] || []).push(t); });
+        const sortKey = (t) => { const w = when(t.dueDate); return w ? (w.at || w.day).getTime() : Infinity; };
+        Object.keys(buckets).forEach((g) => {
+            if (g === "done") buckets[g].sort((a, b) => new Date(b.updatedAt || 0) - new Date(a.updatedAt || 0));
+            else if (g === "nodate") buckets[g].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+            else buckets[g].sort((a, b) => sortKey(a) - sortKey(b));
+        });
+
+        let html = '<table class="timetable"><thead><tr><th scope="col">Due</th><th scope="col">Task</th><th scope="col" style="text-align:right">Status</th><th scope="col"><span class="sr-only">Actions</span></th></tr></thead><tbody>';
+        GROUPS.forEach(([g, label]) => {
+            const items = buckets[g];
+            if (!items) return;
+            html += '<tr class="group' + (g === "overdue" ? " overdue" : "") + '"><td colspan="4">' + label + '<span class="count">' + items.length + "</span></td></tr>";
+            html += items.map((t) => row(t, g, now)).join("");
+        });
+        list.innerHTML = html + "</tbody></table>";
+        state.fresh = null;
     }
-}
 
-function renderTasks(tasks) {
-    const list = document.getElementById("taskList");
-    list.innerHTML = "";
-
-    if (tasks.length === 0) {
-        list.innerHTML = `<p style="color: var(--text-secondary); text-align: center; margin-top: 40px;">No tasks. Add one above!</p>`;
-        return;
+    async function load() {
+        try { state.tasks = await api("/tasks"); state.error = null; }
+        catch (e) { state.error = e.message; }
+        state.loaded = true;
+        render();
     }
 
-    tasks.forEach(t => {
-        const dateStr = t.dueDate ? new Date(t.dueDate).toLocaleDateString(undefined, { month: 'short', day: 'numeric' }) : "No date";
-        const isCompleted = t.completed;
-
-        const textStyle = isCompleted ? `text-decoration: line-through; color: var(--text-secondary);` : `color: var(--text-primary);`;
-        const itemOpacity = isCompleted ? "opacity: 0.6;" : "opacity: 1;";
-        const checkColor = isCompleted ? "#22c55e" : "var(--text-secondary)";
-
-        list.innerHTML += `
-        <div class="task glass-panel" style="display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; ${itemOpacity} box-shadow: none; margin: 0; transition: transform 0.2s, opacity 0.2s;">
-            
-            <div style="display: flex; align-items: center; gap: 16px; flex: 1;">
-                <div onclick="toggleTask('${t._id}', ${!isCompleted})" style="cursor: pointer; display: flex; align-items: center; color: ${checkColor}; transition: color 0.2s;">
-                    ${isCompleted ?
-                `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>` :
-                `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle></svg>`
-            }
-                </div>
-                <div>
-                    <div style="${textStyle} font-size: 1.05rem; font-weight: 500;">${t.title}</div>
-                    <div style="font-size: 0.8rem; color: var(--text-secondary); display: flex; align-items: center; gap: 4px; margin-top: 4px;">
-                        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                        ${dateStr}
-                    </div>
-                </div>
-            </div>
-
-            <button onclick="deleteTask('${t._id}')" class="btn-secondary" style="width: auto; padding: 8px; border-radius: 8px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239,68,68,0.2) !important; color: #ef4444; cursor: pointer;">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
-            </button>
-        </div>`;
+    $("list").addEventListener("click", async (ev) => {
+        const tog = ev.target.closest("[data-toggle]");
+        const del = ev.target.closest("[data-delete]");
+        if (tog) {
+            const t = state.tasks.find((x) => x._id === tog.dataset.toggle);
+            if (!t) return;
+            t.completed = !t.completed;
+            t.updatedAt = new Date().toISOString();
+            render();
+            try { await api("/tasks/" + t._id, { method: "PUT", body: { completed: t.completed } }); }
+            catch (e) { t.completed = !t.completed; render(); toastError(e); }
+        } else if (del) {
+            const i = state.tasks.findIndex((x) => x._id === del.dataset.delete);
+            if (i < 0) return;
+            const t = state.tasks[i];
+            undoable({
+                message: "Deleted “" + (t.title.length > 40 ? t.title.slice(0, 40) + "…" : t.title) + "”",
+                path: "/tasks/" + t._id,
+                apply: () => { state.tasks.splice(i, 1); render(); },
+                revert: () => { state.tasks.splice(Math.min(i, state.tasks.length), 0, t); render(); }
+            });
+        }
     });
-}
 
-// ADD TASK
-async function addTask() {
-    const title = document.getElementById("taskTitle").value;
-    const dueDate = document.getElementById("dueDate").value;
+    document.querySelectorAll("input[name=filter]").forEach((r) => r.addEventListener("change", render));
 
-    if (!title) return;
-
-    try {
-        await fetch(API, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": "Bearer " + token
-            },
-            body: JSON.stringify({ title, dueDate: dueDate || null })
+    $("taskSubmit").innerHTML = icon("plus") + "Add task";
+    $("addTask").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const title = $("taskTitle").value.trim();
+        if (!title) {
+            $("taskError").textContent = "Give the task a title first.";
+            $("taskTitle").setAttribute("aria-invalid", "true");
+            $("taskTitle").focus();
+            return;
+        }
+        if ($("taskTime").value && !$("taskDate").value) {
+            $("taskError").textContent = "Pick a date for that time, or clear the time.";
+            $("taskDate").focus();
+            return;
+        }
+        $("taskError").textContent = "";
+        $("taskTitle").removeAttribute("aria-invalid");
+        busy($("taskSubmit"), async () => {
+            try {
+                const created = await api("/tasks", { method: "POST", body: { title, dueDate: toPayload($("taskDate").value, $("taskTime").value) } });
+                state.tasks.unshift(created);
+                state.fresh = created._id;
+                $("taskTitle").value = "";
+                $("taskTime").value = "";
+                if (filter() === "done") document.querySelector("input[name=filter][value=open]").checked = true;
+                render();
+                $("taskTitle").focus();
+            } catch (err) { $("taskError").textContent = err.message; }
         });
+    });
 
-        document.getElementById("taskTitle").value = "";
-        document.getElementById("dueDate").value = "";
-        closeTaskModal();
-        loadTasks();
-    } catch (e) {
-        console.error("Failed to add task", e);
-    }
-}
-
-// DELETE
-async function deleteTask(id) {
-    try {
-        await fetch(API + "/" + id, {
-            method: "DELETE",
-            headers: { "Authorization": "Bearer " + token }
-        });
-        loadTasks();
-    } catch (e) {
-        console.error("Failed to delete task", e);
-    }
-}
-
-// TOGGLE COMPLETE
-async function toggleTask(id, newState) {
-    try {
-        await fetch(API + "/" + id, {
-            method: "PUT",
-            headers: {
-                "Authorization": "Bearer " + token,
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ completed: newState })
-        });
-        loadTasks();
-    } catch (e) {
-        console.error("Failed to toggle task", e);
-    }
-}
-
-// NAV
-function logout() {
-    localStorage.clear();
-    window.location.href = "login.html";
-}
-
-function go(p) {
-    window.location.href = p;
-}
-
-// MODAL LOGIC
-function openTaskModal() {
-    document.getElementById("taskModal").classList.add("open");
-    setTimeout(() => {
-        document.getElementById("taskTitle").focus();
-    }, 100);
-}
-
-function closeTaskModal() {
-    document.getElementById("taskModal").classList.remove("open");
-}
-
-document.getElementById('taskModal').addEventListener('click', function (e) {
-    if (e.target === this) closeTaskModal();
-});
-
-document.getElementById('taskTitle').addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') addTask();
-});
-
-loadTasks();
+    everyMinute(render);
+    load();
+})();

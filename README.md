@@ -4,18 +4,18 @@ Syncrona is a sleek, full-stack productivity web application designed with a pre
 
 ##  Features
 
-- **Dashboard:** Get a quick overview of your pending tasks, recent notes, and upcoming calendar events.
+- **Today:** Your day set like a departures board: overdue and due tasks, events and today's payments in time order against a live "now" line, plus this month's spending and your latest notes. Add a task, event or expense in one line.
 - **Task Management:** Create, track, and complete your daily to-dos.
-- **Notes:** Jot down quick ideas via the floating action button or manage detailed notes on the dedicated page.
+- **Notes:** Jot down quick ideas from any screen with the Quick note button, or search and edit notes on the Notes page.
 - **Calendar Integration:** Visual interactive calendar combining tasks, events, and conditionally highlighted expenses. It automatically aggregates total monthly costs and maps expenses to custom bracket thresholds (Low vs High cost highlighting).
 - **Expense Tracking:** Monitor your spending natively synchronized with the calendar display.
-- **Dedicated Settings Hub:** Centralized configuration panel to define your Expense bracket thresholds globally, securely reset local diagnostics, and manually toggle thematic preferences.
-- **Elegant Theme Toggle:** Seamlessly switch between a crisp light mode and a deep immersive dark mode, with your preference saved automatically.
+- **Settings:** Theme (system, light or dark), the high-expense threshold, sign out, and a browser reset.
+- **Light and dark themes:** Follows your system by default; toggle from the sidebar.
 - **Authentication:** Secure user login and signup functionality handled dynamically across API base urls.
 
 ## Tech Stack
 
-- **Frontend:** HTML5, CSS3 (Custom Modern SaaS UI with CSS Variables), Vanilla JavaScript
+- **Frontend:** HTML, CSS (one stylesheet, design tokens as custom properties, Archivo variable font), vanilla JavaScript (`client/js/app.js` holds the shared shell, API client, theme, toasts and quick note; one script per page). No build step.
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB & Mongoose
 - **Architecture:** Token-based Authentication
@@ -57,7 +57,9 @@ Make sure you have Node.js installed on your machine and a running instance of M
    ```
 
 4. **Open in Browser:**
-   Navigate to the local URL provided by the `serve` command (usually `http://localhost:3000`) and enjoy!
+   Navigate to the local URL provided by the `serve` command (usually `http://localhost:3000`).
+
+   On localhost the client calls the API at `http://localhost:5000`. On macOS, AirPlay Receiver also listens on port 5000; if the API can't start there, run it on another port (`PORT=5001`) and point the client at it from the browser console: `localStorage.apiBase = "http://localhost:5001"`.
 
 ### Vercel Deployment
 

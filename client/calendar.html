@@ -1,190 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendar - Syncrona</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calendar · Syncrona</title>
+    <meta name="description" content="Tasks, events and spending on one month.">
+    <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;if(!localStorage.getItem("token"))location.replace("login.html")}catch(e){}</script>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=3">
-    <script src="js/theme.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/app.js" defer></script>
+    <script src="js/calendar.js" defer></script>
 </head>
-
-<body>
-
+<body data-page="calendar" data-auth="required">
     <div class="app">
-
-        <!-- SIDEBAR -->
-        <nav class="sidebar">
-            <div class="sidebar-header">
-                <div class="sidebar-header-left">
-                    <div class="logo-icon"></div>
-                    <h2>Syncrona</h2>
-                </div>
-                <button class="close-sidebar-btn" onclick="toggleSidebar()">&times;</button>
-            </div>
-            <ul class="nav-links">
-                <li onclick="go('dashboard.html')">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                    </svg>
-                    Dashboard
-                </li>
-                <li onclick="go('tasks.html')">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="9 11 12 14 22 4"></polyline>
-                        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
-                    </svg>
-                    Tasks
-                </li>
-                <li onclick="go('notes.html')">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                        <polyline points="14 2 14 8 20 8"></polyline>
-                        <line x1="16" y1="13" x2="8" y2="13"></line>
-                        <line x1="16" y1="17" x2="8" y2="17"></line>
-                        <polyline points="10 9 9 9 8 9"></polyline>
-                    </svg>
-                    Notes
-                </li>
-                <li class="active" onclick="go('calendar.html')">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                        <line x1="16" y1="2" x2="16" y2="6"></line>
-                        <line x1="8" y1="2" x2="8" y2="6"></line>
-                        <line x1="3" y1="10" x2="21" y2="10"></line>
-                    </svg>
-                    Calendar
-                </li>
-                <li onclick="go('expenses.html')">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="12" y1="1" x2="12" y2="23"></line>
-                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                    </svg>
-                    Expenses
-                </li>
-                <li onclick="go('settings.html')">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="3"></circle>
-                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-                    </svg>
-                    Settings
-                </li>
-            </ul>
-            <div class="sidebar-footer">
-                <button class="logout-btn" onclick="logout()">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-                        <polyline points="16 17 21 12 16 7"></polyline>
-                        <line x1="21" y1="12" x2="9" y2="12"></line>
-                    </svg>
-                    Logout
-                </button>
-            </div>
-        </nav>
-
-        <!-- MAIN -->
-        <main class="main">
-            <header class="top-header" style="margin-bottom: 20px;">
-                <div style="display: flex; align-items: center;">
-                    <button class="hamburger-btn" onclick="toggleSidebar()">
-                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <line x1="3" y1="12" x2="21" y2="12"></line>
-                            <line x1="3" y1="6" x2="21" y2="6"></line>
-                            <line x1="3" y1="18" x2="21" y2="18"></line>
-                        </svg>
-                    </button>
-                    <div class="welcome-text">
-                        <h1 class="gradient-text" style="font-size: 2rem;">Calendar</h1>
-                        <p style="color: var(--text-secondary); margin-top: 5px;">Plan your month</p>
+        <nav class="rail" id="rail" aria-label="Main"></nav>
+        <main class="main" id="main">
+            <div class="page">
+                <header class="page-head">
+                    <div>
+                        <h1 class="page-title" id="monthTitle" aria-live="polite">Calendar</h1>
+                        <div class="legend" style="margin-top:10px">
+                            <span><span class="cal-entry"><span class="dot"></span></span>Task</span>
+                            <span><span class="cal-entry k-event"><span class="dot"></span></span>Event</span>
+                            <span><b class="cal-spend" style="margin:0">₹</b>Spent that day</span>
+                            <span><b class="cal-spend over" style="margin:0">₹</b>Includes a payment at or over your threshold</span>
+                        </div>
                     </div>
-                </div>
-            </header>
+                    <div class="cal-nav">
+                        <button class="icon-btn" type="button" id="prevMonth" aria-label="Previous month"></button>
+                        <button class="btn btn-sm" type="button" id="thisMonth">Today</button>
+                        <button class="icon-btn" type="button" id="nextMonth" aria-label="Next month"></button>
+                    </div>
+                </header>
 
-            <div class="glass-panel" style="margin-bottom: 30px;">
-                <div class="calendar-header">
-                    <button class="calendar-nav-btn" onclick="changeMonth(-1)">Previous</button>
-                    <h2 id="monthYearDisplay">Loading...</h2>
-                    <button class="calendar-nav-btn" onclick="changeMonth(1)">Next</button>
-                </div>
+                <div class="cal-layout">
+                    <section aria-label="Month">
+                        <div class="cal-head" aria-hidden="true">
+                            <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+                        </div>
+                        <div class="cal-grid" id="grid" role="group" aria-label="Days. Use arrow keys to move between days."></div>
+                        <div id="loadError"></div>
+                        <div class="cal-foot">
+                            <div>
+                                <div class="section-title" id="footLabel">Spent this month</div>
+                                <div class="spend-total" id="monthTotal">₹0</div>
+                            </div>
+                            <p class="section-meta" id="monthFacts"></p>
+                        </div>
+                    </section>
 
-                <div class="calendar-grid-header">
-                    <div>Sun</div>
-                    <div>Mon</div>
-                    <div>Tue</div>
-                    <div>Wed</div>
-                    <div>Thu</div>
-                    <div>Fri</div>
-                    <div>Sat</div>
-                </div>
+                    <aside class="day-panel" id="dayPanel" aria-labelledby="dayTitle">
+                        <h2 class="day-panel-title" id="dayTitle"></h2>
+                        <p class="day-panel-sub" id="daySub"></p>
+                        <ul class="day-list" id="dayList"></ul>
 
-                <div id="calendarGrid" class="calendar-grid">
-                    <!-- Days loaded via JS -->
-                </div>
-
-                <div class="monthly-expense-summary" style="margin-top: 20px; padding: 15px; border-top: 1px solid var(--border-color); display: flex; justify-content: flex-end; align-items: center;">
-                    <h3 style="margin: 0; color: var(--text-secondary); font-size: 1rem; font-weight: 500;">Monthly Expenses: <span id="monthlyTotalExpense" style="color: var(--text-primary); font-size: 1.25rem; font-weight: 700; margin-left: 10px;">₹0.00</span></h3>
+                        <form class="day-form" id="dayForm" novalidate>
+                            <fieldset class="seg">
+                                <legend class="sr-only">Add to this day</legend>
+                                <label><input type="radio" name="kind" value="task" checked><span>Task</span></label>
+                                <label><input type="radio" name="kind" value="event"><span>Event</span></label>
+                                <label><input type="radio" name="kind" value="spend"><span>Expense</span></label>
+                            </fieldset>
+                            <div class="field">
+                                <label class="sr-only" for="dfTitle">Title</label>
+                                <input class="input" id="dfTitle" autocomplete="off" maxlength="200">
+                            </div>
+                            <div class="row2">
+                                <div class="field" id="dfTimeField">
+                                    <label class="sr-only" for="dfTime">Time (optional)</label>
+                                    <input class="input" type="time" id="dfTime" title="Time (optional)">
+                                </div>
+                                <div class="field money-input" id="dfAmountField" hidden>
+                                    <label class="sr-only" for="dfAmount">Amount in rupees</label>
+                                    <input class="input" type="number" id="dfAmount" min="0" step="0.01" inputmode="decimal" placeholder="Amount">
+                                </div>
+                                <button class="btn btn-primary" type="submit" id="dfSubmit"></button>
+                            </div>
+                            <p class="form-error" id="dfError" role="alert"></p>
+                        </form>
+                    </aside>
                 </div>
             </div>
         </main>
-
     </div>
-
-    <!-- Add Task Modal -->
-    <div class="modal-overlay" id="taskModal">
-        <div class="modal-content large">
-            <div class="modal-header">
-                <h3 id="modalDateDisplayHeader">Loading...</h3>
-                <button class="close-modal-btn" onclick="closeModal()">&times;</button>
-            </div>
-            <div class="modal-split-layout">
-                <!-- Left Box: Existing Items -->
-                <div class="existing-items-box">
-                    <h4>Existing Items</h4>
-                    <div id="modalExistingItems" class="existing-items-list">
-                        <!-- Items injected via JS -->
-                    </div>
-                </div>
-
-                <!-- Right Box: Add Item Form -->
-                <div class="add-item-box">
-                    <h4>Add New Item</h4>
-                    <div class="task-input" style="flex-wrap: wrap; gap: 10px;">
-                        <input type="text" id="modalTaskTitle" placeholder="I need to..." style="flex: 1 1 100%;">
-                        <input type="number" id="modalExpenseAmount" placeholder="Amount ($ if expense)"
-                            style="flex: 1 1 100%;">
-                        <input type="hidden" id="modalDueDate">
-                        <p id="modalDateDisplay" style="display: none;"></p>
-                    </div>
-                    <div style="display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap;">
-                        <button class="btn-primary" onclick="addCalendarTask()" style="flex: 1;">Save Task</button>
-                        <button class="btn-primary" onclick="addCalendarEvent()"
-                            style="flex: 1; background: linear-gradient(135deg, #ec4899, #f472b6); box-shadow: 0 0 20px rgba(236,72,153,0.3);">Save
-                            Event</button>
-                        <button class="btn-primary" onclick="addCalendarExpense()"
-                            style="flex: 1; background: linear-gradient(135deg, #ef4444, #f87171); box-shadow: 0 0 20px rgba(239,68,68,0.3);">Save
-                            Expense</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function toggleSidebar() {
-            if (window.innerWidth <= 768) {
-                document.body.classList.toggle('sidebar-open');
-            } else {
-                document.body.classList.toggle('sidebar-closed');
-            }
-        }
-    </script>
-    <script src="js/calendar.js"></script>
 </body>
-
 </html>
