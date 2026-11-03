@@ -24,28 +24,24 @@
                         <h1 class="page-title">Notes</h1>
                         <p class="page-sub" id="noteCount">&nbsp;</p>
                     </div>
-                    <div class="page-actions">
-                        <div class="search">
-                            <span id="searchIcon"></span>
-                            <label class="sr-only" for="search">Search notes</label>
-                            <input class="input" type="search" id="search" placeholder="Search notes" autocomplete="off">
-                        </div>
-                    </div>
                 </header>
 
-                <form class="composer" id="composer">
-                    <label class="sr-only" for="newNote">New note</label>
-                    <textarea id="newNote" placeholder="Write something down…" rows="3"></textarea>
-                    <div class="composer-foot">
-                        <span id="composerHint"></span>
-                        <button class="btn btn-primary btn-sm" type="submit" id="noteSubmit">Save note</button>
-                    </div>
-                </form>
-
-                <div id="notes" class="notes-grid" aria-live="polite">
-                    <div class="note"><i class="skeleton" style="width:90%"></i><i class="skeleton" style="width:70%;margin:10px 0 14px"></i></div>
-                    <div class="note"><i class="skeleton" style="width:80%;margin-bottom:14px"></i></div>
-                    <div class="note"><i class="skeleton" style="width:60%"></i><i class="skeleton" style="width:85%;margin:10px 0 14px"></i></div>
+                <div class="notes-app" id="notesApp">
+                    <aside class="panel notes-list-pane" aria-label="All notes">
+                        <div class="nl-head">
+                            <div class="search">
+                                <span id="searchIcon"></span>
+                                <label class="sr-only" for="search">Search notes</label>
+                                <input class="input" type="search" id="search" placeholder="Search" autocomplete="off">
+                            </div>
+                            <button class="btn btn-primary" type="button" id="newNoteBtn"></button>
+                        </div>
+                        <ul class="note-list" id="noteList">
+                            <li class="skeleton-item"><i class="skeleton" style="width:70%"></i><i class="skeleton" style="width:45%"></i></li>
+                            <li class="skeleton-item"><i class="skeleton" style="width:60%"></i><i class="skeleton" style="width:35%"></i></li>
+                        </ul>
+                    </aside>
+                    <section class="panel note-pane" id="notePane" aria-label="Note"></section>
                 </div>
             </div>
         </main>
