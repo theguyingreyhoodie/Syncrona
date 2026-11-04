@@ -228,6 +228,33 @@
     }
     matchMedia("(prefers-color-scheme: dark)").addEventListener("change", updateThemeButtons);
 
+    /* ---------- Accent presets ----------
+       Each id matches a :root[data-accent] block in style.css; the first is the
+       default and needs no attribute. `swatch` is the light-mode accent (Settings dot
+       and favicon); `swatchDark` is the dot in dark mode. */
+    const ACCENTS = [
+        { id: "wine", name: "Wine", swatch: "#5c1f2e", swatchDark: "#96394d" },
+        { id: "forest", name: "Forest", swatch: "#2f5a46", swatchDark: "#8cc5a4" }
+    ];
+    const currentAccent = () => ACCENTS.find((a) => a.id === store.get("accent")) || ACCENTS[0];
+    function paintFavicon(a) {
+        const link = document.querySelector('link[rel="icon"]');
+        if (!link || a === ACCENTS[0]) return;
+        link.href = "data:image/svg+xml," + encodeURIComponent(
+            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="9" fill="' + a.swatch + '"/>' +
+            '<g transform="translate(3 3)" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"><path d="M4.6 15.2A8.6 8.6 0 0 1 19.4 7.4"/>' +
+            '<path d="M21.4 10.8A8.6 8.6 0 0 1 6.6 18.6" opacity=".6"/></g><circle cx="22.4" cy="10.4" r="2.3" fill="#fff"/></svg>');
+    }
+    function setAccent(id) {
+        const a = ACCENTS.find((x) => x.id === id) || ACCENTS[0];
+        if (a === ACCENTS[0]) { delete document.documentElement.dataset.accent; store.remove("accent"); }
+        else { document.documentElement.dataset.accent = a.id; store.set("accent", a.id); }
+        const link = document.querySelector('link[rel="icon"]');
+        if (link && a === ACCENTS[0]) link.href = "favicon.svg";
+        paintFavicon(a);
+    }
+    paintFavicon(currentAccent());
+
     /* ---------- Shell ---------- */
     const NAV = [
         ["today", "Today", "dashboard.html"],
@@ -485,7 +512,7 @@
         pad, ymd, parseYmd, startOfDay, addDays, sameDay, daysBetween, when, toPayload,
         fmtTime, fmtDay, fmtDayLong, fmtDate, relDay, relTime, relSoon, timeAgo, WD, WD_LONG, MO, MO_LONG,
         money, threshold, icon, LEAD, checkBtn, MARK, navTasks,
-        effectiveTheme, setTheme, toggleTheme, syncEmpty,
+        effectiveTheme, setTheme, toggleTheme, syncEmpty, ACCENTS, currentAccent, setAccent,
         toast, toastError, undoable, busy, everyMinute
     };
 })();

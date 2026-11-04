@@ -1,6 +1,6 @@
 /* Syncrona — a calm personal home for one day.
    Cream panels on a warm page under a navy sidebar, near-white row cards
-   inside them, forest green as the only hue on actions, selection and the
+   inside them, one accent colour (wine unless changed in Settings) as the only hue on actions, selection and the
    day's data. Burnt orange is reserved for overdue and over-limit. Instrument Sans throughout; Instrument
    Serif for the greeting alone. No shadows at rest: only floating things
    (popover, toast, sheet, button) lift. */
@@ -17,16 +17,17 @@
     --ink: #1b2a3d;
     --ink-2: #4a5668;
     --ink-3: #535d6b;
-    --accent: #2f5a46;
-    --accent-hover: #234536;
-    --accent-ink: #fbf6ea;
-    --accent-soft: #dbe4d3;
-    --accent-line: #a9bfa8;
+    --accent: var(--p-accent);
+    --accent-hover: var(--p-accent-hover);
+    --accent-ink: var(--p-accent-ink);
+    --accent-soft: var(--p-accent-soft);
+    --accent-line: var(--p-accent-line);
+    --accent-text: var(--p-accent);
     --red: #b4400f;
     --red-soft: #f8e0cf;
     --toast: #1b2a3d;
     --toast-ink: #f7f2e6;
-    --toast-action: #a8d4b9;
+    --toast-action: var(--p-toast-action);
     --scrim: rgba(17, 26, 38, 0.4);
     --float: 0 18px 40px -12px rgba(27, 42, 61, 0.28), 0 3px 8px rgba(27, 42, 61, 0.08);
     --side-bg: #1b2a3d;
@@ -63,16 +64,17 @@
     --ink: #ede3c8;
     --ink-2: #c2b9a0;
     --ink-3: #a9a18b;
-    --accent: #8cc5a4;
-    --accent-hover: #a6d4b9;
-    --accent-ink: #0f2219;
-    --accent-soft: rgba(140, 197, 164, 0.16);
-    --accent-line: rgba(140, 197, 164, 0.45);
+    --accent: var(--pd-accent);
+    --accent-hover: var(--pd-accent-hover);
+    --accent-ink: var(--pd-accent-ink);
+    --accent-soft: var(--pd-accent-soft);
+    --accent-line: var(--pd-accent-line);
+    --accent-text: var(--pd-accent-text);
     --red: #ff9a6b;
     --red-soft: rgba(255, 154, 107, 0.14);
     --toast: #ede3c8;
     --toast-ink: #1b2a3d;
-    --toast-action: #2f5a46;
+    --toast-action: var(--pd-toast-action);
     --scrim: rgba(0, 0, 0, 0.55);
     --float: 0 18px 44px -12px rgba(0, 0, 0, 0.6), 0 3px 8px rgba(0, 0, 0, 0.3);
     --side-bg: #0c141f;
@@ -81,7 +83,7 @@
     --side-hover: rgba(237, 227, 200, 0.07);
     --side-active: rgba(237, 227, 200, 0.12);
     --side-line: rgba(237, 227, 200, 0.1);
-    --side-mark: #8cc5a4;
+    --side-mark: var(--pd-side-mark);
     }
 }
 :root[data-theme="dark"] {
@@ -95,16 +97,17 @@
     --ink: #ede3c8;
     --ink-2: #c2b9a0;
     --ink-3: #a9a18b;
-    --accent: #8cc5a4;
-    --accent-hover: #a6d4b9;
-    --accent-ink: #0f2219;
-    --accent-soft: rgba(140, 197, 164, 0.16);
-    --accent-line: rgba(140, 197, 164, 0.45);
+    --accent: var(--pd-accent);
+    --accent-hover: var(--pd-accent-hover);
+    --accent-ink: var(--pd-accent-ink);
+    --accent-soft: var(--pd-accent-soft);
+    --accent-line: var(--pd-accent-line);
+    --accent-text: var(--pd-accent-text);
     --red: #ff9a6b;
     --red-soft: rgba(255, 154, 107, 0.14);
     --toast: #ede3c8;
     --toast-ink: #1b2a3d;
-    --toast-action: #2f5a46;
+    --toast-action: var(--pd-toast-action);
     --scrim: rgba(0, 0, 0, 0.55);
     --float: 0 18px 44px -12px rgba(0, 0, 0, 0.6), 0 3px 8px rgba(0, 0, 0, 0.3);
     --side-bg: #0c141f;
@@ -113,7 +116,45 @@
     --side-hover: rgba(237, 227, 200, 0.07);
     --side-active: rgba(237, 227, 200, 0.12);
     --side-line: rgba(237, 227, 200, 0.1);
-    --side-mark: #8cc5a4;
+    --side-mark: var(--pd-side-mark);
+}
+
+/* ---------- Accent presets ----------
+   Each preset sets its light (--p-*) and dark (--pd-*) values; the theme
+   blocks above pick which pair becomes --accent. Settings writes
+   data-accent on <html>; Wine is the default. Dark-mode Wine keeps a solid
+   wine for fills and uses cream for accent text, so it never turns pink. */
+:root {
+    --p-accent: #5c1f2e;
+    --p-accent-hover: #461723;
+    --p-accent-ink: #fbf6ea;
+    --p-accent-soft: #f0dcd5;
+    --p-accent-line: #d6aeaa;
+    --p-toast-action: #ede3c8;
+    --pd-accent: #96394d;
+    --pd-accent-hover: #a84459;
+    --pd-accent-ink: #fbf6ea;
+    --pd-accent-soft: rgba(150, 57, 77, 0.26);
+    --pd-accent-line: rgba(150, 57, 77, 0.75);
+    --pd-accent-text: #ede3c8;
+    --pd-toast-action: #5c1f2e;
+    --pd-side-mark: #ede3c8;
+}
+:root[data-accent="forest"] {
+    --p-accent: #2f5a46;
+    --p-accent-hover: #234536;
+    --p-accent-ink: #fbf6ea;
+    --p-accent-soft: #dbe4d3;
+    --p-accent-line: #a9bfa8;
+    --p-toast-action: #a8d4b9;
+    --pd-accent: #8cc5a4;
+    --pd-accent-hover: #a6d4b9;
+    --pd-accent-ink: #0f2219;
+    --pd-accent-soft: rgba(140, 197, 164, 0.16);
+    --pd-accent-line: rgba(140, 197, 164, 0.45);
+    --pd-accent-text: #8cc5a4;
+    --pd-toast-action: #2f5a46;
+    --pd-side-mark: #8cc5a4;
 }
 
 /* ---------- Base ---------- */
@@ -141,7 +182,7 @@ ul, ol { list-style: none; }
 
 ::selection { background: var(--accent-soft); color: var(--ink); }
 input, textarea { caret-color: var(--accent); }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 8px; }
+:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 2px; border-radius: 8px; }
 * { scrollbar-width: thin; scrollbar-color: var(--card-line-2) transparent; }
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-thumb { background: var(--card-line-2); border-radius: 10px; border: 3px solid var(--ground); }
@@ -176,7 +217,7 @@ kbd {
     font-size: 16px; font-weight: 600; letter-spacing: -0.01em;
     text-decoration: none;
 }
-.brand svg { width: 26px; height: 26px; flex: none; color: var(--accent); }
+.brand svg { width: 26px; height: 26px; flex: none; color: var(--accent-text); }
 .sidebar .brand svg { color: var(--side-mark); }
 .scope { padding: 0 10px 18px 46px; font-size: 13px; color: var(--side-ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .nav { display: grid; gap: 2px; }
@@ -215,7 +256,7 @@ kbd {
 .avatar {
     width: 30px; height: 30px; border-radius: 50%; flex: none;
     display: grid; place-items: center;
-    background: var(--accent-soft); color: var(--accent);
+    background: var(--accent-soft); color: var(--accent-text);
     font-size: 13px; font-weight: 600;
 }
 .user-row .who { min-width: 0; line-height: 1.3; }
@@ -331,7 +372,7 @@ a.tile:focus-visible { border-radius: var(--r-panel); }
 @media (hover: hover) { .item:hover { border-color: var(--card-line-2); } }
 .item-lead { width: 22px; flex: none; display: grid; place-items: center; color: var(--ink-3); }
 .item-lead svg { width: 17px; height: 17px; }
-.item-lead.k-event { color: var(--accent); }
+.item-lead.k-event { color: var(--accent-text); }
 .item-main { flex: 1; min-width: 0; }
 .item-title { display: block; font-size: 14.5px; font-weight: 500; overflow-wrap: anywhere; }
 .item-sub { display: block; margin-top: 1px; font-size: 13px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
@@ -347,7 +388,7 @@ a.tile:focus-visible { border-radius: var(--r-panel); }
     font-size: 12.5px; font-weight: 500; font-variant-numeric: tabular-nums; white-space: nowrap;
 }
 .time-pill.is-overdue { background: var(--red-soft); color: var(--red); }
-.time-pill.is-next { background: var(--accent-soft); color: var(--accent); }
+.time-pill.is-next { background: var(--accent-soft); color: var(--accent-text); }
 .item-actions { display: flex; gap: 2px; }
 @media (hover: hover) {
     .item .item-actions {
@@ -395,7 +436,7 @@ a.tile:focus-visible { border-radius: var(--r-panel); }
     position: absolute; z-index: 3; top: 6px; height: 22px; min-width: 18px; width: max-content;
     padding: 0 8px; border-radius: 7px; text-overflow: ellipsis;
     display: flex; align-items: center;
-    background: var(--accent-soft); color: var(--accent);
+    background: var(--accent-soft); color: var(--accent-text);
     font-size: 12px; font-weight: 600; white-space: nowrap; overflow: hidden;
     box-shadow: inset 0 0 0 1px var(--accent-line);
 }
@@ -411,7 +452,7 @@ a.tile:focus-visible { border-radius: var(--r-panel); }
 .dl-axis span { position: absolute; transform: translateX(-50%); white-space: nowrap; }
 .dl-axis span.first { transform: none; }
 .dl-axis span.last { transform: translateX(-100%); }
-.dl-axis .now-label { color: var(--accent); font-weight: 600; z-index: 1; background: var(--panel); padding: 0 4px; }
+.dl-axis .now-label { color: var(--accent-text); font-weight: 600; z-index: 1; background: var(--panel); padding: 0 4px; }
 .dl-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 4px; font-size: 12.5px; color: var(--ink-2); }
 .dl-legend span { display: inline-flex; align-items: center; gap: 6px; }
 .dl-legend i { width: 14px; height: 10px; border-radius: 3px; background: var(--accent-soft); box-shadow: inset 0 0 0 1px var(--accent-line); }
@@ -550,7 +591,7 @@ textarea.input { height: auto; min-height: 96px; padding: 11px 14px; line-height
     transition: background-color 160ms ease, color 160ms ease, box-shadow 160ms ease;
 }
 .seg input:checked + span { background: var(--card); color: var(--ink); box-shadow: 0 0 0 1px var(--card-line); }
-.seg input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 1px; }
+.seg input:focus-visible + span { outline: 2px solid var(--accent-text); outline-offset: 1px; }
 .seg .count { font-size: 12px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
 .seg input:checked + span .count { color: var(--ink-2); }
 @media (hover: hover) { .seg input:not(:checked):hover + span { color: var(--ink); } }
@@ -655,7 +696,7 @@ textarea.input { height: auto; min-height: 96px; padding: 11px 14px; line-height
 .month-switch .lbl { min-width: 128px; text-align: center; font-weight: 600; font-size: 14px; }
 .month-switch .icon-btn { border-radius: var(--r-pill); }
 .delta-up { color: var(--ink); }
-.delta-down { color: var(--accent); }
+.delta-down { color: var(--accent-text); }
 
 /* ---------- Notes ---------- */
 .notes-app {
@@ -700,7 +741,7 @@ textarea.input { height: auto; min-height: 96px; padding: 11px 14px; line-height
 }
 .np-body textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
 .np-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px 14px 20px; font-size: 12.5px; color: var(--ink-2); }
-.np-foot .status { color: var(--accent); font-weight: 500; }
+.np-foot .status { color: var(--accent-text); font-weight: 500; }
 .np-foot .status:empty { display: none; }
 .np-foot .right { display: flex; align-items: center; gap: 10px; }
 .note-pane .callout { margin: 20px; }
@@ -717,9 +758,27 @@ textarea.input { height: auto; min-height: 96px; padding: 11px 14px; line-height
 .set-line h3 { font-size: 14px; font-weight: 500; }
 .set-line p { margin-top: 2px; font-size: 13px; color: var(--ink-2); }
 .set-line + .set-line { padding-top: 16px; border-top: 1px solid var(--card-line); }
+/* Accent swatches: a wrapping row of pills, each with a colour dot. */
+.swatches { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; border: 0; min-width: 0; }
+.swatches label { position: relative; }
+.swatches input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+.swatches span {
+    display: flex; align-items: center; gap: 8px;
+    height: 34px; padding: 0 14px 0 8px; border-radius: var(--r-pill);
+    background: var(--card); border: 1px solid var(--card-line);
+    font-size: 13px; font-weight: 500; color: var(--ink-2); white-space: nowrap;
+    transition: border-color 150ms ease, color 150ms ease, transform 140ms var(--ease-out);
+}
+.swatches i { width: 18px; height: 18px; border-radius: 50%; background: var(--sw); box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .swatches i { background: var(--swd); } }
+:root[data-theme="dark"] .swatches i { background: var(--swd); }
+.swatches input:checked + span { color: var(--ink); border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.swatches input:focus-visible + span { outline: 2px solid var(--accent-text); outline-offset: 2px; }
+.swatches input:active + span { transform: scale(0.97); }
+@media (hover: hover) { .swatches input:not(:checked):hover + span { border-color: var(--card-line-2); color: var(--ink); } }
 .set-inline { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .set-inline .money-input { width: 180px; }
-.saved-note { font-size: 13px; color: var(--accent); font-weight: 500; }
+.saved-note { font-size: 13px; color: var(--accent-text); font-weight: 500; }
 .saved-note:empty { display: none; }
 
 /* ---------- Auth ---------- */
@@ -861,6 +920,8 @@ textarea.input { height: auto; min-height: 96px; padding: 11px 14px; line-height
 }
 
 @media (max-width: 640px) {
+    .set-line-wrap { flex-direction: column; align-items: stretch; gap: 12px; }
+    .set-line-wrap .swatches { justify-content: flex-start; }
     .md-split { grid-template-columns: minmax(0, 1fr); }
     .panel { padding: 16px; border-radius: 20px; }
     .tile { min-height: 112px; padding: 14px; }

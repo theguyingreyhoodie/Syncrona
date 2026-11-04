@@ -1,7 +1,7 @@
-/* Settings: theme, threshold, account. */
+/* Settings: theme, accent colour, threshold, account. */
 (function () {
     "use strict";
-    const { store, user, signOut, setTheme, threshold, money } = window.S;
+    const { store, user, signOut, setTheme, threshold, money, esc, ACCENTS, currentAccent, setAccent } = window.S;
     const $ = (id) => document.getElementById(id);
 
     /* Theme */
@@ -13,6 +13,14 @@
         const v = store.get("theme") || "system";
         document.querySelector('input[name=theme][value="' + v + '"]').checked = true;
     });
+
+    /* Accent colour */
+    const picker = $("accentPicker");
+    const chosen = currentAccent().id;
+    picker.innerHTML = ACCENTS.map((a) =>
+        '<label><input type="radio" name="accent" value="' + esc(a.id) + '"' + (a.id === chosen ? " checked" : "") + ">" +
+        '<span><i style="--sw:' + esc(a.swatch) + ";--swd:" + esc(a.swatchDark) + '"></i>' + esc(a.name) + "</span></label>").join("");
+    picker.addEventListener("change", (e) => setAccent(e.target.value));
 
     /* Threshold */
     $("threshold").value = threshold();
