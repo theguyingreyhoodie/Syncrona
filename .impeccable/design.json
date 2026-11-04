@@ -330,10 +330,10 @@
       },
       "accent": {
         "role": "primary",
-        "displayName": "Deep Wine",
-        "canonical": "#5c1f2e",
+        "displayName": "Forest",
+        "canonical": "#2f5a46",
         "oklch": "oklch(33.7% 0.090 8)",
-        "night": "#e09aaa",
+        "night": "#8cc5a4",
         "purpose": "The only accent: primary buttons, checked ticks, the now line, today's calendar date, selection, ordinary spend bars, focus, the auth brand mark.",
         "tonalRamp": [
           "#1a0307",
@@ -348,10 +348,10 @@
       },
       "dark-accent": {
         "role": "primary",
-        "displayName": "Deep Wine (dark)",
-        "canonical": "#e09aaa",
+        "displayName": "Forest (dark)",
+        "canonical": "#8cc5a4",
         "oklch": "oklch(75.9% 0.086 4)",
-        "day": "#5c1f2e",
+        "day": "#2f5a46",
         "purpose": "Dark-theme value of accent.",
         "tonalRamp": [
           "#190309",
@@ -366,10 +366,10 @@
       },
       "accent-hover": {
         "role": "primary",
-        "displayName": "Cellar Wine",
-        "canonical": "#461723",
+        "displayName": "Pine",
+        "canonical": "#234536",
         "oklch": "oklch(28.2% 0.073 7)",
-        "night": "#ebb3bf",
+        "night": "#a6d4b9",
         "purpose": "Primary button hover.",
         "tonalRamp": [
           "#180508",
@@ -384,10 +384,10 @@
       },
       "dark-accent-hover": {
         "role": "primary",
-        "displayName": "Cellar Wine (dark)",
-        "canonical": "#ebb3bf",
+        "displayName": "Pine (dark)",
+        "canonical": "#a6d4b9",
         "oklch": "oklch(82.1% 0.067 4)",
-        "day": "#461723",
+        "day": "#234536",
         "purpose": "Dark-theme value of accent-hover.",
         "tonalRamp": [
           "#170509",
@@ -402,11 +402,11 @@
       },
       "accent-ink": {
         "role": "primary",
-        "displayName": "On Wine",
+        "displayName": "On Forest",
         "canonical": "#fbf6ea",
         "oklch": "oklch(97.4% 0.017 88)",
-        "night": "#2a0d15",
-        "purpose": "Text and tick on solid wine.",
+        "night": "#0f2219",
+        "purpose": "Text and tick on solid forest green.",
         "tonalRamp": [
           "#0d0b07",
           "#27251f",
@@ -420,8 +420,8 @@
       },
       "dark-accent-ink": {
         "role": "primary",
-        "displayName": "On Wine (dark)",
-        "canonical": "#2a0d15",
+        "displayName": "On Forest (dark)",
+        "canonical": "#0f2219",
         "oklch": "oklch(20.9% 0.049 5)",
         "day": "#fbf6ea",
         "purpose": "Dark-theme value of accent-ink.",
@@ -438,10 +438,10 @@
       },
       "accent-soft": {
         "role": "primary",
-        "displayName": "Wine Wash",
-        "canonical": "#f0dcd5",
+        "displayName": "Sage Wash",
+        "canonical": "#dbe4d3",
         "oklch": "oklch(90.9% 0.024 40)",
-        "night": "rgba(224, 154, 170, 0.16)",
+        "night": "rgba(140, 197, 164, 0.16)",
         "purpose": "Day-line event pills, next-up time pill, focus ring, text selection, search highlight.",
         "tonalRamp": [
           "#100907",
@@ -456,10 +456,10 @@
       },
       "dark-accent-soft": {
         "role": "primary",
-        "displayName": "Wine Wash (dark)",
-        "canonical": "rgba(224, 154, 170, 0.16)",
+        "displayName": "Sage Wash (dark)",
+        "canonical": "rgba(140, 197, 164, 0.16)",
         "oklch": "oklch(75.9% 0.086 4)",
-        "day": "#f0dcd5",
+        "day": "#dbe4d3",
         "purpose": "Dark-theme value of accent-soft.",
         "tonalRamp": [
           "#190309",
@@ -474,10 +474,10 @@
       },
       "accent-line": {
         "role": "primary",
-        "displayName": "Wine Edge",
-        "canonical": "#d6aeaa",
+        "displayName": "Sage Edge",
+        "canonical": "#a9bfa8",
         "oklch": "oklch(78.5% 0.047 25)",
-        "night": "rgba(224, 154, 170, 0.45)",
+        "night": "rgba(140, 197, 164, 0.45)",
         "purpose": "Inset edge of day-line event pills and the legend swatch.",
         "tonalRamp": [
           "#140706",
@@ -492,10 +492,10 @@
       },
       "dark-accent-line": {
         "role": "primary",
-        "displayName": "Wine Edge (dark)",
-        "canonical": "rgba(224, 154, 170, 0.45)",
+        "displayName": "Sage Edge (dark)",
+        "canonical": "rgba(140, 197, 164, 0.45)",
         "oklch": "oklch(75.9% 0.086 4)",
-        "day": "#d6aeaa",
+        "day": "#a9bfa8",
         "purpose": "Dark-theme value of accent-line.",
         "tonalRamp": [
           "#190309",
@@ -654,11 +654,11 @@
       },
       "toast-action": {
         "role": "primary",
-        "displayName": "Toast Rose",
-        "canonical": "#f0b9c3",
+        "displayName": "Toast Sage",
+        "canonical": "#a8d4b9",
         "oklch": "oklch(83.8% 0.065 6)",
-        "night": "#5c1f2e",
-        "purpose": "Undo action on the toast (wine on the cream dark-mode toast).",
+        "night": "#2f5a46",
+        "purpose": "Undo action on the toast (green on the cream dark-mode toast).",
         "tonalRamp": [
           "#160509",
           "#361c22",
@@ -672,10 +672,10 @@
       },
       "dark-toast-action": {
         "role": "primary",
-        "displayName": "Toast Rose (dark)",
-        "canonical": "#5c1f2e",
+        "displayName": "Toast Sage (dark)",
+        "canonical": "#2f5a46",
         "oklch": "oklch(33.7% 0.090 8)",
-        "day": "#f0b9c3",
+        "day": "#a8d4b9",
         "purpose": "Dark-theme value of toast-action.",
         "tonalRamp": [
           "#1a0307",
@@ -945,8 +945,8 @@
         "displayName": "Sidebar Mark",
         "canonical": "#ede3c8",
         "oklch": "oklch(91.7% 0.037 90)",
-        "night": "#e09aaa",
-        "purpose": "The brand mark in the sidebar: cream in light mode, rose wine in dark.",
+        "night": "#8cc5a4",
+        "purpose": "The brand mark in the sidebar: cream in light mode, sage in dark.",
         "tonalRamp": [
           "#0e0b03",
           "#2a2517",
@@ -961,7 +961,7 @@
       "dark-side-mark": {
         "role": "neutral",
         "displayName": "Sidebar Mark (dark)",
-        "canonical": "#e09aaa",
+        "canonical": "#8cc5a4",
         "oklch": "oklch(75.9% 0.086 4)",
         "day": "#ede3c8",
         "purpose": "Dark-theme value of side-mark.",
@@ -1033,7 +1033,7 @@
       {
         "name": "focus-ring",
         "value": "0 0 0 3px var(--accent-soft)",
-        "purpose": "Input and composer focus, with an accent (wine) border. Invalid swaps to var(--red-soft) and a burnt-orange var(--red) border."
+        "purpose": "Input and composer focus, with an accent (green) border. Invalid swaps to var(--red-soft) and a burnt-orange var(--red) border."
       },
       {
         "name": "focus-outline",
@@ -1063,7 +1063,7 @@
       {
         "name": "sidebar-focus",
         "value": "outline-color: var(--side-ink)",
-        "purpose": "Focus outlines inside the navy sidebar are cream, not wine."
+        "purpose": "Focus outlines inside the navy sidebar are cream, not green."
       }
     ],
     "motion": [
@@ -1165,9 +1165,9 @@
       "name": "Primary Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "The one wine action in an area: Add task, Log payment, Sign in.",
+      "description": "The one green action in an area: Add task, Log payment, Sign in.",
       "html": "<button class=\"ds-btn-primary\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\"><path d=\"M5 12h14M12 5v14\"/></svg>Add task</button>",
-      "css": ".ds-btn-primary { font-family: \"Instrument Sans\", ui-sans-serif, system-ui, sans-serif; display: inline-flex; align-items: center; gap: 8px; height: 38px; padding: 0 16px; border-radius: 999px; font-size: 14px; font-weight: 500; cursor: pointer; transition: background-color 150ms ease, border-color 150ms ease, transform 140ms cubic-bezier(0.23, 1, 0.32, 1); background: var(--accent, #5c1f2e); color: var(--accent-ink, #fbf6ea); border: 1px solid var(--accent, #5c1f2e); } .ds-btn-primary:hover { background: var(--accent-hover, #461723); border-color: var(--accent-hover, #461723); } .ds-btn-primary:active { transform: scale(0.97); } .ds-btn-primary:focus-visible { outline: 2px solid var(--accent, #5c1f2e); outline-offset: 2px; }"
+      "css": ".ds-btn-primary { font-family: \"Instrument Sans\", ui-sans-serif, system-ui, sans-serif; display: inline-flex; align-items: center; gap: 8px; height: 38px; padding: 0 16px; border-radius: 999px; font-size: 14px; font-weight: 500; cursor: pointer; transition: background-color 150ms ease, border-color 150ms ease, transform 140ms cubic-bezier(0.23, 1, 0.32, 1); background: var(--accent, #2f5a46); color: var(--accent-ink, #fbf6ea); border: 1px solid var(--accent, #2f5a46); } .ds-btn-primary:hover { background: var(--accent-hover, #234536); border-color: var(--accent-hover, #234536); } .ds-btn-primary:active { transform: scale(0.97); } .ds-btn-primary:focus-visible { outline: 2px solid var(--accent, #2f5a46); outline-offset: 2px; }"
     },
     {
       "name": "Secondary Button",
@@ -1175,15 +1175,15 @@
       "refersTo": "button-secondary",
       "description": "Neutral pill with a strong card-line border; Try again, Cancel.",
       "html": "<button class=\"ds-btn\">Try again</button>",
-      "css": ".ds-btn { font-family: \"Instrument Sans\", ui-sans-serif, system-ui, sans-serif; display: inline-flex; align-items: center; gap: 8px; height: 38px; padding: 0 16px; border-radius: 999px; font-size: 14px; font-weight: 500; cursor: pointer; transition: background-color 150ms ease, border-color 150ms ease, transform 140ms cubic-bezier(0.23, 1, 0.32, 1); background: var(--card, #fffcf4); color: var(--ink, #1b2a3d); border: 1px solid var(--card-line-2, #c9b98f); } .ds-btn:hover { border-color: var(--ink-3, #535d6b); } .ds-btn:active { transform: scale(0.97); } .ds-btn:focus-visible { outline: 2px solid var(--accent, #5c1f2e); outline-offset: 2px; }"
+      "css": ".ds-btn { font-family: \"Instrument Sans\", ui-sans-serif, system-ui, sans-serif; display: inline-flex; align-items: center; gap: 8px; height: 38px; padding: 0 16px; border-radius: 999px; font-size: 14px; font-weight: 500; cursor: pointer; transition: background-color 150ms ease, border-color 150ms ease, transform 140ms cubic-bezier(0.23, 1, 0.32, 1); background: var(--card, #fffcf4); color: var(--ink, #1b2a3d); border: 1px solid var(--card-line-2, #c9b98f); } .ds-btn:hover { border-color: var(--ink-3, #535d6b); } .ds-btn:active { transform: scale(0.97); } .ds-btn:focus-visible { outline: 2px solid var(--accent, #2f5a46); outline-offset: 2px; }"
     },
     {
       "name": "Input",
       "kind": "input",
       "refersTo": "input",
-      "description": "40px card-cream field, 12px radius; wine border and wash ring on focus.",
+      "description": "40px card-cream field, 12px radius; green border and wash ring on focus.",
       "html": "<input class=\"ds-input\" placeholder=\"Add a task\">",
-      "css": ".ds-input { font-family: \"Instrument Sans\", ui-sans-serif, system-ui, sans-serif; width: 260px; height: 40px; padding: 0 14px; background: var(--card, #fffcf4); color: var(--ink, #1b2a3d); border: 1px solid var(--card-line-2, #c9b98f); border-radius: 12px; font-size: 14px; caret-color: var(--accent, #5c1f2e); transition: border-color 150ms ease, box-shadow 150ms ease; } .ds-input::placeholder { color: var(--ink-3, #535d6b); } .ds-input:focus { outline: none; border-color: var(--accent, #5c1f2e); box-shadow: 0 0 0 3px var(--accent-soft, #f0dcd5); }"
+      "css": ".ds-input { font-family: \"Instrument Sans\", ui-sans-serif, system-ui, sans-serif; width: 260px; height: 40px; padding: 0 14px; background: var(--card, #fffcf4); color: var(--ink, #1b2a3d); border: 1px solid var(--card-line-2, #c9b98f); border-radius: 12px; font-size: 14px; caret-color: var(--accent, #2f5a46); transition: border-color 150ms ease, box-shadow 150ms ease; } .ds-input::placeholder { color: var(--ink-3, #535d6b); } .ds-input:focus { outline: none; border-color: var(--accent, #2f5a46); box-shadow: 0 0 0 3px var(--accent-soft, #dbe4d3); }"
     },
     {
       "name": "Segmented Control",
@@ -1215,47 +1215,47 @@
       "refersTo": "row-card",
       "description": "A task, event or payment as a near-white cream card inside a cream panel: lead, title, sub line, end slot.",
       "html": "<div class=\"ds-panel\"><ul class=\"ds-list\"><li class=\"ds-item\"><button class=\"ds-check\" aria-pressed=\"true\"><svg viewBox=\"0 0 24 24\" width=\"12\" height=\"12\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M20 6 9 17l-5-5\"/></svg></button><span class=\"m\"><b>Send invoice</b><small>Done</small></span><span class=\"ds-pill\">09:00</span></li><li class=\"ds-item\"><span class=\"lead\"><svg viewBox=\"0 0 24 24\" width=\"17\" height=\"17\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"17\" rx=\"3\"/><path d=\"M8 2.5v3M16 2.5v3M3 9.5h18\"/><circle cx=\"12\" cy=\"15\" r=\"1.6\" fill=\"currentColor\" stroke=\"none\"/></svg></span><span class=\"m\"><b>Design review with Priya</b><small>in 28 min</small></span><span class=\"ds-pill next\">15:00</span></li><li class=\"ds-item\"><button class=\"ds-check late\" aria-pressed=\"false\"><svg viewBox=\"0 0 24 24\" width=\"12\" height=\"12\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M20 6 9 17l-5-5\"/></svg></button><span class=\"m\"><b>Pay electricity bill</b><small class=\"r\">Overdue · due 2 days ago</small></span><span class=\"ds-pill late\">1 Nov</span></li></ul></div>",
-      "css": ".ds-panel { font-family: \"Instrument Sans\", ui-sans-serif, system-ui, sans-serif; width: 460px; padding: 20px; background: var(--panel, #ede3c8); border-radius: 22px; color: var(--ink, #1b2a3d); } .ds-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; } .ds-item { display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 9px 12px 9px 14px; background: var(--card, #fffcf4); border: 1px solid var(--card-line, #e2d6b7); border-radius: 12px; transition: border-color 150ms ease; } .ds-item:hover { border-color: var(--card-line-2, #c9b98f); } .ds-item .lead { width: 22px; display: grid; place-items: center; color: var(--accent, #5c1f2e); } .ds-item .m { flex: 1; min-width: 0; } .ds-item b { display: block; font-size: 14.5px; font-weight: 500; } .ds-item small { display: block; font-size: 13px; color: var(--ink-2, #4a5668); } .ds-item small.r { color: var(--red, #b4400f); } .ds-check { width: 22px; height: 22px; flex: none; border-radius: 50%; display: grid; place-items: center; border: 1.5px solid var(--card-line-2, #c9b98f); background: var(--card, #fffcf4); color: transparent; cursor: pointer; transition: background-color 160ms ease, border-color 160ms ease, transform 160ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-check:hover { border-color: var(--accent, #5c1f2e); } .ds-check:active { transform: scale(0.88); } .ds-check[aria-pressed=\"true\"] { background: var(--accent, #5c1f2e); border-color: var(--accent, #5c1f2e); color: var(--accent-ink, #fbf6ea); } .ds-check.late { border-color: var(--red, #b4400f); } .ds-pill { display: inline-flex; align-items: center; height: 24px; padding: 0 9px; border-radius: 999px; background: var(--panel, #ede3c8); font-size: 12.5px; font-weight: 500; font-variant-numeric: tabular-nums; } .ds-pill.next { background: var(--accent-soft, #f0dcd5); color: var(--accent, #5c1f2e); } .ds-pill.late { background: var(--red-soft, #f8e0cf); color: var(--red, #b4400f); }"
+      "css": ".ds-panel { font-family: \"Instrument Sans\", ui-sans-serif, system-ui, sans-serif; width: 460px; padding: 20px; background: var(--panel, #ede3c8); border-radius: 22px; color: var(--ink, #1b2a3d); } .ds-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; } .ds-item { display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 9px 12px 9px 14px; background: var(--card, #fffcf4); border: 1px solid var(--card-line, #e2d6b7); border-radius: 12px; transition: border-color 150ms ease; } .ds-item:hover { border-color: var(--card-line-2, #c9b98f); } .ds-item .lead { width: 22px; display: grid; place-items: center; color: var(--accent, #2f5a46); } .ds-item .m { flex: 1; min-width: 0; } .ds-item b { display: block; font-size: 14.5px; font-weight: 500; } .ds-item small { display: block; font-size: 13px; color: var(--ink-2, #4a5668); } .ds-item small.r { color: var(--red, #b4400f); } .ds-check { width: 22px; height: 22px; flex: none; border-radius: 50%; display: grid; place-items: center; border: 1.5px solid var(--card-line-2, #c9b98f); background: var(--card, #fffcf4); color: transparent; cursor: pointer; transition: background-color 160ms ease, border-color 160ms ease, transform 160ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-check:hover { border-color: var(--accent, #2f5a46); } .ds-check:active { transform: scale(0.88); } .ds-check[aria-pressed=\"true\"] { background: var(--accent, #2f5a46); border-color: var(--accent, #2f5a46); color: var(--accent-ink, #fbf6ea); } .ds-check.late { border-color: var(--red, #b4400f); } .ds-pill { display: inline-flex; align-items: center; height: 24px; padding: 0 9px; border-radius: 999px; background: var(--panel, #ede3c8); font-size: 12.5px; font-weight: 500; font-variant-numeric: tabular-nums; } .ds-pill.next { background: var(--accent-soft, #dbe4d3); color: var(--accent, #2f5a46); } .ds-pill.late { background: var(--red-soft, #f8e0cf); color: var(--red, #b4400f); }"
     },
     {
       "name": "Day Line",
       "kind": "custom",
       "refersTo": "day-line-track",
-      "description": "Signature: 06:00 to midnight; shaded past, wine now marker, event pills on top, task rings below, spend total in the legend.",
+      "description": "Signature: 06:00 to midnight; shaded past, green now marker, event pills on top, task rings below, spend total in the legend.",
       "html": "<div class=\"ds-dl\"><div class=\"t\"><i class=\"past\" style=\"width:57%\"></i><i class=\"h\" style=\"left:16.7%\"></i><i class=\"h\" style=\"left:33.3%\"></i><i class=\"h\" style=\"left:50%\"></i><i class=\"h\" style=\"left:66.7%\"></i><i class=\"h\" style=\"left:83.3%\"></i><span class=\"ev old\" style=\"left:50%\">Design review</span><span class=\"ev\" style=\"left:69%\">Badminton</span><span class=\"tk done\" style=\"left:16.7%\"></span><span class=\"tk\" style=\"left:61%\"></span><span class=\"now\" style=\"left:57%\"></span></div><div class=\"ax\"><span style=\"left:0\">06:00</span><span style=\"left:33.3%\">12:00</span><span class=\"n\" style=\"left:57%\">16:21</span><span style=\"left:83.3%\">21:00</span></div><div class=\"lg\"><span><i></i>Event</span><span><i class=\"ring\"></i>Task with a time</span><b>₹1,420 spent today</b></div></div>",
-      "css": ".ds-dl { font-family: \"Instrument Sans\", ui-sans-serif, system-ui, sans-serif; width: 520px; padding: 16px; background: var(--panel, #ede3c8); border-radius: 22px; color: var(--ink, #1b2a3d); } .ds-dl .t { position: relative; height: 54px; background: var(--card, #fffcf4); border: 1px solid var(--card-line, #e2d6b7); border-radius: 12px; overflow: hidden; } .ds-dl .past { position: absolute; inset: 0 auto 0 0; background: var(--panel, #ede3c8); } .ds-dl .h { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--card-line, #e2d6b7); } .ds-dl .ev { position: absolute; top: 6px; height: 22px; padding: 0 8px; border-radius: 7px; display: flex; align-items: center; background: var(--accent-soft, #f0dcd5); color: var(--accent, #5c1f2e); font-size: 12px; font-weight: 600; white-space: nowrap; box-shadow: inset 0 0 0 1px var(--accent-line, #d6aeaa); z-index: 3; } .ds-dl .ev.old { background: var(--panel-2, #e3d6b4); color: var(--ink-2, #4a5668); box-shadow: inset 0 0 0 1px var(--card-line-2, #c9b98f); } .ds-dl .tk { position: absolute; top: 33px; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; border: 2px solid var(--ink, #1b2a3d); background: var(--card, #fffcf4); box-sizing: border-box; } .ds-dl .tk.done { background: var(--accent, #5c1f2e); border-color: var(--accent, #5c1f2e); } .ds-dl .now { position: absolute; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: var(--accent, #5c1f2e); z-index: 2; } .ds-dl .ax { position: relative; height: 18px; margin-top: 6px; font-size: 11.5px; color: var(--ink-3, #535d6b); font-variant-numeric: tabular-nums; } .ds-dl .ax span { position: absolute; } .ds-dl .ax .n { color: var(--accent, #5c1f2e); font-weight: 600; transform: translateX(-50%); } .ds-dl .lg { display: flex; align-items: center; gap: 14px; margin-top: 4px; font-size: 12.5px; color: var(--ink-2, #4a5668); } .ds-dl .lg span { display: inline-flex; align-items: center; gap: 6px; } .ds-dl .lg i { width: 14px; height: 10px; border-radius: 3px; background: var(--accent-soft, #f0dcd5); box-shadow: inset 0 0 0 1px var(--accent-line, #d6aeaa); } .ds-dl .lg i.ring { width: 10px; border-radius: 50%; border: 2px solid var(--ink, #1b2a3d); background: none; box-shadow: none; box-sizing: border-box; } .ds-dl .lg b { margin-left: auto; font-weight: 500; color: var(--red, #b4400f); font-variant-numeric: tabular-nums; }"
+      "css": ".ds-dl { font-family: \"Instrument Sans\", ui-sans-serif, system-ui, sans-serif; width: 520px; padding: 16px; background: var(--panel, #ede3c8); border-radius: 22px; color: var(--ink, #1b2a3d); } .ds-dl .t { position: relative; height: 54px; background: var(--card, #fffcf4); border: 1px solid var(--card-line, #e2d6b7); border-radius: 12px; overflow: hidden; } .ds-dl .past { position: absolute; inset: 0 auto 0 0; background: var(--panel, #ede3c8); } .ds-dl .h { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--card-line, #e2d6b7); } .ds-dl .ev { position: absolute; top: 6px; height: 22px; padding: 0 8px; border-radius: 7px; display: flex; align-items: center; background: var(--accent-soft, #dbe4d3); color: var(--accent, #2f5a46); font-size: 12px; font-weight: 600; white-space: nowrap; box-shadow: inset 0 0 0 1px var(--accent-line, #a9bfa8); z-index: 3; } .ds-dl .ev.old { background: var(--panel-2, #e3d6b4); color: var(--ink-2, #4a5668); box-shadow: inset 0 0 0 1px var(--card-line-2, #c9b98f); } .ds-dl .tk { position: absolute; top: 33px; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; border: 2px solid var(--ink, #1b2a3d); background: var(--card, #fffcf4); box-sizing: border-box; } .ds-dl .tk.done { background: var(--accent, #2f5a46); border-color: var(--accent, #2f5a46); } .ds-dl .now { position: absolute; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: var(--accent, #2f5a46); z-index: 2; } .ds-dl .ax { position: relative; height: 18px; margin-top: 6px; font-size: 11.5px; color: var(--ink-3, #535d6b); font-variant-numeric: tabular-nums; } .ds-dl .ax span { position: absolute; } .ds-dl .ax .n { color: var(--accent, #2f5a46); font-weight: 600; transform: translateX(-50%); } .ds-dl .lg { display: flex; align-items: center; gap: 14px; margin-top: 4px; font-size: 12.5px; color: var(--ink-2, #4a5668); } .ds-dl .lg span { display: inline-flex; align-items: center; gap: 6px; } .ds-dl .lg i { width: 14px; height: 10px; border-radius: 3px; background: var(--accent-soft, #dbe4d3); box-shadow: inset 0 0 0 1px var(--accent-line, #a9bfa8); } .ds-dl .lg i.ring { width: 10px; border-radius: 50%; border: 2px solid var(--ink, #1b2a3d); background: none; box-shadow: none; box-sizing: border-box; } .ds-dl .lg b { margin-left: auto; font-weight: 500; color: var(--red, #b4400f); font-variant-numeric: tabular-nums; }"
     },
     {
       "name": "Toast",
       "kind": "custom",
       "refersTo": "toast",
-      "description": "Inverted pill with a rose Undo; the one place besides the popover, FAB and sheet that lifts.",
+      "description": "Inverted pill with a sage Undo; the one place besides the popover, FAB and sheet that lifts.",
       "html": "<div class=\"ds-toast\"><span>Task deleted</span><button>Undo</button></div>",
-      "css": ".ds-toast { font-family: \"Instrument Sans\", ui-sans-serif, system-ui, sans-serif; display: inline-flex; align-items: center; gap: 14px; min-height: 44px; padding: 7px 7px 7px 18px; border-radius: 999px; background: var(--toast, #1b2a3d); color: var(--toast-ink, #f7f2e6); font-size: 14px; box-sizing: border-box; box-shadow: 0 18px 40px -12px rgba(27, 42, 61, 0.28), 0 3px 8px rgba(27, 42, 61, 0.08); } .ds-toast button { font: inherit; height: 30px; padding: 0 12px; border: 0; border-radius: 999px; background: none; color: var(--toast-action, #f0b9c3); font-weight: 600; font-size: 13px; cursor: pointer; } .ds-toast button:hover { background: var(--side-hover, rgba(237, 227, 200, 0.08)); } .ds-toast button:focus-visible { outline: 2px solid var(--accent, #5c1f2e); outline-offset: 2px; }"
+      "css": ".ds-toast { font-family: \"Instrument Sans\", ui-sans-serif, system-ui, sans-serif; display: inline-flex; align-items: center; gap: 14px; min-height: 44px; padding: 7px 7px 7px 18px; border-radius: 999px; background: var(--toast, #1b2a3d); color: var(--toast-ink, #f7f2e6); font-size: 14px; box-sizing: border-box; box-shadow: 0 18px 40px -12px rgba(27, 42, 61, 0.28), 0 3px 8px rgba(27, 42, 61, 0.08); } .ds-toast button { font: inherit; height: 30px; padding: 0 12px; border: 0; border-radius: 999px; background: none; color: var(--toast-action, #a8d4b9); font-weight: 600; font-size: 13px; cursor: pointer; } .ds-toast button:hover { background: var(--side-hover, rgba(237, 227, 200, 0.08)); } .ds-toast button:focus-visible { outline: 2px solid var(--accent, #2f5a46); outline-offset: 2px; }"
     }
   ],
   "narrative": {
     "northStar": "A Calm Home for One Day",
-    "overview": "Syncrona is a personal planner that reads like a quiet room rather than an office. A light cream page holds cream panels a step deeper, beside a solid navy sidebar; inside the panels sit near-white cream row cards, each one a real thing you can tick, add or read. The page opens with a serif greeting and one sentence of fact about the day (\"1 task overdue, and Finish portfolio case study draft at 17:00\"), then four count tiles, then the Today panel with the day line, its signature. Every other screen (tasks, calendar, expenses, notes, settings) is built from the same panels and rows, so the product feels like one place.\n\nDepth is tonal, not cast. Three grounds (page, panel, card) do all the layering, and nothing at rest carries a shadow. Colour is held to three materials: navy for all text and for the sidebar, warm cream for the page, panels and cards, and one deep wine that marks every action, every selection and the day's own data. Burnt orange appears only when something is late or over the limit, or when something has gone wrong, pitched well away from the wine so \"late\" never reads as \"act\". After dark the world turns over: navy grounds, cream text and a lifted rose wine. Density is comfortable desktop-app density (14px body, 56px rows, 16px gutters) in the Linear, Things and Raycast register, with Instrument Sans throughout and Instrument Serif for a single line of greeting.\n\nThe world refuses the spreadsheet. Lists are stacks of separate row cards with 6px between them, never ruled tables; the calendar is a grid of separate cards, never a ruled month; numbers are tabular figures inside rows, never columns of cells.",
+    "overview": "Syncrona is a personal planner that reads like a quiet room rather than an office. A light cream page holds cream panels a step deeper, beside a solid navy sidebar; inside the panels sit near-white cream row cards, each one a real thing you can tick, add or read. The page opens with a serif greeting and one sentence of fact about the day (\"1 task overdue, and Finish portfolio case study draft at 17:00\"), then four count tiles, then the Today panel with the day line, its signature. Every other screen (tasks, calendar, expenses, notes, settings) is built from the same panels and rows, so the product feels like one place.\n\nDepth is tonal, not cast. Three grounds (page, panel, card) do all the layering, and nothing at rest carries a shadow. Colour is held to three materials: navy for all text and for the sidebar, warm cream for the page, panels and cards, and one forest green that marks every action, every selection and the day's own data. Burnt orange appears only when something is late or over the limit, or when something has gone wrong, pitched well away from the green so \"late\" never reads as \"act\". After dark the world turns over: navy grounds, cream text and a soft sage. Density is comfortable desktop-app density (14px body, 56px rows, 16px gutters) in the Linear, Things and Raycast register, with Instrument Sans throughout and Instrument Serif for a single line of greeting.\n\nThe world refuses the spreadsheet. Lists are stacks of separate row cards with 6px between them, never ruled tables; the calendar is a grid of separate cards, never a ruled month; numbers are tabular figures inside rows, never columns of cells.",
     "keyCharacteristics": [
       "Light cream page, cream panels, near-white cream row cards: three grounds, no shadows at rest, framed by a solid navy sidebar.",
       "Navy is the ink: every line of text, and the sidebar's ground.",
-      "Deep wine is the only hue that acts or marks today's data; burnt orange only for late, over-limit and error.",
+      "Forest green is the only hue that acts or marks today's data; burnt orange only for late, over-limit and error.",
       "Instrument Sans for everything; Instrument Serif for the greeting and auth titles alone.",
       "Three radii: 22px panels, 12px row cards, full pills on controls.",
       "Centred 1100px column on a 12-column, 16px-gap grid beside a 240px labelled sidebar.",
-      "The day line: 06:00 to midnight, wine event pills, task rings, a live now marker and the day's spend at its end.",
+      "The day line: 06:00 to midnight, green event pills, task rings, a live now marker and the day's spend at its end.",
       "Motion is press-scale and a quick settle; nothing performs an entrance."
     ],
     "rules": [
       {
-        "name": "The One Wine Rule",
-        "body": "Wine is the only accent. Navy and cream are this world's ink and paper, not accents. If it is wine, it can be pressed, it is selected, or it is today's data. Never use it as decoration, never introduce a second accent.",
+        "name": "The One Green Rule",
+        "body": "Forest green is the only accent. Navy and cream are this world's ink and paper, not accents. If it is green, it can be pressed, it is selected, or it is today's data. Never use it as decoration, never introduce a second accent.",
         "section": "colors"
       },
       {
         "name": "The Orange Means Late Rule",
-        "body": "In data, burnt orange (the `red` token) marks exactly two things: a task past its due day, and a payment at or over the user's threshold. Nothing else in the data is burnt orange; in chrome, it is reserved for errors and destructive actions. It never stands in for the wine, and the wine never signals lateness.",
+        "body": "In data, burnt orange (the `red` token) marks exactly two things: a task past its due day, and a payment at or over the user's threshold. Nothing else in the data is burnt orange; in chrome, it is reserved for errors and destructive actions. It never stands in for the green, and the green never signals lateness.",
         "section": "colors"
       },
       {
@@ -1296,7 +1296,7 @@
     ],
     "dos": [
       "**Do** build every new screen from the same three grounds: light cream page, cream panel (22px), near-white cream row cards (12px) inside it, with navy text throughout.",
-      "**Do** use wine for the one primary action per area, for selection, and for today's data; keep everything else neutral.",
+      "**Do** use green for the one primary action per area, for selection, and for today's data; keep everything else neutral.",
       "**Do** use burnt orange (the `red` token) only for overdue tasks, payments at or over the threshold, errors and destructive actions.",
       "**Do** show lists as row cards with a lead, a title, a sub line and an end slot, 6px apart, with actions revealed on hover.",
       "**Do** set times, amounts, counts and dates in tabular figures, with amounts in rupees (₹).",
@@ -1308,8 +1308,8 @@
       "**Don't** put a shadow on anything that scrolls with the page; only the Quick note button, its popover, toasts and the mobile sheet lift.",
       "**Don't** use gradients anywhere.",
       "**Don't** lay data out as a ruled table or spreadsheet grid; separate cards replace ruled rows and cells. Hairlines are kept for the mobile top bar's edge, the user-row and settings separators, and the day line's three-hour ticks.",
-      "**Don't** introduce a second accent hue or use wine as decoration.",
-      "**Don't** use wine for lateness or burnt orange for actions; the two must never trade places.",
+      "**Don't** introduce a second accent hue or use green as decoration.",
+      "**Don't** use green for lateness or burnt orange for actions; the two must never trade places.",
       "**Don't** put content panels or data on the navy sidebar, or use navy as a content ground in light mode; navy is the ink and the sidebar's frame.",
       "**Don't** use Instrument Serif outside the greeting and the auth titles.",
       "**Don't** set large figures bold; tile figures and totals stay at weight 400.",
