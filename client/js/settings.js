@@ -1,18 +1,17 @@
-/* Settings: theme, threshold, account. */
+/* Settings: colour theme, threshold, account. */
 (function () {
     "use strict";
-    const { store, user, signOut, setTheme, threshold, money } = window.S;
+    const { store, user, signOut, threshold, money, esc, PALETTES, currentPalette, setPalette } = window.S;
     const $ = (id) => document.getElementById(id);
 
-    /* Theme */
-    const current = store.get("theme") || "system";
-    const radio = document.querySelector('input[name=theme][value="' + current + '"]');
-    if (radio) radio.checked = true;
-    document.querySelectorAll("input[name=theme]").forEach((r) => r.addEventListener("change", () => setTheme(r.value)));
-    document.addEventListener("themechange", () => {
-        const v = store.get("theme") || "system";
-        document.querySelector('input[name=theme][value="' + v + '"]').checked = true;
-    });
+    /* Colour theme */
+    const picker = $("palettePicker");
+    const chosen = currentPalette().id;
+    picker.innerHTML = PALETTES.map((p) =>
+        '<label><input type="radio" name="palette" value="' + esc(p.id) + '"' + (p.id === chosen ? " checked" : "") + ">" +
+        '<span><b class="dots" aria-hidden="true">' + p.dots.map((c) => '<i style="background:' + esc(c) + '"></i>').join("") + "</b>" +
+        esc(p.name) + "</span></label>").join("");
+    picker.addEventListener("change", (e) => setPalette(e.target.value));
 
     /* Threshold */
     $("threshold").value = threshold();

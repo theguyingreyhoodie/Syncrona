@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Settings · Syncrona</title>
-    <meta name="description" content="Theme, spending threshold and account.">
-    <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;if(!localStorage.getItem("token"))location.replace("login.html")}catch(e){}</script>
+    <meta name="description" content="Colour theme, spending threshold and account.">
+    <script>try{var p=localStorage.getItem("palette");if(p)document.documentElement.dataset.palette=p;if(!localStorage.getItem("token"))location.replace("login.html")}catch(e){}</script>
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,16 +29,12 @@
                 <section class="set-row" aria-labelledby="appearanceHead">
                     <div>
                         <h2 id="appearanceHead">Appearance</h2>
-                        <p>System follows your device's light or dark setting.</p>
+                        <p>Each theme sets the sidebar, panels and accent together.</p>
                     </div>
                     <div class="set-panel">
-                        <div class="set-line">
-                            <div><h3 id="themeLabel">Theme</h3><p>Also switchable from the sidebar.</p></div>
-                            <fieldset class="seg" aria-labelledby="themeLabel">
-                                <label><input type="radio" name="theme" value="system"><span>System</span></label>
-                                <label><input type="radio" name="theme" value="light"><span>Light</span></label>
-                                <label><input type="radio" name="theme" value="dark"><span>Dark</span></label>
-                            </fieldset>
+                        <div class="set-line set-line-wrap">
+                            <div><h3 id="paletteLabel">Colour theme</h3><p>Sets the colours across every page.</p></div>
+                            <fieldset class="swatches" id="palettePicker" aria-labelledby="paletteLabel"></fieldset>
                         </div>
                     </div>
                 </section>
@@ -72,7 +68,7 @@
                             <button class="btn btn-sm" type="button" id="signOut">Sign out</button>
                         </div>
                         <div class="set-line">
-                            <div><h3>Reset this browser</h3><p>Signs you out and clears the theme and spending limit stored here.</p></div>
+                            <div><h3>Reset this browser</h3><p>Signs you out and clears the colour theme and spending limit stored here.</p></div>
                             <button class="btn btn-sm btn-danger" type="button" id="reset">Reset</button>
                         </div>
                     </div>
