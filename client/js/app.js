@@ -1,4 +1,4 @@
-/* Syncrona — shared runtime: API, auth, dates, money, theme, shell,
+/* Syncrona — shared runtime: API, auth, dates, money, palettes, shell,
    quick note, toasts. Loaded (deferred) before each page script. */
 (function () {
     "use strict";
@@ -199,61 +199,38 @@
             '" aria-label="' + esc(((t.completed || t.done) ? "Mark not done: " : "Mark done: ") + t.title) + '">' + icon("check") + "</button>";
     }
 
-    /* ---------- Theme ---------- */
-    function effectiveTheme() {
-        const t = document.documentElement.dataset.theme;
-        if (t === "light" || t === "dark") return t;
-        return matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-    }
-    function setTheme(mode) {
-        if (mode === "light" || mode === "dark") {
-            document.documentElement.dataset.theme = mode;
-            store.set("theme", mode);
-        } else {
-            delete document.documentElement.dataset.theme;
-            store.remove("theme");
-        }
-        updateThemeButtons();
-        document.dispatchEvent(new CustomEvent("themechange"));
-    }
-    const toggleTheme = () => setTheme(effectiveTheme() === "dark" ? "light" : "dark");
-    function updateThemeButtons() {
-        const dark = effectiveTheme() === "dark";
-        document.querySelectorAll("[data-theme-toggle]").forEach((b) => {
-            b.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
-            b.querySelector(".ti").innerHTML = icon(dark ? "sun" : "moon");
-            const label = b.querySelector(".tl");
-            if (label) label.textContent = dark ? "Light theme" : "Dark theme";
-        });
-    }
-    matchMedia("(prefers-color-scheme: dark)").addEventListener("change", updateThemeButtons);
-
-    /* ---------- Accent presets ----------
-       Each id matches a :root[data-accent] block in style.css; the first is the
-       default and needs no attribute. `swatch` is the light-mode accent (Settings dot
-       and favicon); `swatchDark` is the dot in dark mode. */
-    const ACCENTS = [
-        { id: "wine", name: "Wine", swatch: "#5c1f2e", swatchDark: "#96394d" },
-        { id: "forest", name: "Forest", swatch: "#2f5a46", swatchDark: "#8cc5a4" }
+    /* ---------- Colour palettes ----------
+       Each id matches a :root[data-palette] block in style.css; the first is
+       the default and needs no attribute. `dots` are the palette's three
+       defining colours for the Settings picker; `mark` and `ink` colour the
+       favicon. */
+    const PALETTES = [
+        { id: "wine", name: "Wine", dots: ["#1b2a3d", "#ede3c8", "#5c1f2e"], mark: "#5c1f2e", ink: "#fff" },
+        { id: "forest", name: "Forest", dots: ["#1b2a3d", "#ede3c8", "#2f5a46"], mark: "#2f5a46", ink: "#fff" },
+        { id: "ember", name: "Ember", dots: ["#6b1f2f", "#f2dfa0", "#c8571e"], mark: "#b44d17", ink: "#fff8ec" },
+        { id: "blossom", name: "Blossom", dots: ["#5a895e", "#f8e8d5", "#ea9eb6"], mark: "#ea9eb6", ink: "#1e3323" },
+        { id: "iris", name: "Iris", dots: ["#8c974a", "#dfddd1", "#6e5bb1"], mark: "#6e5bb1", ink: "#fff" },
+        { id: "lagoon", name: "Lagoon", dots: ["#023436", "#a3d95b", "#f76f8e"], mark: "#023436", ink: "#a3d95b" },
+        { id: "midnight", name: "Midnight", dots: ["#111b28", "#ede3c8", "#96394d"], mark: "#1b2a3d", ink: "#ede3c8" }
     ];
-    const currentAccent = () => ACCENTS.find((a) => a.id === store.get("accent")) || ACCENTS[0];
-    function paintFavicon(a) {
+    const currentPalette = () => PALETTES.find((x) => x.id === store.get("palette")) || PALETTES[0];
+    function paintFavicon(p) {
         const link = document.querySelector('link[rel="icon"]');
-        if (!link || a === ACCENTS[0]) return;
+        if (!link) return;
+        if (p === PALETTES[0]) { link.href = "favicon.svg"; return; }
         link.href = "data:image/svg+xml," + encodeURIComponent(
-            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="9" fill="' + a.swatch + '"/>' +
-            '<g transform="translate(3 3)" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"><path d="M4.6 15.2A8.6 8.6 0 0 1 19.4 7.4"/>' +
-            '<path d="M21.4 10.8A8.6 8.6 0 0 1 6.6 18.6" opacity=".6"/></g><circle cx="22.4" cy="10.4" r="2.3" fill="#fff"/></svg>');
+            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="9" fill="' + p.mark + '"/>' +
+            '<g transform="translate(3 3)" fill="none" stroke="' + p.ink + '" stroke-width="2.6" stroke-linecap="round"><path d="M4.6 15.2A8.6 8.6 0 0 1 19.4 7.4"/>' +
+            '<path d="M21.4 10.8A8.6 8.6 0 0 1 6.6 18.6" opacity=".6"/></g><circle cx="22.4" cy="10.4" r="2.3" fill="' + p.ink + '"/></svg>');
     }
-    function setAccent(id) {
-        const a = ACCENTS.find((x) => x.id === id) || ACCENTS[0];
-        if (a === ACCENTS[0]) { delete document.documentElement.dataset.accent; store.remove("accent"); }
-        else { document.documentElement.dataset.accent = a.id; store.set("accent", a.id); }
-        const link = document.querySelector('link[rel="icon"]');
-        if (link && a === ACCENTS[0]) link.href = "favicon.svg";
-        paintFavicon(a);
+    function setPalette(id) {
+        const p = PALETTES.find((x) => x.id === id) || PALETTES[0];
+        if (p === PALETTES[0]) { delete document.documentElement.dataset.palette; store.remove("palette"); }
+        else { document.documentElement.dataset.palette = p.id; store.set("palette", p.id); }
+        paintFavicon(p);
+        document.dispatchEvent(new CustomEvent("palettechange"));
     }
-    paintFavicon(currentAccent());
+    if (currentPalette() !== PALETTES[0]) paintFavicon(currentPalette());
 
     /* ---------- Shell ---------- */
     const NAV = [
@@ -278,7 +255,6 @@
                 (id === "tasks" ? '<span class="count" data-nav-count hidden></span>' : "") + "</a></li>").join("") +
             "</ul>" +
             '<div class="side-foot">' +
-            '<button class="side-btn" type="button" data-theme-toggle><span class="ti"></span><span class="tl">Dark theme</span></button>' +
             '<div class="user-row">' +
             '<span class="avatar" aria-hidden="true">' + esc((first || "S").charAt(0).toUpperCase()) + "</span>" +
             '<span class="who"><strong>' + esc(u && u.name ? u.name : "Signed in") + "</strong><span>" + esc((u && u.email) || "") + "</span></span>" +
@@ -291,7 +267,7 @@
         top.innerHTML =
             '<button class="icon-btn" type="button" data-nav-open aria-label="Open navigation" aria-expanded="false" aria-controls="rail">' + icon("menu") + "</button>" +
             '<span class="topbar-title">' + esc(current ? current[1] : "Syncrona") + "</span>" +
-            '<button class="icon-btn" type="button" data-theme-toggle><span class="ti"></span></button>';
+            '<span class="topbar-spacer" aria-hidden="true"></span>';
         document.body.prepend(top);
 
         const scrim = document.createElement("div");
@@ -310,9 +286,7 @@
             if (e.key === "Escape" && document.body.classList.contains("nav-open")) { setOpen(false); openBtn.focus(); }
         });
 
-        document.querySelectorAll("[data-theme-toggle]").forEach((b) => b.addEventListener("click", toggleTheme));
         rail.querySelector("[data-signout]").addEventListener("click", () => signOut());
-        updateThemeButtons();
     }
 
     /* Sidebar count: open tasks due today or overdue — a queue that needs action. */
@@ -512,7 +486,7 @@
         pad, ymd, parseYmd, startOfDay, addDays, sameDay, daysBetween, when, toPayload,
         fmtTime, fmtDay, fmtDayLong, fmtDate, relDay, relTime, relSoon, timeAgo, WD, WD_LONG, MO, MO_LONG,
         money, threshold, icon, LEAD, checkBtn, MARK, navTasks,
-        effectiveTheme, setTheme, toggleTheme, syncEmpty, ACCENTS, currentAccent, setAccent,
+        syncEmpty, PALETTES, currentPalette, setPalette,
         toast, toastError, undoable, busy, everyMinute
     };
 })();
