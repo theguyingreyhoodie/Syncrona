@@ -211,7 +211,9 @@
         { id: "blossom", name: "Blossom", dots: ["#5a895e", "#f8e8d5", "#ea9eb6"], mark: "#ea9eb6", ink: "#1e3323" },
         { id: "iris", name: "Iris", dots: ["#8c974a", "#dfddd1", "#6e5bb1"], mark: "#6e5bb1", ink: "#fff" },
         { id: "lagoon", name: "Lagoon", dots: ["#023436", "#a3d95b", "#f76f8e"], mark: "#023436", ink: "#a3d95b" },
-        { id: "midnight", name: "Midnight", dots: ["#111b28", "#ede3c8", "#96394d"], mark: "#1b2a3d", ink: "#ede3c8" }
+        { id: "midnight", name: "Midnight", dots: ["#111b28", "#ede3c8", "#96394d"], mark: "#1b2a3d", ink: "#ede3c8" },
+        { id: "plum", name: "Plum", dots: ["#2a1a2f", "#e3a33b", "#ff7a6b"], mark: "#2a1a2f", ink: "#e3a33b" },
+        { id: "espresso", name: "Espresso", dots: ["#2b211c", "#f1e6d6", "#d9774b"], mark: "#2b211c", ink: "#d9774b" }
     ];
     const currentPalette = () => PALETTES.find((x) => x.id === store.get("palette")) || PALETTES[0];
     function paintFavicon(p) {
